@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 
 const StyledBackgroundColor = styled.div`
     background-color: ${props => props.color};
+    transition: background-color .1s;
 `
 
 export const BackgroundColor: React.FunctionComponent<{ color: string; children?: React.ReactNode; style?: React.CSSProperties }> = props => {

@@ -3,11 +3,14 @@ import { Size } from '../components/tokens/size'
 import { Space } from '../components/utils/space'
 import { Wrapper } from '../components/wrapper'
 import { Footer } from '../container/footer'
-import { Color, Logo, Tag, Text, TextSize } from '../components'
+import { BackgroundColor, Color, Logo, Tag, Text, TextSize } from '../components'
+import { FunctionComponent, MouseEventHandler, useState } from 'react'
 
 export default function Home() {
+	const [color, setColor] = useState<string | undefined>();
+
 	return (
-		<div>
+		<BackgroundColor color={color || Color.Background}>
 			<Head>
 				<title>Invisible Hotels</title>
 				<meta name="description" content="TODO" />
@@ -16,12 +19,20 @@ export default function Home() {
 				<Space vertical={Size.XXXXL} />
 				<Logo />
 				<Space vertical={Size.XL} />
-				<Text size={TextSize.Large} serif>are all the <span style={{ color: Color.Yellow, fontStyle: 'italic' }}>fancy</span>, <span style={{ color: Color.Blue, fontStyle: 'italic' }}>minimalistic</span> and <span style={{ color: Color.Red, fontStyle: 'italic' }}>lovely</span> hotels that I already visited — or would love to.</Text>
+				<Text size={TextSize.Large} serif>are all the <ColoredText color={Color.Yellow} onMouseEnter={() => setColor(Color.YellowVariant)} onMouseOut={() => setColor(undefined)}>fancy</ColoredText>, <ColoredText color={Color.Blue} onMouseEnter={() => setColor(Color.BlueVariant)} onMouseOut={() => setColor(undefined)}>minimalistic</ColoredText> and <ColoredText color={Color.Red} onMouseEnter={() => setColor(Color.RedVariant)} onMouseOut={() => setColor(undefined)}>lovely</ColoredText> hotels that I already visited — or would love to.</Text>
 				<Space vertical={Size.XXL} />
 				<Tag>Coming Soon</Tag>
 				<Space vertical={Size.XXXL} />
 			</Wrapper>
 			<Footer />
-		</div>
+		</BackgroundColor>
+	)
+}
+
+const ColoredText: FunctionComponent<{ color: string; children?: React.ReactNode; onMouseEnter?: MouseEventHandler; onMouseOut?: MouseEventHandler }> = props => {
+	return (
+		<span onMouseEnter={props.onMouseEnter} onMouseOut={props.onMouseOut} style={{ color: props.color, fontStyle: 'italic' }}>
+			{props.children}
+		</span>
 	)
 }
