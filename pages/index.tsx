@@ -20,10 +20,8 @@ export default function Home() {
 					<Logo />
 				</InternalLink>
 				<Space vertical={Size.XXXL} />
-				<Text center size={TextSize.Huge} indent>Test</Text>
+				<Text center>Test</Text>
 				<Space vertical={Size.XL} />
-				<Text color={Color.TextVariant} center sansserif>Get in touch</Text>
-				<Space vertical={Size.M} />
 			</Wrapper>
 			<Footer />
 		</div>
