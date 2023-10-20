@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
-import { DM_Sans, EB_Garamond, Lora } from '@next/font/google'
-import { Inter } from '@next/font/google'
-import { Color, Size } from './tokens';
+import { DM_Sans, EB_Garamond } from '@next/font/google'
+import { Color } from './tokens';
 
 interface TextProps {
     size?: TextSize;
@@ -18,6 +17,7 @@ export enum TextSize {
     Huge,
     Large,
     Regular,
+    Small
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
@@ -29,7 +29,6 @@ const StyledText = styled.div<TextProps>`
     ${props => props.center && 'text-align: center;'}
     color: ${props => props.color || Color.Text};
     margin: 0;
-    font-weight: 500; // TODO
 	cursor: inherit;
 
     ${props => props.size === TextSize.Huge && `
@@ -63,6 +62,11 @@ const StyledText = styled.div<TextProps>`
     ${props => props.size === TextSize.Regular && `
         font-size: 20px;
         text-underline-offset: 5px;
+    `}
+
+    ${props => props.size === TextSize.Small && `
+        font-size: 14px;
+        text-underline-offset: 3px;
     `}
 `;
 
