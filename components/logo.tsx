@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled'
+import { Color } from './tokens';
 
 const StyledLogoWrapper = styled.div`
 	svg {
@@ -15,8 +16,11 @@ const StyledLogoWrapper = styled.div`
 		animation: logoBlink 8s infinite;
 		transform-origin: bottom;
 	}
+	#i1 {
+		fill: ${Color.Blue};
+	}
 	#i2 {
-		animation-delay: 5s;
+		display: none;
 	}
 	@keyframes logoRotate {
 		0%, 100% {
