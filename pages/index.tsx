@@ -19,7 +19,7 @@ export default function Home() {
 				<Space vertical={Size.XXXXL} />
 				<Logo />
 				<Space vertical={Size.XL} />
-				<Text size={TextSize.Large} serif>are all the <ColoredText color={Color.Yellow} onMouseEnter={() => setColor(Color.YellowVariant)} onMouseOut={() => setColor(undefined)}>fancy</ColoredText>, <ColoredText color={Color.Blue} onMouseEnter={() => setColor(Color.BlueVariant)} onMouseOut={() => setColor(undefined)}>minimalistic</ColoredText> and <ColoredText color={Color.Red} onMouseEnter={() => setColor(Color.RedVariant)} onMouseOut={() => setColor(undefined)}>lovely</ColoredText> hotels that I already visited — or would love to.</Text>
+				<Text size={TextSize.Large} serif>are all the <ColoredText color={Color.Yellow} onMouseEnter={() => setColor(Color.YellowVariant)} onMouseOut={() => setColor(undefined)}>fancy</ColoredText>, <ColoredText color={Color.Blue} onMouseEnter={() => setColor(Color.BlueVariant)} onMouseOut={() => setColor(undefined)}>minimalistic</ColoredText> and <ColoredText color={Color.Red} onMouseEnter={() => setColor(Color.RedVariant)} onMouseOut={() => setColor(undefined)}>lovely</ColoredText> hotels & apartments where we already stayed — or would love to.</Text>
 				<Space vertical={Size.XXL} />
 				<Tag>Coming Soon</Tag>
 				<Space vertical={Size.XXXL} />
