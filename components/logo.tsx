@@ -29,9 +29,11 @@ const StyledLogoWrapper = styled.div`
 	@keyframes logoBlink {
 		0%, 95%, 100% {
 			transform: scale(1, 1);
+			opacity: 1;
 		}
 		96.5% {
 			transform: scale(1, 0);
+			opacity: .2;
 		}
 	}
 `;
