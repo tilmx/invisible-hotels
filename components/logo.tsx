@@ -6,6 +6,7 @@ const StyledLogoWrapper = styled.div`
 	svg {
 		overflow: visible;
 		max-width: 100%;
+		height: auto;
 	}
 	path {
 		transform: rotate(-8deg);
