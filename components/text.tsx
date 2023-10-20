@@ -15,9 +15,9 @@ interface TextProps {
 }
 
 export enum TextSize {
+    Huge,
     Large,
     Regular,
-    Small
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
@@ -32,22 +32,37 @@ const StyledText = styled.div<TextProps>`
     font-weight: 500; // TODO
 	cursor: inherit;
 
-    ${props => props.size === TextSize.Large && `
+    ${props => props.size === TextSize.Huge && `
         font-size: 192px;
         line-height: 0.875;
+        letter-spacing: -.03em;
 
         ${Breakpoint.Tablet} {
             font-size: 144px;
+        }
+
+        ${Breakpoint.Tablet} {
+            font-size: 96px;
+        }
+    `}
+
+    ${props => props.size === TextSize.Large && `
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -.02em;
+
+        ${Breakpoint.Tablet} {
+            font-size: 72px;
+        }
+
+        ${Breakpoint.Tablet} {
+            font-size: 48px;
         }
     `}
 
     ${props => props.size === TextSize.Regular && `
         font-size: 20px;
         text-underline-offset: 5px;
-    `}
-
-    ${props => props.size === TextSize.Small && `
-        font-size: 16px;
     `}
 `;
 
