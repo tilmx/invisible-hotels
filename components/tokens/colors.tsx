@@ -12,8 +12,8 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
         <>
             <Global styles={css`
                 :root {
-                    --color-text: #000000;
-                    --color-background: #FFFFFF;
+                    --color-text: #FFFFFF;
+                    --color-background: #000000;
 
                     @media (prefers-color-scheme: dark) {
                     }

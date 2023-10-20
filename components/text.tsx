@@ -33,12 +33,11 @@ const StyledText = styled.div<TextProps>`
 	cursor: inherit;
 
     ${props => props.size === TextSize.Large && `
-        font-size: 36px;
-        line-height: 1.3;
-        text-underline-offset: 5px;
+        font-size: 192px;
+        line-height: 0.875;
 
         ${Breakpoint.Tablet} {
-            font-size: 24px;
+            font-size: 144px;
         }
     `}
 
