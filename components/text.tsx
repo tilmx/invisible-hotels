@@ -32,20 +32,6 @@ const StyledText = styled.div<TextProps>`
 	cursor: inherit;
 
     ${props => props.size === TextSize.Huge && `
-        font-size: 192px;
-        line-height: 0.875;
-        letter-spacing: -.03em;
-
-        ${Breakpoint.Tablet} {
-            font-size: 144px;
-        }
-
-        ${Breakpoint.Tablet} {
-            font-size: 96px;
-        }
-    `}
-
-    ${props => props.size === TextSize.Large && `
         font-size: 96px;
         line-height: 1;
         letter-spacing: -.02em;
@@ -54,13 +40,27 @@ const StyledText = styled.div<TextProps>`
             font-size: 72px;
         }
 
-        ${Breakpoint.Tablet} {
+        ${Breakpoint.Mobile} {
             font-size: 48px;
         }
     `}
 
+    ${props => props.size === TextSize.Large && `
+        font-size: 72px;
+        line-height: 1;
+        letter-spacing: -.02em;
+
+        ${Breakpoint.Tablet} {
+            font-size: 56px;
+        }
+
+        ${Breakpoint.Mobile} {
+            font-size: 36px;
+        }
+    `}
+
     ${props => props.size === TextSize.Regular && `
-        font-size: 20px;
+        font-size: 36px;
         text-underline-offset: 5px;
     `}
 

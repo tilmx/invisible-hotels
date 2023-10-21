@@ -10,6 +10,7 @@ const StyledGrid = styled.div`
 
     ${Breakpoint.Tablet} {
         margin-top: ${Size.XXXL};
+        grid-template-columns: 1fr;
     }
 
     ${Breakpoint.Mobile} {
