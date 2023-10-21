@@ -47,7 +47,7 @@ const StyledTitle = styled(Text)`
     max-width: 420px;
 `;
 
-const StyledTagList = styled(Flex)`
+const StyledDetailList = styled(Flex)`
     padding-top: ${Size.XXS};
 `;
 
@@ -58,13 +58,13 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
                 <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
                 <Text serif>{props.location}</Text>
             </div>
-            <StyledTagList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween}>
+            <StyledDetailList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween}>
                 <Flex gap={Size.XXS}>
                     <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
                     <Tag label={props.housingType} />
                 </Flex>
                 {props.link && <HotelLink link={props.link} color={getVacationTypeColor(props.vacationType)} />}
-            </StyledTagList>
+            </StyledDetailList>
         </StyledCard>
     )
 }

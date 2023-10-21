@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { FunctionComponent } from "react";
-import { Color, Size } from "./tokens";
+import { Breakpoint, Color, Size } from "./tokens";
 import { ExternalLink } from "lucide-react";
 import { Text, TextSize } from "./text";
 
@@ -23,10 +23,23 @@ const StyledLink = styled.a<{ color?: string; }>`
         transform: scale(1.1);
         box-shadow: 0 0 ${Size.L} rgba(0,0,0,0.2);
     }
+
+    ${Breakpoint.Mobile} {
+        padding: ${Size.Special6};
+
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+    }
 `;
 
 const StyledText = styled(Text)`
     padding-left: ${Size.XXS};
+
+    ${Breakpoint.Mobile} {
+        display: none;
+    }
 `
 
 

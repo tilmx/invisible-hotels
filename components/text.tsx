@@ -72,6 +72,11 @@ const StyledText = styled.div<TextProps>`
     ${props => props.size === TextSize.Small && `
         font-size: 20px;
         line-height: 24px;
+
+        ${Breakpoint.Mobile} {
+            font-size: 17px;
+            line-height: 20px;
+        }
     `}
 
     ${props => props.size === TextSize.SuperSmall && `
