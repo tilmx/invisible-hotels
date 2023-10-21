@@ -13,8 +13,8 @@ interface HotelCardProps {
     vacationType: string;
 }
 
-const StyledCard = styled.div`
-    background: ${Color.Yellow};
+const StyledCard = styled.div<{ color: string }>`
+    background: ${props => props.color};
     border-radius: ${Size.M};
     padding: ${Size.L};
     display: flex;
@@ -50,7 +50,7 @@ const StyledTagList = styled(Flex)`
 
 export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard>
+        <StyledCard color={getVacationTypeColor(props.vacationType)}>
             <div>
                 <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
                 <Text serif>{props.location}</Text>
@@ -73,5 +73,18 @@ function getVacationTypeIcon(vacationType: string) {
             return <Hotel />
         case "Countryside":
             return <TreeDeciduous />
+    }
+}
+
+function getVacationTypeColor(vacationType: string) {
+    switch (vacationType) {
+        case "Sea":
+            return Color.Blue
+        case "Mountains":
+            return Color.Green
+        case "City":
+            return Color.TextVariant
+        case "Countryside":
+            return Color.Yellow
     }
 }
