@@ -35,7 +35,7 @@ const StyledLogoWrapper = styled.div`
 			transform: scale(1, 1);
 			opacity: 1;
 		}
-		72%, 0% {
+		72%, 100% {
 			fill: ${Color.Yellow};
 		}
 		2%, 40% {
