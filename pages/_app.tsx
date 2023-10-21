@@ -11,7 +11,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
         <meta name="language" content="en" />
       </Head>
-      <Global styles={css`body { margin: 0; background: ${Color.Background}; };`} />
+      <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; };`} />
       <Component {...pageProps} />
     </Theme>
   );
