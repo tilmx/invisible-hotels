@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from '@emotion/styled'
 import { Text, TextSize } from './text';
 import { Color, Size } from './tokens';
-import { Box } from 'lucide-react';
 
 const StyledTag = styled.div`
 	border: 1px solid ${Color.Text};
@@ -16,7 +15,6 @@ const StyledTag = styled.div`
 export const Tag: React.FunctionComponent<{ icon?: string; label: string; }> = props => {
 	return (
 		<StyledTag>
-			<Box size="20px" />
 			<Text size={TextSize.Small}>{props.label}</Text>
 		</StyledTag>
 	)

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { Breakpoint, HotelCard, Housing, Region, Size } from '../components';
+import { Breakpoint, HotelCard, Size } from '../components';
+
+import hotels from '../data/hotels.json';
 
 const StyledGrid = styled.div`
     display: grid;
@@ -21,18 +23,14 @@ const StyledGrid = styled.div`
 export const HotelList: React.FunctionComponent = props => {
     return (
         <StyledGrid>
-            <HotelCard
-                title='Noah Surf House'
-                location='A dos Cunhados, Portugal'
-                housing={Housing.Hotel}
-                region={Region.Sea}
-            />
-            <HotelCard
-                title='Aethos Ericeira'
-                location='Encarnação, Portugal'
-                housing={Housing.Hotel}
-                region={Region.Sea}
-            />
+            {hotels.map((hotel, i) =>
+                <HotelCard
+                    title={hotel.name}
+                    location={`${hotel.city}, ${hotel.country}`}
+                    housingType={hotel.housingType}
+                    vacationType={hotel.vacationType}
+                />
+            )}
         </StyledGrid>
     )
 }
