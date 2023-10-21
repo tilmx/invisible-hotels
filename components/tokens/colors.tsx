@@ -19,7 +19,7 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
             <Global styles={css`
                 :root {
                     --color-text: #000000;
-                    --color-text-variant: #999999;
+                    --color-text-variant: #00000066;
                     --color-background: #FFFFFF;
                     --color-yellow: #FFBC42;
                     --color-green: #108A5F;

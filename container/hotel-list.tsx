@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Breakpoint, Color, Filter, Flex, FlexJustifyContent, HotelCard, Select, Size, Text, TextSize, Wrapper } from '../components';
 import hotels from '../data/hotels.json';
 
-
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXXL};
 
@@ -35,20 +34,21 @@ const StyledFilterLabel = styled(Text)`
     transform: translate3d(0,0,0);
 `;
 
-const StyledFilterBar = styled.div`
+const StyledFilterBar = styled.div<{ color?: string }>`
     position: sticky;
     top: 0;
     padding: ${Size.M} 0;
     z-index: 10;
-    background: rgba(255,255,255,.8);
+    background: ${props => props.color || 'rgba(255,255,255,.8)'};
     backdrop-filter: blur(16px);
+    transition: background-color .1s;
 
     ${Breakpoint.Tablet} {
         position: relative;
     }
 `;
 
-export const HotelList: React.FunctionComponent = () => {
+export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> = props => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = React.useState<string | undefined>();
     const filteredHotels = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
@@ -58,7 +58,7 @@ export const HotelList: React.FunctionComponent = () => {
             <Wrapper>
                 <StyledFilterLabel size={TextSize.Small} color={Color.TextVariant}>Filter all hotels & apartments</StyledFilterLabel>
             </Wrapper>
-            <StyledFilterBar>
+            <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
                     <Flex justifyContent={FlexJustifyContent.SpaceBetween}>
                         <Flex gap={Size.XS} flexWrap='wrap'>
