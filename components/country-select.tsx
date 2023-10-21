@@ -39,7 +39,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     position: absolute;
     right: 0;
     display: ${props => props.open ? 'block' : 'none'};
-    padding: ${Size.XXS} 0;
+    padding: ${Size.XXS};
     margin-top: ${Size.XXS};
     background: rgba(255,255,255,.9);
     backdrop-filter: blur(${Size.M});
@@ -84,9 +84,10 @@ export const CountrySelect: FunctionComponent<SelectProps> = props => {
 const StyledOption = styled.div`
     padding: ${Size.XXS} ${Size.S};
     cursor: pointer;
+    border-radius: ${Size.XXS};
 
     &:hover {
-        color: ${Color.TextVariant};
+        background: rgba(0,0,0,0.075);
     }
 `;
 

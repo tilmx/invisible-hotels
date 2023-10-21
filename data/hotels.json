@@ -1,6 +1,6 @@
 [
   {
-    "name": "Aethos Ericeira",
+    "name": "Aethos",
     "city": "Ericeira",
     "country": "Portugal",
     "housingType": "Hotel",
@@ -89,7 +89,7 @@
     }
   },
   {
-    "name": "25hours Köln",
+    "name": "25hours",
     "city": "Köln",
     "country": "Germany",
     "housingType": "Hotel",
@@ -126,6 +126,46 @@
     "vacationType": "Mountains",
     "links": {
       "bookingCom": "https://www.booking.com/hotel/at/sepp-alpine-boutique.html"
+    }
+  },
+  {
+    "name": "Mama Thresl",
+    "city": "Leogang",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/mama-thresl.html"
+    }
+  },
+  {
+    "name": "The Line",
+    "city": "Washington DC",
+    "country": "United States",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/us/the-line-dc.html"
+    }
+  },
+  {
+    "name": "Turm zu Schloss Schedling",
+    "city": "Trostberg",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/turm-zu-schloss-schedling.html"
+    }
+  },
+  {
+    "name": "Superbude St. Georg",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/superbude.html"
     }
   }
 ]
