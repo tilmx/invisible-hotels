@@ -1,8 +1,9 @@
 import { CSSProperties, FunctionComponent, MouseEventHandler, useState } from "react";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
-import { Color, Size } from "./tokens";
+import { Breakpoint, Color, Size } from "./tokens";
 import { ChevronDown } from "lucide-react";
+import { Tag } from "./tag";
 
 interface SelectProps {
     label: string;
@@ -16,18 +17,15 @@ const StyledContainer = styled.div`
     position: relative;
 `;
 
-const StyledSelect = styled.div<{ active?: boolean; color?: string; }>`
+const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
 	border: 2px solid ${Color.Text};
-	padding: ${Size.XXS} ${Size.S};
-	border-radius: 24px;
-	display: flex;
 	gap: ${Size.XXXS};
-	align-items: center;
+    cursor: pointer;
+    
     ${props => props.active && `
-        background:${Color.Text};
+        background: ${Color.Text};
         color: ${Color.Background};
     `}
-    cursor: pointer;
 
     ${props => !props.active && `
         &:hover {
@@ -61,7 +59,7 @@ export const Select: FunctionComponent<SelectProps> = props => {
                 <ChevronDown size="20px" />
             </StyledSelect>
             <StyledOptionList open={open}>
-                <SelectOption label="All countries" onClick={() => {
+                <SelectOption label={props.label} onClick={() => {
                     props.onChange(undefined);
                     setOpen(false);
                 }}></SelectOption>

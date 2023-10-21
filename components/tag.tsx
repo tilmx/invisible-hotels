@@ -1,7 +1,7 @@
-import * as React from 'react';
 import styled from '@emotion/styled'
 import { Text, TextSize } from './text';
 import { Breakpoint, Color, Size } from './tokens';
+import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 
 const StyledTag = styled.div`
 	border: 2px solid ${Color.Text};
@@ -21,11 +21,12 @@ const StyledTag = styled.div`
 	}
 `;
 
-export const Tag: React.FunctionComponent<{ icon?: React.ReactNode; label: string; }> = props => {
+export const Tag: FunctionComponent<{ icon?: ReactNode; label?: string; children?: ReactNode; onClick?: MouseEventHandler; className?: string; }> = props => {
 	return (
-		<StyledTag>
+		<StyledTag onClick={props.onClick} className={props.className}>
 			{props.icon}
 			<Text size={TextSize.Small}>{props.label}</Text>
+			{props.children}
 		</StyledTag>
 	)
 }
