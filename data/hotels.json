@@ -43,16 +43,6 @@
     }
   },
   {
-    "name": "The William Vale",
-    "city": "Williamsburg",
-    "country": "United States",
-    "housingType": "Hotel",
-    "vacationType": "City",
-    "links": {
-      "bookingCom": "https://www.booking.com/hotel/us/the-william-vale.html"
-    }
-  },
-  {
     "name": "House Aavego",
     "city": "Agger",
     "country": "Denmark",
