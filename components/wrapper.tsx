@@ -3,10 +3,10 @@ import styled from '@emotion/styled'
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div<{ wide?: boolean; }>`
     padding: 0 ${Size.XXL};
     margin: 0 auto;
-    max-width: 1080px;
+    max-width: ${props => props.wide ? '1280px' : '1080px'};
 
     ${Breakpoint.Tablet} {
         padding: 0 ${Size.L};
@@ -17,9 +17,9 @@ const StyledWrapper = styled.div`
     }
 `
 
-export const Wrapper: React.FunctionComponent<{ children: React.ReactNode }> = props => {
+export const Wrapper: React.FunctionComponent<{ children: React.ReactNode; wide?: boolean; }> = props => {
     return (
-        <StyledWrapper>
+        <StyledWrapper wide={props.wide}>
             {props.children}
         </StyledWrapper>
     )

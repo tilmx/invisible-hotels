@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import { Size } from '../components/tokens/size'
-import { Space } from '../components/utils/space'
 import { Wrapper } from '../components/wrapper'
 import { Footer } from '../container/footer'
-import { AccentStyle, BackgroundColor, Color, AccentedText, Logo, Tag, Text, TextSize } from '../components'
+import { AccentStyle, BackgroundColor, Color, AccentedText, Logo, Tag, Text, TextSize, HotelCard, Housing, Region, HotelList } from '../components'
 import { useState } from 'react'
 
 export default function Home() {
@@ -15,13 +13,26 @@ export default function Home() {
 				<title>Invisible Hotels</title>
 			</Head>
 			<Wrapper>
-				<Space vertical={Size.XXXXL} />
 				<Logo />
-				<Space vertical={Size.XL} />
 				<Text size={TextSize.Large} serif>are all the <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled} onMouseEnter={() => setColor(Color.Blue)} onMouseOut={() => setColor(undefined)}>lovely</AccentedText>, <AccentedText color={Color.Green} accentStyle={AccentStyle.Circled} onMouseEnter={() => setColor(Color.Green)} onMouseOut={() => setColor(undefined)}>minimalistic</AccentedText> and <AccentedText color={Color.Yellow} accentStyle={AccentStyle.Underlined} onMouseEnter={() => setColor(Color.Yellow)} onMouseOut={() => setColor(undefined)}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</Text>
-				<Space vertical={Size.XXL} />
-				<Tag>Coming Soon</Tag>
-				<Space vertical={Size.XXXL} />
+			</Wrapper>
+			<Wrapper wide>
+				<HotelList>
+					<HotelCard
+						title='Noah Surf House'
+						location='Lorem ipsum'
+						housing={Housing.Hotel}
+						region={Region.Sea}
+						color={Color.Yellow}
+					/>
+					<HotelCard
+						title='Noah Surf House'
+						location='Lorem ipsum'
+						housing={Housing.Hotel}
+						region={Region.Sea}
+						color={Color.Yellow}
+					/>
+				</HotelList>
 			</Wrapper>
 			<Footer />
 		</BackgroundColor>
