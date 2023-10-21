@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Color, Size } from "./tokens";
+import { Breakpoint, Color, Size } from "./tokens";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { getVacationTypeColor, getVacationTypeIcon } from "./hotel-card";
@@ -24,6 +24,13 @@ const StyledTag = styled.div<{ selected?: boolean; color?: string; }>`
         border: 2px solid ${props => props.color};
         color: ${props => props.selected ? undefined : props.color};  
     }
+    ${Breakpoint.Mobile} {
+		padding: ${Size.Special6} ${Size.XS};
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
 `;
 
 export const Filter: FunctionComponent<FilterProps> = props => {
