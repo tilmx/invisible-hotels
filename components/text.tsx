@@ -20,7 +20,7 @@ export enum TextSize {
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
-const FontSans = DM_Sans({ weight: '700', subsets: ['latin'] })
+const FontSans = DM_Sans({ weight: ['600', '400'], subsets: ['latin'] })
 
 const StyledText = styled.div<TextProps>`
     ${props => props.serif ? FontSerif.style : FontSans.style}
@@ -48,6 +48,7 @@ const StyledText = styled.div<TextProps>`
         font-size: 72px;
         line-height: 1;
         letter-spacing: -.02em;
+        font-weight: 600;
 
         ${Breakpoint.Tablet} {
             font-size: 56px;
@@ -69,7 +70,7 @@ const StyledText = styled.div<TextProps>`
     `}
 
     ${props => props.size === TextSize.Small && `
-        font-size: 14px;
+        font-size: 20px;
         text-underline-offset: 3px;
     `}
 `;
