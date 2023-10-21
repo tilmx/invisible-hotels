@@ -8,11 +8,8 @@ export enum Color {
     Background = 'var(--color-background)',
 
     Yellow = 'var(--color-yellow)',
-    YellowVariant = 'var(--color-yellow-variant)',
-    Red = 'var(--color-red)',
-    RedVariant = 'var(--color-red-variant)',
+    Green = 'var(--color-green)',
     Blue = 'var(--color-blue)',
-    BlueVariant = 'var(--color-blue-variant)',
 }
 
 export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = props => {
@@ -21,14 +18,11 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
             <Global styles={css`
                 :root {
                     --color-text: #000000;
-                    --color-text-variant: #333333;
+                    --color-text-variant: #999999;
                     --color-background: #FFFFFF;
-                    --color-yellow: #FFE661;
-                    --color-yellow-variant: #DFC123;
-                    --color-blue: #339DFF;
-                    --color-blue-variant: #0579E3;
-                    --color-red: #FF4F79;
-                    --color-red-variant: #DB1C4A;
+                    --color-yellow: #FFBC42;
+                    --color-blue: #0496FF;
+                    --color-green: #108A5F;
 
                     @media (prefers-color-scheme: dark) {
                     }
