@@ -9,7 +9,7 @@ interface SelectProps {
     options: string[];
     value?: string;
     onChange: (country?: string) => void;
-    style?: CSSProperties;
+    className?: string;
 }
 
 const StyledContainer = styled.div`
@@ -55,7 +55,7 @@ export const Select: FunctionComponent<SelectProps> = props => {
     const [open, setOpen] = useState(false);
 
     return (
-        <StyledContainer style={props.style}>
+        <StyledContainer className={props.className}>
             <StyledSelect onClick={() => setOpen(!open)} active={typeof props.value !== 'undefined'}>
                 <Text size={TextSize.Small}>{props.value || props.label}</Text>
                 <ChevronDown size="20px" />

@@ -53,9 +53,11 @@ const StyledFilterBar = styled.div<{ color?: string }>`
     }
 `;
 
-const StyledFilterBarList = styled(Flex)`
+const StyledSelect = styled(Select)`
+    margin-left: auto;
+
     ${Breakpoint.Tablet} {
-        flex-direction: column;
+        margin-left: 0;
     }
 `;
 
@@ -83,17 +85,15 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
             </Wrapper>
             <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
-                    <StyledFilterBarList gap={Size.XS} justifyContent={FlexJustifyContent.SpaceBetween} alignItems={FlexAlignItems.FlexStart}>
-                        <Flex gap={Size.XS} flexWrap='wrap'>
-                            {filterOptions.map((option, i) => {
-                                const selected = vacationFilter === option;
-                                return (
-                                    <Filter key={i} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
-                                )
-                            })}
-                        </Flex>
-                        <Select label='All Countries' options={countries} value={countryFilter} onChange={country => setCountryFilter(country)} />
-                    </StyledFilterBarList>
+                    <Flex gap={Size.XS} alignItems={FlexAlignItems.FlexStart} flexWrap='wrap'>
+                        {filterOptions.map((option, i) => {
+                            const selected = vacationFilter === option;
+                            return (
+                                <Filter key={i} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
+                            )
+                        })}
+                        <StyledSelect label='All Countries' options={countries} value={countryFilter} onChange={country => setCountryFilter(country)} />
+                    </Flex>
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
