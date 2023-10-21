@@ -40,8 +40,8 @@ const StyledFilterBar = styled.div`
     top: 0;
     padding: ${Size.M} 0;
     z-index: 10;
-    background: rgba(255,255,255,.75);
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,.8);
+    backdrop-filter: blur(16px);
 
     ${Breakpoint.Tablet} {
         position: relative;
