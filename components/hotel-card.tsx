@@ -63,7 +63,7 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     )
 }
 
-function getVacationTypeIcon(vacationType: string) {
+export function getVacationTypeIcon(vacationType: string) {
     switch (vacationType) {
         case "Sea":
             return <Waves />
@@ -76,7 +76,7 @@ function getVacationTypeIcon(vacationType: string) {
     }
 }
 
-function getVacationTypeColor(vacationType: string) {
+export function getVacationTypeColor(vacationType: string) {
     switch (vacationType) {
         case "Sea":
             return Color.Blue

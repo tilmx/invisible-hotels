@@ -6,6 +6,7 @@ interface FlexProps {
 	alignItems?: FlexAlignItems;
 	children?: React.ReactNode;
 	gap?: string;
+	flexWrap?: 'wrap';
 }
 
 export enum FlexJustifyContent {
@@ -29,6 +30,7 @@ const StyledFlex = styled.div<FlexProps>`
 	justify-content: ${props => props.justifyContent};
 	align-items: ${props => props.alignItems};
 	gap: ${props => props.gap};
+	flex-wrap: ${props => props.flexWrap};
 `;
 
 export const Flex: React.FunctionComponent<FlexProps> = props => {
