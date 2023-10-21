@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, Select, Size, Text, TextSize, Wrapper } from '../components';
+import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Glasses } from 'lucide-react';
@@ -53,7 +53,7 @@ const StyledFilterBar = styled.div<{ color?: string }>`
     }
 `;
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(CountrySelect)`
     margin-left: auto;
 
     ${Breakpoint.Tablet} {

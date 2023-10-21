@@ -10,4 +10,4 @@ export * from './accented-text';
 export * from './hotel-card';
 export * from './filter';
 export * from './hotel-link';
-export * from './select';
+export * from './country-select';
