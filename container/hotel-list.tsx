@@ -60,6 +60,7 @@ export const HotelList: React.FunctionComponent = () => {
                             location={`${hotel.city}, ${hotel.country}`}
                             housingType={hotel.housingType}
                             vacationType={hotel.vacationType}
+                            link={hotel.links.bookingCom}
                         />
                     )}
                 </StyledGrid>

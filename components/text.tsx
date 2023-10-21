@@ -71,6 +71,7 @@ const StyledText = styled.div<TextProps>`
 
     ${props => props.size === TextSize.Small && `
         font-size: 20px;
+        line-height: 24px;
         text-underline-offset: 3px;
     `}
 `;

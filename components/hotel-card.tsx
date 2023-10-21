@@ -2,15 +2,17 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 import { Breakpoint, Color, Size } from './tokens';
 import { Tag } from './tag';
-import { Flex } from './utils';
+import { Flex, FlexJustifyContent } from './utils';
 import { Text, TextSize } from './text';
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
+import { HotelLink } from './hotel-link';
 
 interface HotelCardProps {
     title: string;
     location: string;
     housingType: string;
     vacationType: string;
+    link?: string;
 }
 
 const StyledCard = styled.div<{ color?: string }>`
@@ -55,9 +57,12 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
                 <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
                 <Text serif>{props.location}</Text>
             </div>
-            <StyledTagList gap={Size.XXS}>
-                <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
-                <Tag label={props.housingType} />
+            <StyledTagList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween}>
+                <Flex gap={Size.XXS}>
+                    <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
+                    <Tag label={props.housingType} />
+                </Flex>
+                {props.link && <HotelLink link={props.link} color={getVacationTypeColor(props.vacationType)} />}
             </StyledTagList>
         </StyledCard>
     )

@@ -23,7 +23,10 @@ base('Curated List').select({
             country: record.get('Country'),
             housingType: record.get('Housing Type'),
             vacationType: record.get('Vacation Type'),
-            link: record.get('Link')
+            links: {
+                hotel: record.get('Link (Hotel)'),
+                bookingCom: record.get('Link (Booking.com)')
+            }
         })
     });
     fetchNextPage();

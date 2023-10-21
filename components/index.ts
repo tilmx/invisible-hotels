@@ -9,4 +9,4 @@ export * from './tag';
 export * from './accented-text';
 export * from './hotel-card';
 export * from './filter';
-export * from './select';
+export * from './hotel-link';
