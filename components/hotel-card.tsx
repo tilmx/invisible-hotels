@@ -13,8 +13,8 @@ interface HotelCardProps {
     vacationType: string;
 }
 
-const StyledCard = styled.div<{ color: string }>`
-    background: ${props => props.color};
+const StyledCard = styled.div<{ color?: string }>`
+    background: ${props => props.color || Color.Yellow};
     border-radius: ${Size.M};
     padding: ${Size.L};
     display: flex;
