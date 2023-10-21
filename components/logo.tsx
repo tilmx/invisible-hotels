@@ -12,13 +12,11 @@ const StyledLogoWrapper = styled.div`
 	path {
 		transform: rotate(-8deg);
 		transform-box: fill-box;
-		animation: logoRotate 10s infinite;
-	}
-	#i1, #i2 {
-		animation: logoBlink 8s infinite;
-		transform-origin: bottom;
+		animation: logoRotate 8s infinite;
 	}
 	#i1 {
+		animation: logoBlink 20s infinite;
+		transform-origin: bottom;
 		fill: ${Color.Blue};
 	}
 	#i2 {
@@ -28,16 +26,25 @@ const StyledLogoWrapper = styled.div`
 		0%, 100% {
 			transform: rotate(3deg);
 		}
-		80% {
+		90% {
 			transform: rotate(-8deg);
 		}
 	}
 	@keyframes logoBlink {
-		0%, 95%, 100% {
+		0%, 2%, 40%, 42%, 70%, 72% {
 			transform: scale(1, 1);
 			opacity: 1;
 		}
-		96.5% {
+		72%, 0% {
+			fill: ${Color.Yellow};
+		}
+		2%, 40% {
+			fill: ${Color.Blue};
+		}
+		42%, 70% {
+			fill: ${Color.Green};
+		}
+		.5%, 40.5%, 70.5% {
 			transform: scale(1, 0);
 			opacity: .2;
 		}
