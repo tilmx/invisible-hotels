@@ -47,17 +47,25 @@ const StyledCard = styled.div`
     }
 `;
 
+const StyledTitle = styled(Text)`
+    padding-bottom: ${Size.XXS};
+`;
+
+const StyledTagList = styled(Flex)`
+    padding-top: ${Size.XXS};
+`;
+
 export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard>
             <div>
-                <Text size={TextSize.Large}>{props.title}</Text>
+                <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
                 <Text serif>{props.location}</Text>
             </div>
-            <Flex gap={Size.XXS}>
+            <StyledTagList gap={Size.XXS}>
                 <Tag label={props.housing} />
                 <Tag label={props.region} />
-            </Flex>
+            </StyledTagList>
         </StyledCard>
     )
 }
