@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
-import { DM_Sans, EB_Garamond } from '@next/font/google'
+import { DM_Sans, EB_Garamond } from "next/font/google"
 
 interface TextProps {
     size?: TextSize;
