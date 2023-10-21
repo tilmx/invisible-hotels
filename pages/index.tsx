@@ -14,23 +14,21 @@ export default function Home() {
 			</Head>
 			<Wrapper>
 				<Logo />
-				<Text size={TextSize.Large} serif>are all the <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled} onMouseEnter={() => setColor(Color.Blue)} onMouseOut={() => setColor(undefined)}>lovely</AccentedText>, <AccentedText color={Color.Green} accentStyle={AccentStyle.Circled} onMouseEnter={() => setColor(Color.Green)} onMouseOut={() => setColor(undefined)}>minimalistic</AccentedText> and <AccentedText color={Color.Yellow} accentStyle={AccentStyle.Underlined} onMouseEnter={() => setColor(Color.Yellow)} onMouseOut={() => setColor(undefined)}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</Text>
+				<Text size={TextSize.Huge} serif>are all the <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled} onMouseEnter={() => setColor(Color.Blue)} onMouseOut={() => setColor(undefined)}>lovely</AccentedText>, <AccentedText color={Color.Green} accentStyle={AccentStyle.Circled} onMouseEnter={() => setColor(Color.Green)} onMouseOut={() => setColor(undefined)}>minimalistic</AccentedText> and <AccentedText color={Color.Yellow} accentStyle={AccentStyle.Underlined} onMouseEnter={() => setColor(Color.Yellow)} onMouseOut={() => setColor(undefined)}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</Text>
 			</Wrapper>
 			<Wrapper wide>
 				<HotelList>
 					<HotelCard
 						title='Noah Surf House'
-						location='Lorem ipsum'
+						location='A dos Cunhados, Portugal'
 						housing={Housing.Hotel}
 						region={Region.Sea}
-						color={Color.Yellow}
 					/>
 					<HotelCard
-						title='Noah Surf House'
-						location='Lorem ipsum'
+						title='Aethos Ericeira'
+						location='Encarnação, Portugal'
 						housing={Housing.Hotel}
 						region={Region.Sea}
-						color={Color.Yellow}
 					/>
 				</HotelList>
 			</Wrapper>
