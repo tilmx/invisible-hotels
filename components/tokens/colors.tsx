@@ -10,6 +10,7 @@ export enum Color {
     Yellow = 'var(--color-yellow)',
     Green = 'var(--color-green)',
     Blue = 'var(--color-blue)',
+    Red = 'var(--color-red)',
 }
 
 export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = props => {
@@ -21,8 +22,9 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
                     --color-text-variant: #999999;
                     --color-background: #FFFFFF;
                     --color-yellow: #FFBC42;
-                    --color-blue: #0496FF;
                     --color-green: #108A5F;
+                    --color-blue: #0496FF;
+                    --color-red: #EF5F5F;
 
                     @media (prefers-color-scheme: dark) {
                     }

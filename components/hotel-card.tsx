@@ -89,7 +89,7 @@ export function getVacationTypeColor(vacationType: string) {
         case "Mountains":
             return Color.Green
         case "City":
-            return Color.TextVariant
+            return Color.Red
         case "Countryside":
             return Color.Yellow
     }
