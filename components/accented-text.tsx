@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
+import { Color } from "./tokens";
 
 export enum AccentStyle {
 	Circled,
@@ -12,6 +13,7 @@ const StyledSpan = styled.span<{ color: string; }>`
 	font-style: italic;
 	position: relative;
 	display: inline-block;
+	transition: color .1s;
 
 	svg {
 		position: absolute;
@@ -22,6 +24,10 @@ const StyledSpan = styled.span<{ color: string; }>`
 		opacity: .3;
 		pointer-events: none;
 		overflow: visible;
+	}
+
+	&:hover {
+		color: ${Color.Background};
 	}
 `;
 
