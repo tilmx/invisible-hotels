@@ -5,6 +5,7 @@ interface FlexProps {
 	justifyContent?: FlexJustifyContent;
 	alignItems?: FlexAlignItems;
 	children?: React.ReactNode;
+	gap?: string;
 }
 
 export enum FlexJustifyContent {
@@ -27,6 +28,7 @@ const StyledFlex = styled.div<FlexProps>`
 	display: flex;
 	justify-content: ${props => props.justifyContent};
 	align-items: ${props => props.alignItems};
+	gap: ${props => props.gap};
 `;
 
 export const Flex: React.FunctionComponent<FlexProps> = props => {
