@@ -16,7 +16,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform .2s;
+    transition: transform .2s, opacity .2s;
     transform: translateX(-50%);
     box-shadow: 0 0 ${Size.XXL} rgba(0,0,0,0.3);
 
@@ -28,7 +28,10 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
         transform: translateX(-50%) scale(1.1);
     }
 
-    ${props => !props.visible && 'transform: translateX(-50%) scale(0);'}
+    ${props => !props.visible && `
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    `}
 `;
 
 export const ScrollIndicator: React.FunctionComponent = () => {
