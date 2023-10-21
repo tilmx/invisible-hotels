@@ -8,4 +8,3 @@ export * from './utils';
 export * from './tag';
 export * from './accented-text';
 export * from './hotel-card';
-export * from './hotel-list';
