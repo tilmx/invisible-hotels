@@ -61,7 +61,12 @@ const StyledText = styled.div<TextProps>`
 
     ${props => props.size === TextSize.Regular && `
         font-size: 36px;
+        line-height: 1;
         text-underline-offset: 5px;
+
+        ${Breakpoint.Mobile} {
+            font-size: 24px;
+        }
     `}
 
     ${props => props.size === TextSize.Small && `
