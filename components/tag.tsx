@@ -4,7 +4,7 @@ import { Text, TextSize } from './text';
 import { Color, Size } from './tokens';
 
 const StyledTag = styled.div`
-	border: 1px solid ${Color.Text};
+	border: 2px solid ${Color.Text};
 	padding: ${Size.XXS} ${Size.S};
 	border-radius: 24px;
 	display: flex;
@@ -12,9 +12,10 @@ const StyledTag = styled.div`
 	align-items: center;
 `;
 
-export const Tag: React.FunctionComponent<{ icon?: string; label: string; }> = props => {
+export const Tag: React.FunctionComponent<{ icon?: React.ReactNode; label: string; }> = props => {
 	return (
 		<StyledTag>
+			{props.icon}
 			<Text size={TextSize.Small}>{props.label}</Text>
 		</StyledTag>
 	)
