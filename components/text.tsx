@@ -27,7 +27,7 @@ const StyledText = styled.div<TextProps>`
     ${props => props.serif ? FontSerif.style : FontSans.style}
     line-height: 1.4;
     ${props => props.center && 'text-align: center;'}
-    color: ${props => props.color || Color.Text};
+    color: ${props => props.color};
     margin: 0;
 	cursor: inherit;
 

@@ -1,21 +1,20 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
+import { Color } from '../tokens';
 
-const StyledLink = styled.a<{ noHighlighting?: boolean }>`
-	color: inherit;
+const StyledLink = styled.a`
+	color: ${Color.TextVariant};
     text-decoration: inherit;
-    transition: color .2s;
+    text-underline-offset: 6px;
 
-    ${props => !props.noHighlighting && `
-        &:hover {
-            text-decoration: underline;
-        }
-    `}
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 export const ExternalLink: React.FunctionComponent<{ link?: string; children?: React.ReactNode; noHighlighting?: boolean }> = props => {
     return (
-        <StyledLink href={props.link} noHighlighting={props.noHighlighting} target="_blank">
+        <StyledLink href={props.link} target="_blank">
             {props.children}
         </StyledLink>
     );

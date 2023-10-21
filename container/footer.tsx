@@ -4,15 +4,15 @@ import { Breakpoint, Color, ExternalLink, Flex, Text, TextSize, Wrapper } from '
 import styled from '@emotion/styled';
 
 const StyledFooter = styled.div`
-    margin-top: ${Size.XXXXL};
-    margin-bottom: ${Size.XXL};
+    padding-top: ${Size.XXXXL};
+    padding-bottom: ${Size.XXL};
 
     ${Breakpoint.Tablet} {
-        margin-top: ${Size.XXXL};
+        padding-top: ${Size.XXXL};
     }
 
     ${Breakpoint.Mobile} {
-        margin-top: ${Size.XXL};
+        padding-top: ${Size.XXL};
     }
 `;
 
@@ -22,10 +22,10 @@ export const Footer: React.FunctionComponent = () => {
             <Wrapper>
                 <Flex gap={Size.XS}>
                     <ExternalLink link='https://tilman.io/legal/sites-notice'>
-                        <Text size={TextSize.Small} color={Color.TextVariant}>Site's notice</Text>
+                        <Text size={TextSize.Small}>Site's notice</Text>
                     </ExternalLink>
-                    <ExternalLink link='http://tilman.io/legal/privacy-policy'>
-                        <Text size={TextSize.Small} color={Color.TextVariant}>Privacy Policy</Text>
+                    <ExternalLink link='https://tilman.io/legal/privacy-policy'>
+                        <Text size={TextSize.Small}>Privacy Policy</Text>
                     </ExternalLink>
                 </Flex>
             </Wrapper>

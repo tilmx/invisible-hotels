@@ -3,11 +3,11 @@ import styled from '@emotion/styled'
 import { Breakpoint, Color, Size } from './tokens';
 
 const StyledLogoWrapper = styled.div`
-	margin-top: ${Size.XXXXL};
-	margin-bottom: ${Size.XL};
+	padding-top: ${Size.XXXXL};
+	padding-bottom: ${Size.XL};
 
 	${Breakpoint.Mobile} {
-		margin-top: ${Size.XXXL};
+		padding-top: ${Size.XXXL};
 	}
 
 	svg {
