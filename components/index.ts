@@ -6,3 +6,4 @@ export * from './wrapper';
 export * from './tokens';
 export * from './utils';
 export * from './tag';
+export * from './accented-text';
