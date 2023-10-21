@@ -7,7 +7,7 @@
     "vacationType": "Sea",
     "links": {
       "hotel": "https://www.aethos.com/ericeira/",
-      "bookingCom": "https://www.booking.com/hotel/pt/aethos-ericeira.de.html"
+      "bookingCom": "https://www.booking.com/hotel/pt/aethos-ericeira.html"
     }
   },
   {
@@ -18,7 +18,7 @@
     "vacationType": "Countryside",
     "links": {
       "hotel": "https://www.cucumbi.com",
-      "bookingCom": "https://www.booking.com/hotel/pt/cucumbi.de.html"
+      "bookingCom": "https://www.booking.com/hotel/pt/cucumbi.html"
     }
   },
   {
@@ -29,7 +29,7 @@
     "vacationType": "Sea",
     "links": {
       "hotel": "https://www.noahsurfhouseportugal.com/",
-      "bookingCom": "https://www.booking.com/hotel/pt/noah-surf-house-portugal.de.html"
+      "bookingCom": "https://www.booking.com/hotel/pt/noah-surf-house-portugal.html"
     }
   },
   {
@@ -38,7 +38,19 @@
     "country": "Denmark",
     "housingType": "Hotel",
     "vacationType": "City",
-    "links": {}
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/us/the-hoxton-williamsburg.html"
+    }
+  },
+  {
+    "name": "The William Vale",
+    "city": "Williamsburg",
+    "country": "United States",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/us/the-william-vale.html"
+    }
   },
   {
     "name": "House Aavego",
@@ -57,21 +69,13 @@
     "links": {}
   },
   {
-    "name": "The William Vale",
-    "city": "Williamsburg",
-    "country": "United States",
-    "housingType": "Hotel",
-    "vacationType": "City",
-    "links": {}
-  },
-  {
     "name": "Sir Adam",
     "city": "Amsterdam",
     "country": "Netherlands",
     "housingType": "Hotel",
     "vacationType": "City",
     "links": {
-      "bookingCom": "https://www.booking.com/hotel/nl/sir-adam.de.html"
+      "bookingCom": "https://www.booking.com/hotel/nl/sir-adam.html"
     }
   },
   {
@@ -81,7 +85,7 @@
     "housingType": "Hotel",
     "vacationType": "City",
     "links": {
-      "bookingCom": "https://www.booking.com/hotel/de/sir-savigny-berlin.de.html"
+      "bookingCom": "https://www.booking.com/hotel/de/sir-savigny-berlin.html"
     }
   },
   {
@@ -90,7 +94,9 @@
     "country": "Germany",
     "housingType": "Hotel",
     "vacationType": "City",
-    "links": {}
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/25hours-the-circle.html"
+    }
   },
   {
     "name": "Hotel Indigo",
@@ -98,7 +104,9 @@
     "country": "Germany",
     "housingType": "Hotel",
     "vacationType": "City",
-    "links": {}
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/indigo-dresden-wettiner-platz.html"
+    }
   },
   {
     "name": "Max Brown Ku'Damm",
@@ -106,7 +114,9 @@
     "country": "Germany",
     "housingType": "Hotel",
     "vacationType": "City",
-    "links": {}
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/max-brown-kudamm.html"
+    }
   },
   {
     "name": "SEPP",
@@ -114,6 +124,8 @@
     "country": "Austria",
     "housingType": "Hotel",
     "vacationType": "Mountains",
-    "links": {}
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/sepp-alpine-boutique.html"
+    }
   }
 ]
