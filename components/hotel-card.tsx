@@ -5,23 +5,11 @@ import { Tag } from './tag';
 import { Flex } from './utils';
 import { Text, TextSize } from './text';
 
-export enum Housing {
-    Hotel = 'Hotel',
-    Apartment = 'Apartment'
-}
-
-export enum Region {
-    Sea = 'At the Sea',
-    Countryside = 'Countryside',
-    Mountains = 'Mountains',
-    City = 'City'
-}
-
 interface HotelCardProps {
     title: string;
     location: string;
-    housing: Housing;
-    region: Region;
+    housingType: string;
+    vacationType: string;
 }
 
 const StyledCard = styled.div`
@@ -65,8 +53,8 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
                 <Text serif>{props.location}</Text>
             </div>
             <StyledTagList gap={Size.XXS}>
-                <Tag label={props.housing} />
-                <Tag label={props.region} />
+                <Tag label={props.housingType} />
+                <Tag label={props.vacationType} />
             </StyledTagList>
         </StyledCard>
     )
