@@ -1,4 +1,4 @@
-import { FunctionComponent, MouseEventHandler, useState } from "react";
+import { CSSProperties, FunctionComponent, MouseEventHandler, useState } from "react";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { Color, Size } from "./tokens";
@@ -9,26 +9,32 @@ interface SelectProps {
     options: string[];
     value?: string;
     onChange: (country?: string) => void;
+    style?: CSSProperties;
 }
 
 const StyledContainer = styled.div`
     position: relative;
 `;
 
-const StyledSelect = styled.div<{ selected?: boolean; color?: string; }>`
-	border: 2px solid ${props => props.selected ? props.color : Color.Text};
+const StyledSelect = styled.div<{ active?: boolean; color?: string; }>`
+	border: 2px solid ${Color.Text};
 	padding: ${Size.XXS} ${Size.S};
 	border-radius: 24px;
 	display: flex;
 	gap: ${Size.XXXS};
 	align-items: center;
-    background: ${props => props.selected ? props.color : 'transparent'};
+    ${props => props.active && `
+        background:${Color.Text};
+        color: ${Color.Background};
+    `}
     cursor: pointer;
 
-    &:hover {
-        border-color: ${Color.TextVariant};
-        color: ${Color.TextVariant};
-    }
+    ${props => !props.active && `
+        &:hover {
+            border-color: ${Color.TextVariant};
+            color: ${Color.TextVariant};
+        }
+    `};
 `;
 
 const StyledOptionList = styled.div<{ open: boolean; }>`
@@ -46,11 +52,11 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
 `;
 
 export const Select: FunctionComponent<SelectProps> = props => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
-        <StyledContainer>
-            <StyledSelect onClick={() => setOpen(!open)}>
+        <StyledContainer style={props.style}>
+            <StyledSelect onClick={() => setOpen(!open)} active={typeof props.value !== 'undefined'}>
                 <Text size={TextSize.Small}>{props.value || props.label}</Text>
                 <ChevronDown size="20px" />
             </StyledSelect>
