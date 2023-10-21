@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 import { Breakpoint, Color, Size } from './tokens';
 import { Tag } from './tag';
-import { Flex, FlexJustifyContent } from './utils';
+import { Flex, FlexAlignItems, FlexJustifyContent } from './utils';
 import { Text, TextSize } from './text';
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { HotelLink } from './hotel-link';
@@ -51,6 +51,7 @@ const StyledDetailList = styled(Flex)`
     padding-top: ${Size.XXS};
 `;
 
+
 export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard color={getVacationTypeColor(props.vacationType)}>
@@ -58,8 +59,8 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
                 <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
                 <Text serif>{props.location}</Text>
             </div>
-            <StyledDetailList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween}>
-                <Flex gap={Size.XXS}>
+            <StyledDetailList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween} alignItems={FlexAlignItems.FlexEnd}>
+                <Flex gap={Size.XXS} flexWrap='wrap'>
                     <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
                     <Tag label={props.housingType} />
                 </Flex>
