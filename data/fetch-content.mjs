@@ -36,5 +36,16 @@ base('Curated List').select({
         'data/hotels.json',
         JSON.stringify(savedRecords, null, 2)
     );
+    fs.writeFileSync(
+        'data/countries.json',
+        JSON.stringify(
+            savedRecords
+                .map(item => item.country)
+                .filter(function (x, i, a) {
+                    return a.indexOf(x) == i;
+                })
+                .sort(),
+            null, 2)
+    );
     console.log('done,', savedRecords)
 });

@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { Breakpoint, Color, Filter, Flex, FlexJustifyContent, HotelCard, Select, Size, Text, TextSize, Wrapper } from '../components';
+import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, Select, Size, Text, TextSize, Wrapper } from '../components';
 import hotels from '../data/hotels.json';
+import countries from '../data/countries.json';
+import { Glasses } from 'lucide-react';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXXL};
@@ -24,6 +26,7 @@ const StyledGrid = styled.div`
 
     ${Breakpoint.Tablet} {
         grid-template-columns: 1fr;
+        margin-top: ${Size.XL};
     }
 `;
 
@@ -45,13 +48,27 @@ const StyledFilterBar = styled.div<{ color?: string }>`
 
     ${Breakpoint.Tablet} {
         position: relative;
+        background: transparent;
+        backdrop-filter: none;
     }
+`;
+
+const StyledEmptyState = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 400px;
+    align-items: center;
+    gap: ${Size.XS};
 `;
 
 export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> = props => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = React.useState<string | undefined>();
-    const filteredHotels = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
+    const [countryFilter, setCountryFilter] = React.useState<string | undefined>();
+
+    const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
+    const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
 
     return (
         <StyledContainer>
@@ -60,7 +77,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
             </Wrapper>
             <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
-                    <Flex justifyContent={FlexJustifyContent.SpaceBetween}>
+                    <Flex justifyContent={FlexJustifyContent.SpaceBetween} alignItems={FlexAlignItems.FlexStart}>
                         <Flex gap={Size.XS} flexWrap='wrap'>
                             {filterOptions.map((option, i) => {
                                 const selected = vacationFilter === option;
@@ -69,12 +86,13 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
                                 )
                             })}
                         </Flex>
+                        <Select label='All Countries' options={countries} value={countryFilter} onChange={country => setCountryFilter(country)} />
                     </Flex>
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
                 <StyledGrid>
-                    {filteredHotels.map((hotel, i) =>
+                    {filteredHotelsByVacationTypeAndCountry.map((hotel, i) =>
                         <HotelCard
                             key={i}
                             title={hotel.name}
@@ -85,6 +103,12 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
                         />
                     )}
                 </StyledGrid>
+                {filteredHotelsByVacationTypeAndCountry.length === 0 &&
+                    <StyledEmptyState>
+                        <Glasses color={Color.TextVariant} />
+                        <Text size={TextSize.Small} color={Color.TextVariant} center>We're very sorry — but it looks like we haven't been in such a place.</Text>
+                    </StyledEmptyState>
+                }
             </Wrapper>
         </StyledContainer>
     )
