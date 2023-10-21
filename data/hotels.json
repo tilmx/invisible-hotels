@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Aethos Ericeira",
+    "city": "Ericeira",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "link": "https://www.google.com/maps/place/Aethos+Ericeira/data=!4m2!3m1!1s0xd1f25c77e6ae2eb:0x7ff0cb45f297d1bc"
+  },
+  {
+    "name": "Cucumbi",
+    "city": "Alentejo",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "Countryside",
+    "link": "https://www.google.com/maps/place/Cucumbi/data=!4m2!3m1!1s0xd199b10fc670f87:0x3a1d52c8bb424958"
+  },
+  {
+    "name": "Noah Surf House",
+    "city": "Santa Cruz",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "link": "https://www.google.com/maps/place/Noah+Surf+House/data=!4m2!3m1!1s0xd1f3b98e909715d:0x276c495e3babeab3"
+  },
+  {
+    "name": "The Hoxton",
+    "city": "Williamsburg",
+    "country": "Denmark",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/The+Hoxton,+Williamsburg/data=!4m2!3m1!1s0x89c2595d67e022b9:0xeb5c58873aa07774"
+  },
+  {
+    "name": "House Aavego",
+    "city": "Agger",
+    "country": "Denmark",
+    "housingType": "Apartment",
+    "vacationType": "Sea",
+    "link": "https://www.google.com/maps/place/House+Aavego/data=!4m2!3m1!1s0x4649f385c0b8160f:0x137242aaa00987f5"
+  },
+  {
+    "name": "Recharge House",
+    "city": "Agger",
+    "country": "Denmark",
+    "housingType": "Apartment",
+    "vacationType": "Sea"
+  },
+  {
+    "name": "The William Vale",
+    "city": "Williamsburg",
+    "country": "United States",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/The+William+Vale/data=!4m2!3m1!1s0x89c25942d18e434f:0xcaae4e81d62d5e0d"
+  },
+  {
+    "name": "Sir Adam Hotel",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/Sir+Adam+Hotel/data=!4m2!3m1!1s0x47c609b46972436f:0xc000be983e2fb68f"
+  },
+  {
+    "name": "Sir Savigny Hotel",
+    "city": "Berlin",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/Sir+Savigny+Hotel/data=!4m2!3m1!1s0x47a850e33b12f579:0xf47766c6831cc5bf"
+  },
+  {
+    "name": "25hours Köln",
+    "city": "Köln",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/25hours+Hotel+Koeln+The+Circle/data=!4m2!3m1!1s0x47bf250c1c52dccd:0x6f7e3264ec1f578"
+  },
+  {
+    "name": "Hotel Indigo",
+    "city": "Dresden",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/Hotel+Indigo+Dresden+-+Wettiner+Platz/data=!4m2!3m1!1s0x4709cfb7e0940d03:0xcd03f781ac56a54b"
+  },
+  {
+    "name": "Max Brown Ku'Damm",
+    "city": "Berlin",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "link": "https://www.google.com/maps/place/Max+Brown+Ku'Damm/data=!4m2!3m1!1s0x47a850f0be9c8d15:0xb4a8a825e49fb3bb"
+  },
+  {
+    "name": "SEPP",
+    "city": "Maria Alm",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "link": "https://www.google.com/maps/place/SEPP+-+Alpine+Boutique+Hotel/data=!4m2!3m1!1s0x4776e3c37445342f:0x3287ddb1843caa14"
+  }
+]
