@@ -44,6 +44,8 @@ const StyledCard = styled.div`
 
     ${Breakpoint.Mobile} {
         min-height: 192px;
+        padding: ${Size.M};
+        border-radius: ${Size.S};
     }
 `;
 
