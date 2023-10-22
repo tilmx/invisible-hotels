@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 import { FunctionComponent, ReactNode } from 'react';
 
 interface FlexProps {
-	justifyContent?: FlexJustifyContent;
-	alignItems?: FlexAlignItems;
+	justifyContent?: JustifyContent;
+	alignItems?: AlignItems;
 	children?: ReactNode;
 	gap?: string;
 	flexWrap?: 'wrap';
 	className?: string;
 }
 
-export enum FlexJustifyContent {
+export enum JustifyContent {
 	SpaceBetween = 'space-between',
 	Stretch = 'stretch',
 	Center = 'center',
@@ -18,7 +18,7 @@ export enum FlexJustifyContent {
 	FlexStart = 'flex-start'
 }
 
-export enum FlexAlignItems {
+export enum AlignItems {
 	Center = 'center',
 	FlexStart = 'flex-start',
 	FlexEnd = 'flex-end',

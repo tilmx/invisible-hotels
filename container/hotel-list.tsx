@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, FlexAlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Glasses } from 'lucide-react';
@@ -31,6 +31,9 @@ const StyledGrid = styled.div`
     ${Breakpoint.TabletSmall} {
         grid-template-columns: 1fr;
         margin-top: ${Size.XL};
+    }
+    ${Breakpoint.Mobile} {
+        gap: ${Size.XS};
     }
 `;
 
@@ -99,7 +102,7 @@ export const HotelList: FunctionComponent = () => {
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
-                    <StyledFilterBarOptions alignItems={FlexAlignItems.FlexStart} flexWrap='wrap'>
+                    <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
                         {filterOptions.map((option, i) => {
                             const selected = vacationFilter === option;
                             return (
