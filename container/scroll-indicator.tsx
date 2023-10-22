@@ -35,7 +35,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
 `;
 
 export const ScrollIndicator: React.FunctionComponent = () => {
-    const [visible, setVisible] = React.useState(true);
+    const [visible, setVisible] = React.useState(false);
 
     React.useEffect(() => {
         setVisible(window.scrollY < 200);
