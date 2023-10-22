@@ -1,4 +1,5 @@
 export enum Size {
+	XXXXS = '2px',
 	XXXS = '4px',
 	XXS = '8px',
 	XS = '12px',

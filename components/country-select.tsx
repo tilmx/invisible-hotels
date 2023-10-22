@@ -58,11 +58,12 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     flex-direction: column;
     grid-template-columns: repeat(5, 1fr);
 
-    padding: ${Size.XXS};
+    padding: ${Size.XS};
     margin-top: ${Size.XS};
     background: ${Color.Background80};
     backdrop-filter: blur(${Size.M});
     border-radius: ${Size.XS};
+    gap: ${Size.XXXXS};
     box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
 
     ${Breakpoint.DesktopSmall} {
@@ -86,13 +87,9 @@ export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = 
     return (
         <StyledFlyoutContainer>
             <StyledOptionList open={props.open}>
-                <CountrySelectOption label={props.label} onClick={() => {
-                    props.onSet(undefined);
-                }}></CountrySelectOption>
+                <CountrySelectOption label={props.label} onClick={() => props.onSet(undefined)} />
                 {props.options.map((option, i) =>
-                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => {
-                        props.onSet(option);
-                    }} />
+                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => props.onSet(option)} />
                 )}
             </StyledOptionList>
         </StyledFlyoutContainer>
