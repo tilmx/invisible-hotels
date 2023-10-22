@@ -533,5 +533,456 @@
     "links": {
       "bookingCom": "https://www.booking.com/hotel/de/michelbergerhotel.html"
     }
+  },
+  {
+    "name": "Panorama Glass Lodge",
+    "city": "Hella",
+    "country": "Island",
+    "housingType": "Apartment",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "hotel": "https://panoramaglasslodge.com/"
+    }
+  },
+  {
+    "name": "Bauernchalet",
+    "city": "Eurasburg",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "hotel": "https://www.bauernchalet.com"
+    }
+  },
+  {
+    "name": "Kimpton Fitzroy",
+    "city": "London",
+    "country": "United Kingdom",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gb/the-principal-london.html"
+    }
+  },
+  {
+    "name": "Alpzitt-Chalets",
+    "city": "Allgäu",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/alpzitt-chalets-burgberg-im-allgau.html"
+    }
+  },
+  {
+    "name": "Gut Pohnstorf",
+    "city": "Alt Sührkow",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/gut-pohnstorf.html"
+    }
+  },
+  {
+    "name": "Meisterzimmer",
+    "city": "Leipzig",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/meisterzimmer.html"
+    }
+  },
+  {
+    "name": "quartier",
+    "city": "Garmisch-Partenkirchen",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/quartier-lodges.html"
+    }
+  },
+  {
+    "name": "Kranich",
+    "city": "Hessenburg",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/ferienwohnung-im-kranich.html"
+    }
+  },
+  {
+    "name": "Wedina",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/wedinahamburg.html"
+    }
+  },
+  {
+    "name": "ZWEINEUN",
+    "city": "Brodersby",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/haus-zweineun.html"
+    }
+  },
+  {
+    "name": "Casa de las Cuatro Torres",
+    "city": "Cádiz",
+    "country": "Spain",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": true,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/es/casa-de-las-cuatro-torres-cadiz.html1"
+    }
+  },
+  {
+    "name": "25hours Altes Hafenamt",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": true,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/25hours-altes-hafenamt.html"
+    }
+  },
+  {
+    "name": "Sir Nikolai",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": true,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/sir-nikolai.html"
+    }
+  },
+  {
+    "name": "K5",
+    "city": "Tokyo",
+    "country": "Japan",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/jp/k5.html"
+    }
+  },
+  {
+    "name": "Parilio",
+    "city": "Paros",
+    "country": "Greece",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gr/parilio-kolimpithres.html"
+    }
+  },
+  {
+    "name": "Dexamenes",
+    "city": "Kourouta",
+    "country": "Greece",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gr/dexamenes-seaside-ilia.html"
+    }
+  },
+  {
+    "name": "Schgaguler",
+    "city": "Bozen",
+    "country": "Italy",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/it/wellness-residence-schgaguler.html"
+    }
+  },
+  {
+    "name": "Pendry West Hollywood",
+    "city": "Los Angeles",
+    "country": "United States",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/us/pendry-west-hollywood.html"
+    }
+  },
+  {
+    "name": "Linnen",
+    "city": "Berlin",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/linnen.html"
+    }
+  },
+  {
+    "name": "Coco-Mat",
+    "city": "Santorini",
+    "country": "Greece",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gr/coco-mat-hotel-santorini.html"
+    }
+  },
+  {
+    "name": "Kokhta",
+    "city": "Bakuriani",
+    "country": "Georgia",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/ge/rooms-kokhta.html"
+    }
+  },
+  {
+    "name": "Pedras Salgadas",
+    "city": "Pedras Salgadas",
+    "country": "Portugal",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/pedras-salgadas-spa-and-nature-park.html"
+    }
+  },
+  {
+    "name": "FREIgeist",
+    "city": "Göttingen",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/freigeist-gottingen.html"
+    }
+  },
+  {
+    "name": "Altes Backhaus",
+    "city": "Haselberg",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/ferienwohnungen-im-alten-backhaus.html"
+    }
+  },
+  {
+    "name": "Mosel Chalets",
+    "city": "Pommern",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/chalet-mosel.html"
+    }
+  },
+  {
+    "name": "Liberty",
+    "city": "Offenburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/hotel-liberty-offenburg.html"
+    }
+  },
+  {
+    "name": "August",
+    "city": "Antwerp",
+    "country": "Belgium",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/be/august-antwerpen1.html"
+    }
+  },
+  {
+    "name": "House of Hütter",
+    "city": "Heidelberg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/heidelberg-suites.html"
+    }
+  },
+  {
+    "name": "Altstadt Vienna",
+    "city": "Wien",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/altstadt-vienna.html"
+    }
+  },
+  {
+    "name": "Lindley Lindenberg",
+    "city": "Frankfurt",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/lindley-lindenberg.html"
+    }
+  },
+  {
+    "name": "MALAT",
+    "city": "Furth",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/das-malat.html"
+    }
+  },
+  {
+    "name": "Miramonti",
+    "city": "Hafling",
+    "country": "Italy",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/it/granpanoramaresidencehotelmiramonti.html"
+    }
+  },
+  {
+    "name": "Mauritzhof",
+    "city": "Münster",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/mauritzhof-munster.html"
+    }
+  },
+  {
+    "name": "Gastwerk",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/gastwerkhotelhamburg.de.html"
+    }
+  },
+  {
+    "name": "Ufogel",
+    "city": "Nußdorf",
+    "country": "Austria",
+    "housingType": "Apartment",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/ufogel-125423.de.html"
+    }
+  },
+  {
+    "name": "Libertine Lindenberg",
+    "city": "Frankfurt",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/libertine-lindenberg.html"
+    }
+  },
+  {
+    "name": "TORTUE",
+    "city": "Hamburg",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/tortue.html"
+    }
+  },
+  {
+    "name": "Roomer",
+    "city": "Munich",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/roomers-munich-autograph-collection.html"
+    }
+  },
+  {
+    "name": "Rosso",
+    "city": "Altusried",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "hotel": "https://www.dasrosso.com"
+    }
+  },
+  {
+    "name": "Rote Scheune",
+    "city": "Fergitz",
+    "country": "Germany",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "hotel": "https://rote-scheune.com"
+    }
+  },
+  {
+    "name": "Forsthofgut",
+    "city": "Leogang",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "hotel": "https://www.forsthofgut.at"
+    }
   }
 ]

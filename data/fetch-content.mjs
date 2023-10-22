@@ -26,8 +26,8 @@ base('Curated List').select({
                 vacationType: record.get('Vacation Type'),
                 visited: record.get('Last Visit') ? true : false,
                 links: {
-                    hotel: record.get('Link (Hotel)'),
-                    bookingCom: record.get('Link (Booking.com)')
+                    bookingCom: record.get('Link (Booking.com)'),
+                    hotel: record.get('Link (Hotel)')
                 }
             })
         }

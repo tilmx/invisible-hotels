@@ -13,7 +13,10 @@ interface HotelCardProps {
     housingType: string;
     vacationType: string;
     visited?: boolean;
-    link?: string;
+    links?: {
+        bookingCom?: string;
+        hotel?: string;
+    };
 }
 
 const StyledCard = styled.div<{ color?: string }>`
@@ -79,7 +82,16 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
                         <Tag icon={<CheckCircle2 />} label="Visited" />
                     }
                 </StyledTagList>
-                {props.link && <HotelLink link={props.link} color={getVacationTypeColor(props.vacationType)} />}
+                {props.links?.bookingCom &&
+                    <HotelLink link={props.links?.bookingCom} color={getVacationTypeColor(props.vacationType)}>
+                        Open on <br /> Booking.com
+                    </HotelLink>
+                }
+                {props.links?.hotel &&
+                    <HotelLink link={props.links?.hotel} color={getVacationTypeColor(props.vacationType)}>
+                        Open hotel <br /> website
+                    </HotelLink>
+                }
             </StyledDetailList>
         </StyledCard>
     )

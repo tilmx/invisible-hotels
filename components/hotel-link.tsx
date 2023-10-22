@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import { Breakpoint, Color, Size } from "./tokens";
 import { ExternalLink } from "lucide-react";
 import { Text, TextSize } from "./text";
@@ -8,6 +8,7 @@ import { Tag } from "./tag";
 interface HotelLinkProps {
     link: string;
     color?: string;
+    children?: ReactNode;
 }
 
 const StyledLink = styled.a`
@@ -37,7 +38,7 @@ export const HotelLink: FunctionComponent<HotelLinkProps> = props => {
     return (
         <StyledLink href={props.link} target="_blank">
             <StyledTag icon={<ExternalLink />} color={props.color}>
-                <StyledText size={TextSize.SuperSmall}>Open on <br /> Booking.com</StyledText>
+                <StyledText size={TextSize.SuperSmall}>{props.children}</StyledText>
             </StyledTag>
         </StyledLink>
     )

@@ -106,7 +106,10 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
                             housingType={hotel.housingType}
                             vacationType={hotel.vacationType}
                             visited={hotel.visited}
-                            link={hotel.links.bookingCom}
+                            links={{
+                                bookingCom: hotel.links.bookingCom,
+                                hotel: hotel.links.hotel
+                            }}
                         />
                     )}
                 </StyledGrid>
