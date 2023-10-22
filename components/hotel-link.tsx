@@ -10,8 +10,7 @@ interface HotelLinkProps {
 }
 
 const StyledLink = styled.a<{ color?: string; }>`
-	border: 2px solid ${Color.Background};
-	padding: ${Size.XXS} ${Size.S};
+	padding: calc(${Size.XXS} + 4px) ${Size.S};
 	border-radius: 24px;
 	display: flex;
     background: ${Color.Background};
@@ -25,7 +24,7 @@ const StyledLink = styled.a<{ color?: string; }>`
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.Special6};
+        padding: calc(${Size.Special6} + 3px) ${Size.Special6};
 
         svg {
             height: 20px;

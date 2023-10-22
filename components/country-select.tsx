@@ -18,7 +18,6 @@ const StyledContainer = styled.div`
 `;
 
 const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
-	border: 2px solid ${Color.Text};
 	gap: ${Size.XXXS};
     cursor: pointer;
 
@@ -61,8 +60,7 @@ export const CountrySelect: FunctionComponent<SelectProps> = props => {
 
     return (
         <StyledContainer className={props.className}>
-            <StyledSelect onClick={() => setOpen(!open)} active={typeof props.value !== 'undefined'}>
-                <Text size={TextSize.Small}>{props.value || props.label}</Text>
+            <StyledSelect label={props.value || props.label} onClick={() => setOpen(!open)} active={typeof props.value !== 'undefined'}>
                 <ChevronDown size="20px" />
             </StyledSelect>
             <StyledOptionList open={open}>

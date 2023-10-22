@@ -4,7 +4,7 @@ import { Breakpoint, Color, Size } from './tokens';
 import { Tag } from './tag';
 import { Flex, FlexAlignItems, FlexJustifyContent } from './utils';
 import { Text, TextSize } from './text';
-import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
+import { CheckCircle2, Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { HotelLink } from './hotel-link';
 
 interface HotelCardProps {
@@ -12,6 +12,7 @@ interface HotelCardProps {
     location: string;
     housingType: string;
     vacationType: string;
+    visited?: boolean;
     link?: string;
 }
 
@@ -46,7 +47,19 @@ const StyledTitle = styled(Text)`
     padding-bottom: ${Size.XXS};
     max-width: 420px;
     word-break: break-word;
+    display: inline;
 `;
+
+const StyledVisitedTag = styled(Text)`
+    display: inline-block;
+    text-transform: uppercase;
+    vertical-align: top;
+    margin-top: 8px;
+
+    ${Breakpoint.Mobile} {
+        margin-top: 2px;
+    }
+`
 
 const StyledDetailList = styled(Flex)`
     padding-top: ${Size.XXS};
@@ -57,13 +70,21 @@ export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard color={getVacationTypeColor(props.vacationType)}>
             <div>
-                <StyledTitle size={TextSize.Large}>{props.title}</StyledTitle>
+                <div>
+                    <StyledTitle size={TextSize.Large}>
+                        {props.title}
+                    </StyledTitle>
+                    <StyledVisitedTag size={TextSize.SuperSmall}>Visited</StyledVisitedTag>
+                </div>
                 <Text serif>{props.location}</Text>
             </div>
             <StyledDetailList gap={Size.XXS} justifyContent={FlexJustifyContent.SpaceBetween} alignItems={FlexAlignItems.FlexEnd}>
                 <Flex gap={Size.XXS} flexWrap='wrap'>
                     <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
                     <Tag label={props.housingType} />
+                    {props.visited &&
+                        <Tag icon={<CheckCircle2 />} label="Visited" />
+                    }
                 </Flex>
                 {props.link && <HotelLink link={props.link} color={getVacationTypeColor(props.vacationType)} />}
             </StyledDetailList>
