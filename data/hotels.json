@@ -172,6 +172,17 @@
     }
   },
   {
+    "name": "Vipp Shelter",
+    "city": "Lake Immeln",
+    "country": "Sweden",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "hotel": "https://vipp.com/de/guesthouses/vipp-shelter"
+    }
+  },
+  {
     "name": "Gorki Apartments",
     "city": "Berlin",
     "country": "Germany",
@@ -829,6 +840,17 @@
     "visited": false,
     "links": {
       "bookingCom": "https://www.booking.com/hotel/be/august-antwerpen1.html"
+    }
+  },
+  {
+    "name": "The Bolder",
+    "city": "Lysefjorden",
+    "country": "Norway",
+    "housingType": "Apartment",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "hotel": "https://vipp.com/de/hotels/bolder"
     }
   },
   {
