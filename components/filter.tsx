@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, MouseEventHandler } from "react";
 import styled from "@emotion/styled";
 import { getVacationTypeColor, getVacationTypeIcon } from "./hotel-card";
 import { Tag } from "./tag";
@@ -6,7 +6,7 @@ import { Tag } from "./tag";
 interface FilterProps {
     label: string;
     selected?: boolean;
-    onClick?: React.MouseEventHandler;
+    onClick?: MouseEventHandler;
 }
 
 const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`

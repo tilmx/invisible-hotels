@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { Size } from '../components/tokens/size';
-import { Breakpoint, Color, ExternalLink, Flex, Text, TextSize, Wrapper } from '../components';
+import { Breakpoint, ExternalLink, Flex, Text, TextSize, Wrapper } from '../components';
 import styled from '@emotion/styled';
+import { FunctionComponent } from 'react';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXL};
@@ -16,7 +16,7 @@ const StyledFooter = styled.div`
     }
 `;
 
-export const Footer: React.FunctionComponent = () => {
+export const Footer: FunctionComponent = () => {
     return (
         <StyledFooter>
             <Wrapper>

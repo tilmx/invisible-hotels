@@ -1,10 +1,10 @@
-import * as React from 'react';
 import styled from '@emotion/styled';
+import { FunctionComponent, ReactNode } from 'react';
 
 interface FlexProps {
 	justifyContent?: FlexJustifyContent;
 	alignItems?: FlexAlignItems;
-	children?: React.ReactNode;
+	children?: ReactNode;
 	gap?: string;
 	flexWrap?: 'wrap';
 	className?: string;
@@ -34,7 +34,7 @@ const StyledFlex = styled.div<FlexProps>`
 	flex-wrap: ${props => props.flexWrap};
 `;
 
-export const Flex: React.FunctionComponent<FlexProps> = props => {
+export const Flex: FunctionComponent<FlexProps> = props => {
 	return (
 		<StyledFlex {...props}>{props.children}</StyledFlex>
 	);

@@ -1,7 +1,7 @@
-import * as React from 'react';
 import styled from '@emotion/styled'
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens';
+import { FunctionComponent, ReactNode } from 'react';
 
 const StyledWrapper = styled.div<{ wide?: boolean; }>`
     padding: 0 ${Size.XXL};
@@ -17,7 +17,7 @@ const StyledWrapper = styled.div<{ wide?: boolean; }>`
     }
 `
 
-export const Wrapper: React.FunctionComponent<{ children: React.ReactNode; wide?: boolean; }> = props => {
+export const Wrapper: FunctionComponent<{ children: ReactNode; wide?: boolean; }> = props => {
     return (
         <StyledWrapper wide={props.wide}>
             {props.children}

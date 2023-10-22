@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { Size } from '../components/tokens/size';
 import { Breakpoint, Color } from '../components';
 import styled from '@emotion/styled';
 import { ArrowDown } from 'lucide-react';
+import { FunctionComponent, useEffect, useState } from 'react';
 
 const StyledIndicator = styled.div<{ visible: boolean; }>`
     position: fixed;
@@ -34,10 +34,10 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     `}
 `;
 
-export const ScrollIndicator: React.FunctionComponent = () => {
-    const [visible, setVisible] = React.useState(false);
+export const ScrollIndicator: FunctionComponent = () => {
+    const [visible, setVisible] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         setVisible(window.scrollY < 200);
         window.addEventListener('scroll', listenToScroll);
         return () => {

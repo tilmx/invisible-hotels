@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import * as React from 'react';
-import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
+import { Breakpoint, Color, Filter, Flex, FlexAlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Glasses } from 'lucide-react';
+import { FunctionComponent, useState } from 'react';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXXL};
@@ -82,12 +82,12 @@ const StyledEmptyState = styled.div`
     gap: ${Size.XS};
 `;
 
-export const HotelList: React.FunctionComponent = () => {
+export const HotelList: FunctionComponent = () => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
-    const [vacationFilter, setVacationFilter] = React.useState<string | undefined>();
-    const [countryFilter, setCountryFilter] = React.useState<string | undefined>();
+    const [vacationFilter, setVacationFilter] = useState<string | undefined>();
+    const [countryFilter, setCountryFilter] = useState<string | undefined>();
 
-    const [countrySelectOpen, setCountrySelectOpen] = React.useState(false);
+    const [countrySelectOpen, setCountrySelectOpen] = useState(false);
 
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);

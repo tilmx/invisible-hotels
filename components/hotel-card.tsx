@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import * as React from 'react';
 import { Breakpoint, Color, Size } from './tokens';
 import { Tag } from './tag';
 import { Flex } from './utils';
 import { Text, TextSize } from './text';
 import { CheckCircle2, Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
+import { FunctionComponent } from 'react';
 
 interface HotelCardProps {
     title: string;
@@ -62,7 +62,7 @@ const StyledTagList = styled(Flex)`
 `
 
 
-export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
+export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard href={props.links?.bookingCom || props.links?.hotel} target="_blank" color={getVacationTypeColor(props.vacationType)}>
             <div>

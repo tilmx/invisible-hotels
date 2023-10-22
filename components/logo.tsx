@@ -1,6 +1,6 @@
-import * as React from 'react';
 import styled from '@emotion/styled'
 import { Breakpoint, Color, Size } from './tokens';
+import { FunctionComponent } from 'react';
 
 const StyledLogoWrapper = styled.div`
 	padding-top: ${Size.XXXXL};
@@ -58,7 +58,7 @@ const StyledLogoWrapper = styled.div`
 	}
 `;
 
-export const Logo: React.FunctionComponent = () => {
+export const Logo: FunctionComponent = () => {
 	return (
 		<StyledLogoWrapper>
 			<svg width="728" height="322" viewBox="0 0 728 322" fill="none" xmlns="http://www.w3.org/2000/svg">

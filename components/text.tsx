@@ -1,14 +1,14 @@
-import * as React from 'react';
 import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
 import { DM_Sans, EB_Garamond } from "next/font/google"
+import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 interface TextProps {
     size?: TextSize;
     color?: string;
     center?: boolean;
-    children?: React.ReactNode;
-    style?: React.CSSProperties;
+    children?: ReactNode;
+    style?: CSSProperties;
     serif?: boolean;
     className?: string;
 }
@@ -88,7 +88,7 @@ const StyledText = styled.div<TextProps>`
     `}
 `;
 
-export const Text: React.FunctionComponent<TextProps> = props => {
+export const Text: FunctionComponent<TextProps> = props => {
     return (
         <StyledText size={props.size || TextSize.Regular} {...props}>
             {props.children}
