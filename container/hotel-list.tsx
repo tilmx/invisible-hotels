@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout } from '../components';
+import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Glasses } from 'lucide-react';
@@ -110,18 +110,21 @@ export const HotelList: React.FunctionComponent = () => {
                             label='All Countries'
                             value={countryFilter}
                             active={typeof countryFilter !== 'undefined' || countrySelectOpen}
-                            onClick={() => setCountrySelectOpen(!countrySelectOpen)}
+                            onClick={() => setCountrySelectOpen(true)}
                         />
                     </StyledFilterBarOptions>
-                    <CountrySelectFlyout
-                        options={countries}
-                        label='All Countries'
-                        open={countrySelectOpen}
-                        onSet={country => {
-                            setCountryFilter(country);
-                            setCountrySelectOpen(false);
-                        }}
-                    />
+                    <OutsideClick onOutsideClick={() => setCountrySelectOpen(false)}>
+                        <CountrySelectFlyout
+                            options={countries}
+                            label='All Countries'
+                            open={countrySelectOpen}
+                            value={countryFilter}
+                            onSet={country => {
+                                setCountryFilter(country);
+                                setCountrySelectOpen(false);
+                            }}
+                        />
+                    </OutsideClick>
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
