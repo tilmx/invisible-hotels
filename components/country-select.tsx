@@ -51,7 +51,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
         left: 0;
         text-align: left;
     }
-    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.DarkModeShadowBorder};
+    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
 `;
 
 export const CountrySelect: FunctionComponent<SelectProps> = props => {
