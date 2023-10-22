@@ -50,7 +50,9 @@
     "housingType": "Apartment",
     "vacationType": "Sea",
     "visited": true,
-    "links": {}
+    "links": {
+      "hotel": "https://aavego.dk/houses/aavego/"
+    }
   },
   {
     "name": "Recharge House",
@@ -59,7 +61,9 @@
     "housingType": "Apartment",
     "vacationType": "Sea",
     "visited": true,
-    "links": {}
+    "links": {
+      "hotel": "https://www.rechargehouse.dk"
+    }
   },
   {
     "name": "Sir Adam",
