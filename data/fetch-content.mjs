@@ -17,18 +17,20 @@ base('Curated List').select({
     view: "Grid view"
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
-        savedRecords.push({
-            name: record.get('Name'),
-            city: record.get('City'),
-            country: record.get('Country'),
-            housingType: record.get('Housing Type'),
-            vacationType: record.get('Vacation Type'),
-            visited: record.get('Last Visit') ? true : false,
-            links: {
-                hotel: record.get('Link (Hotel)'),
-                bookingCom: record.get('Link (Booking.com)')
-            }
-        })
+        if (record.get('Online')) {
+            savedRecords.push({
+                name: record.get('Name'),
+                city: record.get('City'),
+                country: record.get('Country'),
+                housingType: record.get('Housing Type'),
+                vacationType: record.get('Vacation Type'),
+                visited: record.get('Last Visit') ? true : false,
+                links: {
+                    hotel: record.get('Link (Hotel)'),
+                    bookingCom: record.get('Link (Booking.com)')
+                }
+            })
+        }
     });
     fetchNextPage();
 }, function done(err) {

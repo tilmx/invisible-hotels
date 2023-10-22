@@ -116,6 +116,8 @@ export function getCountryFlag(country: string) {
             return "🇳🇱";
         case "Portugal":
             return "🇵🇹";
+        case "Spain":
+            return "🇪🇸";
         case "United States":
             return "🇺🇸"
     }

@@ -47,7 +47,7 @@ const StyledText = styled.div<TextProps>`
     `}
 
     ${props => props.size === TextSize.Large && `
-        font-size: 72px;
+        font-size: 68px;
         line-height: 1;
         letter-spacing: -.02em;
         font-weight: 600;

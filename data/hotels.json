@@ -7,7 +7,6 @@
     "vacationType": "Sea",
     "visited": true,
     "links": {
-      "hotel": "https://www.aethos.com/ericeira/",
       "bookingCom": "https://www.booking.com/hotel/pt/aethos-ericeira.html"
     }
   },
@@ -19,7 +18,6 @@
     "vacationType": "Countryside",
     "visited": true,
     "links": {
-      "hotel": "https://www.cucumbi.com",
       "bookingCom": "https://www.booking.com/hotel/pt/cucumbi.html"
     }
   },
@@ -31,7 +29,6 @@
     "vacationType": "Sea",
     "visited": true,
     "links": {
-      "hotel": "https://www.noahsurfhouseportugal.com/",
       "bookingCom": "https://www.booking.com/hotel/pt/noah-surf-house-portugal.html"
     }
   },
@@ -227,6 +224,94 @@
     "visited": false,
     "links": {
       "bookingCom": "https://www.booking.com/hotel/it/ida-historic-town-apartments-sterzing.html"
+    }
+  },
+  {
+    "name": "Hotel Gilbert",
+    "city": "Wien",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/gilbert.html"
+    }
+  },
+  {
+    "name": "Superbude Prater",
+    "city": "Wien",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/superbude-hostel-wien-prater.html"
+    }
+  },
+  {
+    "name": "Weingut Meintzinger",
+    "city": "Frickenhausen",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/weingut-meintzinger.html"
+    }
+  },
+  {
+    "name": "Finca s'Estelrica",
+    "city": "Majorca",
+    "country": "Spain",
+    "housingType": "Apartment",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/es/finca-sestelrica.html"
+    }
+  },
+  {
+    "name": "Areias do Seixo",
+    "city": "Santa Cruz",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/areias-do-seixo-a-dos-cunhados1.html"
+    }
+  },
+  {
+    "name": "Jardins do Porto Boutique",
+    "city": "Porto",
+    "country": "Portugal",
+    "housingType": "Apartment",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/jardins-do-porto-boutique-guest-house.html"
+    }
+  },
+  {
+    "name": "Terra Rosa",
+    "city": "Ponte de Lima",
+    "country": "Portugal",
+    "housingType": "Apartment",
+    "vacationType": "Countryside",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/terra-rosa-country-house-amp-vineyards.html"
+    }
+  },
+  {
+    "name": "Faro de Punta Cumplida",
+    "city": "Tenerife",
+    "country": "Spain",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/es/leuchtturm-auf-la-palma.html"
     }
   }
 ]
