@@ -7,7 +7,7 @@ const StyledTag = styled.div<{ hasIcon?: boolean; hasLabel?: boolean; }>`
 	border: 2px solid ${Color.Text};
 	padding: ${Size.XXS} ${Size.S};
 	${props => props.hasIcon && `padding-left: ${Size.XS};`}
-	${props => props.hasLabel && `padding-left: ${Size.XS};`}
+	${props => props.hasLabel && `padding-right: ${Size.XS};`}
 	border-radius: 24px;
 	display: flex;
 	gap: ${Size.XXS};
