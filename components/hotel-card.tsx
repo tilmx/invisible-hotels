@@ -48,7 +48,6 @@ const StyledCard = styled.div<{ color?: string }>`
 
 const StyledTitle = styled(Text)`
     padding-bottom: ${Size.XXS};
-    max-width: 420px;
     word-break: break-word;
 `;
 
