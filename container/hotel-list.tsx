@@ -53,6 +53,14 @@ const StyledFilterBar = styled.div<{ color?: string }>`
     }
 `;
 
+const StyledFilterBarOptions = styled(Flex)`
+    gap: ${Size.XS};
+
+    ${Breakpoint.Mobile} {
+        gap: ${Size.XXS};
+    }
+`;
+
 const StyledSelect = styled(CountrySelect)`
     margin-left: auto;
 
@@ -85,7 +93,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
             </Wrapper>
             <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
-                    <Flex gap={Size.XS} alignItems={FlexAlignItems.FlexStart} flexWrap='wrap'>
+                    <StyledFilterBarOptions alignItems={FlexAlignItems.FlexStart} flexWrap='wrap'>
                         {filterOptions.map((option, i) => {
                             const selected = vacationFilter === option;
                             return (
@@ -93,7 +101,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
                             )
                         })}
                         <StyledSelect label='All Countries' options={countries} value={countryFilter} onChange={country => setCountryFilter(country)} />
-                    </Flex>
+                    </StyledFilterBarOptions>
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
