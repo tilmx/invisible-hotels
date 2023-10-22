@@ -45,7 +45,6 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     min-width: 220px;
     border-radius: ${Size.XS};
     box-shadow: 0 ${Size.XS} ${Size.L} rgba(0,0,0,0.2);
-    overflow: hidden;
     text-align: right;
 
     ${Breakpoint.Tablet} {

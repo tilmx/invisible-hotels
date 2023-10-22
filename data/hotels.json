@@ -99,7 +99,7 @@
     }
   },
   {
-    "name": "Hotel Indigo",
+    "name": "Indigo",
     "city": "Dresden",
     "country": "Germany",
     "housingType": "Hotel",
@@ -242,7 +242,7 @@
     }
   },
   {
-    "name": "Hotel Gilbert",
+    "name": "Gilbert",
     "city": "Wien",
     "country": "Austria",
     "housingType": "Hotel",
@@ -407,7 +407,7 @@
     }
   },
   {
-    "name": "The Bank Hotel",
+    "name": "The Bank",
     "city": "Istanbul",
     "country": "Turkey",
     "housingType": "Hotel",
@@ -429,7 +429,7 @@
     }
   },
   {
-    "name": "Story Hotel Riddargatan",
+    "name": "Story Riddargatan",
     "city": "Stockholm",
     "country": "Sweden",
     "housingType": "Hotel",
@@ -1020,6 +1020,17 @@
     "visited": false,
     "links": {
       "hotel": "https://vipp.com/de/guesthouses/vipp-pencil-case"
+    }
+  },
+  {
+    "name": "Lokal",
+    "city": "Philadelphia",
+    "country": "United States",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/us/lokal-hotel.html"
     }
   }
 ]
