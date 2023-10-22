@@ -65,7 +65,7 @@ const StyledFilterBarOptions = styled(Flex)`
     }
 `;
 
-const StyledSelect = styled(CountrySelect)`
+const StyledCountrySelect = styled(CountrySelect)`
     margin-left: auto;
 
     ${Breakpoint.Tablet} {
@@ -106,7 +106,7 @@ export const HotelList: React.FunctionComponent = () => {
                                 <Filter key={i} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
                             )
                         })}
-                        <StyledSelect
+                        <StyledCountrySelect
                             label='All Countries'
                             value={countryFilter}
                             active={typeof countryFilter !== 'undefined' || countrySelectOpen}

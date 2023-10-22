@@ -5,17 +5,13 @@ import { Breakpoint, Color, Size } from "./tokens";
 import { ChevronDown } from "lucide-react";
 import { Tag } from "./tag";
 
-interface SelectProps {
+interface CountrySelectProps {
     label: string;
     value?: string;
     onClick?: MouseEventHandler;
     className?: string;
     active?: boolean;
 }
-
-const StyledContainer = styled.div`
-    position: relative;
-`;
 
 const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
 	gap: ${Size.XXXS};
@@ -34,13 +30,11 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
     `};
 `;
 
-export const CountrySelect: FunctionComponent<SelectProps> = props => {
+export const CountrySelect: FunctionComponent<CountrySelectProps> = props => {
     return (
-        <StyledContainer className={props.className}>
-            <StyledSelect label={props.value || props.label} onClick={props.onClick} active={props.active}>
-                <ChevronDown size="20px" />
-            </StyledSelect>
-        </StyledContainer>
+        <StyledSelect className={props.className} label={props.value || props.label} onClick={props.onClick} active={props.active}>
+            <ChevronDown size="20px" />
+        </StyledSelect>
     )
 }
 
