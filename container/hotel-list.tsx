@@ -41,12 +41,12 @@ const StyledFilterLabel = styled(Text)`
     transform: translate3d(0,0,0);
 `;
 
-const StyledFilterBar = styled.div<{ color?: string }>`
+const StyledFilterBar = styled.div`
     position: sticky;
     top: 0;
     padding: ${Size.M} 0;
     z-index: 10;
-    background: ${props => props.color || Color.Background80};
+    background: ${Color.Background80};
     backdrop-filter: blur(16px);
     transition: background-color .1s;
 
@@ -82,7 +82,7 @@ const StyledEmptyState = styled.div`
     gap: ${Size.XS};
 `;
 
-export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> = props => {
+export const HotelList: React.FunctionComponent = () => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = React.useState<string | undefined>();
     const [countryFilter, setCountryFilter] = React.useState<string | undefined>();
@@ -95,7 +95,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
             <Wrapper>
                 <StyledFilterLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledFilterLabel>
             </Wrapper>
-            <StyledFilterBar color={props.backgroundColor}>
+            <StyledFilterBar>
                 <Wrapper>
                     <StyledFilterBarOptions alignItems={FlexAlignItems.FlexStart} flexWrap='wrap'>
                         {filterOptions.map((option, i) => {

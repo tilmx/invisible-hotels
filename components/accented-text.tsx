@@ -25,10 +25,6 @@ const StyledSpan = styled.span<{ color: string; }>`
 		pointer-events: none;
 		overflow: visible;
 	}
-
-	&:hover {
-		color: ${Color.Background};
-	}
 `;
 
 export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; color: string; children?: ReactNode; onMouseEnter?: MouseEventHandler; onMouseOut?: MouseEventHandler }> = props => {

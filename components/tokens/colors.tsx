@@ -8,6 +8,8 @@ export enum Color {
     Text50 = 'var(--color-text50)',
     Background = 'var(--color-background)',
     Background80 = 'var(--color-background80)',
+    Shadow = 'var(--color-shadow)',
+    DarkModeShadowBorder = 'var(--color-darkmodeShadowHelper)',
 
     Yellow = 'var(--color-yellow)',
     Green = 'var(--color-green)',
@@ -25,6 +27,10 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
                     --color-text20: #00000033;
                     --color-background: #FFFFFF;
                     --color-background80: #FFFFFFCC;
+                    --color-shadow: #00000033;
+                    --color-darkmodeShadowHelper: transparent;
+
+
                     --color-yellow: #FFBC42;
                     --color-green: #108A5F;
                     --color-blue: #0496FF;
@@ -36,6 +42,7 @@ export const Theme: React.FunctionComponent<{ children?: React.ReactNode }> = pr
                         --color-text20: #FFFFFF33;
                         --color-background: #000000;
                         --color-background80: #000000CC;
+                        --color-darkmodeShadowHelper: #FFFFFF44;
                     }
                 }
             `} />
