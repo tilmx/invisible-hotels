@@ -10,6 +10,7 @@ interface TextProps {
     children?: React.ReactNode;
     style?: React.CSSProperties;
     serif?: boolean;
+    className?: string;
 }
 
 export enum TextSize {
@@ -50,6 +51,11 @@ const StyledText = styled.div<TextProps>`
         line-height: 1;
         letter-spacing: -.02em;
         font-weight: 600;
+
+        ${Breakpoint.DesktopSmall} {
+            font-size: 60px;
+        }
+
 
         ${Breakpoint.Tablet} {
             font-size: 56px;
