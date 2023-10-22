@@ -29,12 +29,12 @@ const StyledCard = styled.a<{ color?: string }>`
     flex-direction: column;
     justify-content: space-between;
     min-height: 360px;
-    transition: transform .3s;
-    box-shadow: ${Size.XS} 0 ${Size.XXXL} rgba(0,0,0,.2);
+    transition: transform .2s, box-shadow .2s;
     transform: translate3d(0,0,0);
 
     :hover {
         transform: scale(1.03);
+        box-shadow: 0 ${Size.S} ${Size.XXXL} rgba(0,0,0,.3), 0 ${Size.XXXS} ${Size.S} rgba(0,0,0,0.2);
     }
 
     ${Breakpoint.Tablet} {
@@ -49,7 +49,7 @@ const StyledCard = styled.a<{ color?: string }>`
 `;
 
 const StyledTitle = styled(Text)`
-    padding-bottom: ${Size.XXS};
+    padding-bottom: ${Size.XS};
     word-break: break-word;
 `;
 
