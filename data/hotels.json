@@ -1006,5 +1006,16 @@
     "links": {
       "hotel": "https://www.forsthofgut.at"
     }
+  },
+  {
+    "name": "Vipp Pencil Case",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "housingType": "Apartment",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "hotel": "https://vipp.com/de/guesthouses/vipp-pencil-case"
+    }
   }
 ]
