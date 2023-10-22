@@ -46,7 +46,7 @@ const StyledFilterBar = styled.div<{ color?: string }>`
     top: 0;
     padding: ${Size.M} 0;
     z-index: 10;
-    background: ${props => props.color || 'rgba(255,255,255,.8)'};
+    background: ${props => props.color || Color.Background80};
     backdrop-filter: blur(16px);
     transition: background-color .1s;
 
@@ -93,7 +93,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
     return (
         <StyledContainer>
             <Wrapper>
-                <StyledFilterLabel size={TextSize.Small} color={Color.TextVariant}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledFilterLabel>
+                <StyledFilterLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledFilterLabel>
             </Wrapper>
             <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
@@ -127,8 +127,8 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
                 </StyledGrid>
                 {filteredHotelsByVacationTypeAndCountry.length === 0 &&
                     <StyledEmptyState>
-                        <Glasses color={Color.TextVariant} />
-                        <Text size={TextSize.Small} color={Color.TextVariant} center>We're very sorry — but it looks like we haven't been in such a place.</Text>
+                        <Glasses color={Color.Text50} />
+                        <Text size={TextSize.Small} color={Color.Text50} center>We're very sorry — but it looks like we haven't been in such a place.</Text>
                     </StyledEmptyState>
                 }
             </Wrapper>

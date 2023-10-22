@@ -28,8 +28,8 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
 
     ${props => !props.active && `
         &:hover {
-            border-color: ${Color.TextVariant};
-            color: ${Color.TextVariant};
+            border-color: ${Color.Text50};
+            color: ${Color.Text50};
         }
     `};
 `;
@@ -40,7 +40,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     display: ${props => props.open ? 'block' : 'none'};
     padding: ${Size.XXS};
     margin-top: ${Size.XXS};
-    background: rgba(255,255,255,.9);
+    background: ${Color.Background80};
     backdrop-filter: blur(${Size.M});
     min-width: 220px;
     border-radius: ${Size.XS};
@@ -52,6 +52,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
         left: 0;
         text-align: left;
     }
+    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Text20};
 `;
 
 export const CountrySelect: FunctionComponent<SelectProps> = props => {
@@ -83,11 +84,11 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     cursor: pointer;
     border-radius: ${Size.XXS};
     ${props => props.selected && `
-        background: rgba(0,0,0,0.15);
+        background: ${Color.Text20};
     `}
 
     &:hover {
-        background: rgba(0,0,0,${props => props.selected ? '0.15' : '0.075'});
+        background: ${Color.Text20};
     }
 `;
 

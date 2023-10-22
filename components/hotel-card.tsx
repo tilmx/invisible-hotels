@@ -34,7 +34,7 @@ const StyledCard = styled.a<{ color?: string }>`
 
     :hover {
         transform: scale(1.03);
-        box-shadow: 0 ${Size.S} ${Size.XXXL} rgba(0,0,0,.3), 0 ${Size.XXXS} ${Size.S} rgba(0,0,0,0.2);
+        box-shadow: 0 ${Size.S} ${Size.XXXL} ${Color.Text20}, 0 ${Size.XXXS} ${Size.S} ${Color.Text20};
     }
 
     ${Breakpoint.Tablet} {

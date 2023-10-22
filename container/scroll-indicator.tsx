@@ -18,7 +18,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     align-items: center;
     transition: transform .2s, opacity .2s;
     transform: translateX(-50%);
-    box-shadow: 0 0 ${Size.XXL} rgba(0,0,0,0.3);
+    box-shadow: 0 0 ${Size.XXL} ${Color.Text20};
 
     ${Breakpoint.Mobile} {
         bottom: ${Size.L};

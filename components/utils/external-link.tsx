@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Color } from '../tokens';
 
 const StyledLink = styled.a`
-	color: ${Color.TextVariant};
+	color: ${Color.Text50};
     text-decoration: inherit;
     text-underline-offset: 6px;
 
