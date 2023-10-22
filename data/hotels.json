@@ -304,6 +304,204 @@
     }
   },
   {
+    "name": "The Editory Boulevard Aliados",
+    "city": "Porto",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/the-editory-boulevard-aliados.html"
+    }
+  },
+  {
+    "name": "Jufenalm",
+    "city": "Sonnberg",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/die-jufenalm.html"
+    }
+  },
+  {
+    "name": "The Alan",
+    "city": "Manchester",
+    "country": "United Kingdom",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gb/thealan.html"
+    }
+  },
+  {
+    "name": "Botanic Sanctuary",
+    "city": "Antwerp",
+    "country": "Belgium",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/be/botanic-sanctuary-antwerp.html"
+    }
+  },
+  {
+    "name": "Hotel Not Hotel",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/nl/not.html"
+    }
+  },
+  {
+    "name": "Hotel Not Hotel",
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/nl/not-rotterdam.html"
+    }
+  },
+  {
+    "name": "Ottmanngut",
+    "city": "Bozen",
+    "country": "Italy",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/it/ottmanngut.html"
+    }
+  },
+  {
+    "name": "Hirschen",
+    "city": "Schwarzenberg",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/hirschen-schwarzenberg.html"
+    }
+  },
+  {
+    "name": "The Bank Hotel",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/tr/the-house-vault-karakoy.html"
+    }
+  },
+  {
+    "name": "Supernova",
+    "city": "Rotterdam",
+    "country": "Netherlands",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/nl/supernova.html"
+    }
+  },
+  {
+    "name": "Story Hotel Riddargatan",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/se/story-hotel.html"
+    }
+  },
+  {
+    "name": "Ansitz Zum Steinbock",
+    "city": "Bozen",
+    "country": "Italy",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/it/ansitz-zum-steinbock.html"
+    }
+  },
+  {
+    "name": "Bühelwirt",
+    "city": "Bozen",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/it/wanderhotel-ba1-4helwirt.html"
+    }
+  },
+  {
+    "name": "Ett Hem",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/se/ett-hem.html"
+    }
+  },
+  {
+    "name": "Fisher's Loft",
+    "city": "Lübeck",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/fishers-loft.html"
+    }
+  },
+  {
+    "name": "Josefine",
+    "city": "Wien",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/josefine-wien.html"
+    }
+  },
+  {
+    "name": "Ullrhaus",
+    "city": "Sankt Anton am Arlberg",
+    "country": "Austria",
+    "housingType": "Hotel",
+    "vacationType": "Mountains",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/at/ullr-house.html"
+    }
+  },
+  {
+    "name": "Pignolia Suites",
+    "city": "Crete",
+    "country": "Greece",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/gr/pignolia-suites.html"
+    }
+  },
+  {
     "name": "Faro de Punta Cumplida",
     "city": "Tenerife",
     "country": "Spain",
@@ -312,6 +510,28 @@
     "visited": false,
     "links": {
       "bookingCom": "https://www.booking.com/hotel/es/leuchtturm-auf-la-palma.html"
+    }
+  },
+  {
+    "name": "Oderberger",
+    "city": "Berlin",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/oderberger.html"
+    }
+  },
+  {
+    "name": "Michelberger",
+    "city": "Berlin",
+    "country": "Germany",
+    "housingType": "Hotel",
+    "vacationType": "City",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/de/michelbergerhotel.html"
     }
   }
 ]

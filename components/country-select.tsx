@@ -42,7 +42,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     margin-top: ${Size.XXS};
     background: rgba(255,255,255,.9);
     backdrop-filter: blur(${Size.M});
-    min-width: 200px;
+    min-width: 220px;
     border-radius: ${Size.XS};
     box-shadow: 0 ${Size.XS} ${Size.L} rgba(0,0,0,0.2);
     overflow: hidden;
@@ -106,10 +106,14 @@ export function getCountryFlag(country: string) {
     switch (country) {
         case "Austria":
             return "🇦🇹";
+        case "Belgium":
+            return "🇧🇪";
         case "Denmark":
             return "🇩🇰";
         case "Germany":
             return "🇩🇪";
+        case "Greece":
+            return "🇬🇷";
         case "Italy":
             return "🇮🇹";
         case "Netherlands":
@@ -118,6 +122,12 @@ export function getCountryFlag(country: string) {
             return "🇵🇹";
         case "Spain":
             return "🇪🇸";
+        case "Sweden":
+            return "🇸🇪";
+        case "Turkey":
+            return "🇹🇷";
+        case "United Kingdom":
+            return "🇬🇧"
         case "United States":
             return "🇺🇸"
     }

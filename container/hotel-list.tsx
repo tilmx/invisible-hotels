@@ -81,7 +81,7 @@ export const HotelList: React.FunctionComponent<{ backgroundColor?: string; }> =
     return (
         <StyledContainer>
             <Wrapper>
-                <StyledFilterLabel size={TextSize.Small} color={Color.TextVariant}>Filter all {hotels.length} hotels & apartments</StyledFilterLabel>
+                <StyledFilterLabel size={TextSize.Small} color={Color.TextVariant}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledFilterLabel>
             </Wrapper>
             <StyledFilterBar color={props.backgroundColor}>
                 <Wrapper>
