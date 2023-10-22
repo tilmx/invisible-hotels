@@ -64,7 +64,7 @@ const StyledTagList = styled(Flex)`
 
 export const HotelCard: React.FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)}>
+        <StyledCard href={props.links?.bookingCom || props.links?.hotel} target="_blank" color={getVacationTypeColor(props.vacationType)}>
             <div>
                 <StyledTitle size={TextSize.Large}>
                     {props.title}
