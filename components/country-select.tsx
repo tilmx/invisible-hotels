@@ -71,7 +71,7 @@ export const CountrySelect: FunctionComponent<SelectProps> = props => {
                     setOpen(false);
                 }}></CountrySelectOption>
                 {props.options.map((option, i) =>
-                    <CountrySelectOption label={option} key={i} onClick={() => {
+                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => {
                         props.onChange(option);
                         setOpen(false);
                     }} />
@@ -81,19 +81,22 @@ export const CountrySelect: FunctionComponent<SelectProps> = props => {
     )
 }
 
-const StyledOption = styled.div`
+const StyledOption = styled.div<{ selected?: boolean }>`
     padding: ${Size.XXS} ${Size.S};
     cursor: pointer;
     border-radius: ${Size.XXS};
+    ${props => props.selected && `
+        background: rgba(0,0,0,0.15);
+    `}
 
     &:hover {
-        background: rgba(0,0,0,0.075);
+        background: rgba(0,0,0,${props => props.selected ? '0.15' : '0.075'});
     }
 `;
 
-const CountrySelectOption: FunctionComponent<{ label: string; onClick: MouseEventHandler; }> = props => {
+const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean; onClick: MouseEventHandler; }> = props => {
     return (
-        <StyledOption onClick={props.onClick}>
+        <StyledOption onClick={props.onClick} selected={props.selected}>
             <Text size={TextSize.Small}>
                 {getCountryFlag(props.label)} {props.label}
             </Text>
@@ -109,6 +112,8 @@ export function getCountryFlag(country: string) {
             return "🇩🇰";
         case "Germany":
             return "🇩🇪";
+        case "Italy":
+            return "🇮🇹";
         case "Netherlands":
             return "🇳🇱";
         case "Portugal":
