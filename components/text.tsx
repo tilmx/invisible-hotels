@@ -43,6 +43,10 @@ const StyledText = styled.div<TextProps>`
         ${Breakpoint.Mobile} {
             font-size: 48px;
         }
+
+        ${Breakpoint.MobileSmall} {
+            font-size: 40px;
+        }
     `}
 
     ${props => props.size === TextSize.Large && `
@@ -57,6 +61,10 @@ const StyledText = styled.div<TextProps>`
 
         ${Breakpoint.Mobile} {
             font-size: 36px;
+        }
+
+        ${Breakpoint.MobileSmall} {
+            font-size: 32px;
         }
     `}
 

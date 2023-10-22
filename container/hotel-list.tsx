@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper } from '../components';
+import { Breakpoint, Color, Filter, Flex, FlexAlignItems, FlexJustifyContent, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Glasses } from 'lucide-react';
@@ -87,6 +87,8 @@ export const HotelList: React.FunctionComponent = () => {
     const [vacationFilter, setVacationFilter] = React.useState<string | undefined>();
     const [countryFilter, setCountryFilter] = React.useState<string | undefined>();
 
+    const [countrySelectOpen, setCountrySelectOpen] = React.useState(false);
+
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
 
@@ -104,8 +106,22 @@ export const HotelList: React.FunctionComponent = () => {
                                 <Filter key={i} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
                             )
                         })}
-                        <StyledSelect label='All Countries' options={countries} value={countryFilter} onChange={country => setCountryFilter(country)} />
+                        <StyledSelect
+                            label='All Countries'
+                            value={countryFilter}
+                            active={typeof countryFilter !== 'undefined' || countrySelectOpen}
+                            onClick={() => setCountrySelectOpen(!countrySelectOpen)}
+                        />
                     </StyledFilterBarOptions>
+                    <CountrySelectFlyout
+                        options={countries}
+                        label='All Countries'
+                        open={countrySelectOpen}
+                        onSet={country => {
+                            setCountryFilter(country);
+                            setCountrySelectOpen(false);
+                        }}
+                    />
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>

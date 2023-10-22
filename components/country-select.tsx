@@ -7,10 +7,10 @@ import { Tag } from "./tag";
 
 interface SelectProps {
     label: string;
-    options: string[];
     value?: string;
-    onChange: (country?: string) => void;
+    onClick?: MouseEventHandler;
     className?: string;
+    active?: boolean;
 }
 
 const StyledContainer = styled.div`
@@ -34,47 +34,74 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
     `};
 `;
 
-const StyledOptionList = styled.div<{ open: boolean; }>`
-    position: absolute;
-    right: 0;
-    display: ${props => props.open ? 'block' : 'none'};
-    padding: ${Size.XXS};
-    margin-top: ${Size.XXS};
-    background: ${Color.Background80};
-    backdrop-filter: blur(${Size.M});
-    min-width: 220px;
-    border-radius: ${Size.XS};
-    text-align: right;
-
-    ${Breakpoint.Tablet} {
-        right: auto;
-        left: 0;
-        text-align: left;
-    }
-    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
-`;
-
 export const CountrySelect: FunctionComponent<SelectProps> = props => {
-    const [open, setOpen] = useState(false);
-
     return (
         <StyledContainer className={props.className}>
-            <StyledSelect label={props.value || props.label} onClick={() => setOpen(!open)} active={typeof props.value !== 'undefined'}>
+            <StyledSelect label={props.value || props.label} onClick={props.onClick} active={props.active}>
                 <ChevronDown size="20px" />
             </StyledSelect>
-            <StyledOptionList open={open}>
+        </StyledContainer>
+    )
+}
+
+interface CountrySelectFlyoutProps {
+    options: string[];
+    value?: string;
+    label: string;
+    open: boolean;
+    onSet: (country?: string) => void;
+}
+
+const StyledFlyoutContainer = styled.div`
+    position: relative;
+`;
+
+const StyledOptionList = styled.div<{ open: boolean; }>`
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: ${props => props.open ? 'grid' : 'none'};
+    flex-direction: column;
+    grid-template-columns: repeat(5, 1fr);
+
+    padding: ${Size.XXS};
+    margin-top: ${Size.XS};
+    background: ${Color.Background80};
+    backdrop-filter: blur(${Size.M});
+    border-radius: ${Size.XS};
+    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
+
+    ${Breakpoint.DesktopSmall} {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    ${Breakpoint.Tablet} {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    ${Breakpoint.TabletSmall} {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    ${Breakpoint.MobileSmall} {
+        grid-template-columns: repeat(1, 1fr);
+    }
+`;
+
+export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = props => {
+    return (
+        <StyledFlyoutContainer>
+            <StyledOptionList open={props.open}>
                 <CountrySelectOption label={props.label} onClick={() => {
-                    props.onChange(undefined);
-                    setOpen(false);
+                    props.onSet(undefined);
                 }}></CountrySelectOption>
                 {props.options.map((option, i) =>
                     <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => {
-                        props.onChange(option);
-                        setOpen(false);
+                        props.onSet(option);
                     }} />
                 )}
             </StyledOptionList>
-        </StyledContainer>
+        </StyledFlyoutContainer>
     )
 }
 
@@ -82,6 +109,9 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     padding: ${Size.XXS} ${Size.S};
     cursor: pointer;
     border-radius: ${Size.XXS};
+    gap: ${Size.XXXS};
+    display: flex;
+
     ${props => props.selected && `
         background: ${Color.Text20};
     `}
@@ -95,7 +125,10 @@ const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean
     return (
         <StyledOption onClick={props.onClick} selected={props.selected}>
             <Text size={TextSize.Small}>
-                {getCountryFlag(props.label)} {props.label}
+                {getCountryFlag(props.label)}
+            </Text>
+            <Text size={TextSize.Small}>
+                {props.label}
             </Text>
         </StyledOption>
     )
