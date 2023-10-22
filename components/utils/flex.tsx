@@ -7,6 +7,7 @@ interface FlexProps {
 	children?: React.ReactNode;
 	gap?: string;
 	flexWrap?: 'wrap';
+	className?: string;
 }
 
 export enum FlexJustifyContent {
