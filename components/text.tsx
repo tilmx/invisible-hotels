@@ -17,8 +17,7 @@ export enum TextSize {
     Huge,
     Large,
     Regular,
-    Small,
-    SuperSmall
+    Small
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
@@ -47,18 +46,13 @@ const StyledText = styled.div<TextProps>`
     `}
 
     ${props => props.size === TextSize.Large && `
-        font-size: 68px;
+        font-size: 48px;
         line-height: 1;
         letter-spacing: -.02em;
         font-weight: 600;
 
-        ${Breakpoint.DesktopSmall} {
-            font-size: 60px;
-        }
-
-
         ${Breakpoint.Tablet} {
-            font-size: 56px;
+            font-size: 40px;
         }
 
         ${Breakpoint.Mobile} {
@@ -83,12 +77,6 @@ const StyledText = styled.div<TextProps>`
             font-size: 17px;
             line-height: 20px;
         }
-    `}
-
-    ${props => props.size === TextSize.SuperSmall && `
-        font-size: 12px;
-        line-height: 100%;
-        font-weight: 600;
     `}
 `;
 

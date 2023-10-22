@@ -20,11 +20,15 @@ const StyledContainer = styled.div`
 
 const StyledGrid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: ${Size.M};
     margin-top: ${Size.XXXL};
 
-    ${Breakpoint.Tablet} {
+    ${Breakpoint.DesktopSmall} {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    ${Breakpoint.TabletSmall} {
         grid-template-columns: 1fr;
         margin-top: ${Size.XL};
     }
