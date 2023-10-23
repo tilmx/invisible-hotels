@@ -2,7 +2,7 @@ import { Size } from '../components/tokens/size';
 import { Breakpoint, Color } from '../components';
 import styled from '@emotion/styled';
 import { ArrowDown } from 'lucide-react';
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, MouseEventHandler, useEffect, useState } from 'react';
 
 const StyledIndicator = styled.div<{ visible: boolean; }>`
     position: fixed;
@@ -19,13 +19,20 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     transition: transform .2s, opacity .2s;
     transform: translateX(-50%);
     box-shadow: 0 0 ${Size.XXL} ${Color.Shadow};
+    cursor: pointer;
 
     ${Breakpoint.Mobile} {
         bottom: ${Size.L};
     }
 
-    :hover {
+    :active {
         transform: translateX(-50%) scale(1.1);
+    }
+
+    @media (hover: hover) {
+        :hover {
+            transform: translateX(-50%) scale(1.1);
+        }
     }
 
     ${props => !props.visible && `
@@ -34,7 +41,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     `}
 `;
 
-export const ScrollIndicator: FunctionComponent = () => {
+export const ScrollIndicator: FunctionComponent<{ onClick?: MouseEventHandler }> = props => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -46,11 +53,11 @@ export const ScrollIndicator: FunctionComponent = () => {
     })
 
     const listenToScroll = () => {
-        setVisible(window.scrollY < 200)
+        setVisible(window.scrollY < 200);
     }
 
     return (
-        <StyledIndicator visible={visible}>
+        <StyledIndicator onClick={props.onClick} visible={visible}>
             <ArrowDown />
         </StyledIndicator>
     )

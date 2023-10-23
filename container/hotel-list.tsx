@@ -6,15 +6,16 @@ import { Glasses } from 'lucide-react';
 import { FunctionComponent, useState } from 'react';
 
 const StyledContainer = styled.div`
-    margin-top: ${Size.XXXXL};
+    margin-top: ${Size.XXXL};
+    padding-top: ${Size.XL};
 
     ${Breakpoint.Tablet} {
-        margin-top: ${Size.XXXL};
+        margin-top: ${Size.XXL};
         grid-template-columns: 1fr;
     }
 
     ${Breakpoint.Mobile} {
-        margin-top: ${Size.XXL};
+        margin-top: ${Size.XL};
     }
 `;
 

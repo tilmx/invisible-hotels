@@ -4,8 +4,11 @@ import { Footer } from '../container/footer'
 import { AccentStyle, Color, AccentedText, Logo, Text, TextSize } from '../components'
 import { HotelList } from '../container/hotel-list'
 import { ScrollIndicator } from '../container/scroll-indicator'
+import { useRef } from 'react'
 
 export default function Home() {
+	const hotelListRef = useRef<HTMLDivElement>(null);
+
 	return (
 		<>
 			<Head>
@@ -15,9 +18,11 @@ export default function Home() {
 			<Wrapper>
 				<Logo />
 				<Text size={TextSize.Huge} serif>are all the <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText> and <AccentedText color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</Text>
-				<ScrollIndicator />
+				<ScrollIndicator onClick={() => hotelListRef.current?.scrollIntoView({ behavior: "smooth" })} />
 			</Wrapper>
-			<HotelList />
+			<div ref={hotelListRef}>
+				<HotelList />
+			</div>
 			<Footer />
 		</>
 	)
