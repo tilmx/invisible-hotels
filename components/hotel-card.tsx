@@ -82,12 +82,16 @@ const StyledStarArea = styled.div<{ starred: boolean; }>`
     margin-top: -${Size.XS};
     margin-right: -${Size.XS};
     border-radius: 50%;
-    visibility: ${props => props.starred ? 'visible' : 'hidden'};
+
+    @media (hover: hover) {
+        visibility: ${props => props.starred ? 'visible' : 'hidden'};
+    }
 
     svg {
         display: block;
         ${props => props.starred && `fill: ${Color.Text}`};
     }
+
     :hover {
         background: ${Color.Text20};
     }

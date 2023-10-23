@@ -50,7 +50,7 @@ export const ScrollIndicator: FunctionComponent<{ onClick?: MouseEventHandler }>
         return () => {
             window.removeEventListener('scroll', listenToScroll);
         }
-    })
+    }, [])
 
     const listenToScroll = () => {
         setVisible(window.scrollY < 200);
