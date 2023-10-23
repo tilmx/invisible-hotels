@@ -7,6 +7,7 @@ export enum Color {
     Text10 = 'var(--color-text10)',
     Text20 = 'var(--color-text20)',
     Text50 = 'var(--color-text50)',
+    Text80 = 'var(--color-text80)',
     Background = 'var(--color-background)',
     Background80 = 'var(--color-background80)',
     Shadow = 'var(--color-shadow)',
@@ -26,6 +27,7 @@ export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
                     --color-text10: #0000001A;
                     --color-text20: #00000033;
                     --color-text50: #00000080;
+                    --color-text80: #000000CC;
                     --color-background: #FFFFFF;
                     --color-background80: #FFFFFFCC;
                     --color-shadow: #00000033;
@@ -40,6 +42,7 @@ export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
                         --color-text10: #FFFFFF1A;
                         --color-text20: #FFFFFF33;
                         --color-text50: #FFFFFF80;
+                        --color-text80: #FFFFFFCC;
                         --color-background: #000000;
                         --color-background80: #000000CC;
                     }
