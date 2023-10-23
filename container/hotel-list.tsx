@@ -27,10 +27,6 @@ const StyledGrid = styled.div<{ emptyState: boolean; }>`
 
     ${Breakpoint.DesktopSmall} {
         grid-template-columns: 1fr 1fr;
-
-        ${props => props.emptyState && `
-            grid-template-columns: 1fr;
-        `}
     }
 
     ${Breakpoint.TabletSmall} {
@@ -42,14 +38,10 @@ const StyledGrid = styled.div<{ emptyState: boolean; }>`
     }
 `;
 
-const StyledPlaceholderCard = styled(PlaceholderCard) <{ emptyState: boolean; }>`
-    ${props => props.emptyState && `
-        grid-column-start: 2;
-
-        ${Breakpoint.DesktopSmall} {
-            grid-column-start: unset;
-        }
-    `}
+const StyledPlaceholderCard = styled(PlaceholderCard)`
+    max-width: 400px;
+    place-self: center;
+    grid-column: 1/4;
 `;
 
 const StyledLabel = styled(Text)`
@@ -162,8 +154,7 @@ export const HotelList: FunctionComponent = () => {
                             }}
                         />
                     )}
-
-                    <StyledPlaceholderCard emptyState={emptyState}>
+                    <StyledPlaceholderCard>
                         <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us? Let us know!"}</Text>
                         <Button icon={<Send />} url={`mailto:invisiblehotels@tilman.io?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</Button>
                     </StyledPlaceholderCard>
