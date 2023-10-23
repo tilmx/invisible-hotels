@@ -23,9 +23,15 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
     `}
 
     ${props => !props.active && `
-        &:hover {
+        :active {
             border-color: ${Color.Text50};
             color: ${Color.Text50};
+        }
+        @media (hover: hover) {
+            :hover {
+                border-color: ${Color.Text50};
+                color: ${Color.Text50};
+            }
         }
     `};
 `;
@@ -107,8 +113,14 @@ const StyledOption = styled.div<{ selected?: boolean }>`
         background: ${Color.Text20};
     `}
 
-    &:hover {
+    :active {
         background: ${Color.Text20};
+    }
+
+    @media (hover: hover) {
+        :hover {
+            background: ${Color.Text20};
+        }
     }
 `;
 

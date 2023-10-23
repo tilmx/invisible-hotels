@@ -32,11 +32,13 @@ const StyledCard = styled.a<{ color?: string }>`
     transition: transform .2s, box-shadow .2s;
     transform: translate3d(0,0,0);
 
-    :hover {
-        transform: scale(1.03);
-        box-shadow: 0 ${Size.S} ${Size.XXXL} ${Color.Shadow}, 0 ${Size.XXXS} ${Size.S} ${Color.Shadow};
+    @media (hover: hover) {
+        :hover {
+            transform: scale(1.03);
+            box-shadow: 0 ${Size.S} ${Size.XXXL} ${Color.Shadow}, 0 ${Size.XXXS} ${Size.S} ${Color.Shadow};
+        }
     }
-
+    
     ${Breakpoint.Tablet} {
         min-height: 256px;
     }

@@ -7,8 +7,14 @@ const StyledLink = styled.a`
     text-decoration: inherit;
     text-underline-offset: 6px;
 
-    &:hover {
+    :active {
         text-decoration: underline;
+    }
+
+    @media (hover: hover) {
+        :hover {
+            text-decoration: underline;
+        }
     }
 `;
 

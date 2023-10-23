@@ -24,7 +24,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
         bottom: ${Size.L};
     }
 
-    &:hover {
+    :hover {
         transform: translateX(-50%) scale(1.1);
     }
 

@@ -17,9 +17,16 @@ const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`
         border-color: ${props.color}; 
     `}
 
-    &:hover {
+    :active {
         border-color: ${props => props.color};
         color: ${props => props.selected ? undefined : props.color};  
+    }
+
+    @media (hover: hover) {
+        :hover {
+            border-color: ${props => props.color};
+            color: ${props => props.selected ? undefined : props.color};  
+        }
     }
 `;
 

@@ -1032,5 +1032,16 @@
     "links": {
       "bookingCom": "https://www.booking.com/hotel/us/lokal-hotel.html"
     }
+  },
+  {
+    "name": "Immerso",
+    "city": "Ericeira",
+    "country": "Portugal",
+    "housingType": "Hotel",
+    "vacationType": "Sea",
+    "visited": false,
+    "links": {
+      "bookingCom": "https://www.booking.com/hotel/pt/immerso.html"
+    }
   }
 ]
