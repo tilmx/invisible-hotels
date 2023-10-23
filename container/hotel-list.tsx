@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button, getVacationTypeIcon } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button, getVacationTypeIcon, HotelCard } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
-import { FunctionComponent, use, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
+import { CookieOptIn } from './cookie-opt-in';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -21,12 +22,12 @@ const StyledContainer = styled.div`
 
 const StyledGrid = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: ${Size.M};
     margin-top: ${Size.XXXL};
 
     ${Breakpoint.DesktopSmall} {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     ${Breakpoint.TabletSmall} {
@@ -110,8 +111,22 @@ export const HotelList: FunctionComponent = () => {
 
     const emptyState = filteredByStarredAndEverythingElse.length === 0;
 
+    const [cookieOptOverlayVisible, setCookieOptOverlayVisible] = useState(false);
+
+    function saveStarredHotelsToLocalStorage(list: string[]) {
+        saveToLocalStorage({ key: 'starred-hotels', value: JSON.stringify(list) });
+    }
+
     return (
         <StyledContainer>
+            <CookieOptIn
+                visible={cookieOptOverlayVisible}
+                onAllowClick={() => {
+                    saveStarredHotelsToLocalStorage(starredHotels);
+                    setCookieOptOverlayVisible(false);
+                }}
+                onRejectClick={() => setCookieOptOverlayVisible(false)}
+            />
             <Wrapper>
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredByStarredAndEverythingElse.length} hotels & apartments</StyledLabel>
             </Wrapper>
@@ -168,15 +183,13 @@ export const HotelList: FunctionComponent = () => {
                                 starred={starred}
                                 onStarClick={e => {
                                     e.preventDefault();
-                                    if (!starred) {
-                                        const newList = [...starredHotels, hotel.id]
-                                        setStarredHotels(newList)
-                                        window.localStorage.setItem('starred-hotels', JSON.stringify(newList));
+                                    const newList = !starred ? [...starredHotels, hotel.id] : [...starredHotels.filter(id => id !== hotel.id)];
+                                    setStarredHotels(newList);
+                                    if (checkIfCookiesAllowed()) {
+                                        saveStarredHotelsToLocalStorage(newList)
                                     }
                                     else {
-                                        const newList = [...starredHotels.filter(id => id !== hotel.id)];
-                                        setStarredHotels(newList)
-                                        window.localStorage.setItem('starred-hotels', JSON.stringify(newList));
+                                        setCookieOptOverlayVisible(true);
                                     }
                                 }}
                             />
@@ -192,3 +205,25 @@ export const HotelList: FunctionComponent = () => {
         </StyledContainer>
     )
 }
+
+function checkIfCookiesAllowed() {
+    return window.localStorage.getItem('cookies-allowed') === 'true';
+}
+
+export function setCookieOptIn() {
+    window.localStorage.setItem('cookies-allowed', 'true');
+}
+
+function saveToLocalStorage(content: { key: string, value: string }) {
+    // check if set cookies is allowed
+    const savingIsAllowed = window.localStorage.getItem('cookies-allowed') === 'true';
+
+    if (savingIsAllowed) {
+        // save to localstorage
+        window.localStorage.setItem(content.key, content.value);
+    }
+    else {
+        console.error('No cookies are allowed')
+    }
+}
+
