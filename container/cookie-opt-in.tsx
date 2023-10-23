@@ -10,7 +10,6 @@ const StyledContainer = styled.div<{ visible: boolean; }>`
     left: 0;
     bottom: 0;
     right: 0;
-    padding: ${Size.XL};
     z-index: 50;
     display: ${props => props.visible ? 'flex' : 'none'};
     justify-content: center;
@@ -21,13 +20,14 @@ const StyledContainer = styled.div<{ visible: boolean; }>`
 const StyledMessage = styled.div`
     padding: ${Size.L};
     max-width: 400px;
+    margin: 0 auto;
     border-radius: ${Size.M};
     background: ${Color.Background80};
     backdrop-filter: blur(${Size.M});
     box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
     display: flex;
     flex-direction: column;
-    gap: ${Size.XS};
+    gap: ${Size.S};
 
     svg {
         display: block;
