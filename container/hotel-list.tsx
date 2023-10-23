@@ -3,7 +3,7 @@ import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, 
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, use, useEffect, useState } from 'react';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -98,12 +98,15 @@ export const HotelList: FunctionComponent = () => {
     const [countryFilter, setCountryFilter] = useState<string | undefined>();
     const [countryFilterOpen, setCountryFilterOpen] = useState(false);
     const [starredHotels, setStarredHotels] = useState<string[]>([]);
-
+    useEffect(() => {
+        const stored = window.localStorage.getItem('starred-hotels');
+        stored && setStarredHotels(JSON.parse(stored));
+    }, [])
     const [starredHotelsFilterActive, setStarredHotelsFilterActive] = useState(false);
 
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
-    const filteredByStarredAndEverythingElse = starredHotelsFilterActive ? filteredHotelsByVacationTypeAndCountry.filter(hotel => starredHotels.includes(hotel.id)) : filteredHotelsByVacationTypeAndCountry;
+    const filteredByStarredAndEverythingElse = (starredHotelsFilterActive && starredHotels.length > 0) ? filteredHotelsByVacationTypeAndCountry.filter(hotel => starredHotels.includes(hotel.id)) : filteredHotelsByVacationTypeAndCountry;
 
     const emptyState = filteredByStarredAndEverythingElse.length === 0;
 
