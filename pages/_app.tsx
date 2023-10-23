@@ -6,7 +6,7 @@ import PlausibleProvider from 'next-plausible';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <PlausibleProvider domain="invisible-hotels.com">
+    <PlausibleProvider domain="invisible-hotels.com" trackOutboundLinks>
       <Theme>
         <Head>
           <link rel="icon" href="/favicon.png" />
