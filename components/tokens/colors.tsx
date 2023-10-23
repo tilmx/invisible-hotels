@@ -4,6 +4,7 @@ import { FunctionComponent, ReactNode } from 'react';
 
 export enum Color {
     Text = 'var(--color-text)',
+    Text10 = 'var(--color-text10)',
     Text20 = 'var(--color-text20)',
     Text50 = 'var(--color-text50)',
     Background = 'var(--color-background)',
@@ -22,8 +23,9 @@ export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
             <Global styles={css`
                 :root {
                     --color-text: #000000;
-                    --color-text50: #00000080;
+                    --color-text10: #0000001A;
                     --color-text20: #00000033;
+                    --color-text50: #00000080;
                     --color-background: #FFFFFF;
                     --color-background80: #FFFFFFCC;
                     --color-shadow: #00000033;
@@ -35,8 +37,9 @@ export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
 
                     @media (prefers-color-scheme: dark) {
                         --color-text: #FFFFFF;
-                        --color-text50: #FFFFFF80;
+                        --color-text10: #FFFFFF1A;
                         --color-text20: #FFFFFF33;
+                        --color-text50: #FFFFFF80;
                         --color-background: #000000;
                         --color-background80: #000000CC;
                     }

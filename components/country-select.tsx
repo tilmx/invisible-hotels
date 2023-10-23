@@ -116,17 +116,17 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     align-items: center;
 
     ${props => props.selected && `
-        background: ${Color.Text20};
+        background: ${Color.Text10};
     `}
-
-    :active {
-        background: ${Color.Text20};
-    }
 
     @media (hover: hover) {
         :hover {
-            background: ${Color.Text20};
+            background: ${Color.Text10};
         }
+    }
+
+    :active {
+        background: ${Color.Text20};
     }
 `;
 
