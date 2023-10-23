@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Glasses } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { FunctionComponent, useState } from 'react';
 
 const StyledContainer = styled.div`
@@ -19,7 +19,7 @@ const StyledContainer = styled.div`
     }
 `;
 
-const StyledGrid = styled.div`
+const StyledGrid = styled.div<{ emptyState: boolean; }>`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${Size.M};
@@ -27,6 +27,10 @@ const StyledGrid = styled.div`
 
     ${Breakpoint.DesktopSmall} {
         grid-template-columns: 1fr 1fr;
+
+        ${props => props.emptyState && `
+            grid-template-columns: 1fr;
+        `}
     }
 
     ${Breakpoint.TabletSmall} {
@@ -36,6 +40,16 @@ const StyledGrid = styled.div`
     ${Breakpoint.Mobile} {
         gap: ${Size.XS};
     }
+`;
+
+const StyledPlaceholderCard = styled(PlaceholderCard) <{ emptyState: boolean; }>`
+    ${props => props.emptyState && `
+        grid-column-start: 2;
+
+        ${Breakpoint.DesktopSmall} {
+            grid-column-start: unset;
+        }
+    `}
 `;
 
 const StyledLabel = styled(Text)`
@@ -85,15 +99,6 @@ const StyledCountrySelect = styled(CountrySelect)`
     }
 `;
 
-const StyledEmptyState = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 400px;
-    align-items: center;
-    gap: ${Size.XS};
-`;
-
 export const HotelList: FunctionComponent = () => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = useState<string | undefined>();
@@ -102,6 +107,8 @@ export const HotelList: FunctionComponent = () => {
 
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
+
+    const emptyState = filteredHotelsByVacationTypeAndCountry.length === 0;
 
     return (
         <StyledContainer>
@@ -140,7 +147,7 @@ export const HotelList: FunctionComponent = () => {
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
-                <StyledGrid>
+                <StyledGrid emptyState={emptyState}>
                     {filteredHotelsByVacationTypeAndCountry.map((hotel, i) =>
                         <HotelCard
                             key={i}
@@ -155,13 +162,12 @@ export const HotelList: FunctionComponent = () => {
                             }}
                         />
                     )}
+
+                    <StyledPlaceholderCard emptyState={emptyState}>
+                        <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us? Let us know!"}</Text>
+                        <Button icon={<Send />} url={`mailto:invisiblehotels@tilman.io?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</Button>
+                    </StyledPlaceholderCard>
                 </StyledGrid>
-                {filteredHotelsByVacationTypeAndCountry.length === 0 &&
-                    <StyledEmptyState>
-                        <Glasses color={Color.Text50} />
-                        <Text size={TextSize.Small} color={Color.Text50} center>We're very sorry — but it looks like we haven't been in such a place.</Text>
-                    </StyledEmptyState>
-                }
             </Wrapper>
         </StyledContainer>
     )

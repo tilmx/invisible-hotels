@@ -11,3 +11,5 @@ export * from './hotel-card';
 export * from './filter';
 export * from './country-select';
 export * from './separator';
+export * from './placeholder-card';
+export * from './button';
