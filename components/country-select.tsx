@@ -11,11 +11,16 @@ interface CountrySelectProps {
     onClick?: MouseEventHandler;
     className?: string;
     active?: boolean;
+    disabled?: boolean;
 }
 
-const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
+const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?: boolean; }>`
 	gap: ${Size.XXXS};
     cursor: pointer;
+
+    ${props => props.disabled && `
+        pointer-events: none;
+    `} 
 
     ${props => props.active && `
         background: ${Color.Text};
@@ -38,7 +43,7 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; }>`
 
 export const CountrySelect: FunctionComponent<CountrySelectProps> = props => {
     return (
-        <StyledSelect className={props.className} label={props.value || props.label} onClick={props.onClick} active={props.active}>
+        <StyledSelect disabled={props.disabled} className={props.className} label={props.value || props.label} onClick={props.onClick} active={props.active}>
             <ChevronDown size="20px" />
         </StyledSelect>
     )

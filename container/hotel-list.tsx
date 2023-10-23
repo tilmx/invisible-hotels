@@ -114,7 +114,8 @@ export const HotelList: FunctionComponent = () => {
                             label='All Countries'
                             value={countryFilter}
                             active={typeof countryFilter !== 'undefined' || countrySelectOpen}
-                            onClick={() => setCountrySelectOpen(true)}
+                            disabled={countrySelectOpen}
+                            onClick={() => setCountrySelectOpen(!countrySelectOpen)}
                         />
                     </StyledFilterBarOptions>
                     <OutsideClick onOutsideClick={() => setCountrySelectOpen(false)}>

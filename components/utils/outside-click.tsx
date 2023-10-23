@@ -14,7 +14,7 @@ export const OutsideClick: FunctionComponent<{ children?: ReactNode; onOutsideCl
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [wrapperRef]);
+    }, [wrapperRef, props.onOutsideClick]);
 
     return (
         <div ref={wrapperRef}>{props.children}</div>
