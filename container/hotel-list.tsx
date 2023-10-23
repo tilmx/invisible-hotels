@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, HotelCard, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button, getVacationTypeIcon } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Send } from 'lucide-react';
-import { FunctionComponent, useState } from 'react';
+import { Send, Star } from 'lucide-react';
+import { FunctionComponent, useEffect, useState } from 'react';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -97,16 +97,20 @@ export const HotelList: FunctionComponent = () => {
     const [vacationFilter, setVacationFilter] = useState<string | undefined>();
     const [countryFilter, setCountryFilter] = useState<string | undefined>();
     const [countryFilterOpen, setCountryFilterOpen] = useState(false);
+    const [starredHotels, setStarredHotels] = useState<string[]>([]);
+
+    const [starredHotelsFilterActive, setStarredHotelsFilterActive] = useState(false);
 
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
+    const filteredByStarredAndEverythingElse = starredHotelsFilterActive ? filteredHotelsByVacationTypeAndCountry.filter(hotel => starredHotels.includes(hotel.id)) : filteredHotelsByVacationTypeAndCountry;
 
-    const emptyState = filteredHotelsByVacationTypeAndCountry.length === 0;
+    const emptyState = filteredByStarredAndEverythingElse.length === 0;
 
     return (
         <StyledContainer>
             <Wrapper>
-                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledLabel>
+                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredByStarredAndEverythingElse.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
@@ -114,7 +118,7 @@ export const HotelList: FunctionComponent = () => {
                         {filterOptions.map((option, i) => {
                             const selected = vacationFilter === option;
                             return (
-                                <Filter key={i} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
+                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
                             )
                         })}
                         <StyledCountrySelect
@@ -124,6 +128,9 @@ export const HotelList: FunctionComponent = () => {
                             disabled={countryFilterOpen}
                             onClick={() => setCountryFilterOpen(!countryFilterOpen)}
                         />
+                        {starredHotels.length > 0 &&
+                            <Filter icon={<Star />} selected={starredHotelsFilterActive} onClick={() => setStarredHotelsFilterActive(!starredHotelsFilterActive)} />
+                        }
                     </StyledFilterBarOptions>
                     <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
                         <CountrySelectFlyout
@@ -141,19 +148,37 @@ export const HotelList: FunctionComponent = () => {
             </StyledFilterBar>
             <Wrapper wide>
                 <StyledGrid>
-                    {filteredHotelsByVacationTypeAndCountry.map((hotel, i) =>
-                        <HotelCard
-                            key={i}
-                            title={hotel.name}
-                            location={`${hotel.city}, ${hotel.country}`}
-                            housingType={hotel.housingType}
-                            vacationType={hotel.vacationType}
-                            visited={hotel.visited}
-                            links={{
-                                bookingCom: hotel.links.bookingCom,
-                                hotel: hotel.links.hotel
-                            }}
-                        />
+                    {filteredByStarredAndEverythingElse.map((hotel, i) => {
+                        const starred = starredHotels.includes(hotel.id);
+                        return (
+                            <HotelCard
+                                key={i}
+                                title={hotel.name}
+                                location={`${hotel.city}, ${hotel.country}`}
+                                housingType={hotel.housingType}
+                                vacationType={hotel.vacationType}
+                                visited={hotel.visited}
+                                links={{
+                                    bookingCom: hotel.links.bookingCom,
+                                    hotel: hotel.links.hotel
+                                }}
+                                starred={starred}
+                                onStarClick={e => {
+                                    e.preventDefault();
+                                    if (!starred) {
+                                        const newList = [...starredHotels, hotel.id]
+                                        setStarredHotels(newList)
+                                        window.localStorage.setItem('starred-hotels', JSON.stringify(newList));
+                                    }
+                                    else {
+                                        const newList = [...starredHotels.filter(id => id !== hotel.id)];
+                                        setStarredHotels(newList)
+                                        window.localStorage.setItem('starred-hotels', JSON.stringify(newList));
+                                    }
+                                }}
+                            />
+                        )
+                    }
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us? Let us know!"}</Text>
