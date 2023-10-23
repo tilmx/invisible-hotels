@@ -2,7 +2,7 @@ import { FunctionComponent, MouseEventHandler, useState } from "react";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { Breakpoint, Color, Size } from "./tokens";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { Tag } from "./tag";
 
 interface CountrySelectProps {
@@ -95,7 +95,7 @@ export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = 
             <StyledOptionList open={props.open}>
                 <CountrySelectOption label={props.label} onClick={() => props.onSet(undefined)} />
                 {props.options.map((option, i) =>
-                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => props.onSet(option)} />
+                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => props.onSet(props.value === option ? undefined : option)} />
                 )}
             </StyledOptionList>
         </StyledFlyoutContainer>
@@ -108,6 +108,7 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     border-radius: ${Size.XXS};
     gap: ${Size.XXXS};
     display: flex;
+    align-items: center;
 
     ${props => props.selected && `
         background: ${Color.Text20};
@@ -124,6 +125,11 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     }
 `;
 
+const StyledCloseIcon = styled(X)`
+    color: ${Color.Text50};
+    margin-left: auto;
+`;
+
 const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean; onClick: MouseEventHandler; }> = props => {
     return (
         <StyledOption onClick={props.onClick} selected={props.selected}>
@@ -133,6 +139,9 @@ const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean
             <Text size={TextSize.Small}>
                 {props.label}
             </Text>
+            {props.selected &&
+                <StyledCloseIcon size={Size.S} />
+            }
         </StyledOption>
     )
 }
