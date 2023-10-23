@@ -26,6 +26,7 @@ const StyledCard = styled.a<{ color?: string }>`
     border-radius: ${Size.M};
     padding: ${Size.L};
     display: flex;
+    gap: ${Size.XS};
     flex-direction: column;
     justify-content: space-between;
     min-height: 360px;
