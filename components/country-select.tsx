@@ -70,7 +70,7 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     grid-template-columns: repeat(5, 1fr);
 
     padding: ${Size.XS};
-    margin-top: ${Size.XS};
+    margin-top: -${Size.XS};
     background: ${Color.Background80};
     backdrop-filter: blur(${Size.M});
     border-radius: ${Size.XS};

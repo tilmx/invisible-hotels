@@ -39,38 +39,45 @@ const StyledGrid = styled.div`
 `;
 
 const StyledFilterLabel = styled(Text)`
-    margin-bottom: -${Size.XXS};
+    margin-bottom: ${Size.XS};
     z-index: 11;
     position: relative;
     transform: translate3d(0,0,0);
+
+    ${Breakpoint.Tablet} {
+        margin-bottom: -${Size.M};
+    }
 `;
 
 const StyledFilterBar = styled.div`
     position: sticky;
-    top: 0;
-    padding: ${Size.M} 0;
+    top: ${Size.M};
     z-index: 10;
-    background: ${Color.Background80};
-    backdrop-filter: blur(16px);
-    transition: background-color .1s;
 
     ${Breakpoint.Tablet} {
         position: relative;
+    }
+`;
+
+const StyledFilterBarOptions = styled(Flex)`
+    background: ${Color.Background80};
+    backdrop-filter: blur(16px);
+    border-radius: ${Size.XL};
+    padding: calc(${Size.S} + ${Size.XXXS}) ${Size.M};
+    margin: 0 -${Size.M};
+    box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
+    gap: ${Size.XXS};
+
+    ${Breakpoint.Tablet} {
+        box-shadow: none;
         background: transparent;
         backdrop-filter: none;
     }
 `;
 
-const StyledFilterBarOptions = styled(Flex)`
-    gap: ${Size.XS};
-
-    ${Breakpoint.Mobile} {
-        gap: ${Size.XXS};
-    }
-`;
-
 const StyledCountrySelect = styled(CountrySelect)`
     margin-left: auto;
+    flex-shrink: 0;
 
     ${Breakpoint.Tablet} {
         margin-left: 0;
