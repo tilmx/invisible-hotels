@@ -38,14 +38,15 @@ const StyledGrid = styled.div`
     }
 `;
 
-const StyledFilterLabel = styled(Text)`
-    margin-bottom: ${Size.XS};
+const StyledLabel = styled(Text)`
     z-index: 11;
     position: relative;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0); 
+
+    margin-bottom: ${Size.XS};
 
     ${Breakpoint.Tablet} {
-        margin-bottom: -${Size.M};
+        margin-bottom: -${Size.L};
     }
 `;
 
@@ -97,8 +98,7 @@ export const HotelList: FunctionComponent = () => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = useState<string | undefined>();
     const [countryFilter, setCountryFilter] = useState<string | undefined>();
-
-    const [countrySelectOpen, setCountrySelectOpen] = useState(false);
+    const [countryFilterOpen, setCountryFilterOpen] = useState(false);
 
     const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
     const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
@@ -106,7 +106,7 @@ export const HotelList: FunctionComponent = () => {
     return (
         <StyledContainer>
             <Wrapper>
-                <StyledFilterLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledFilterLabel>
+                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotelsByVacationTypeAndCountry.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
@@ -120,20 +120,20 @@ export const HotelList: FunctionComponent = () => {
                         <StyledCountrySelect
                             label='All Countries'
                             value={countryFilter}
-                            active={typeof countryFilter !== 'undefined' || countrySelectOpen}
-                            disabled={countrySelectOpen}
-                            onClick={() => setCountrySelectOpen(!countrySelectOpen)}
+                            active={typeof countryFilter !== 'undefined' || countryFilterOpen}
+                            disabled={countryFilterOpen}
+                            onClick={() => setCountryFilterOpen(!countryFilterOpen)}
                         />
                     </StyledFilterBarOptions>
-                    <OutsideClick onOutsideClick={() => setCountrySelectOpen(false)}>
+                    <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
                         <CountrySelectFlyout
                             options={countries}
                             label='All Countries'
-                            open={countrySelectOpen}
+                            open={countryFilterOpen}
                             value={countryFilter}
                             onSet={country => {
                                 setCountryFilter(country);
-                                setCountrySelectOpen(false);
+                                setCountryFilterOpen(false);
                             }}
                         />
                     </OutsideClick>

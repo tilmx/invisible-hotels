@@ -17,9 +17,9 @@ const StyledWrapper = styled.div<{ wide?: boolean; }>`
     }
 `
 
-export const Wrapper: FunctionComponent<{ children: ReactNode; wide?: boolean; style?: CSSProperties }> = props => {
+export const Wrapper: FunctionComponent<{ children: ReactNode; wide?: boolean; style?: CSSProperties; className?: string; }> = props => {
     return (
-        <StyledWrapper wide={props.wide} style={props.style}>
+        <StyledWrapper wide={props.wide} style={props.style} className={props.className}>
             {props.children}
         </StyledWrapper>
     )
