@@ -19,6 +19,7 @@ base('Curated List').select({
     records.forEach(function (record) {
         if (record.get('Online')) {
             savedRecords.push({
+                id: record.getId(),
                 name: record.get('Name'),
                 city: record.get('City'),
                 country: record.get('Country'),
