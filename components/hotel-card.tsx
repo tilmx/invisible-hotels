@@ -32,6 +32,21 @@ const StyledCard = styled.a<{ color?: string }>`
     min-height: 360px;
     transition: transform .2s, box-shadow .2s;
     transform: translate3d(0,0,0);
+    overflow: hidden;
+
+    :active {
+        :after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: ${Color.Text20};
+            pointer-events: none;
+        }
+    }
 
     @media (hover: hover) {
         :hover {
