@@ -19,7 +19,7 @@ const StyledContainer = styled.div`
     }
 `;
 
-const StyledGrid = styled.div<{ emptyState: boolean; }>`
+const StyledGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${Size.M};
@@ -38,17 +38,18 @@ const StyledGrid = styled.div<{ emptyState: boolean; }>`
     }
 `;
 
-const StyledPlaceholderCard = styled(PlaceholderCard)`
-    max-width: 400px;
-    place-self: center;
-    grid-column: 1/4;
+const StyledPlaceholderCard = styled(PlaceholderCard) <{ emptyState: boolean; }>`
+    ${props => props.emptyState && `
+        max-width: 400px;
+        place-self: center;
+        grid-column: 1/4;
+    `}
 `;
 
 const StyledLabel = styled(Text)`
     z-index: 11;
     position: relative;
     transform: translate3d(0,0,0); 
-
     margin-bottom: ${Size.XS};
 
     ${Breakpoint.Tablet} {
@@ -139,7 +140,7 @@ export const HotelList: FunctionComponent = () => {
                 </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
-                <StyledGrid emptyState={emptyState}>
+                <StyledGrid>
                     {filteredHotelsByVacationTypeAndCountry.map((hotel, i) =>
                         <HotelCard
                             key={i}
@@ -154,7 +155,7 @@ export const HotelList: FunctionComponent = () => {
                             }}
                         />
                     )}
-                    <StyledPlaceholderCard>
+                    <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us? Let us know!"}</Text>
                         <Button icon={<Send />} url={`mailto:invisiblehotels@tilman.io?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</Button>
                     </StyledPlaceholderCard>
