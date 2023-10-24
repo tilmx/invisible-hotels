@@ -18,9 +18,9 @@ const StyledLink = styled.a`
     }
 `;
 
-export const ExternalLink: FunctionComponent<{ link?: string; children?: ReactNode; }> = props => {
+export const ExternalLink: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; }> = props => {
     return (
-        <StyledLink href={props.link} target="_blank">
+        <StyledLink href={props.link} target="_blank" className={props.className}>
             {props.children}
         </StyledLink>
     );
