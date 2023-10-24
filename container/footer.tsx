@@ -1,7 +1,8 @@
 import { Size } from '../components/tokens/size';
-import { AlignItems, Breakpoint, Link, Flex, JustifyContent, Text, TextSize, Wrapper } from '../components';
+import { AlignItems, Breakpoint, Link, Flex, JustifyContent, Text, TextSize, Wrapper, Button } from '../components';
 import styled from '@emotion/styled';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
+import { Overlay } from './overlay';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -43,8 +44,22 @@ const StyledGithubLink = styled(Link)`
 `;
 
 export const Footer: FunctionComponent = () => {
+    const [showCookieOptOut, setShowCookieOptOut] = useState(false);
     return (
         <StyledFooter>
+            {showCookieOptOut &&
+                <Overlay
+                    headline='Do you want to delete all favorites'
+                    description='When opting out from cookies all your favorites are cleared'
+                    onOutsideClick={() => setShowCookieOptOut(false)}
+                >
+                    <Button onClick={() => {
+                        window.localStorage.clear();
+                        setShowCookieOptOut(false);
+                    }}>Delete all</Button>
+                    <Button onClick={() => setShowCookieOptOut(false)}>Keep them</Button>
+                </Overlay>
+            }
             <Wrapper>
                 <StyledFooterList>
                     <Link link='https://tilman.io/legal/sites-notice'>
@@ -52,6 +67,9 @@ export const Footer: FunctionComponent = () => {
                     </Link>
                     <Link link='https://tilman.io/legal/privacy-policy'>
                         <Text size={TextSize.Small}>Privacy Policy</Text>
+                    </Link>
+                    <Link onClick={() => setShowCookieOptOut(true)}>
+                        <Text size={TextSize.Small}>Opt out from cookies</Text>
                     </Link>
                     <StyledGithubLink link='https://github.com/tilmx/invisible-hotels'>
                         <Flex alignItems={AlignItems.Center} gap={Size.XXS}>

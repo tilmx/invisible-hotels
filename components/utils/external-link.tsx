@@ -6,6 +6,7 @@ const StyledLink = styled.a`
 	color: ${Color.Text50};
     text-decoration: inherit;
     text-underline-offset: 6px;
+    cursor: pointer;
 
     :active {
         text-decoration: underline;
@@ -20,7 +21,7 @@ const StyledLink = styled.a`
 
 export const Link: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; onClick?: MouseEventHandler; }> = props => {
     return (
-        <StyledLink href={props.link} target="_blank" className={props.className}>
+        <StyledLink href={props.link} target="_blank" className={props.className} onClick={props.onClick}>
             {props.children}
         </StyledLink>
     );
