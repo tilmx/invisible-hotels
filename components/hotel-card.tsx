@@ -117,7 +117,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
         <StyledCard href={props.links?.bookingCom || props.links?.hotel} target="_blank" color={getVacationTypeColor(props.vacationType)}>
             <div>
                 <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart} gap={Size.XXXS}>
-                    <StyledTitle size={TextSize.Large}>
+                    <StyledTitle size={TextSize.Large} bold>
                         {props.title}
                     </StyledTitle>
                     <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>

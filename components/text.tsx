@@ -10,6 +10,7 @@ interface TextProps {
     children?: ReactNode;
     style?: CSSProperties;
     serif?: boolean;
+    bold?: boolean;
     className?: string;
 }
 
@@ -53,7 +54,6 @@ const StyledText = styled.div<TextProps>`
         font-size: 48px;
         line-height: 1;
         letter-spacing: -.02em;
-        font-weight: 600;
 
         ${Breakpoint.Tablet} {
             font-size: 40px;
@@ -72,6 +72,8 @@ const StyledText = styled.div<TextProps>`
         font-size: 36px;
         line-height: 1;
 
+        ${props.bold && 'letter-spacing: -.02em;'}
+
         ${Breakpoint.Mobile} {
             font-size: 24px;
         }
@@ -85,6 +87,10 @@ const StyledText = styled.div<TextProps>`
             font-size: 17px;
             line-height: 20px;
         }
+    `}
+
+    ${props => props.bold && `
+        font-weight: 600;
     `}
 `;
 

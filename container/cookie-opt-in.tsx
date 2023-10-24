@@ -40,7 +40,7 @@ const StyledButtonList = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: ${Size.S};
-    gap: ${Size.S};
+    gap: ${Size.XXS};
 
     ${Breakpoint.Mobile} {
         grid-template-columns: 1fr;
@@ -54,7 +54,7 @@ export const CookieOptIn: FunctionComponent<{ visible: boolean; onAllowClick: ()
                 <OutsideClick onOutsideClick={() => props.onRejectClick()}>
                     <StyledMessage>
                         <Cookie />
-                        <Text size={TextSize.Regular}>Save your favorites locally</Text>
+                        <Text size={TextSize.Regular} bold>Save your favorites locally</Text>
                         <Text size={TextSize.Small}>We will save a little cookie with your favorite hotels in this browser. Fine for you?</Text>
                         <StyledButtonList>
                             <Button onClick={() => {
