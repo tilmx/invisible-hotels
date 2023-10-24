@@ -105,11 +105,13 @@ export const HotelList: FunctionComponent = () => {
     }, [])
     const [starredHotelsFilterActive, setStarredHotelsFilterActive] = useState(false);
 
-    const filteredHotelsByVacationType = typeof vacationFilter === 'undefined' ? hotels : hotels.filter(hotel => vacationFilter === hotel.vacationType);
-    const filteredHotelsByVacationTypeAndCountry = typeof countryFilter === 'undefined' ? filteredHotelsByVacationType : filteredHotelsByVacationType.filter(hotel => countryFilter === hotel.country);
-    const filteredByStarredAndEverythingElse = (starredHotelsFilterActive && starredHotels.length > 0) ? filteredHotelsByVacationTypeAndCountry.filter(hotel => starredHotels.includes(hotel.id)) : filteredHotelsByVacationTypeAndCountry;
+    const filteredHotels = hotels.filter(hotel =>
+        (typeof vacationFilter === 'undefined' ? true : vacationFilter === hotel.vacationType)
+        && (typeof countryFilter === 'undefined' ? true : countryFilter === hotel.country)
+        && ((starredHotelsFilterActive && starredHotels.length > 0) ? starredHotels.includes(hotel.id) : true)
+    )
 
-    const emptyState = filteredByStarredAndEverythingElse.length === 0;
+    const emptyState = filteredHotels.length === 0;
 
     const [cookieOptOverlayVisible, setCookieOptOverlayVisible] = useState(false);
 
@@ -128,7 +130,7 @@ export const HotelList: FunctionComponent = () => {
                 onRejectClick={() => setCookieOptOverlayVisible(false)}
             />
             <Wrapper>
-                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredByStarredAndEverythingElse.length} hotels & apartments</StyledLabel>
+                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
@@ -166,7 +168,7 @@ export const HotelList: FunctionComponent = () => {
             </StyledFilterBar>
             <Wrapper wide>
                 <StyledGrid>
-                    {filteredByStarredAndEverythingElse.map((hotel, i) => {
+                    {filteredHotels.map((hotel, i) => {
                         const starred = starredHotels.includes(hotel.id);
                         return (
                             <HotelCard
