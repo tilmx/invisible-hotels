@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, Button, getVacationTypeIcon, HotelCard } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, ButtonMini, getVacationTypeIcon, HotelCard, Button } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
-import { CookieOptIn } from './cookie-opt-in';
+import { Overlay } from './overlay';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -121,18 +121,27 @@ export const HotelList: FunctionComponent = () => {
 
     return (
         <StyledContainer>
-            <CookieOptIn
+            <Overlay
                 visible={cookieOptOverlayVisible}
-                onAllowClick={() => {
-                    saveStarredHotelsToLocalStorage(starredHotels);
-                    setCookieOptOverlayVisible(false);
-                }}
-                onRejectClick={() => {
+                headline='Save your favorites locally'
+                description='We will save a little cookie with your favorite hotels in this browser. Fine for you?'
+                onOutsideClick={() => {
                     setCookieOptOverlayVisible(false);
                     // clear list immediately if cookies not accepted
                     setStarredHotels([]);
                 }}
-            />
+            >
+                <Button onClick={() => {
+                    setCookieOptIn();
+                    saveStarredHotelsToLocalStorage(starredHotels);
+                    setCookieOptOverlayVisible(false);
+                }}>Yes, sure</Button>
+                <Button onClick={() => {
+                    setCookieOptOverlayVisible(false);
+                    // clear list immediately if cookies not accepted
+                    setStarredHotels([]);
+                }}>No thanks</Button>
+            </Overlay>
             <Wrapper>
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
@@ -204,7 +213,7 @@ export const HotelList: FunctionComponent = () => {
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us? Let us know!"}</Text>
-                        <Button icon={<Send />} url={`mailto:invisiblehotels@tilman.io?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</Button>
+                        <ButtonMini icon={<Send />} url={`mailto:invisiblehotels@tilman.io?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</ButtonMini>
                     </StyledPlaceholderCard>
                 </StyledGrid>
             </Wrapper>

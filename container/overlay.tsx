@@ -1,8 +1,15 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
-import { setCookieOptIn } from './hotel-list';
 import { Breakpoint, Color, OutsideClick, Size, Text, TextSize, Wrapper } from '../components';
 import { Cookie } from 'lucide-react';
+
+interface OverlayProps {
+    visible: boolean;
+    headline: string;
+    description: string;
+    children: ReactNode;
+    onOutsideClick: () => void;
+}
 
 const StyledContainer = styled.div<{ visible: boolean; }>`
     position: fixed;
@@ -47,53 +54,21 @@ const StyledButtonList = styled.div`
     }
 `;
 
-export const CookieOptIn: FunctionComponent<{ visible: boolean; onAllowClick: () => void; onRejectClick: () => void; }> = props => {
+export const Overlay: FunctionComponent<OverlayProps> = props => {
     return (
         <StyledContainer visible={props.visible}>
             <Wrapper>
-                <OutsideClick onOutsideClick={() => props.onRejectClick()}>
+                <OutsideClick onOutsideClick={props.onOutsideClick}>
                     <StyledMessage>
                         <Cookie />
-                        <Text size={TextSize.Regular} bold>Save your favorites locally</Text>
-                        <Text size={TextSize.Small}>We will save a little cookie with your favorite hotels in this browser. Fine for you?</Text>
+                        <Text size={TextSize.Regular} bold>{props.headline}</Text>
+                        <Text size={TextSize.Small}>{props.description}</Text>
                         <StyledButtonList>
-                            <Button onClick={() => {
-                                setCookieOptIn();
-                                props.onAllowClick();
-                            }}>Yes, sure</Button>
-                            <Button onClick={props.onRejectClick}>No thanks</Button>
+                            {props.children}
                         </StyledButtonList>
                     </StyledMessage>
                 </OutsideClick>
             </Wrapper>
         </StyledContainer>
-    )
-}
-
-const StyledButton = styled.div`
-    background: ${Color.Text};
-    color: ${Color.Background};
-    padding: ${Size.S};
-    border-radius: ${Size.L};
-    cursor: pointer;
-
-    :active {
-        background: ${Color.Text80};
-    }
-
-    @media (hover: hover) {
-        :hover {
-            background: ${Color.Text80};
-        }
-    }
-`;
-
-const Button: FunctionComponent<{ children?: ReactNode; onClick?: MouseEventHandler; }> = props => {
-    return (
-        <StyledButton onClick={props.onClick}>
-            <Text center size={TextSize.Small}>
-                {props.children}
-            </Text>
-        </StyledButton>
     )
 }

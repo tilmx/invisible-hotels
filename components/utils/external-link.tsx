@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Color } from '../tokens';
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 
 const StyledLink = styled.a`
 	color: ${Color.Text50};
@@ -18,7 +18,7 @@ const StyledLink = styled.a`
     }
 `;
 
-export const ExternalLink: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; }> = props => {
+export const Link: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; onClick?: MouseEventHandler; }> = props => {
     return (
         <StyledLink href={props.link} target="_blank" className={props.className}>
             {props.children}

@@ -1,44 +1,32 @@
-import styled from '@emotion/styled'
-import { Text, TextSize } from './text';
-import { FunctionComponent, ReactNode } from 'react';
-import { Color, Size } from './tokens';
+import styled from "@emotion/styled";
+import { Color, Size } from "./tokens";
+import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
+import { Text, TextSize } from "./text";
 
-const StyledButton = styled.a`
-	color: inherit;
-	text-decoration: none;
-	background: ${Color.Text10};
-	padding: ${Size.XXS} ${Size.S};
-	border-radius: ${Size.L};
-	display: flex;
-	gap: ${Size.XXS};
-	align-items: center;
-	cursor: pointer;
+const StyledButton = styled.div`
+    background: ${Color.Text};
+    color: ${Color.Background};
+    padding: ${Size.S};
+    border-radius: ${Size.L};
+    cursor: pointer;
 
-	svg {
-		width: 20px;
-		height: 20px;
-	}
+    :active {
+        background: ${Color.Text80};
+    }
 
-	&:active {
-		color: ${Color.Text};
-		background: ${Color.Text50};
-	}
-
-	@media (hover: hover) {
-		&:hover {
-			color: ${Color.Text};
-			background: ${Color.Text20};
-		}
-	}
+    @media (hover: hover) {
+        :hover {
+            background: ${Color.Text80};
+        }
+    }
 `;
 
-export const Button: FunctionComponent<{ icon?: ReactNode; children?: ReactNode; url: string; }> = props => {
-	return (
-		<StyledButton href={props.url} target='_blank'>
-			{props.icon}
-			<Text size={TextSize.Small}>
-				{props.children}
-			</Text>
-		</StyledButton>
-	)
+export const Button: FunctionComponent<{ children?: ReactNode; onClick?: MouseEventHandler; }> = props => {
+    return (
+        <StyledButton onClick={props.onClick}>
+            <Text center size={TextSize.Small}>
+                {props.children}
+            </Text>
+        </StyledButton>
+    )
 }

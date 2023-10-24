@@ -12,4 +12,5 @@ export * from './filter';
 export * from './country-select';
 export * from './separator';
 export * from './placeholder-card';
+export * from './button-mini';
 export * from './button';
