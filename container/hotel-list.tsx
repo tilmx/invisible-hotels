@@ -127,7 +127,11 @@ export const HotelList: FunctionComponent = () => {
                     saveStarredHotelsToLocalStorage(starredHotels);
                     setCookieOptOverlayVisible(false);
                 }}
-                onRejectClick={() => setCookieOptOverlayVisible(false)}
+                onRejectClick={() => {
+                    setCookieOptOverlayVisible(false);
+                    // clear list immediately if cookies not accepted
+                    setStarredHotels([]);
+                }}
             />
             <Wrapper>
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
