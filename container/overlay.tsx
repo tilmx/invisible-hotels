@@ -4,21 +4,20 @@ import { Breakpoint, Color, OutsideClick, Size, Text, TextSize, Wrapper } from '
 import { Cookie } from 'lucide-react';
 
 interface OverlayProps {
-    visible: boolean;
     headline: string;
     description: string;
     children: ReactNode;
     onOutsideClick: () => void;
 }
 
-const StyledContainer = styled.div<{ visible: boolean; }>`
+const StyledContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     z-index: 50;
-    display: ${props => props.visible ? 'flex' : 'none'};
+    display: flex;
     justify-content: center;
     align-items: center;
     background: ${Color.Text50};
@@ -56,7 +55,7 @@ const StyledButtonList = styled.div`
 
 export const Overlay: FunctionComponent<OverlayProps> = props => {
     return (
-        <StyledContainer visible={props.visible}>
+        <StyledContainer>
             <Wrapper>
                 <OutsideClick onOutsideClick={props.onOutsideClick}>
                     <StyledMessage>

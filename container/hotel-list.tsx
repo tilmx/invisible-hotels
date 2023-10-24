@@ -121,27 +121,28 @@ export const HotelList: FunctionComponent = () => {
 
     return (
         <StyledContainer>
-            <Overlay
-                visible={cookieOptOverlayVisible}
-                headline='Save your favorites locally'
-                description='We will save a little cookie with your favorite hotels in this browser. Fine for you?'
-                onOutsideClick={() => {
-                    setCookieOptOverlayVisible(false);
-                    // clear list immediately if cookies not accepted
-                    setStarredHotels([]);
-                }}
-            >
-                <Button onClick={() => {
-                    setCookieOptIn();
-                    saveStarredHotelsToLocalStorage(starredHotels);
-                    setCookieOptOverlayVisible(false);
-                }}>Yes, sure</Button>
-                <Button onClick={() => {
-                    setCookieOptOverlayVisible(false);
-                    // clear list immediately if cookies not accepted
-                    setStarredHotels([]);
-                }}>No thanks</Button>
-            </Overlay>
+            {cookieOptOverlayVisible &&
+                <Overlay
+                    headline='Save your favorites locally'
+                    description='We will save a little cookie with your favorite hotels in this browser. Fine for you?'
+                    onOutsideClick={() => {
+                        setCookieOptOverlayVisible(false);
+                        // clear list immediately if cookies not accepted
+                        setStarredHotels([]);
+                    }}
+                >
+                    <Button onClick={() => {
+                        setCookieOptIn();
+                        saveStarredHotelsToLocalStorage(starredHotels);
+                        setCookieOptOverlayVisible(false);
+                    }}>Yes, sure</Button>
+                    <Button onClick={() => {
+                        setCookieOptOverlayVisible(false);
+                        // clear list immediately if cookies not accepted
+                        setStarredHotels([]);
+                    }}>No thanks</Button>
+                </Overlay>
+            }
             <Wrapper>
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
