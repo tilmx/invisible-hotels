@@ -55,7 +55,7 @@ const StyledLabel = styled(Text)`
     margin-bottom: ${Size.XS};
 
     ${Breakpoint.Tablet} {
-        margin-bottom: -${Size.L};
+        margin-bottom: 0;
     }
 `;
 
@@ -65,7 +65,20 @@ const StyledFilterBar = styled.div`
     z-index: 10;
 
     ${Breakpoint.Tablet} {
-        position: relative;
+        top: 0;
+    }
+`;
+
+const StyledFilterWrapper = styled(Wrapper)`
+    ${Breakpoint.Tablet} {
+        padding: 0;
+        overflow: scroll;
+        background: ${Color.Background80};
+        backdrop-filter: blur(16px);
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
     }
 `;
 
@@ -80,8 +93,16 @@ const StyledFilterBarOptions = styled(Flex)`
 
     ${Breakpoint.Tablet} {
         box-shadow: none;
-        background: transparent;
+        margin: 0;
+        padding: ${Size.S} ${Size.L};
+        border-radius: 0;
+        flex-wrap: nowrap;
         backdrop-filter: none;
+        background-color: transparent;
+    }
+
+    ${Breakpoint.Mobile} {
+        padding: ${Size.S} ${Size.M};
     }
 `;
 
@@ -148,7 +169,7 @@ export const HotelList: FunctionComponent = () => {
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
-                <Wrapper>
+                <StyledFilterWrapper>
                     <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
                         {filterOptions.map((option, i) => {
                             const selected = vacationFilter === option;
@@ -179,7 +200,7 @@ export const HotelList: FunctionComponent = () => {
                             }}
                         />
                     </OutsideClick>
-                </Wrapper>
+                </StyledFilterWrapper>
             </StyledFilterBar>
             <Wrapper wide>
                 <StyledGrid>
