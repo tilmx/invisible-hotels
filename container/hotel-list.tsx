@@ -53,10 +53,6 @@ const StyledLabel = styled(Text)`
     position: relative;
     transform: translate3d(0,0,0); 
     margin-bottom: ${Size.XS};
-
-    ${Breakpoint.Tablet} {
-        margin-bottom: 0;
-    }
 `;
 
 const StyledFilterBar = styled.div`
@@ -65,19 +61,11 @@ const StyledFilterBar = styled.div`
     z-index: 10;
 
     ${Breakpoint.Tablet} {
-        top: 0;
+        top: ${Size.XS};
     }
-`;
 
-const StyledFilterWrapper = styled(Wrapper)`
-    ${Breakpoint.Tablet} {
-        padding: 0;
-        background: ${Color.Background80};
-        backdrop-filter: blur(16px);
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
+    ${Breakpoint.Mobile} {
+        top: ${Size.XXS};
     }
 `;
 
@@ -91,16 +79,15 @@ const StyledFilterBarOptions = styled(Flex)`
     gap: ${Size.XXS};
 
     ${Breakpoint.Tablet} {
-        box-shadow: none;
-        margin: 0;
-        padding: ${Size.S} ${Size.L};
-        border-radius: 0;
-        backdrop-filter: none;
-        background-color: transparent;
+        padding: ${Size.S};
+        margin: 0 -${Size.S};
+        border-radius: calc(${Size.M} + ${Size.XXS});
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.S} ${Size.M};
+        padding: ${Size.XS};
+        margin: 0 -${Size.XS};
+        border-radius: ${Size.M};
     }
 `;
 
@@ -167,7 +154,7 @@ export const HotelList: FunctionComponent = () => {
                 <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
-                <StyledFilterWrapper>
+                <Wrapper>
                     <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
                         {filterOptions.map((option, i) => {
                             const selected = vacationFilter === option;
@@ -198,7 +185,7 @@ export const HotelList: FunctionComponent = () => {
                             }}
                         />
                     </OutsideClick>
-                </StyledFilterWrapper>
+                </Wrapper>
             </StyledFilterBar>
             <Wrapper wide>
                 <StyledGrid>
