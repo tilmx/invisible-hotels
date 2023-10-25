@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, ButtonMini, getVacationTypeIcon, HotelCard, Button } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Send, Star } from 'lucide-react';
+import { ArrowRight, Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, saveToLocalStorage, setCookieOptIn } from '../utils';
@@ -72,7 +72,6 @@ const StyledFilterBar = styled.div`
 const StyledFilterWrapper = styled(Wrapper)`
     ${Breakpoint.Tablet} {
         padding: 0;
-        overflow: scroll;
         background: ${Color.Background80};
         backdrop-filter: blur(16px);
 
@@ -96,7 +95,6 @@ const StyledFilterBarOptions = styled(Flex)`
         margin: 0;
         padding: ${Size.S} ${Size.L};
         border-radius: 0;
-        flex-wrap: nowrap;
         backdrop-filter: none;
         background-color: transparent;
     }

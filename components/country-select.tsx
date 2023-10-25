@@ -83,10 +83,14 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
 
     ${Breakpoint.Tablet} {
         grid-template-columns: repeat(3, 1fr);
+        margin-left: ${Size.M};
+        margin-right: ${Size.M};
     }
 
     ${Breakpoint.TabletSmall} {
         grid-template-columns: repeat(2, 1fr);
+        margin-left: ${Size.XS};
+        margin-right: ${Size.XS};
     }
 
     ${Breakpoint.MobileSmall} {
