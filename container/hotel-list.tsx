@@ -5,6 +5,7 @@ import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
+import { checkIfCookiesAllowed, saveToLocalStorage, setCookieOptIn } from '../utils';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -221,25 +222,3 @@ export const HotelList: FunctionComponent = () => {
         </StyledContainer>
     )
 }
-
-function checkIfCookiesAllowed() {
-    return window.localStorage.getItem('cookies-allowed') === 'true';
-}
-
-export function setCookieOptIn() {
-    window.localStorage.setItem('cookies-allowed', 'true');
-}
-
-function saveToLocalStorage(content: { key: string, value: string }) {
-    // check if set cookies is allowed
-    const savingIsAllowed = window.localStorage.getItem('cookies-allowed') === 'true';
-
-    if (savingIsAllowed) {
-        // save to localstorage
-        window.localStorage.setItem(content.key, content.value);
-    }
-    else {
-        console.error('No cookies are allowed')
-    }
-}
-
