@@ -56,6 +56,7 @@ export const Footer: FunctionComponent = () => {
                     <Button onClick={() => {
                         window.localStorage.clear();
                         setShowCookieOptOut(false);
+                        location.reload()
                     }}>Delete all</Button>
                     <Button onClick={() => setShowCookieOptOut(false)}>Keep them</Button>
                 </Overlay>
