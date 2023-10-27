@@ -1,9 +1,7 @@
-
 import Airtable from 'airtable';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
-import http from 'https';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
 
@@ -13,17 +11,7 @@ Airtable.configure({
 
 const base = new Airtable.base(process.env.AIRTABLE_BASE);
 const savedRecords = [];
-
-function downloadImage(remoteUrl, fileName) {
-    const imageFolder = './public/images/hotels/'
-    if (!fs.existsSync(imageFolder)) {
-        fs.mkdirSync(imageFolder, { recursive: true });
-    }
-    const file = fs.createWriteStream(imageFolder + fileName + '.jpg');
-    http.get(remoteUrl, function (response) {
-        response.pipe(file);
-    });
-}
+const imageList = [];
 
 base('Curated List').select({
     view: "Grid view"
@@ -31,7 +19,12 @@ base('Curated List').select({
     records.forEach(function (record) {
         if (record.get('Online')) {
             if (record.get('Image')?.length > 0 && record.get('Image')[0].type === 'image/jpeg') {
-                downloadImage(record.get('Image')[0].url, record.getId())
+                imageList.push({
+                    hotel: record.getId(),
+                    url: record.get('Image')[0].url,
+                    type: record.get('Image')[0].type
+                })
+                //downloadImage(record.get('Image')[0].url, record.getId())
             }
 
             savedRecords.push({
@@ -72,6 +65,10 @@ base('Curated List').select({
                 .sort(),
             null, 2)
     );
-    console.log('done,', savedRecords)
+    fs.writeFileSync(
+        'data/images.json',
+        JSON.stringify(imageList, null, 2)
+    );
+    console.log('Done, ', savedRecords)
 });
 

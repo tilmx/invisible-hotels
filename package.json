@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node ./data/fetch-images.mjs && next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch-content": "node ./data/fetch-content.mjs"
+    "fetch-content": "node ./data/fetch-content.mjs",
+    "fetch-images": "node ./data/fetch-images.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
