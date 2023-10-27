@@ -37,5 +37,7 @@ next-env.d.ts
 
 .env.local
 
-# Hotel Images
+# Hotel Data & Images
+data/hotels.json
+data/countries.json
 public/images/hotels
