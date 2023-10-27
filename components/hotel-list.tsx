@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Send, Star } from 'lucide-react';
+import { Check, Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, getVacationTypeIcon, saveToLocalStorage, setCookieOptIn } from '../utils';
@@ -14,7 +14,6 @@ import { Wrapper } from './wrapper';
 import { Filter } from './filter';
 import { CountrySelect, CountrySelectFlyout } from './country-select';
 import { HotelCard } from './hotel-card';
-import { ButtonMini } from './button-mini';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -147,12 +146,12 @@ export const HotelList: FunctionComponent = () => {
                         setStarredHotels([]);
                     }}
                 >
-                    <Button onClick={() => {
+                    <Button icon={<Check />} onClick={() => {
                         setCookieOptIn();
                         saveStarredHotelsToLocalStorage(starredHotels);
                         setCookieOptOverlayVisible(false);
                     }}>Yes, sure</Button>
-                    <Button onClick={() => {
+                    <Button icon="X" onClick={() => {
                         setCookieOptOverlayVisible(false);
                         // clear list immediately if cookies not accepted
                         setStarredHotels([]);
@@ -231,7 +230,8 @@ export const HotelList: FunctionComponent = () => {
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Regular}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-                        <ButtonMini icon={<Send />} url={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</ButtonMini>
+
+                        <Button icon={<Send />} small secondary>Send E-Mail</Button>
                     </StyledPlaceholderCard>
                 </StyledGrid>
             </Wrapper>

@@ -40,7 +40,7 @@ const StyledMessage = styled.div`
     flex-direction: column;
     gap: ${Size.S};
 
-    svg {
+    > svg {
         display: block;
         width: ${Size.L};
         height: ${Size.L};
