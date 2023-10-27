@@ -13,3 +13,7 @@ export * from './separator';
 export * from './placeholder-card';
 export * from './button-mini';
 export * from './button';
+export * from './footer';
+export * from './hotel-list';
+export * from './overlay';
+export * from './scroll-indicator'

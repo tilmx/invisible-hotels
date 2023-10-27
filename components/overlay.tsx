@@ -1,7 +1,12 @@
 import styled from '@emotion/styled';
-import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
-import { Breakpoint, Color, OutsideClick, Size, Text, TextSize, Wrapper } from '../components';
+import { FunctionComponent, ReactNode } from 'react';
+import { Color } from './tokens/colors'
+import { Size } from './tokens/size'
+import { Breakpoint } from './tokens/breakpoint'
 import { Cookie } from 'lucide-react';
+import { Text, TextSize } from './text';
+import { OutsideClick } from './utils';
+import { Wrapper } from './wrapper';
 
 interface OverlayProps {
     headline: string;

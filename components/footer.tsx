@@ -1,8 +1,12 @@
-import { Size } from '../components/tokens/size';
-import { AlignItems, Breakpoint, Link, Flex, JustifyContent, Text, TextSize, Wrapper, Button } from '../components';
+import { Size } from './tokens/size';
 import styled from '@emotion/styled';
 import { FunctionComponent, useState } from 'react';
 import { Overlay } from './overlay';
+import { Breakpoint } from './tokens';
+import { AlignItems, Flex, Link } from './utils';
+import { Button } from './button';
+import { Text, TextSize } from './text';
+import { Wrapper } from './wrapper';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};

@@ -1,11 +1,20 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, ButtonMini, HotelCard, Button } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, getVacationTypeIcon, saveToLocalStorage, setCookieOptIn } from '../utils';
+import { Breakpoint, Color, Size } from './tokens';
+import { PlaceholderCard } from './placeholder-card';
+import { Text, TextSize } from './text';
+import { AlignItems, Flex, OutsideClick } from './utils';
+import { Button } from './button';
+import { Wrapper } from './wrapper';
+import { Filter } from './filter';
+import { CountrySelect, CountrySelectFlyout } from './country-select';
+import { HotelCard } from './hotel-card';
+import { ButtonMini } from './button-mini';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};

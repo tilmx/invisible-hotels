@@ -1,9 +1,5 @@
 import Head from 'next/head'
-import { Wrapper } from '../components/wrapper'
-import { Footer } from '../container/footer'
-import { AccentStyle, Color, AccentedText, Logo, Text, TextSize, Size, Breakpoint } from '../components'
-import { HotelList } from '../container/hotel-list'
-import { ScrollIndicator } from '../container/scroll-indicator'
+import { AccentStyle, Color, AccentedText, Logo, Text, TextSize, Breakpoint, ScrollIndicator, HotelList, Footer, Wrapper } from '../components'
 import { useRef } from 'react'
 import styled from '@emotion/styled'
 
