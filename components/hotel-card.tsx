@@ -174,7 +174,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 {props.image &&
                     <StyledImageContainer>
                         <div style={{ position: 'relative', height: '100%' }}>
-                            <Image fill src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" style={{ objectFit: 'cover' }} />
+                            <Image fill sizes="400px" src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" style={{ objectFit: 'cover' }} />
                         </div>
                     </StyledImageContainer>
                 }
