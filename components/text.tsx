@@ -16,9 +16,9 @@ interface TextProps {
 
 export enum TextSize {
     Huge,
+    SuperLarge,
     Large,
-    Regular,
-    Small
+    Regular
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
@@ -50,7 +50,7 @@ const StyledText = styled.div<TextProps>`
         }
     `}
 
-    ${props => props.size === TextSize.Large && `
+    ${props => props.size === TextSize.SuperLarge && `
         font-size: 44px;
         line-height: 1;
         letter-spacing: -.02em;
@@ -68,7 +68,7 @@ const StyledText = styled.div<TextProps>`
         }
     `}
 
-    ${props => props.size === TextSize.Regular && `
+    ${props => props.size === TextSize.Large && `
         font-size: 32px;
         line-height: 1;
 
@@ -79,7 +79,7 @@ const StyledText = styled.div<TextProps>`
         }
     `}
 
-    ${props => props.size === TextSize.Small && `
+    ${props => props.size === TextSize.Regular && `
         font-size: 20px;
         line-height: 24px;
 

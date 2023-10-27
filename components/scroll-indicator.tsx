@@ -41,7 +41,7 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     `}
 `;
 
-export const ScrollIndicator: FunctionComponent<{ onClick?: MouseEventHandler }> = props => {
+export const ScrollIndicator: FunctionComponent<{ onClick: MouseEventHandler }> = props => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {

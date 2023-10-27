@@ -142,10 +142,10 @@ const StyledCloseIcon = styled(X)`
 const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean; onClick: MouseEventHandler; }> = props => {
     return (
         <StyledOption onClick={props.onClick} selected={props.selected}>
-            <Text size={TextSize.Small}>
+            <Text size={TextSize.Regular}>
                 {getCountryFlag(props.label)}
             </Text>
-            <Text size={TextSize.Small}>
+            <Text size={TextSize.Regular}>
                 {props.label}
             </Text>
             {props.selected &&

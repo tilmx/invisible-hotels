@@ -160,7 +160,7 @@ export const HotelList: FunctionComponent = () => {
                 </Overlay>
             }
             <Wrapper>
-                <StyledLabel size={TextSize.Small} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
+                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
@@ -230,7 +230,7 @@ export const HotelList: FunctionComponent = () => {
                     }
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
-                        <Text center size={TextSize.Small}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
+                        <Text center size={TextSize.Regular}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
                         <ButtonMini icon={<Send />} url={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>Send E-Mail</ButtonMini>
                     </StyledPlaceholderCard>
                 </StyledGrid>

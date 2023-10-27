@@ -1,11 +1,7 @@
 import styled from "@emotion/styled";
-import { FunctionComponent, MouseEventHandler } from "react";
-import { Breakpoint, Color } from "./tokens";
-import { Logo } from "./logo";
+import { FunctionComponent, ReactNode } from "react";
+import { Breakpoint, Color, Size } from "./tokens";
 import { Wrapper } from "./wrapper";
-import { Text, TextSize } from "./text";
-import { AccentStyle, AccentedText } from "./accented-text";
-import { ScrollIndicator } from "./scroll-indicator";
 
 const StyledHeader = styled.div`
 	position: relative;
@@ -13,10 +9,13 @@ const StyledHeader = styled.div`
 	@media (prefers-color-scheme: dark) {
 		background-image: url('data:image/svg+xml;utf8,<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="35" r="1" opacity="0.2" fill="white"/></svg>');
 	}
+
+	padding-top: ${Size.XXXXL};
 	${Breakpoint.Mobile} {
+		padding-top: ${Size.XXXL};
 		background-size: 24px;
 	}
-	background-position: center;
+	background-position: center 12px;
 	
 	:after {
 		content: '';
@@ -28,14 +27,12 @@ const StyledHeader = styled.div`
 	}
 `;
 
-export const Header: FunctionComponent<{ onScrollIndicatorClick: MouseEventHandler }> = props => {
-    return (
-        <StyledHeader>
-            <Wrapper style={{ position: 'relative', zIndex: 1 }}>
-                <Logo />
-                <Text size={TextSize.Huge} serif>are all the <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText> and <AccentedText color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</Text>
-                <ScrollIndicator onClick={props.onScrollIndicatorClick} />
-            </Wrapper>
-        </StyledHeader>
-    )
+export const Header: FunctionComponent<{ children?: ReactNode }> = props => {
+	return (
+		<StyledHeader>
+			<Wrapper style={{ position: 'relative', zIndex: 1 }}>
+				{props.children}
+			</Wrapper>
+		</StyledHeader>
+	)
 }

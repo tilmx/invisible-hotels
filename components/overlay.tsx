@@ -65,8 +65,8 @@ export const Overlay: FunctionComponent<OverlayProps> = props => {
                 <OutsideClick onOutsideClick={props.onOutsideClick}>
                     <StyledMessage>
                         <Cookie />
-                        <Text size={TextSize.Regular} bold>{props.headline}</Text>
-                        <Text size={TextSize.Small}>{props.description}</Text>
+                        <Text size={TextSize.Large} bold>{props.headline}</Text>
+                        <Text size={TextSize.Regular}>{props.description}</Text>
                         <StyledButtonList>
                             {props.children}
                         </StyledButtonList>

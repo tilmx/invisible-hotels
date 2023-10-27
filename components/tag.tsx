@@ -31,7 +31,7 @@ export const Tag: FunctionComponent<{ icon?: ReactNode; label?: string; children
 		<StyledTag hasIcon={typeof props.icon !== 'undefined'} hasLabel={typeof props.label !== 'undefined'} onClick={props.onClick} className={props.className}>
 			{props.icon}
 			{props.label &&
-				<Text size={TextSize.Small}>{props.label}</Text>
+				<Text size={TextSize.Regular}>{props.label}</Text>
 			}
 			{props.children}
 		</StyledTag>

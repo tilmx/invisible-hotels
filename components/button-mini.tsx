@@ -36,7 +36,7 @@ export const ButtonMini: FunctionComponent<{ icon?: ReactNode; children?: ReactN
 	return (
 		<StyledButton href={props.url} target='_blank'>
 			{props.icon}
-			<Text size={TextSize.Small}>
+			<Text size={TextSize.Regular}>
 				{props.children}
 			</Text>
 		</StyledButton>

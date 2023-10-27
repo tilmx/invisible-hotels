@@ -1,14 +1,9 @@
 import styled from '@emotion/styled'
-import { Breakpoint, Color, Size } from './tokens';
+import { Color, Size } from './tokens';
 import { FunctionComponent } from 'react';
 
 const StyledLogoWrapper = styled.div`
-	padding-top: ${Size.XXXXL};
 	padding-bottom: ${Size.XL};
-
-	${Breakpoint.Mobile} {
-		padding-top: ${Size.XXXL};
-	}
 
 	svg {
 		overflow: visible;

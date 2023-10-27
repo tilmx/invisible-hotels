@@ -24,7 +24,7 @@ const StyledButton = styled.div`
 export const Button: FunctionComponent<{ children?: ReactNode; onClick?: MouseEventHandler; }> = props => {
     return (
         <StyledButton onClick={props.onClick}>
-            <Text center size={TextSize.Small}>
+            <Text center size={TextSize.Regular}>
                 {props.children}
             </Text>
         </StyledButton>

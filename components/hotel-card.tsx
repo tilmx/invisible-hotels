@@ -76,10 +76,10 @@ const StyledHeader = styled.div`
     position: relative;
 `;
 
-const StyledContent = styled.div<{ onImage: boolean }>`
+const StyledContent = styled.div<{ image: boolean }>`
     border-radius: ${Size.S};
     padding: ${Size.XS} ${Size.S};
-    color: ${props => props.onImage && Color.BackgroundAlways};
+    color: ${props => props.image && Color.BackgroundAlways};
     height: 100%;
     box-sizing: border-box;
     display: flex;
@@ -151,16 +151,16 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank">
             <StyledHeader>
-                <StyledContent onImage={typeof props.image !== 'undefined'}>
+                <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
-                        <Text size={TextSize.Large} bold>
+                        <Text size={TextSize.SuperLarge} bold>
                             {props.title}
                         </Text>
                         <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
                             <Star />
                         </StyledStarArea>
                     </Flex>
-                    <Text serif>
+                    <Text size={TextSize.Large} serif>
                         {props.location}
                     </Text>
                 </StyledContent>
