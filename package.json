@@ -7,7 +7,7 @@
     "build": "node ./data/fetch-images.mjs && next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch-content": "node ./data/fetch-content.mjs",
+    "fetch-content": "node ./data/fetch-content.mjs && node ./data/fetch-images.mjs",
     "fetch-images": "node ./data/fetch-images.mjs"
   },
   "dependencies": {

@@ -144,6 +144,11 @@
     "housingType": "Hotel",
     "vacationType": "Mountains",
     "visited": true,
+    "image": {
+      "url": "rec1JMFQkwiXoae6q.jpg",
+      "width": 800,
+      "height": 800
+    },
     "links": {
       "bookingCom": "https://www.booking.com/hotel/at/sepp-alpine-boutique.html"
     }
