@@ -76,7 +76,7 @@ const StyledText = styled.div<TextProps>`
         ${props.bold && 'letter-spacing: -.02em'};
 
         ${Breakpoint.Mobile} {
-            font-size: 20px;
+            font-size: 24px;
         }
     `}
 

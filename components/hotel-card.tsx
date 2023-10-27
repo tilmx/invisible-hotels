@@ -70,7 +70,12 @@ const StyledContent = styled.div<{ onImage: boolean; }>`
     gap: ${Size.XXS};
     z-index: 1;
     position: relative;
+    word-break: break-word;
     ${props => props.onImage && `color: ${Color.Background};`}
+
+    ${Breakpoint.Mobile} {
+        gap: ${Size.XXXS};
+    }
 `;
 
 const StyledTagList = styled.div`
@@ -140,7 +145,9 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>
-                        <Image fill src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" />
+                        <div style={{ position: 'relative', height: '100%' }}>
+                            <Image fill src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" style={{ objectFit: 'cover' }} />
+                        </div>
                     </StyledImageContainer>
                 }
             </StyledHeader>
