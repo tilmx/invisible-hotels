@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${Color.Text50};
+    background: ${Color.Shadow};
 `;
 
 const StyledMessage = styled.div`

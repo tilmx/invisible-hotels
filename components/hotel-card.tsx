@@ -28,7 +28,7 @@ interface HotelCardProps {
 }
 
 const StyledCard = styled.a<{ color?: string; }>`
-    color: inherit;
+    color: ${Color.TextAlways}; 
     text-decoration: none;
     background: ${props => props.color};
     padding: ${Size.XXS};
@@ -75,9 +75,10 @@ const StyledHeader = styled.div`
     position: relative;
 `;
 
-const StyledContent = styled.div<{ onImage: boolean; }>`
+const StyledContent = styled.div<{ onImage: boolean }>`
     border-radius: ${Size.S};
     padding: ${Size.XS} ${Size.S};
+    color: ${props => props.onImage && Color.BackgroundAlways};
     height: 100%;
     box-sizing: border-box;
     display: flex;
@@ -86,7 +87,6 @@ const StyledContent = styled.div<{ onImage: boolean; }>`
     z-index: 1;
     position: relative;
     word-break: break-word;
-    ${props => props.onImage && `color: ${Color.Background};`}
 
     ${Breakpoint.Mobile} {
         gap: ${Size.XXXS};
@@ -118,7 +118,8 @@ const StyledImageContainer = styled.div`
         left: 0;
         width: 100%;
         height: 50%;
-        background: linear-gradient(${Color.Text50}, transparent);
+        background: linear-gradient(${Color.TextAlways}, transparent);
+        opacity: .5;
     }
 `;
 
