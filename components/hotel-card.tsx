@@ -29,7 +29,7 @@ const StyledCard = styled.a<{ color?: string; }>`
     background: ${props => props.color};
     padding: ${Size.XXS};
     border-radius: ${Size.M};
-    min-height: 360px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     gap: ${Size.XXXS};
@@ -97,10 +97,6 @@ const StyledImageContainer = styled.div`
     }
 `;
 
-const StyledImage = styled(Image)`
-    border-radius: ${Size.S};
-`;
-
 const StyledStarArea = styled.div<{ starred: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
@@ -111,7 +107,7 @@ const StyledStarArea = styled.div<{ starred: boolean; }>`
     }
     svg {
         display: block;
-        ${props => props.starred && `fill: ${Color.Text}`};
+        ${props => props.starred && `fill: currentColor`};
     }
 
     :hover {
@@ -139,7 +135,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>
-                        <StyledImage fill src={props.image} alt="Picture of Hotel" />
+                        <Image fill src={props.image} alt="Picture of Hotel" />
                     </StyledImageContainer>
                 }
             </StyledHeader>
