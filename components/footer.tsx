@@ -7,7 +7,7 @@ import { AlignItems, Flex, ExternalLink } from './utils';
 import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
-import { checkIfCookiesAllowed } from '../utils';
+import { Trash2 } from 'lucide-react';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -58,7 +58,7 @@ export const Footer: FunctionComponent = () => {
                     description='When opting out from cookies all your favorites are cleared'
                     onOutsideClick={() => setShowCookieOptOut(false)}
                 >
-                    <Button onClick={() => {
+                    <Button iconLeft={<Trash2 />} onClick={() => {
                         window.localStorage.clear();
                         setShowCookieOptOut(false);
                         location.reload()
@@ -74,11 +74,9 @@ export const Footer: FunctionComponent = () => {
                     <ExternalLink link='https://tilman.io/legal/privacy-policy'>
                         <Text size={TextSize.Regular}>Privacy Policy</Text>
                     </ExternalLink>
-                    {checkIfCookiesAllowed() &&
-                        <ExternalLink onClick={() => setShowCookieOptOut(true)}>
-                            <Text size={TextSize.Regular}>Cookie Opt-out</Text>
-                        </ExternalLink>
-                    }
+                    <ExternalLink onClick={() => setShowCookieOptOut(true)}>
+                        <Text size={TextSize.Regular}>Cookie Opt-out</Text>
+                    </ExternalLink>
                     <StyledGithubLink link='https://github.com/tilmx/invisible-hotels'>
                         <Flex alignItems={AlignItems.Center} gap={Size.XXS}>
                             <svg width="98" height="96" viewBox='0 0 98 96' xmlns="http://www.w3.org/2000/svg">

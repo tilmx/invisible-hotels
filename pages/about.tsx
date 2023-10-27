@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { Breakpoint, Color, Size } from '../components/tokens';
 import AboutPicture from '../public/images/about.jpg'
 import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Flex, Link } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
@@ -90,7 +90,7 @@ export default function About() {
                     </StyledParagraph>
                     <Flex>
                         <Link href='/'>
-                            <Button>Explore Hotels</Button>
+                            <Button iconRight={<ArrowRight />}>Explore Hotels</Button>
                         </Link>
                     </Flex>
                 </StyledWrapper>

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Check, Send, Star } from 'lucide-react';
+import { Check, Send, Star, X } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, getVacationTypeIcon, saveToLocalStorage, setCookieOptIn } from '../utils';
@@ -108,6 +108,11 @@ const StyledCountrySelect = styled(CountrySelect)`
     }
 `;
 
+const StyledButtonWrapper = styled.a`
+    color: inherit;
+    text-decoration: inherit;
+`;
+
 export const HotelList: FunctionComponent = () => {
     const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
     const [vacationFilter, setVacationFilter] = useState<string | undefined>();
@@ -146,12 +151,12 @@ export const HotelList: FunctionComponent = () => {
                         setStarredHotels([]);
                     }}
                 >
-                    <Button icon={<Check />} onClick={() => {
+                    <Button iconLeft={<Check />} onClick={() => {
                         setCookieOptIn();
                         saveStarredHotelsToLocalStorage(starredHotels);
                         setCookieOptOverlayVisible(false);
                     }}>Yes, sure</Button>
-                    <Button icon="X" onClick={() => {
+                    <Button iconLeft={<X />} onClick={() => {
                         setCookieOptOverlayVisible(false);
                         // clear list immediately if cookies not accepted
                         setStarredHotels([]);
@@ -230,8 +235,9 @@ export const HotelList: FunctionComponent = () => {
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Regular}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-
-                        <Button icon={<Send />} small secondary>Send E-Mail</Button>
+                        <StyledButtonWrapper href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
+                            <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
+                        </StyledButtonWrapper>
                     </StyledPlaceholderCard>
                 </StyledGrid>
             </Wrapper>
