@@ -118,7 +118,7 @@ const StyledImageContainer = styled.div`
         left: 0;
         width: 100%;
         height: 50%;
-        background: linear-gradient(${Color.TextAlways}, transparent);
+        background: linear-gradient(${Color.TextAlways} 30%, transparent);
         opacity: .5;
     }
 `;
