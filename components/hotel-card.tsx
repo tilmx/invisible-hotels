@@ -5,6 +5,8 @@ import { Text, TextSize } from './text';
 import { getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
 import Image from 'next/image';
+import { Star } from 'lucide-react';
+import { AlignItems, Flex, JustifyContent } from './utils';
 
 interface HotelCardProps {
     title: string;
@@ -31,6 +33,18 @@ const StyledCard = styled.a<{ color?: string; }>`
     display: flex;
     flex-direction: column;
     gap: ${Size.XXXS};
+    transition: transform .2s, box-shadow .2s;
+    transform: translate3d(0,0,0);
+
+    @media (hover: hover) {
+        :hover {
+            transform: scale(1.03);
+            box-shadow: 0 ${Size.S} ${Size.XXXL} ${Color.Shadow}, 0 ${Size.XXXS} ${Size.S} ${Color.Shadow};
+            [data-stararea] {
+                visibility: visible;
+            } 
+        }
+    }
 
     ${Breakpoint.TabletSmall} {
         min-height: 280px;
@@ -87,14 +101,38 @@ const StyledImage = styled(Image)`
     border-radius: ${Size.S};
 `;
 
+const StyledStarArea = styled.div<{ starred: boolean; }>`
+    padding: ${Size.XS};
+    margin-top: -${Size.XXS};
+    margin-right: -${Size.XS};
+    border-radius: 50%;
+    @media (hover: hover) {
+       visibility: ${props => props.starred ? 'visible' : 'hidden'};
+    }
+    svg {
+        display: block;
+        ${props => props.starred && `fill: ${Color.Text}`};
+    }
+
+    :hover {
+        background: ${Color.Text20};
+    }
+`;
+
+
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
         <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank">
             <StyledHeader>
                 <StyledContent onImage={typeof props.image !== 'undefined'}>
-                    <Text size={TextSize.Large} bold>
-                        {props.title}
-                    </Text>
+                    <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
+                        <Text size={TextSize.Large} bold>
+                            {props.title}
+                        </Text>
+                        <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
+                            <Star />
+                        </StyledStarArea>
+                    </Flex>
                     <Text serif>
                         {props.location}
                     </Text>
