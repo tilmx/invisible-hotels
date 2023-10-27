@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, ButtonMini, getVacationTypeIcon, HotelCard, Button } from '../components';
+import { Breakpoint, Color, Filter, Flex, AlignItems, CountrySelect, Size, Text, TextSize, Wrapper, CountrySelectFlyout, OutsideClick, PlaceholderCard, ButtonMini, HotelCard, Button } from '../components';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { ArrowRight, Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
-import { checkIfCookiesAllowed, saveToLocalStorage, setCookieOptIn } from '../utils';
+import { checkIfCookiesAllowed, getVacationTypeIcon, saveToLocalStorage, setCookieOptIn } from '../utils';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -203,6 +203,7 @@ export const HotelList: FunctionComponent = () => {
                                     bookingCom: hotel.links.bookingCom,
                                     hotel: hotel.links.hotel
                                 }}
+                                image={hotel.image}
                                 starred={starred}
                                 onStarClick={e => {
                                     e.preventDefault();

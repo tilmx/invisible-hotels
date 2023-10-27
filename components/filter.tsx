@@ -1,8 +1,8 @@
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import styled from "@emotion/styled";
-import { getVacationTypeColor } from "./hotel-card";
 import { Tag } from "./tag";
 import { Color } from "./tokens";
+import { getVacationTypeColor } from "../utils";
 
 interface FilterProps {
     label?: string;

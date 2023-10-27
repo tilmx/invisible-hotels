@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
 import { DM_Sans, EB_Garamond } from "next/font/google"
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import { Color } from './tokens';
 
 interface TextProps {
     size?: TextSize;
@@ -51,7 +52,7 @@ const StyledText = styled.div<TextProps>`
     `}
 
     ${props => props.size === TextSize.Large && `
-        font-size: 48px;
+        font-size: 44px;
         line-height: 1;
         letter-spacing: -.02em;
 
@@ -69,13 +70,13 @@ const StyledText = styled.div<TextProps>`
     `}
 
     ${props => props.size === TextSize.Regular && `
-        font-size: 36px;
+        font-size: 32px;
         line-height: 1;
 
-        ${props.bold && 'letter-spacing: -.02em;'}
+        ${props.bold && 'letter-spacing: -.02em'};
 
         ${Breakpoint.Mobile} {
-            font-size: 24px;
+            font-size: 20px;
         }
     `}
 
