@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Breakpoint, Color, Size } from './tokens';
 import { FunctionComponent, ReactNode } from 'react';
-import { Text, TextSize } from './text';
 
 interface PlaceholderCardProps {
     children?: ReactNode;

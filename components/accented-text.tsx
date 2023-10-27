@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
-import { Color } from "./tokens";
 
 export enum AccentStyle {
 	Circled,

@@ -1,4 +1,4 @@
-import { FunctionComponent, MouseEventHandler, useState } from "react";
+import { FunctionComponent, MouseEventHandler } from "react";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { Breakpoint, Color, Size } from "./tokens";
