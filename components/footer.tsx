@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { FunctionComponent, useState } from 'react';
 import { Overlay } from './overlay';
 import { Breakpoint } from './tokens';
-import { AlignItems, Flex, Link } from './utils';
+import { AlignItems, Flex, ExternalLink } from './utils';
 import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
@@ -32,7 +32,7 @@ const StyledFooterList = styled(Flex)`
     }
 `;
 
-const StyledGithubLink = styled(Link)`
+const StyledGithubLink = styled(ExternalLink)`
     margin-left: auto;
     svg {
         height: 24px;
@@ -68,16 +68,16 @@ export const Footer: FunctionComponent = () => {
             }
             <Wrapper>
                 <StyledFooterList>
-                    <Link link='https://tilman.io/legal/sites-notice'>
+                    <ExternalLink link='https://tilman.io/legal/sites-notice'>
                         <Text size={TextSize.Regular}>Site’s notice</Text>
-                    </Link>
-                    <Link link='https://tilman.io/legal/privacy-policy'>
+                    </ExternalLink>
+                    <ExternalLink link='https://tilman.io/legal/privacy-policy'>
                         <Text size={TextSize.Regular}>Privacy Policy</Text>
-                    </Link>
+                    </ExternalLink>
                     {checkIfCookiesAllowed() &&
-                        <Link onClick={() => setShowCookieOptOut(true)}>
+                        <ExternalLink onClick={() => setShowCookieOptOut(true)}>
                             <Text size={TextSize.Regular}>Cookie Opt-out</Text>
-                        </Link>
+                        </ExternalLink>
                     }
                     <StyledGithubLink link='https://github.com/tilmx/invisible-hotels'>
                         <Flex alignItems={AlignItems.Center} gap={Size.XXS}>

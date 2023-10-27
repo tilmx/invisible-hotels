@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import { FunctionComponent } from "react";
-import { AlignItems, Flex } from "./utils";
+import { AlignItems, Flex, Link } from "./utils";
 import { Text, TextSize } from "./text";
 import { Color, Size } from "./tokens";
-import Link from 'next/link';
 import { useRouter } from "next/router";
 
 const StyledMenu = styled(Flex)`
@@ -21,11 +20,6 @@ export const Menu: FunctionComponent = () => {
     )
 }
 
-const StyledLink = styled(Link)`
-text-decoration: none;
-color: inherit;
-`;
-
 const StyledMenuItem = styled.div <{ active: boolean; }>`
     padding: ${Size.XXS} ${Size.XS};
     border-radius: ${Size.S};
@@ -39,10 +33,10 @@ const StyledMenuItem = styled.div <{ active: boolean; }>`
 
 const MenuItem: FunctionComponent<{ label: string; link: string; }> = props => {
     return (
-        <StyledLink href={props.link}>
+        <Link href={props.link}>
             <StyledMenuItem active={useRouter().pathname === props.link}>
                 <Text size={TextSize.Regular}>{props.label}</Text>
             </StyledMenuItem>
-        </StyledLink>
+        </Link>
     )
 }

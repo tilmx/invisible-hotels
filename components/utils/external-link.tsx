@@ -19,7 +19,7 @@ const StyledLink = styled.a`
     }
 `;
 
-export const Link: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; onClick?: MouseEventHandler; }> = props => {
+export const ExternalLink: FunctionComponent<{ link?: string; children?: ReactNode; className?: string; onClick?: MouseEventHandler; }> = props => {
     return (
         <StyledLink href={props.link} target="_blank" className={props.className} onClick={props.onClick}>
             {props.children}
