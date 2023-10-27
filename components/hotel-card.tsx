@@ -60,7 +60,8 @@ const StyledCard = styled.a<{ color?: string; }>`
             width: 100%;
             top: 0;
             left: 0;
-            background: ${Color.Text20};
+            background: ${Color.TextAlways};
+            opacity: .1;
             pointer-events: none;
         }
     }
@@ -131,7 +132,7 @@ const StyledStarArea = styled.div<{ starred: boolean; }>`
     @media (hover: hover) {
        visibility: ${props => props.starred ? 'visible' : 'hidden'};
        :hover {
-            background: ${Color.Text20};
+            background: ${Color.Text10};
             backdrop-filter: blur(${Size.XXS});
         }
     }
@@ -178,7 +179,3 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
         </StyledCard>
     )
 }
-
-/*
-            
-*/
