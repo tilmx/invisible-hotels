@@ -39,6 +39,7 @@ const StyledCard = styled.a<{ color?: string; }>`
     gap: ${Size.XXXS};
     transition: transform .2s, box-shadow .2s;
     transform: translate3d(0,0,0);
+    overflow: hidden;
 
     @media (hover: hover) {
         :hover {
@@ -47,6 +48,20 @@ const StyledCard = styled.a<{ color?: string; }>`
             [data-stararea] {
                 visibility: visible;
             } 
+        }
+    }
+
+    :active {
+        :after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: ${Color.Text20};
+            pointer-events: none;
         }
     }
 
@@ -93,6 +108,7 @@ const StyledImageContainer = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    backgroud: ${Color.Shadow};
 
     &:after {
         content: '';
