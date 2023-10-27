@@ -16,6 +16,7 @@ interface TextProps {
 
 export enum TextSize {
     Huge,
+    ExtraLarge,
     SuperLarge,
     Large,
     Regular
@@ -47,6 +48,20 @@ const StyledText = styled.div<TextProps>`
 
         ${Breakpoint.MobileSmall} {
             font-size: 40px;
+        }
+    `}
+
+    ${props => props.size === TextSize.ExtraLarge && `
+        font-size: 64px;
+        line-height: 1.1;
+        letter-spacing: -.02em;
+
+        ${Breakpoint.Tablet} {
+            font-size: 48px;
+        }
+
+        ${Breakpoint.Mobile} {
+            font-size: 36px;
         }
     `}
 

@@ -7,9 +7,9 @@ export enum AccentStyle {
 	Underlined
 }
 
-const StyledSpan = styled.span<{ color: string; }>`
+const StyledSpan = styled.span<{ color: string; italic?: boolean; }>`
 	color: ${props => props.color};
-	font-style: italic;
+	${props => props.italic && 'font-style: italic;'}
 	position: relative;
 	display: inline-block;
 	transition: color .1s;
@@ -18,7 +18,7 @@ const StyledSpan = styled.span<{ color: string; }>`
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: auto;
+		width: 100%;
 		height: 100%;
 		opacity: .3;
 		pointer-events: none;
@@ -26,9 +26,9 @@ const StyledSpan = styled.span<{ color: string; }>`
 	}
 `;
 
-export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; color: string; children?: ReactNode; onMouseEnter?: MouseEventHandler; onMouseOut?: MouseEventHandler }> = props => {
+export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; italic?: boolean; color: string; children?: ReactNode; onMouseEnter?: MouseEventHandler; onMouseOut?: MouseEventHandler }> = props => {
 	return (
-		<StyledSpan color={props.color} onMouseEnter={props.onMouseEnter} onMouseOut={props.onMouseOut} >
+		<StyledSpan italic={props.italic} color={props.color} onMouseEnter={props.onMouseEnter} onMouseOut={props.onMouseOut} >
 			{props.children}
 			{props.accentStyle === AccentStyle.Circled &&
 				<svg width="435" height="96" viewBox="0 0 435 96" fill="none" xmlns="http://www.w3.org/2000/svg">

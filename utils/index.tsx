@@ -2,7 +2,9 @@ import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { Color } from '../components/tokens';
 
 export function checkIfCookiesAllowed() {
-    return window.localStorage.getItem('cookies-allowed') === 'true';
+    if (typeof window !== "undefined") {
+        return window.localStorage.getItem('cookies-allowed') === 'true';
+    }
 }
 
 export function setCookieOptIn() {
