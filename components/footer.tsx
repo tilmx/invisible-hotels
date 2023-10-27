@@ -8,6 +8,7 @@ import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { Trash2 } from 'lucide-react';
+import { Share } from './share';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -67,6 +68,7 @@ export const Footer: FunctionComponent = () => {
                 </Overlay>
             }
             <Wrapper>
+                <Share />
                 <StyledFooterList>
                     <ExternalLink link='https://tilman.io/legal/sites-notice'>
                         <Text size={TextSize.Regular}>Site’s notice</Text>
