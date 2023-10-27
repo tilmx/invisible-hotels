@@ -25,6 +25,7 @@ export const Share: FunctionComponent = () => {
                 text: 'Check out our personal list of lovely, minimalistic and fancy hotels & apartments',
                 url: 'https://invisible-hotels.com/',
             })
+                .catch((error) => console.log('Something went wrong with sharing: ', error));
         }
     }
 
