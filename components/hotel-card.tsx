@@ -14,7 +14,11 @@ interface HotelCardProps {
     housingType: string;
     vacationType: string;
     visited?: boolean;
-    image?: string;
+    image?: {
+        url: string;
+        width: number;
+        height: number;
+    };
     links?: {
         bookingCom?: string;
         hotel?: string;
@@ -104,15 +108,16 @@ const StyledStarArea = styled.div<{ starred: boolean; }>`
     border-radius: 50%;
     @media (hover: hover) {
        visibility: ${props => props.starred ? 'visible' : 'hidden'};
+
+       :hover {
+            background: ${Color.Text20};
+            backdrop-filter: blur(${Size.XXS});
+        }
     }
     svg {
         display: block;
         ${props => props.starred && `fill: currentColor`};
-    }
-
-    :hover {
-        background: ${Color.Text20};
-    }
+    }    
 `;
 
 
@@ -135,7 +140,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>
-                        <Image fill src={props.image} alt="Picture of Hotel" />
+                        <Image fill src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" />
                     </StyledImageContainer>
                 }
             </StyledHeader>

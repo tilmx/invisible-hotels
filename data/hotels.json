@@ -103,6 +103,11 @@
     "housingType": "Hotel",
     "vacationType": "City",
     "visited": true,
+    "image": {
+      "url": "recUBFpiLzp3oeR0U.jpg",
+      "width": 800,
+      "height": 800
+    },
     "links": {
       "bookingCom": "https://www.booking.com/hotel/de/25hours-the-circle.html"
     }

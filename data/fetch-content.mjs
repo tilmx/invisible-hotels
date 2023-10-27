@@ -3,6 +3,7 @@ import Airtable from 'airtable';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import http from 'https';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
 
@@ -13,11 +14,26 @@ Airtable.configure({
 const base = new Airtable.base(process.env.AIRTABLE_BASE);
 const savedRecords = [];
 
+function downloadImage(remoteUrl, fileName) {
+    const imageFolder = './public/images/hotels/'
+    if (!fs.existsSync(imageFolder)) {
+        fs.mkdirSync(imageFolder, { recursive: true });
+    }
+    const file = fs.createWriteStream(imageFolder + fileName + '.jpg');
+    http.get(remoteUrl, function (response) {
+        response.pipe(file);
+    });
+}
+
 base('Curated List').select({
     view: "Grid view"
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
         if (record.get('Online')) {
+            if (record.get('Image')?.length > 0 && record.get('Image')[0].type === 'image/jpeg') {
+                downloadImage(record.get('Image')[0].url, record.getId())
+            }
+
             savedRecords.push({
                 id: record.getId(),
                 name: record.get('Name'),
@@ -26,6 +42,11 @@ base('Curated List').select({
                 housingType: record.get('Housing Type'),
                 vacationType: record.get('Vacation Type'),
                 visited: record.get('Last Visit') ? true : false,
+                image: record.get('Image')?.length > 0 ? {
+                    url: record.getId() + '.jpg',
+                    width: record.get('Image')[0].width,
+                    height: record.get('Image')[0].height
+                } : undefined,
                 links: {
                     bookingCom: record.get('Link (Booking.com)'),
                     hotel: record.get('Link (Hotel)')
@@ -53,3 +74,4 @@ base('Curated List').select({
     );
     console.log('done,', savedRecords)
 });
+

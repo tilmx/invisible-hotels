@@ -203,7 +203,7 @@ export const HotelList: FunctionComponent = () => {
                                     bookingCom: hotel.links.bookingCom,
                                     hotel: hotel.links.hotel
                                 }}
-                                // image={hotel.image}
+                                image={hotel.image}
                                 starred={starred}
                                 onStarClick={e => {
                                     e.preventDefault();
