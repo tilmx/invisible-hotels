@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Color, Theme } from '../components';
+import { Color, Theme } from '../components/tokens';
 import PlausibleProvider from 'next-plausible';
 
 function App({ Component, pageProps }: AppProps) {

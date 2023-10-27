@@ -1,5 +1,5 @@
-import { Hotel, MountainSnow, Star, TreeDeciduous, Waves } from 'lucide-react';
-import { Color } from '../components';
+import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
+import { Color } from '../components/tokens';
 
 export function checkIfCookiesAllowed() {
     return window.localStorage.getItem('cookies-allowed') === 'true';
