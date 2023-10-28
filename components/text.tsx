@@ -19,7 +19,8 @@ export enum TextSize {
     ExtraLarge,
     SuperLarge,
     Large,
-    Regular
+    Regular,
+    Small
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
@@ -102,6 +103,11 @@ const StyledText = styled.div<TextProps>`
             font-size: 17px;
             line-height: 20px;
         }
+    `}
+
+    ${props => props.size === TextSize.Small && `
+        font-size: 14px;
+        line-height: 1;
     `}
 
     ${props => props.bold && `
