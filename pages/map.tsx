@@ -107,7 +107,7 @@ export default function Map() {
                 mapExists.current = false;
             }
         };
-    }, [mapCookiesAllowed])
+    }, [mapCookiesAllowed, darkMode])
 
     return (
         <>
