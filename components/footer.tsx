@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { FunctionComponent, useState } from 'react';
 import { Overlay } from './overlay';
 import { Breakpoint, Color } from './tokens';
-import { AlignItems, Flex, Link } from './utils';
+import { Flex, Link } from './utils';
 import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';

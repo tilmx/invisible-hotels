@@ -8,10 +8,21 @@ import { BackButton } from '../../components/back-button';
 const StyledWrapper = styled.div`
     max-width: 800px;
     margin: 0 auto;
+`;
+
+const StyledIntro = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${Size.XL};
+    gap: ${Size.M};
 `;
+
+const StyledContent = styled.div`
+    margin-top: ${Size.XL};
+    display: flex;
+    flex-direction: column;
+    gap: ${Size.XXS};
+`;
+
 
 export default function SitesNotice() {
     return (
@@ -23,13 +34,21 @@ export default function SitesNotice() {
             </Head>
             <Header>
                 <StyledWrapper>
-                    <BackButton label="Back to home" href="/" />
-                    <Text size={TextSize.ExtraLarge} serif>
-                        Site’s notice
-                    </Text>
-                    <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS}</Text>
-                    <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}</Text>
-                    <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_PHONE}</Text>
+                    <StyledIntro>
+
+                        <BackButton label="Back to home" href="/" />
+                        <Text size={TextSize.ExtraLarge} serif>
+                            Site’s notice
+                        </Text>
+                    </StyledIntro>
+                    <StyledContent>
+                        {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS?.split(', ').map((text, i) =>
+                            <Text size={TextSize.Large} serif key={i}>{text}</Text>
+                        )}
+                        <br />
+                        <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}</Text>
+                        <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_PHONE}</Text>
+                    </StyledContent>
                 </StyledWrapper>
             </Header>
         </>
