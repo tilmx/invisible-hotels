@@ -45,23 +45,14 @@ function loadMap(token: string): Promise<void> {
     return loadingMapPromise;
 }
 
-function calloutForLandmarkAnnotation(annotation: mapkit.Annotation) {
-    var div = document.createElement("div");
-    div.className = "landmark";
-
-    var title = div.appendChild(document.createElement("h1"));
-    title.textContent = annotation.data.id || 'test';
-
-    return div;
-}
-
 export default function Map() {
     const [map, setMap] = useState<mapkit.Map | null>(null);
     const element = useRef<HTMLDivElement>(null);
     const mapExists = useRef(false);
-    const calloutElement = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (mapExists.current) return;
+
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
             if (mapExists.current) return;
             setMap(new mapkit.Map(element.current!, {
@@ -81,17 +72,15 @@ export default function Map() {
     }, [])
 
     useEffect(() => {
-        if (!map) return;
+        if (!map || !mapExists.current) return;
         let annotations = hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
             if (hotel.coordinates.lat && hotel.coordinates.long) {
                 return new mapkit.MarkerAnnotation(
                     new mapkit.Coordinate(hotel.coordinates?.lat, hotel.coordinates?.long),
                     {
-                        data: { id: hotel.id },
-                        callout: {
-                            calloutElementForAnnotation: annotation => calloutForLandmarkAnnotation(annotation)
-                        },
+                        title: hotel.name,
                         color: getVacationTypeColor(hotel.vacationType),
+                        clusteringIdentifier: hotel.country,
                     }
                 );
             }
@@ -100,7 +89,6 @@ export default function Map() {
             map.showItems(annotations);
         }
     }, [map])
-
 
     return (
         <>
@@ -113,9 +101,6 @@ export default function Map() {
                     <StyledMenu />
                 </Wrapper>
             </StyledMenuContainer>
-            <div ref={calloutElement}>
-                CalloutElement
-            </div>
             <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>
         </>
     )
