@@ -9,8 +9,9 @@ import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { Trash2 } from 'lucide-react';
 import { checkIfCookiesAllowed } from '../utils';
+import { useRouter } from "next/router";
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
     padding-top: ${Size.XXXXXL};
     padding-bottom: ${Size.XXL};
 
@@ -22,6 +23,10 @@ const StyledFooter = styled.div`
         padding-top: ${Size.XXXL};
         padding-bottom: ${Size.L};
     }
+
+    ${props => props.reducedPadding && `
+        padding-top: ${Size.L};
+    `}
 `;
 
 const StyledFooterList = styled(Flex)`
@@ -94,7 +99,7 @@ export const Footer: FunctionComponent = () => {
     }
 
     return (
-        <StyledFooter>
+        <StyledFooter reducedPadding={useRouter().pathname === "/map"}>
             {showCookieOptOutOverlay &&
                 <Overlay
                     headline='Do you want to delete all favorites'

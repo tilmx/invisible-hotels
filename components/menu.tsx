@@ -36,13 +36,14 @@ const StyledDot = styled.div`
     border-radius: 50%;
 `;
 
-export const Menu: FunctionComponent = () => {
+export const Menu: FunctionComponent<{ className?: string }> = props => {
     return (
-        <StyledMenu alignItems={AlignItems.Center}>
+        <StyledMenu alignItems={AlignItems.Center} className={props.className}>
             <StyledDotLink href="/">
                 <StyledDot />
             </StyledDotLink>
             <MenuItem link="/" label="Hotels" />
+            <MenuItem link="/map" label="Map" />
             <MenuItem link="/about" label="About" />
         </StyledMenu>
     )
