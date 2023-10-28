@@ -9,7 +9,6 @@ import { ArrowRight } from 'lucide-react';
 import { Flex, Link } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
-import { BackButton } from '../components/back-button';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -51,7 +50,6 @@ export default function About() {
             </Head>
             <Header>
                 <StyledWrapper>
-                    <BackButton href="/" label="Back to home" />
                     <Text size={TextSize.ExtraLarge} serif>
                         Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We’re hotel lovers — we believe that a lovely hotel is the best start for any vacation.
                     </Text>

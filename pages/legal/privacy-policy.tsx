@@ -3,7 +3,6 @@ import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
 import { Size } from '../../components/tokens';
-import { BackButton } from '../../components/back-button';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -23,7 +22,6 @@ export default function PrivacyPolicy() {
             </Head>
             <Header>
                 <StyledWrapper>
-                    <BackButton label="Back to home" href="/" />
                     <Text size={TextSize.ExtraLarge} serif>
                         Privacy Policy
                     </Text>

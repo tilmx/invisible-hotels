@@ -6,14 +6,42 @@ import { Color, Size } from "./tokens";
 import { useRouter } from "next/router";
 
 const StyledMenu = styled(Flex)`
-    padding-bottom: ${Size.XXXXL};
-    gap: ${Size.XS};
-    margin-left: -${Size.S};
+    padding-top: ${Size.M};
+    padding-bottom: ${Size.XXXL};
+    gap: ${Size.XXXS};
+    align-items: center;
+`;
+
+const StyledDotLink = styled(Link)`
+    padding: ${Size.XS};
+    margin: -${Size.XS};
+    margin-right: auto;
+    border-radius: 50%;
+
+    @media (hover: hover) {
+        :hover {
+            background: ${Color.Text10};
+        }
+    }
+
+    &:active {
+        background: ${Color.Text20};
+    }
+`;
+
+const StyledDot = styled.div`
+    height: ${Size.M};
+    width: ${Size.M};
+    background: ${Color.Text};
+    border-radius: 50%;
 `;
 
 export const Menu: FunctionComponent = () => {
     return (
         <StyledMenu alignItems={AlignItems.Center}>
+            <StyledDotLink href="/">
+                <StyledDot />
+            </StyledDotLink>
             <MenuItem link="/" label="Hotels" />
             <MenuItem link="/about" label="About" />
         </StyledMenu>
@@ -21,13 +49,22 @@ export const Menu: FunctionComponent = () => {
 }
 
 const StyledMenuItem = styled.div <{ active: boolean; }>`
-    padding: ${Size.XXS} ${Size.XS};
+    padding: ${Size.XXS} ${Size.S};
     border-radius: ${Size.S};
+    color: ${Color.Text80};
+
+    ${props => props.active && `
+        background: ${Color.Text10};
+    `}
 
     @media (hover: hover) {
         :hover {
             background: ${Color.Text10};
         }
+    }
+
+    :active {
+        background: ${Color.Text20};
     }
 `;
 
