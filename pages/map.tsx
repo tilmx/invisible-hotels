@@ -29,8 +29,8 @@ const StyledMenu = styled(Menu)`
     padding-bottom: ${Size.M};
 `;
 
-const StyledCookieWrapper = styled(Wrapper)`
-    padding-top: ${Size.XXXXL};
+const StyledCookieContainer = styled.div`
+    padding: ${Size.XXXXXL} 0;
 `;
 
 
@@ -109,13 +109,16 @@ export default function Map() {
                 </Wrapper>
             </StyledMenuContainer>
             {!mapCookiesAllowed &&
-                <StyledCookieWrapper>
-                    <Box title='Accept cookies' description='To show the hotel map, you need to accept cookies.'>
-                        <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
-                    </Box>
-                </StyledCookieWrapper>
+                <Wrapper>
+                    <StyledCookieContainer>
+                        <Box title='Accept cookies' description='To show the hotel map, you need to accept a single cookie from Apple, because we use Apple Maps.'>
+                            <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
+                        </Box>
+                    </StyledCookieContainer>
+                </Wrapper>
             }
-            <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>
+            {mapCookiesAllowed && <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>}
+
         </>
     )
 }

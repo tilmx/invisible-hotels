@@ -3,6 +3,7 @@ import { Text, TextSize } from './text';
 import { Breakpoint, Color, Size } from './tokens';
 import { FunctionComponent, ReactNode } from 'react';
 import { CookieIcon } from 'lucide-react';
+import { Link } from './utils';
 
 const StyledMessage = styled.div`
     padding: ${Size.L};
@@ -40,6 +41,7 @@ export const Box: FunctionComponent<{ title: string; description: string; childr
 			<CookieIcon />
 			<Text size={TextSize.Large} bold>{props.title}</Text>
 			<Text size={TextSize.Regular}>{props.description}</Text>
+			<Text size={TextSize.Small} color={Color.Text50}>Find out more in our <Link href="legal/privacy-policy">privacy policy</Link>.</Text>
 			<StyledButtonList>
 				{props.children}
 			</StyledButtonList>
