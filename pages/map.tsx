@@ -54,19 +54,8 @@ export default function Map() {
 
     const [darkMode, setDarkMode] = useState(false);
 
-    const onChangeDarkMode = (mode: boolean) => {
-        setDarkMode(mode);
-        if (map) {
-            map.colorScheme = mode ? mapkit.Map.ColorSchemes.Dark : mapkit.Map.ColorSchemes.Light;
-        }
-    }
-
     useEffect(() => {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => onChangeDarkMode(e.matches));
         setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
-        return () => {
-            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', e => onChangeDarkMode(e.matches));
-        }
     }, []);
 
     useEffect(() => {
