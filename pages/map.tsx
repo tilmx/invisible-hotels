@@ -118,7 +118,6 @@ export default function Map() {
             <StyledMenuContainer>
                 <Wrapper>
                     <Menu flying />
-                    {darkMode ? 'dark' : 'light'}
                 </Wrapper>
             </StyledMenuContainer>
             {!mapCookiesAllowed &&

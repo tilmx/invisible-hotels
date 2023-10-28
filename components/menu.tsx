@@ -20,10 +20,10 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
         border-radius: ${Size.XL};
         box-shadow: 0 0 ${Size.L} ${Color.Shadow};
 
-        ${Breakpoint.Mobile && `
+        ${Breakpoint.Mobile} {
             padding: ${Size.XS} ${Size.S};
             margin: ${Size.XS} -${Size.S} 0;
-        `}
+        }
     `}
 `;
 
