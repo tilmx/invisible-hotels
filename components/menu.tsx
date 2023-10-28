@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { FunctionComponent } from "react";
 import { AlignItems, Flex, Link } from "./utils";
 import { Text, TextSize } from "./text";
-import { Color, Size } from "./tokens";
+import { Color, Size, Breakpoint } from "./tokens";
 import { useRouter } from "next/router";
 
 const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
@@ -17,8 +17,13 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
 
         backdrop-filter: blur(${Size.XS});
         background: ${Color.Background80};
-        border-radius: ${Size.M};
+        border-radius: ${Size.XL};
         box-shadow: 0 0 ${Size.L} ${Color.Shadow};
+
+        ${Breakpoint.Mobile && `
+            padding: ${Size.XS} ${Size.S};
+            margin: ${Size.XS} -${Size.S} 0;
+        `}
     `}
 `;
 
@@ -53,7 +58,7 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
                 <StyledDot />
             </StyledDotLink>
             <MenuItem link="/" label="Hotels" />
-            {/*<MenuItem link="/map" label="Map" />*/}
+            <MenuItem link="/map" label="Map" />
             <MenuItem link="/about" label="About" />
         </StyledMenu>
     )

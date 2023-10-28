@@ -63,6 +63,7 @@ export default function Map() {
                 showsMapTypeControl: false,
                 isRotationEnabled: false,
                 showsPointsOfInterest: false,
+                mapType: 'mutedStandard',
                 annotationForCluster(annotation) {
                     (annotation as any).color = 'black';
                     return annotation;
