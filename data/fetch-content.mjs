@@ -37,6 +37,10 @@ base('Curated List').select({
                 housingType: record.get('Housing Type'),
                 vacationType: record.get('Vacation Type'),
                 visited: record.get('Last Visit') ? true : false,
+                coordinates: record.get('Coordinates') ? {
+                    lat: Number(record.get('Coordinates').split(', ')[0]),
+                    long: Number(record.get('Coordinates').split(', ')[1])
+                } : undefined,
                 image: record.get('Image')?.length > 0 ? {
                     url: record.getId() + '.jpg',
                     width: record.get('Image')[0].width,
