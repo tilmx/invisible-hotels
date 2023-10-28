@@ -27,12 +27,17 @@ const StyledHeader = styled.div`
 	}
 `;
 
+const StyledWrapper = styled(Wrapper)`
+	position: relative;
+	z-index: 15;
+`;
+
 export const Header: FunctionComponent<{ children?: ReactNode }> = props => {
 	return (
 		<StyledHeader>
-			<Wrapper style={{ position: 'relative', zIndex: 1 }}>
+			<StyledWrapper>
 				{props.children}
-			</Wrapper>
+			</StyledWrapper>
 		</StyledHeader>
 	)
 }

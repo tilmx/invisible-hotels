@@ -8,7 +8,6 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     position: fixed;
     left: 50%;
     bottom: ${Size.XL};
-    z-index: 15;
     height: ${Size.XL};
     width: ${Size.XL};
     border-radius: 50%;
