@@ -3,11 +3,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import { Size } from '../components/tokens';
+import { Breakpoint, Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { getVacationTypeColor } from '../utils';
 import { Button } from '../components/button';
 import { Box } from '../components/box';
+import { HotelCard } from '../components/hotel-card';
 
 const StyledMapElement = styled.div`
     height: 100vh;
@@ -26,6 +27,25 @@ const StyledCookieContainer = styled.div`
     padding: ${Size.XXXXXL} 0;
 `;
 
+const StyledHotelCardContainer = styled.div`
+    position: absolute;
+    right: ${Size.L};
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    pointer-events: none;
+
+    ${Breakpoint.TabletSmall} {
+        display: none;
+    }
+`;
+
+const StyledHotelCard = styled(HotelCard)`
+    pointer-events: auto;
+    width: 320px;
+`;
 
 let loadingMapPromise: Promise<void> | null = null;
 function loadMap(token: string): Promise<void> {
@@ -53,6 +73,8 @@ export default function Map() {
     const mapExists = useRef(false);
 
     const [darkMode, setDarkMode] = useState(false);
+
+    const [selectedHotel, setSelectedHotel] = useState<string | undefined>();
 
     useEffect(() => {
         setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -83,6 +105,7 @@ export default function Map() {
                                 title: hotel.name,
                                 color: getVacationTypeColor(hotel.vacationType),
                                 clusteringIdentifier: hotel.country,
+                                data: { id: hotel.id }
                             }
                         );
                     }
@@ -97,6 +120,25 @@ export default function Map() {
             }
         };
     }, [mapCookiesAllowed])
+
+    useEffect(() => {
+        if (!map) { return }
+        const listenToSelect = (e: mapkit.EventBase<mapkit.Map> & { annotation?: mapkit.Annotation | undefined }) => {
+            setSelectedHotel(e.annotation?.data.id)
+        }
+        const listenToDeselect = () => {
+            setSelectedHotel(undefined)
+        }
+        map?.addEventListener('select', listenToSelect)
+        map?.addEventListener('deselect', listenToDeselect)
+        return () => {
+            map.removeEventListener('select', listenToSelect)
+            map?.addEventListener('deselect', listenToDeselect)
+
+        }
+    }, [map])
+
+    const selectedHotelContent = hotels.find(hotel => hotel.id === selectedHotel)
 
     return (
         <>
@@ -118,8 +160,26 @@ export default function Map() {
                     </StyledCookieContainer>
                 </Wrapper>
             }
-            {mapCookiesAllowed && <StyledMapElement data-darkMode={darkMode} id="mapContainer" ref={element}></StyledMapElement>}
+            {mapCookiesAllowed && <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>}
 
+            {selectedHotelContent &&
+                <StyledHotelCardContainer>
+
+                    <StyledHotelCard
+                        title={selectedHotelContent.name}
+                        location={`${selectedHotelContent.city}, ${selectedHotelContent.country} `}
+                        housingType={selectedHotelContent.housingType}
+                        vacationType={selectedHotelContent.vacationType}
+                        visited={selectedHotelContent.visited}
+                        links={{
+                            bookingCom: selectedHotelContent.links.bookingCom,
+                            hotel: selectedHotelContent.links.hotel
+                        }}
+                        image={selectedHotelContent.image}
+                        starred={false}
+                    />
+                </StyledHotelCardContainer>
+            }
         </>
     )
 }

@@ -23,8 +23,9 @@ interface HotelCardProps {
         bookingCom?: string;
         hotel?: string;
     };
-    starred: boolean;
+    starred?: boolean;
     onStarClick?: MouseEventHandler;
+    className?: string;
 }
 
 const StyledCard = styled.a<{ color?: string; }>`
@@ -142,7 +143,7 @@ const StyledImageContainer = styled.div`
     }
 `;
 
-const StyledStarArea = styled.div<{ starred: boolean; }>`
+const StyledStarArea = styled.div<{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
     margin-right: -${Size.XS};
@@ -167,16 +168,18 @@ const StyledStarArea = styled.div<{ starred: boolean; }>`
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank">
+        <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank" className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
                         <Text size={TextSize.SuperLarge} bold>
                             {props.title}
                         </Text>
-                        <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
-                            <Star />
-                        </StyledStarArea>
+                        {props.onStarClick &&
+                            <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
+                                <Star />
+                            </StyledStarArea>
+                        }
                     </Flex>
                     <Text size={TextSize.Large} serif>
                         {props.location}
