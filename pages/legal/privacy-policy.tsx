@@ -40,9 +40,9 @@ export default function PrivacyPolicy() {
                         {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS} <br />
                         {process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}
                     </Text>
-                    <Text size={TextSize.Large}>Visiting our webiste</Text>
+                    <Text size={TextSize.Large}>Visiting our website</Text>
                     <Text>By visiting our website we process certain data of our visitors. What kind of data, on which legal basis, for what purpose and for how long we process, please read our subsequent data privacy policy.</Text>
-                    <Text>Providing our website</Text>
+                    <Text bold>Providing our website</Text>
                     <Text>By loading our webpage, some data is being stored in a web server protocol file:
                         <ul>
                             <li>Date and time of the request for the load of the web page</li>
@@ -71,9 +71,18 @@ export default function PrivacyPolicy() {
                         </ul>
                     </Text>
                     <Text>Your IP address is generally not stored, we especially do not use it for analysing personal data. A full storage of the IP address would only happen so that we can track technical errors or hacker attacks. Our web servers are configured in a way that your IP address is deleted in a timely manner after your visit of our site.</Text>
-                    <Text>Cloudflare</Text>
+                    <Text bold>Cloudflare</Text>
                     <Text>Cloudflare is a cloud service provider and content delivery network. Here we host and operate our website. Legal basis for using Cloudflare on our website is the privacy shield framework (<a href="https://www.privacyshield.gov/participant?id=a2zt0000000GnZKAA0&amp;status=Active)">https://www.privacyshield.gov/participant?id=a2zt0000000GnZKAA0&amp;status=Active)</a>. We may process your personal data until our legitimate interest ceases to exist.</Text>
                     <Text>For more details of Cloudflare’s privacy and security processes, please visit <a href="https://www.cloudflare.com/security-policy/">https://www.cloudflare.com/security-policy/</a>.</Text>
+
+                    <Text bold>Plausible Tracking</Text>
+                    <Text>
+                        We run Plausible Analytics to collect some anonymous usage data for statistical purposes. The goal is to track overall trends in our website traffic, it is not to track individual visitors. All the data is in aggregate only. No personal data is collected.
+                    </Text>
+                    <Text>
+                        Data collected includes referral sources, top pages, visit duration, information from the devices (device type, operating system, country and browser) used during the visit and more. You can see full details in their <a href="https://plausible.io/data-policy" rel="noreferrer">data policy</a>.
+                    </Text>
+
                     <Text size={TextSize.Large}>Rights according to legal data protection regulations</Text>
                     <Text>You have the right to request information, correction, deletion or blocking of your personal data. As far as you should request
                         deletion of your personal data stored by us, we will execute your request without undue delay, unless legal duties for documentation
