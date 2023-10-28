@@ -107,7 +107,7 @@ export default function Map() {
                 mapExists.current = false;
             }
         };
-    }, [mapCookiesAllowed, darkMode])
+    }, [mapCookiesAllowed])
 
     return (
         <>
@@ -129,7 +129,7 @@ export default function Map() {
                     </StyledCookieContainer>
                 </Wrapper>
             }
-            {mapCookiesAllowed && <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>}
+            {mapCookiesAllowed && <StyledMapElement data-darkMode={darkMode} id="mapContainer" ref={element}></StyledMapElement>}
 
         </>
     )
