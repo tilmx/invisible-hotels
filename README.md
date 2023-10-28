@@ -13,7 +13,7 @@ A list of our favorite lovely & wonderful hotels around the world. The single pa
 Hotel data is stored on private Airtable base and can be retrieved via `npm run fetch-content` which writes the data to a `data/hotels.json` file. Therefore a valid API token has to be included in the `.env.local` file in the root with the API Key and base name.
 
 ```
-.env.local
+.env
 AIRTABLE_TOKEN = ...
 AIRTABLE_BASE = ...
 ```

@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useRef } from 'react'
 import { HotelList } from '../components/hotel-list';
-import { Footer } from '../components/footer';
 import { Header } from '../components/header';
 import { Logo } from '../components/logo';
 import { Text, TextSize } from '../components/text';
@@ -26,7 +25,6 @@ export default function Home() {
 			<div ref={hotelListRef}>
 				<HotelList />
 			</div>
-			<Footer />
 		</>
 	)
 }

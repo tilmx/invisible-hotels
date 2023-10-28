@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import { Footer } from '../components/footer';
 import { Header } from '../components/header';
 import { Text, TextSize } from '../components/text';
 import styled from '@emotion/styled';
 import { Breakpoint, Color, Size } from '../components/tokens';
 import AboutPicture from '../public/images/about.jpg'
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Flex, Link } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
+import { BackButton } from '../components/back-button';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -29,20 +29,6 @@ const StyledImage = styled(Image)`
     height: auto;
 `;
 
-const StyledBackButton = styled(Link)`
-    display: flex;
-    gap: ${Size.XXS};
-    padding: ${Size.XXS};
-    margin: -${Size.XXS};
-    border-radius: ${Size.XS};
-    @media (hover: hover) {
-        :hover {
-                background: ${Color.Text10};
-            }
-        }
-    }
-`;
-
 const StyledParagraph = styled(Text) <{ scribbleColor: string; }>`
     position: relative;
 
@@ -60,17 +46,12 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>Invisible Hotels</title>
+                <title>Invisible Hotels | About</title>
                 <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
             </Head>
             <Header>
                 <StyledWrapper>
-                    <Flex>
-                        <StyledBackButton href="/">
-                            <ArrowLeft />
-                            <Text>Back to home</Text>
-                        </StyledBackButton>
-                    </Flex>
+                    <BackButton href="/" label="Back to home" />
                     <Text size={TextSize.ExtraLarge} serif>
                         Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We’re hotel lovers — we believe that a lovely hotel is the best start for any vacation.
                     </Text>
@@ -95,7 +76,6 @@ export default function About() {
                     </Flex>
                 </StyledWrapper>
             </Header>
-            <Footer />
         </>
     )
 }

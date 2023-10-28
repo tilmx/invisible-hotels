@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import http from 'https';
 
-dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
+dotenv.config({ path: path.resolve(process.cwd(), '.env') })
 
 Airtable.configure({
     apiKey: process.env.AIRTABLE_TOKEN,

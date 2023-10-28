@@ -35,7 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.env.local
+.env
 
 # Hotel Data & Images
 data/hotels.json
