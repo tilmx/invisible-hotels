@@ -20,7 +20,7 @@ const StyledMenuContainer = styled.div`
     z-index: 10;
     backdrop-filter: blur(${Size.XS});
     background: ${Color.Background80};
-    box-shadow: 0 ${Size.XXS} ${Size.L} ${Color.Shadow};
+    box-shadow: 0 0 ${Size.L} ${Color.Shadow};
 `;
 
 const StyledMenu = styled(Menu)`
@@ -57,7 +57,8 @@ export default function Map() {
             setMap(new mapkit.Map(element.current!, {
                 center: new mapkit.Coordinate(53.551086, 9.993682),
                 showsMapTypeControl: false,
-                showsPointsOfInterest: false
+                isRotationEnabled: false,
+                showsPointsOfInterest: false,
             }));
             mapExists.current = true;
         });
