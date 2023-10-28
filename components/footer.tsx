@@ -1,6 +1,6 @@
 import { Size } from './tokens/size';
 import styled from '@emotion/styled';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { Breakpoint, Color } from './tokens';
 import { Flex, Link } from './utils';
@@ -8,6 +8,7 @@ import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { Trash2 } from 'lucide-react';
+import { checkIfCookiesAllowed, setCookieOptIn } from '../utils';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -81,21 +82,31 @@ const StyledGithubLink = styled(StyledLink)`
 `;
 
 export const Footer: FunctionComponent = () => {
-    const [showCookieOptOut, setShowCookieOptOut] = useState(false);
+    const [showCookieOptOutOverlay, setShowCookieOptOutOverlay] = useState(false);
+
+    const [cookiesUsed, setCookiesUsed] = useState(false);
+    if (typeof window !== 'undefined') {
+        useEffect(() => {
+            if (checkIfCookiesAllowed()) {
+                setCookiesUsed(true);
+            }
+        }, [window.localStorage])
+    }
+
     return (
         <StyledFooter>
-            {showCookieOptOut &&
+            {showCookieOptOutOverlay &&
                 <Overlay
                     headline='Do you want to delete all favorites'
                     description='When opting out from cookies all your favorites are cleared'
-                    onOutsideClick={() => setShowCookieOptOut(false)}
+                    onOutsideClick={() => setShowCookieOptOutOverlay(false)}
                 >
                     <Button iconLeft={<Trash2 />} onClick={() => {
                         window.localStorage.clear();
-                        setShowCookieOptOut(false);
+                        setShowCookieOptOutOverlay(false);
                         location.reload()
                     }}>Delete all</Button>
-                    <Button onClick={() => setShowCookieOptOut(false)}>Keep them</Button>
+                    <Button onClick={() => setShowCookieOptOutOverlay(false)}>Keep them</Button>
                 </Overlay>
             }
             <Wrapper>
@@ -110,9 +121,11 @@ export const Footer: FunctionComponent = () => {
                             <Text size={TextSize.Regular}>Privacy Policy</Text>
                         </StyledLinkContainer>
                     </StyledLink>
-                    <StyledLinkContainer onClick={() => setShowCookieOptOut(true)}>
-                        <Text size={TextSize.Regular}>Cookie Opt-out</Text>
-                    </StyledLinkContainer>
+                    {cookiesUsed &&
+                        <StyledLinkContainer onClick={() => setShowCookieOptOutOverlay(true)}>
+                            <Text size={TextSize.Regular}>Cookie Opt-out</Text>
+                        </StyledLinkContainer>
+                    }
                     <StyledGithubLink href="https://github.com/tilmx/invisible-hotels" target="_blank">
                         <StyledGithubLinkContainer>
                             <svg width="98" height="96" viewBox='0 0 98 96' xmlns="http://www.w3.org/2000/svg">
