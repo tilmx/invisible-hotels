@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Color, Size } from "./tokens";
+import { Breakpoint, Color, Size } from "./tokens";
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import { Text } from "./text";
 
@@ -22,6 +22,13 @@ const StyledButton = styled.div<{ secondary?: boolean; small?: boolean; }>`
         :hover {
             background: ${props => props.secondary ? Color.Text20 : Color.Text80};
             color: ${props => props.secondary ? Color.Text : Color.Background};
+        }
+    }
+
+    ${Breakpoint.Mobile} {
+        svg {
+            height: 20px;
+            width: auto;
         }
     }
 `;
