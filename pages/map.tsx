@@ -52,6 +52,23 @@ export default function Map() {
     const element = useRef<HTMLDivElement>(null);
     const mapExists = useRef(false);
 
+    const [darkMode, setDarkMode] = useState(false);
+
+    const onChangeDarkMode = (mode: boolean) => {
+        setDarkMode(mode);
+        if (map) {
+            map.colorScheme = mode ? mapkit.Map.ColorSchemes.Dark : mapkit.Map.ColorSchemes.Light;
+        }
+    }
+
+    useEffect(() => {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => onChangeDarkMode(e.matches));
+        setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
+        return () => {
+            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', e => onChangeDarkMode(e.matches));
+        }
+    }, []);
+
     useEffect(() => {
         if (mapExists.current || !mapCookiesAllowed) return;
 
@@ -68,6 +85,7 @@ export default function Map() {
                     (annotation as any).color = 'black';
                     return annotation;
                 },
+                colorScheme: darkMode ? mapkit.Map.ColorSchemes.Dark : mapkit.Map.ColorSchemes.Light,
                 annotations: hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
                     if (hotel.coordinates.lat && hotel.coordinates.long) {
                         return new mapkit.MarkerAnnotation(
@@ -100,6 +118,7 @@ export default function Map() {
             <StyledMenuContainer>
                 <Wrapper>
                     <Menu flying />
+                    {darkMode ? 'dark' : 'light'}
                 </Wrapper>
             </StyledMenuContainer>
             {!mapCookiesAllowed &&
