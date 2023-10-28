@@ -11,12 +11,14 @@ const StyledBackButton = styled(Link)`
     text-decoration: inherit;
     display: flex;
     gap: ${Size.XXS};
+    color: ${Color.Text50};
     padding: ${Size.XXS};
     margin: -${Size.XXS};
     border-radius: ${Size.XS};
     @media (hover: hover) {
         :hover {
                 background: ${Color.Text10};
+                color: ${Color.Text};
             }
         }
     }
