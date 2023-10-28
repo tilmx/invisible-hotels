@@ -10,7 +10,7 @@ import { getVacationTypeColor } from '../utils';
 const StyledMapElement = styled.div`
     height: 100vh;
     width: 100vw;
-`
+`;
 
 const StyledMenuContainer = styled.div`
     position: absolute;
@@ -28,7 +28,7 @@ const StyledMenu = styled(Menu)`
 `;
 
 let loadingMapPromise: Promise<void> | null = null;
-export function loadMap(token: string): Promise<void> {
+function loadMap(token: string): Promise<void> {
     if (loadingMapPromise !== null) {
         return loadingMapPromise;
     }
@@ -45,11 +45,21 @@ export function loadMap(token: string): Promise<void> {
     return loadingMapPromise;
 }
 
+function calloutForLandmarkAnnotation(annotation: mapkit.Annotation) {
+    var div = document.createElement("div");
+    div.className = "landmark";
+
+    var title = div.appendChild(document.createElement("h1"));
+    title.textContent = annotation.data.id || 'test';
+
+    return div;
+}
+
 export default function Map() {
     const [map, setMap] = useState<mapkit.Map | null>(null);
     const element = useRef<HTMLDivElement>(null);
     const mapExists = useRef(false);
-
+    const calloutElement = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
@@ -73,12 +83,24 @@ export default function Map() {
     useEffect(() => {
         if (!map) return;
         let annotations = hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
-            return new mapkit.MarkerAnnotation(new mapkit.Coordinate(hotel.coordinates?.lat!, hotel.coordinates?.long!), {
-                color: getVacationTypeColor(hotel.vacationType)
-            });
+            if (hotel.coordinates.lat && hotel.coordinates.long) {
+                return new mapkit.MarkerAnnotation(
+                    new mapkit.Coordinate(hotel.coordinates?.lat, hotel.coordinates?.long),
+                    {
+                        data: { id: hotel.id },
+                        callout: {
+                            calloutElementForAnnotation: annotation => calloutForLandmarkAnnotation(annotation)
+                        },
+                        color: getVacationTypeColor(hotel.vacationType),
+                    }
+                );
+            }
         });
-        map.showItems(annotations);
+        if (annotations?.length > 0) {
+            map.showItems(annotations);
+        }
     }, [map])
+
 
     return (
         <>
@@ -91,6 +113,9 @@ export default function Map() {
                     <StyledMenu />
                 </Wrapper>
             </StyledMenuContainer>
+            <div ref={calloutElement}>
+                CalloutElement
+            </div>
             <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>
         </>
     )
