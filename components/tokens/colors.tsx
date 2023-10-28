@@ -14,10 +14,10 @@ export enum Color {
     Background80 = 'var(--color-background80)',
     Shadow = 'var(--color-shadow)',
 
-    Yellow = 'var(--color-yellow)',
-    Green = 'var(--color-green)',
-    Blue = 'var(--color-blue)',
-    Red = 'var(--color-red)',
+    Yellow = '#FFBC42',
+    Green = '#108A5F',
+    Blue = '#0496FF',
+    Red = '#EF5F5F',
 }
 
 export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
@@ -35,11 +35,6 @@ export const Theme: FunctionComponent<{ children?: ReactNode }> = props => {
                     --color-background-always: #FFFFFF;
                     --color-background80: #FFFFFFCC;
                     --color-shadow: #00000033;
-
-                    --color-yellow: #FFBC42;
-                    --color-green: #108A5F;
-                    --color-blue: #0496FF;
-                    --color-red: #EF5F5F;
 
                     @media (prefers-color-scheme: dark) {
                         --color-text: #FFFFFF;
