@@ -55,11 +55,28 @@ export default function Map() {
 
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
             if (mapExists.current) return;
+
             setMap(new mapkit.Map(element.current!, {
                 center: new mapkit.Coordinate(53.551086, 9.993682),
                 showsMapTypeControl: false,
                 isRotationEnabled: false,
                 showsPointsOfInterest: false,
+                annotationForCluster(annotation) {
+                    (annotation as any).color = 'black';
+                    return annotation;
+                },
+                annotations: hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
+                    if (hotel.coordinates.lat && hotel.coordinates.long) {
+                        return new mapkit.MarkerAnnotation(
+                            new mapkit.Coordinate(hotel.coordinates?.lat, hotel.coordinates?.long),
+                            {
+                                title: hotel.name,
+                                color: getVacationTypeColor(hotel.vacationType),
+                                clusteringIdentifier: hotel.country,
+                            }
+                        );
+                    }
+                }) as any
             }));
             mapExists.current = true;
         });
@@ -70,25 +87,6 @@ export default function Map() {
             }
         };
     }, [])
-
-    useEffect(() => {
-        if (!map || !mapExists.current) return;
-        let annotations = hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
-            if (hotel.coordinates.lat && hotel.coordinates.long) {
-                return new mapkit.MarkerAnnotation(
-                    new mapkit.Coordinate(hotel.coordinates?.lat, hotel.coordinates?.long),
-                    {
-                        title: hotel.name,
-                        color: getVacationTypeColor(hotel.vacationType),
-                        clusteringIdentifier: hotel.country,
-                    }
-                );
-            }
-        });
-        if (annotations?.length > 0) {
-            map.showItems(annotations);
-        }
-    }, [map])
 
     return (
         <>
