@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import { Color, Size } from '../components/tokens';
+import { Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { getVacationTypeColor } from '../utils';
 import { Button } from '../components/button';
@@ -20,13 +20,6 @@ const StyledMenuContainer = styled.div`
     left: 0;
     width: 100%;
     z-index: 10;
-    backdrop-filter: blur(${Size.XS});
-    background: ${Color.Background80};
-    box-shadow: 0 0 ${Size.L} ${Color.Shadow};
-`;
-
-const StyledMenu = styled(Menu)`
-    padding-bottom: ${Size.M};
 `;
 
 const StyledCookieContainer = styled.div`
@@ -105,13 +98,13 @@ export default function Map() {
             </Head>
             <StyledMenuContainer>
                 <Wrapper>
-                    <StyledMenu />
+                    <Menu flying />
                 </Wrapper>
             </StyledMenuContainer>
             {!mapCookiesAllowed &&
                 <Wrapper>
                     <StyledCookieContainer>
-                        <Box title='Accept cookies' description='To show the hotel map, you need to accept a single cookie from Apple, because we use Apple Maps.'>
+                        <Box title='Accept cookies' description='To show the hotel map, you need to accept a cookie from Apple, because we use Apple Maps.'>
                             <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
                         </Box>
                     </StyledCookieContainer>

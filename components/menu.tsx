@@ -5,11 +5,21 @@ import { Text, TextSize } from "./text";
 import { Color, Size } from "./tokens";
 import { useRouter } from "next/router";
 
-const StyledMenu = styled(Flex)`
+const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
     padding-top: ${Size.M};
     padding-bottom: ${Size.XXXL};
     gap: ${Size.XXXS};
     align-items: center;
+
+    ${props => props.flying && `
+        padding: ${Size.XS} ${Size.M};
+        margin: ${Size.XS} -${Size.M} 0;
+
+        backdrop-filter: blur(${Size.XS});
+        background: ${Color.Background80};
+        border-radius: ${Size.M};
+        box-shadow: 0 0 ${Size.L} ${Color.Shadow};
+    `}
 `;
 
 const StyledDotLink = styled(Link)`
@@ -36,9 +46,9 @@ const StyledDot = styled.div`
     border-radius: 50%;
 `;
 
-export const Menu: FunctionComponent<{ className?: string }> = props => {
+export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> = props => {
     return (
-        <StyledMenu alignItems={AlignItems.Center} className={props.className}>
+        <StyledMenu flying={props.flying} alignItems={AlignItems.Center} className={props.className}>
             <StyledDotLink href="/">
                 <StyledDot />
             </StyledDotLink>
