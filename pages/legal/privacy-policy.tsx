@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Invisible Hotels | Privacy Policy</title>
+                <title>Privacy Policy | Invisible Hotels</title>
                 <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
                 <meta name="robots" content="noindex" />
             </Head>
@@ -82,6 +82,9 @@ export default function PrivacyPolicy() {
                     <Text>
                         Data collected includes referral sources, top pages, visit duration, information from the devices (device type, operating system, country and browser) used during the visit and more. You can see full details in their <a href="https://plausible.io/data-policy" rel="noreferrer">data policy</a>.
                     </Text>
+
+                    <Text bold>Cookies</Text>
+                    <Text>We are using cookies to save your favorite hotels locally. The legal base is Art. 6, para. 1, lit. a) GDPR. You can revoke your consent to setting cookies at any time.</Text>
 
                     <Text size={TextSize.Large}>Rights according to legal data protection regulations</Text>
                     <Text>You have the right to request information, correction, deletion or blocking of your personal data. As far as you should request

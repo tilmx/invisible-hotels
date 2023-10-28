@@ -45,7 +45,7 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>Invisible Hotels | About</title>
+                <title>About | Invisible Hotels</title>
                 <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
             </Head>
             <Header>

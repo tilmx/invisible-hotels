@@ -27,7 +27,7 @@ export default function SitesNotice() {
     return (
         <>
             <Head>
-                <title>Invisible Hotels | Site’s notice</title>
+                <title>Site’s notice | Invisible Hotels</title>
                 <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
                 <meta name="robots" content="noindex" />
             </Head>
