@@ -8,7 +8,7 @@ import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { Trash2 } from 'lucide-react';
-import { checkIfCookiesAllowed, setCookieOptIn } from '../utils';
+import { checkIfCookiesAllowed } from '../utils';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
