@@ -43,7 +43,7 @@ export const Menu: FunctionComponent<{ className?: string }> = props => {
                 <StyledDot />
             </StyledDotLink>
             <MenuItem link="/" label="Hotels" />
-            <MenuItem link="/map" label="Map" />
+            {/*<MenuItem link="/map" label="Map" />*/}
             <MenuItem link="/about" label="About" />
         </StyledMenu>
     )

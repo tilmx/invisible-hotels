@@ -9,11 +9,13 @@ const StyledWrapper = styled.div<{ wide?: boolean; }>`
     max-width: ${props => props.wide ? '1280px' : '1080px'};
 
     ${Breakpoint.Tablet} {
-        padding: 0 ${Size.L};
+        padding-left: ${Size.L};
+        padding-right: ${Size.L};
     }
 
     ${Breakpoint.Mobile} {
-        padding: 0 ${Size.M};
+        padding-left: ${Size.M};
+        padding-right: ${Size.M};
     }
 `
 

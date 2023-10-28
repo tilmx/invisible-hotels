@@ -30,7 +30,7 @@ const StyledMenu = styled(Menu)`
 `;
 
 const StyledCookieWrapper = styled(Wrapper)`
-    padding-top: ${Size.XXXXXL};
+    padding-top: ${Size.XXXXL};
 `;
 
 
