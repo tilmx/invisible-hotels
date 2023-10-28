@@ -72,8 +72,8 @@ export default function PrivacyPolicy() {
                     </Text>
                     <Text>Your IP address is generally not stored, we especially do not use it for analysing personal data. A full storage of the IP address would only happen so that we can track technical errors or hacker attacks. Our web servers are configured in a way that your IP address is deleted in a timely manner after your visit of our site.</Text>
                     <Text bold>Cloudflare</Text>
-                    <Text>Cloudflare is a cloud service provider and content delivery network. Here we host and operate our website. Legal basis for using Cloudflare on our website is the privacy shield framework (<a href="https://www.privacyshield.gov/participant?id=a2zt0000000GnZKAA0&amp;status=Active)">https://www.privacyshield.gov/participant?id=a2zt0000000GnZKAA0&amp;status=Active)</a>. We may process your personal data until our legitimate interest ceases to exist.</Text>
-                    <Text>For more details of Cloudflare’s privacy and security processes, please visit <a href="https://www.cloudflare.com/security-policy/">https://www.cloudflare.com/security-policy/</a>.</Text>
+                    <Text>Cloudflare is a cloud service provider and content delivery network. Here we host and operate our website. Legal basis for using Cloudflare on our website are the standard contractual clauses. We may process your personal data until our legitimate interest ceases to exist.</Text>
+                    <Text>For more details of Cloudflare’s privacy and security processes, please visit https://www.cloudflare.com/security-policy/.</Text>
 
                     <Text bold>Plausible Tracking</Text>
                     <Text>
