@@ -12,20 +12,23 @@ import { checkIfCookiesAllowed } from '../utils';
 import { useRouter } from "next/router";
 
 const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
-    padding-top: ${Size.XXXXXL};
+    padding-top: ${Size.L};
     padding-bottom: ${Size.XXL};
 
-    ${Breakpoint.Tablet} {
-        padding-top: ${Size.XXXXL};
-    }
-
     ${Breakpoint.Mobile} {
-        padding-top: ${Size.XXXL};
         padding-bottom: ${Size.L};
     }
 
-    ${props => props.reducedPadding && `
-        padding-top: ${Size.L};
+    ${props => !props.reducedPadding && `
+        padding-top: ${Size.XXXXXL};
+
+        ${Breakpoint.Tablet} {
+            padding-top: ${Size.XXXXL};
+        }
+
+        ${Breakpoint.Mobile} {
+            padding-top: ${Size.XXXL};
+        }
     `}
 `;
 

@@ -4,6 +4,8 @@ import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
 import { Color, Size } from '../components/tokens';
+import hotels from '../data/hotels.json';
+import { getVacationTypeColor } from '../utils';
 
 const StyledMapElement = styled.div`
     height: 100vh;
@@ -48,10 +50,15 @@ export default function Map() {
     const element = useRef<HTMLDivElement>(null);
     const mapExists = useRef(false);
 
+
     useEffect(() => {
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
             if (mapExists.current) return;
-            setMap(new mapkit.Map(element.current!, { center: new mapkit.Coordinate(37.334883, -122.008977), showsMapTypeControl: false }));
+            setMap(new mapkit.Map(element.current!, {
+                center: new mapkit.Coordinate(53.551086, 9.993682),
+                showsMapTypeControl: false,
+                showsPointsOfInterest: false
+            }));
             mapExists.current = true;
         });
         return () => {
@@ -61,6 +68,16 @@ export default function Map() {
             }
         };
     }, [])
+
+    useEffect(() => {
+        if (!map) return;
+        let annotations = hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
+            return new mapkit.MarkerAnnotation(new mapkit.Coordinate(hotel.coordinates?.lat!, hotel.coordinates?.long!), {
+                color: getVacationTypeColor(hotel.vacationType)
+            });
+        });
+        map.showItems(annotations);
+    }, [map])
 
     return (
         <>
