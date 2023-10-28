@@ -143,7 +143,7 @@ export const HotelList: FunctionComponent = () => {
         <StyledContainer>
             {cookieOptOverlayVisible &&
                 <Overlay
-                    headline='Save your favorites locally'
+                    title='Save your favorites locally'
                     description='We will save a little cookie with your favorite hotels in this browser. Fine for you?'
                     onOutsideClick={() => {
                         setCookieOptOverlayVisible(false);

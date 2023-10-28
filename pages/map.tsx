@@ -6,6 +6,8 @@ import styled from '@emotion/styled';
 import { Color, Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { getVacationTypeColor } from '../utils';
+import { Button } from '../components/button';
+import { Box } from '../components/box';
 
 const StyledMapElement = styled.div`
     height: 100vh;
@@ -27,6 +29,11 @@ const StyledMenu = styled(Menu)`
     padding-bottom: ${Size.M};
 `;
 
+const StyledCookieWrapper = styled(Wrapper)`
+    padding-top: ${Size.XXXXXL};
+`;
+
+
 let loadingMapPromise: Promise<void> | null = null;
 function loadMap(token: string): Promise<void> {
     if (loadingMapPromise !== null) {
@@ -46,12 +53,14 @@ function loadMap(token: string): Promise<void> {
 }
 
 export default function Map() {
+    const [mapCookiesAllowed, setMapCookiesAllowed] = useState(false);
+
     const [map, setMap] = useState<mapkit.Map | null>(null);
     const element = useRef<HTMLDivElement>(null);
     const mapExists = useRef(false);
 
     useEffect(() => {
-        if (mapExists.current) return;
+        if (mapExists.current || !mapCookiesAllowed) return;
 
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
             if (mapExists.current) return;
@@ -86,7 +95,7 @@ export default function Map() {
                 mapExists.current = false;
             }
         };
-    }, [])
+    }, [mapCookiesAllowed])
 
     return (
         <>
@@ -99,6 +108,13 @@ export default function Map() {
                     <StyledMenu />
                 </Wrapper>
             </StyledMenuContainer>
+            {!mapCookiesAllowed &&
+                <StyledCookieWrapper>
+                    <Box title='Accept cookies' description='To show the hotel map, you need to accept cookies.'>
+                        <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
+                    </Box>
+                </StyledCookieWrapper>
+            }
             <StyledMapElement id="mapContainer" ref={element}></StyledMapElement>
         </>
     )

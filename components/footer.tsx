@@ -105,7 +105,7 @@ export const Footer: FunctionComponent = () => {
         <StyledFooter reducedPadding={useRouter().pathname === "/map"}>
             {showCookieOptOutOverlay &&
                 <Overlay
-                    headline='Do you want to delete all favorites'
+                    title='Do you want to delete all favorites'
                     description='When opting out from cookies all your favorites are cleared'
                     onOutsideClick={() => setShowCookieOptOutOverlay(false)}
                 >
