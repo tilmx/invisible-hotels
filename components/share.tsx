@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import { Size } from "./tokens";
 
 const StyledFlex = styled(Flex)`
-    margin-bottom: ${Size.XXL};
+    margin-top: ${Size.XXXXL};
 `;
 
 export const Share: FunctionComponent = () => {

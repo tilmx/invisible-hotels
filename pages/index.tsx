@@ -7,6 +7,7 @@ import { Text, TextSize } from '../components/text';
 import { ScrollIndicator } from '../components/scroll-indicator';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Color } from '../components/tokens';
+import { Share } from '../components/share';
 
 export default function Home() {
 	const hotelListRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ export default function Home() {
 			<div ref={hotelListRef}>
 				<HotelList />
 			</div>
+			<Share />
 		</>
 	)
 }

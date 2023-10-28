@@ -8,7 +8,6 @@ import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { Trash2 } from 'lucide-react';
-import { Share } from './share';
 
 const StyledFooter = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -100,7 +99,6 @@ export const Footer: FunctionComponent = () => {
                 </Overlay>
             }
             <Wrapper>
-                <Share />
                 <StyledFooterList>
                     <StyledLink href='/legal/sites-notice'>
                         <StyledLinkContainer>
