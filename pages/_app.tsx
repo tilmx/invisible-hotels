@@ -6,7 +6,7 @@ import PlausibleProvider from 'next-plausible';
 import { Footer } from '../components/footer';
 
 export const siteTitle = "Invisible Hotels"
-const siteDescription = "Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to.";
+const siteDescription = "All the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to.";
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -19,7 +19,7 @@ function App({ Component, pageProps }: AppProps) {
                     <meta name="description" content={siteDescription} />
                     <meta property="og:title" content={siteTitle} />
                     <meta property="og:description" content={siteDescription} />
-                    <meta property="og:image" content="/images/og-image.jpg" />
+                    <meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
                     <meta property="og:url" content="https://invisible-hotels.com/" />
                     <meta property="og:type" content="website" />
                 </Head>
