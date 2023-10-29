@@ -39,7 +39,7 @@ const StyledHotelCardContainer = styled.div`
 
 const StyledHotelCard = styled(HotelCard)`
     pointer-events: auto;
-    max-width: 320px;
+    max-width: 480px;
     width: 90vw;
 `;
 
