@@ -24,7 +24,7 @@ const StyledMenuContainer = styled.div`
 `;
 
 const StyledCookieContainer = styled.div`
-    padding: ${Size.XXXXXL} 0;
+    padding: ${Size.XXXXL} 0;
 `;
 
 const StyledHotelCardContainer = styled.div`
