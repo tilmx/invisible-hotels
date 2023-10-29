@@ -62,7 +62,7 @@ function loadMap(token: string): Promise<void> {
 }
 
 export default function Map() {
-    const [mapCookiesAllowed, setMapCookiesAllowed] = useState(false);
+    const [mapCookiesAllowed, setMapCookiesAllowed] = useState<boolean | undefined>(undefined);
 
     const [map, setMap] = useState<mapkit.Map | null>(null);
     const element = useRef<HTMLDivElement>(null);
@@ -73,7 +73,7 @@ export default function Map() {
     const [selectedHotel, setSelectedHotel] = useState<string | undefined>();
 
     useEffect(() => {
-        checkIfCookiesAllowed("map") && setMapCookiesAllowed(true)
+        setMapCookiesAllowed(checkIfCookiesAllowed("map"))
     })
 
     useEffect(() => {
@@ -151,7 +151,7 @@ export default function Map() {
                     <Menu flying />
                 </Wrapper>
             </StyledMenuContainer>
-            {!mapCookiesAllowed &&
+            {mapCookiesAllowed === false &&
                 <Wrapper>
                     <StyledCookieContainer>
                         <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and also you need to a single cookie from Apple, so it works properly.'>

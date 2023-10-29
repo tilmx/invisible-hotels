@@ -7,6 +7,7 @@ export function checkIfCookiesAllowed(type: CookieType) {
     if (typeof window !== "undefined") {
         return window.localStorage.getItem('cookies-allowed-' + type) === 'true';
     }
+    return false;
 }
 
 export function setCookieOptIn(type: CookieType) {
