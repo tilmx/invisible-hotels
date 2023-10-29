@@ -9,6 +9,7 @@ import { ArrowRight } from 'lucide-react';
 import { Flex, Link } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
+import { siteTitle } from './_app';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -45,8 +46,7 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>About | Invisible Hotels</title>
-                <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
+                <title>About | {siteTitle}</title>
             </Head>
             <Header>
                 <StyledWrapper>

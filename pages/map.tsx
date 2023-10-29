@@ -9,6 +9,7 @@ import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../
 import { Button } from '../components/button';
 import { Box } from '../components/box';
 import { HotelCard } from '../components/hotel-card';
+import { siteTitle } from './_app';
 
 const StyledMapElement = styled.div`
     height: 100vh;
@@ -150,8 +151,7 @@ export default function Map() {
     return (
         <>
             <Head>
-                <title>Map | Invisible Hotels</title>
-                <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
+                <title>Map | {siteTitle}</title>
             </Head>
             <StyledMenuContainer>
                 <Wrapper>

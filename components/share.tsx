@@ -4,6 +4,7 @@ import { Flex, JustifyContent } from "./utils";
 import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
 import { Size } from "./tokens";
+import { siteTitle } from "../pages/_app";
 
 const StyledFlex = styled(Flex)`
     margin-top: ${Size.XXXXL};
@@ -21,7 +22,7 @@ export const Share: FunctionComponent = () => {
     function share() {
         if (navigator.share) {
             navigator.share({
-                title: 'Invisible Hotels',
+                title: siteTitle,
                 text: 'Check out our personal list of lovely, minimalistic and fancy hotels & apartments',
                 url: 'https://invisible-hotels.com/',
             })

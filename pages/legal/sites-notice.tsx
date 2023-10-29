@@ -3,6 +3,7 @@ import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
 import { Size } from '../../components/tokens';
+import { siteTitle } from '../_app';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -27,8 +28,7 @@ export default function SitesNotice() {
     return (
         <>
             <Head>
-                <title>Site’s notice | Invisible Hotels</title>
-                <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
+                <title>Site’s notice | {siteTitle}</title>
                 <meta name="robots" content="noindex" />
             </Head>
             <Header>

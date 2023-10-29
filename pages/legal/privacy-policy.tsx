@@ -6,6 +6,7 @@ import { Size } from '../../components/tokens';
 import { Button } from '../../components/button';
 import { Flex } from '../../components/utils';
 import { Trash2 } from 'lucide-react';
+import { siteTitle } from '../_app';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -19,8 +20,7 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Privacy Policy | Invisible Hotels</title>
-                <meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
+                <title>Privacy Policy | {siteTitle}</title>
                 <meta name="robots" content="noindex" />
             </Head>
             <Header>

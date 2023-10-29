@@ -8,6 +8,7 @@ import { ScrollIndicator } from '../components/scroll-indicator';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Color } from '../components/tokens';
 import { Share } from '../components/share';
+import { siteTitle } from './_app';
 
 export default function Home() {
 	const hotelListRef = useRef<HTMLDivElement>(null);
@@ -15,8 +16,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Invisible Hotels</title>
-				<meta name="description" content="Invisible Hotels are all the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to." />
+				<title>{siteTitle}</title>
 			</Head>
 			<Header>
 				<Logo />
