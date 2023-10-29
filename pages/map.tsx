@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import { Breakpoint, Size } from '../components/tokens';
+import { Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { getVacationTypeColor } from '../utils';
 import { Button } from '../components/button';
@@ -29,22 +29,18 @@ const StyledCookieContainer = styled.div`
 
 const StyledHotelCardContainer = styled.div`
     position: absolute;
-    right: ${Size.L};
-    top: 0;
-    height: 100%;
+    left: 0;
+    bottom: ${Size.L};
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     pointer-events: none;
-
-    ${Breakpoint.TabletSmall} {
-        display: none;
-    }
 `;
 
 const StyledHotelCard = styled(HotelCard)`
     pointer-events: auto;
-    width: 320px;
+    max-width: 320px;
+    width: 90vw;
 `;
 
 let loadingMapPromise: Promise<void> | null = null;
@@ -154,7 +150,7 @@ export default function Map() {
             {!mapCookiesAllowed &&
                 <Wrapper>
                     <StyledCookieContainer>
-                        <Box title='Accept cookies' description='To show the hotel map, you need to accept a cookie from Apple, because we use Apple Maps.'>
+                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and also you need to a single cookie from Apple, so it works properly.'>
                             <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
                         </Box>
                     </StyledCookieContainer>
@@ -164,7 +160,6 @@ export default function Map() {
 
             {selectedHotelContent &&
                 <StyledHotelCardContainer>
-
                     <StyledHotelCard
                         title={selectedHotelContent.name}
                         location={`${selectedHotelContent.city}, ${selectedHotelContent.country} `}
@@ -175,8 +170,7 @@ export default function Map() {
                             bookingCom: selectedHotelContent.links.bookingCom,
                             hotel: selectedHotelContent.links.hotel
                         }}
-                        image={selectedHotelContent.image}
-                        starred={false}
+                        small
                     />
                 </StyledHotelCardContainer>
             }

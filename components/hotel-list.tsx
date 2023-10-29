@@ -4,7 +4,7 @@ import countries from '../data/countries.json';
 import { Check, Send, Star, X } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
-import { checkIfCookiesAllowed, getVacationTypeIcon, saveToLocalStorage, setCookieOptIn } from '../utils';
+import { checkIfCookiesAllowed, getVacationTypeIcon, saveFavoriteToLocalStorage, setCookieOptIn } from '../utils';
 import { Breakpoint, Color, Size } from './tokens';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
@@ -136,7 +136,7 @@ export const HotelList: FunctionComponent = () => {
     const [cookieOptOverlayVisible, setCookieOptOverlayVisible] = useState(false);
 
     function saveStarredHotelsToLocalStorage(list: string[]) {
-        saveToLocalStorage({ key: 'starred-hotels', value: JSON.stringify(list) });
+        saveFavoriteToLocalStorage({ key: 'starred-hotels', value: JSON.stringify(list) });
     }
 
     return (
@@ -152,7 +152,7 @@ export const HotelList: FunctionComponent = () => {
                     }}
                 >
                     <Button iconLeft={<Check />} onClick={() => {
-                        setCookieOptIn();
+                        setCookieOptIn("favorites");
                         saveStarredHotelsToLocalStorage(starredHotels);
                         setCookieOptOverlayVisible(false);
                     }}>Yes, sure</Button>
@@ -222,7 +222,7 @@ export const HotelList: FunctionComponent = () => {
                                     e.preventDefault();
                                     const newList = !starred ? [...starredHotels, hotel.id] : [...starredHotels.filter(id => id !== hotel.id)];
                                     setStarredHotels(newList);
-                                    if (checkIfCookiesAllowed()) {
+                                    if (checkIfCookiesAllowed("favorites")) {
                                         saveStarredHotelsToLocalStorage(newList)
                                     }
                                     else {

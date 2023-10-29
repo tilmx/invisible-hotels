@@ -1,21 +1,21 @@
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { Color } from '../components/tokens';
 
-export function checkIfCookiesAllowed() {
+type CookieType = "favorites" | "map"
+
+export function checkIfCookiesAllowed(type: CookieType) {
     if (typeof window !== "undefined") {
-        return window.localStorage.getItem('cookies-allowed') === 'true';
+        return window.localStorage.getItem('cookies-allowed-' + type) === 'true';
     }
 }
 
-export function setCookieOptIn() {
-    window.localStorage.setItem('cookies-allowed', 'true');
+export function setCookieOptIn(type: CookieType) {
+    window.localStorage.setItem('cookies-allowed-' + type, 'true');
 }
 
-export function saveToLocalStorage(content: { key: string, value: string }) {
+export function saveFavoriteToLocalStorage(content: { key: string, value: string }) {
     // check if set cookies is allowed
-    const savingIsAllowed = window.localStorage.getItem('cookies-allowed') === 'true';
-
-    if (savingIsAllowed) {
+    if (checkIfCookiesAllowed("favorites")) {
         // save to localstorage
         window.localStorage.setItem(content.key, content.value);
     }
@@ -49,4 +49,3 @@ export function getVacationTypeColor(vacationType?: string) {
             return Color.Yellow
     }
 }
-

@@ -25,16 +25,17 @@ interface HotelCardProps {
     };
     starred?: boolean;
     onStarClick?: MouseEventHandler;
+    small?: boolean;
     className?: string;
 }
 
-const StyledCard = styled.a<{ color?: string; }>`
+const StyledCard = styled.a<{ color?: string; small?: boolean; }>`
     color: ${Color.TextAlways}; 
     text-decoration: none;
     background: ${props => props.color};
     padding: ${Size.XXS};
     border-radius: ${Size.M};
-    min-height: 400px;
+    ${props => !props.small && 'min-height: 400px;'}
     display: flex;
     flex-direction: column;
     gap: ${Size.XXXS};
@@ -68,7 +69,7 @@ const StyledCard = styled.a<{ color?: string; }>`
     }
 
     ${Breakpoint.TabletSmall} {
-        min-height: 280px;
+        ${props => !props.small && 'min-height: 280px;'}
     }
 `;
 
@@ -168,11 +169,11 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank" className={props.className}>
+        <StyledCard small={props.small} href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank" className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
-                        <Text size={TextSize.SuperLarge} bold>
+                        <Text size={props.small ? TextSize.Large : TextSize.SuperLarge} bold>
                             {props.title}
                         </Text>
                         {props.onStarClick &&
