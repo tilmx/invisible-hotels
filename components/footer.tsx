@@ -1,14 +1,10 @@
 import { Size } from './tokens/size';
 import styled from '@emotion/styled';
-import { FunctionComponent, useEffect, useState } from 'react';
-import { Overlay } from './overlay';
+import { FunctionComponent } from 'react';
 import { Breakpoint, Color } from './tokens';
 import { Flex, Link } from './utils';
-import { Button } from './button';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
-import { Trash2 } from 'lucide-react';
-import { checkIfCookiesAllowed } from '../utils';
 import { useRouter } from "next/router";
 
 const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
@@ -90,33 +86,8 @@ const StyledGithubLink = styled(StyledLink)`
 `;
 
 export const Footer: FunctionComponent = () => {
-    const [showCookieOptOutOverlay, setShowCookieOptOutOverlay] = useState(false);
-
-    const [cookiesUsed, setCookiesUsed] = useState(false);
-    if (typeof window !== 'undefined') {
-        useEffect(() => {
-            if (checkIfCookiesAllowed()) {
-                setCookiesUsed(true);
-            }
-        }, [window.localStorage])
-    }
-
     return (
         <StyledFooter reducedPadding={useRouter().pathname === "/map"}>
-            {showCookieOptOutOverlay &&
-                <Overlay
-                    title='Do you want to delete all favorites'
-                    description='When opting out from cookies all your favorites are cleared'
-                    onOutsideClick={() => setShowCookieOptOutOverlay(false)}
-                >
-                    <Button iconLeft={<Trash2 />} onClick={() => {
-                        window.localStorage.clear();
-                        setShowCookieOptOutOverlay(false);
-                        location.reload()
-                    }}>Delete all</Button>
-                    <Button onClick={() => setShowCookieOptOutOverlay(false)}>Keep them</Button>
-                </Overlay>
-            }
             <Wrapper>
                 <StyledFooterList>
                     <StyledLink href='/legal/sites-notice'>
@@ -129,11 +100,6 @@ export const Footer: FunctionComponent = () => {
                             <Text size={TextSize.Regular}>Privacy Policy</Text>
                         </StyledLinkContainer>
                     </StyledLink>
-                    {cookiesUsed &&
-                        <StyledLinkContainer onClick={() => setShowCookieOptOutOverlay(true)}>
-                            <Text size={TextSize.Regular}>Cookie Opt-out</Text>
-                        </StyledLinkContainer>
-                    }
                     <StyledGithubLink href="https://github.com/tilmx/invisible-hotels" target="_blank">
                         <StyledGithubLinkContainer>
                             <svg width="98" height="96" viewBox='0 0 98 96' xmlns="http://www.w3.org/2000/svg">

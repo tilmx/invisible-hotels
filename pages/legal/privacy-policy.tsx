@@ -3,6 +3,9 @@ import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
 import { Size } from '../../components/tokens';
+import { Button } from '../../components/button';
+import { Flex } from '../../components/utils';
+import { Trash2 } from 'lucide-react';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -150,6 +153,13 @@ export default function PrivacyPolicy() {
                     <Text size={TextSize.Large}>Children</Text>
                     <Text>Persons under 16 should not send us personal data without the consent of their parents or persons with parental power. We
                         ask for no personal data from children and adolescents, nor do we collect such information nor pass it on to third parties.</Text>
+                    <Text size={TextSize.Large}>Cookie Opt-out</Text>
+                    <Text>You can clear all cookies and delete your locally stored favorites.</Text>
+                    <Flex>
+                        <Button iconLeft={<Trash2 />} onClick={() => {
+                            window.localStorage.clear();
+                        }}>Clear all cookies</Button>
+                    </Flex>
                 </StyledWrapper>
             </Header>
         </>
