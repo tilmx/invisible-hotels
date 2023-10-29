@@ -5,7 +5,7 @@ import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
 import { Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
-import { getVacationTypeColor } from '../utils';
+import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../utils';
 import { Button } from '../components/button';
 import { Box } from '../components/box';
 import { HotelCard } from '../components/hotel-card';
@@ -71,6 +71,10 @@ export default function Map() {
     const [darkMode, setDarkMode] = useState(false);
 
     const [selectedHotel, setSelectedHotel] = useState<string | undefined>();
+
+    useEffect(() => {
+        checkIfCookiesAllowed("map") && setMapCookiesAllowed(true)
+    })
 
     useEffect(() => {
         setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -151,7 +155,10 @@ export default function Map() {
                 <Wrapper>
                     <StyledCookieContainer>
                         <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and also you need to a single cookie from Apple, so it works properly.'>
-                            <Button onClick={() => setMapCookiesAllowed(true)}>Accept</Button>
+                            <Button onClick={() => {
+                                setMapCookiesAllowed(true);
+                                setCookieOptIn("map")
+                            }}>Accept</Button>
                         </Box>
                     </StyledCookieContainer>
                 </Wrapper>
