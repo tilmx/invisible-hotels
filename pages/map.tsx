@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import { Size } from '../components/tokens';
+import { Color, Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../utils';
 import { Button } from '../components/button';
@@ -41,6 +41,7 @@ const StyledHotelCard = styled(HotelCard)`
     pointer-events: auto;
     max-width: 480px;
     width: 90vw;
+    box-shadow: 0 ${Size.XXS} ${Size.M} ${Color.Shadow};
 `;
 
 let loadingMapPromise: Promise<void> | null = null;
