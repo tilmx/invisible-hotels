@@ -12,7 +12,6 @@ Airtable.configure({
 
 const base = new Airtable.base(process.env.AIRTABLE_BASE);
 const savedRecords = [];
-const imageList = [];
 const imageFolder = './public/images/hotels/'
 
 base('Curated List').select({
@@ -20,14 +19,6 @@ base('Curated List').select({
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
         if (record.get('Online')) {
-            if (record.get('Image')?.length > 0 && record.get('Image')[0].type === 'image/jpeg') {
-                imageList.push({
-                    hotel: record.get('ID'),
-                    url: record.get('Image')[0].url,
-                    type: record.get('Image')[0].type
-                })
-            }
-
             savedRecords.push({
                 id: record.get('ID'),
                 name: record.get('Name'),
@@ -40,15 +31,26 @@ base('Curated List').select({
                     lat: Number(record.get('Coordinates').split(', ')[0]),
                     long: Number(record.get('Coordinates').split(', ')[1])
                 } : undefined,
-                image: record.get('Image')?.length > 0 ? {
-                    url: record.get('ID') + '.jpg',
-                    width: record.get('Image')[0].width,
-                    height: record.get('Image')[0].height
-                } : undefined,
+                images: record.get('Image')?.map((image, i) => {
+                    return {
+                        url: record.get('ID') + '-' + i + '.jpg',
+                        width: image.width,
+                        height: image.height
+                    }
+                }),
                 links: {
                     bookingCom: record.get('Link (Booking.com)'),
                     hotel: record.get('Link (Hotel)')
                 }
+            })
+            record.get('Image')?.map((image, i) => {
+                if (!fs.existsSync(imageFolder)) {
+                    fs.mkdirSync(imageFolder, { recursive: true });
+                }
+                const file = fs.createWriteStream(imageFolder + record.get('ID') + '-' + i + '.jpg');
+                http.get(image.url, function (response) {
+                    response.pipe(file);
+                });
             })
         }
     });
@@ -72,17 +74,5 @@ base('Curated List').select({
                 .sort(),
             null, 2)
     );
-
-    imageList.forEach(image => {
-        if (!fs.existsSync(imageFolder)) {
-            fs.mkdirSync(imageFolder, { recursive: true });
-        }
-        const file = fs.createWriteStream(imageFolder + image.hotel + '.jpg');
-        http.get(image.url, function (response) {
-            response.pipe(file);
-        });
-    })
-
     console.log('Done, ', savedRecords)
 });
-
