@@ -63,7 +63,14 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
                     {hotel.images?.slice(0, 2).map((image, i) =>
-                        <StyledImage key={i} src={'/images/hotels/' + image.url} alt="Image of Hotel" width={720} height={720} />
+                        <StyledImage
+                            key={i}
+                            src={'/images/hotels/' + image.url}
+                            alt="Image of Hotel"
+                            width={720}
+                            height={720}
+                            sizes="(max-width: 720px) 100vw, 720px"
+                        />
                     )}
                 </StyledImageContainer>
             </Wrapper>
