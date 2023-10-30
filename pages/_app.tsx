@@ -15,6 +15,7 @@ function App({ Component, pageProps }: AppProps) {
                     <link rel="icon" href="/favicon.png" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
                     <meta name="language" content="en" />
+                    <meta name="keywords" content="Hotels, Hotel, Travel, Boutique Hotels, Hotel Tips, Hotel Recommendations" />
                     <meta property="og:title" content={siteTitle} />
                     <meta property="og:description" content={siteDescription} />
                     <meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
