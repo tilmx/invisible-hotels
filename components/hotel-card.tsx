@@ -10,7 +10,8 @@ import { AlignItems, Flex, JustifyContent } from './utils';
 
 interface HotelCardProps {
     title: string;
-    location: string;
+    city: string;
+    country: string;
     housingType: string;
     vacationType: string;
     visited?: boolean;
@@ -183,7 +184,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                         }
                     </Flex>
                     <Text size={TextSize.Large} serif>
-                        {props.location}
+                        {props.city}, {props.country}
                     </Text>
                 </StyledContent>
                 {props.image &&

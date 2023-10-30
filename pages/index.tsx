@@ -8,7 +8,7 @@ import { ScrollIndicator } from '../components/scroll-indicator';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Color } from '../components/tokens';
 import { Share } from '../components/share';
-import { siteTitle } from './_app';
+import { siteDescription, siteTitle } from './_app';
 import { Footer } from '../components/footer';
 
 export default function Home() {
@@ -18,6 +18,7 @@ export default function Home() {
 		<>
 			<Head>
 				<title>{siteTitle}</title>
+				<meta name="description" content={siteDescription} />
 			</Head>
 			<Header>
 				<Logo />

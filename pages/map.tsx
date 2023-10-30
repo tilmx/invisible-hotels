@@ -152,7 +152,7 @@ export default function Map() {
     return (
         <>
             <Head>
-                <title>Map | {siteTitle}</title>
+                <title>Map — {siteTitle}</title>
             </Head>
             <StyledMenuContainer>
                 <Wrapper>
@@ -177,7 +177,8 @@ export default function Map() {
                 <StyledHotelCardContainer>
                     <StyledHotelCard
                         title={selectedHotelContent.name}
-                        location={`${selectedHotelContent.city}, ${selectedHotelContent.country} `}
+                        city={selectedHotelContent.city}
+                        country={selectedHotelContent.country}
                         housingType={selectedHotelContent.housingType}
                         vacationType={selectedHotelContent.vacationType}
                         visited={selectedHotelContent.visited}

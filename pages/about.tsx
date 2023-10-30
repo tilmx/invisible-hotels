@@ -47,12 +47,13 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>About | {siteTitle}</title>
+                <title>About — {siteTitle}</title>
+                <meta name="description" content="Hej, we're Annika & Tilman. We love hotels — we believe that a beautiful hotel is the best start for any vacation." />
             </Head>
             <Header>
                 <StyledWrapper>
                     <Text size={TextSize.ExtraLarge} serif>
-                        Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We’re hotel lovers — we believe that a lovely hotel is the best start for any vacation.
+                        Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We love hotels — we believe that a beautiful hotel is the best start for any vacation.
                     </Text>
                     <StyledImage width={800} src={AboutPicture} alt="Picture of Tilman & Annika" />
                     <StyledParagraph scribbleColor={Color.Yellow} size={TextSize.ExtraLarge} serif>

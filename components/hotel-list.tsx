@@ -208,7 +208,8 @@ export const HotelList: FunctionComponent = () => {
                             <HotelCard
                                 key={i}
                                 title={hotel.name}
-                                location={`${hotel.city}, ${hotel.country}`}
+                                city={hotel.city}
+                                country={hotel.country}
                                 housingType={hotel.housingType}
                                 vacationType={hotel.vacationType}
                                 visited={hotel.visited}
