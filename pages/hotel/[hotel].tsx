@@ -49,7 +49,6 @@ const StyledImage = styled(Image)`
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
 `
 
-
 export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
     return (
         <StyledBackground color={getVacationTypeColor(hotel.vacationType) || Color.Background}>
@@ -74,23 +73,12 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
 }
 
 export async function getStaticProps({ params }: { params: { hotel: string } }) {
-    const hotel = hotels.find(hotel => hotel.id === params.hotel)
-    return {
-        props: {
-            hotel: hotel,
-        },
-    }
+    return { props: { hotel: hotels.find(hotel => hotel.id === params.hotel) } }
 }
 
 export async function getStaticPaths() {
     return {
-        paths: hotels.map((hotel) => {
-            return {
-                params: {
-                    hotel: hotel.id,
-                },
-            }
-        }),
+        paths: hotels.map((hotel) => { return { params: { hotel: hotel.id } } }),
         fallback: false,
     }
 }
