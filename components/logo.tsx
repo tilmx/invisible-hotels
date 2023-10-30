@@ -14,21 +14,54 @@ const StyledLogoWrapper = styled.div`
 
 		[data-scribble] {
 			visibility: hidden;
-			animation: logoVisibility 3.75s infinite ease-out;
+			animation: logoVisibility 20s infinite cubic-bezier(.3,0,.1,1);
 			color: ${Color.Text05};
+			transform-box: fill-box;
+			transform-origin: center;
 		}
-
-		[data-scribble="2"] { animation-delay: .75s; }
-		[data-scribble="3"] { animation-delay: 1.5s; }
-		[data-scribble="5"] { animation-delay: 2.25s; }
-		[data-scribble="4"] { animation-delay: 3s; }
+		[data-scribble="1"] { 
+			animation-delay: 0s;
+			stroke-dasharray: 1190;
+			stroke-dashoffset: 1190;
+		}
+		[data-scribble="2"] { 
+			animation-delay: 4s;
+			stroke-dasharray: 920;
+			stroke-dashoffset: 920;
+		}
+		[data-scribble="3"] { 
+			animation-delay: 8s;
+			stroke-dasharray: 1520;
+			stroke-dashoffset: 1520;
+		}
+		[data-scribble="5"] {
+			animation-delay: 12s;
+			stroke-dasharray: 1240;
+			stroke-dashoffset: 1240;
+		}
+		[data-scribble="4"] {
+			animation-delay: 16s;
+			stroke-dasharray: 1010;
+			stroke-dashoffset: 1010;
+		}
 
 		@keyframes logoVisibility {
 			0% {
 				visibility: visible;
 			}
+			15% {
+				stroke-dashoffset: 0;
+			}
+			19% {
+				stroke-dashoffset: 0;
+				transform: scale(1);
+				opacity: 1;
+			}
 			20% {
 				visibility: hidden;
+				stroke-dashoffset: 0;
+				transform: scale(.9);
+				opacity: 0;
 			}
 		}
 	}
