@@ -22,15 +22,14 @@ base('Curated List').select({
         if (record.get('Online')) {
             if (record.get('Image')?.length > 0 && record.get('Image')[0].type === 'image/jpeg') {
                 imageList.push({
-                    hotel: record.getId(),
+                    hotel: record.get('ID'),
                     url: record.get('Image')[0].url,
                     type: record.get('Image')[0].type
                 })
-                //downloadImage(record.get('Image')[0].url, record.getId())
             }
 
             savedRecords.push({
-                id: record.getId(),
+                id: record.get('ID'),
                 name: record.get('Name'),
                 city: record.get('City'),
                 country: record.get('Country'),
@@ -42,7 +41,7 @@ base('Curated List').select({
                     long: Number(record.get('Coordinates').split(', ')[1])
                 } : undefined,
                 image: record.get('Image')?.length > 0 ? {
-                    url: record.getId() + '.jpg',
+                    url: record.get('ID') + '.jpg',
                     width: record.get('Image')[0].width,
                     height: record.get('Image')[0].height
                 } : undefined,
