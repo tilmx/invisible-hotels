@@ -15,7 +15,7 @@ const StyledLogoWrapper = styled.div`
 		[data-scribble] {
 			visibility: hidden;
 			animation: logoVisibility 20s infinite cubic-bezier(.3,0,.1,1);
-			color: ${Color.Text05};
+			color: ${Color.Text10};
 			transform-box: fill-box;
 			transform-origin: center;
 		}
