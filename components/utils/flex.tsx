@@ -5,9 +5,15 @@ interface FlexProps {
 	justifyContent?: JustifyContent;
 	alignItems?: AlignItems;
 	children?: ReactNode;
+	direction?: FlexDirection;
 	gap?: string;
 	flexWrap?: 'wrap';
 	className?: string;
+}
+
+export enum FlexDirection {
+	Row = 'row',
+	Column = 'column',
 }
 
 export enum JustifyContent {
@@ -32,6 +38,7 @@ const StyledFlex = styled.div<FlexProps>`
 	align-items: ${props => props.alignItems};
 	gap: ${props => props.gap};
 	flex-wrap: ${props => props.flexWrap};
+	flex-direction: ${props => props.direction};
 `;
 
 export const Flex: FunctionComponent<FlexProps> = props => {
