@@ -10,6 +10,7 @@ import { Flex, Link } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
 import { siteTitle } from './_app';
+import { Footer } from '../components/footer';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -74,6 +75,7 @@ export default function About() {
                     </Flex>
                 </StyledWrapper>
             </Header>
+            <Footer />
         </>
     )
 }

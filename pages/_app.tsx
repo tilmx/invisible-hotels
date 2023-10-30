@@ -3,7 +3,6 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Color, Theme } from '../components/tokens';
 import PlausibleProvider from 'next-plausible';
-import { Footer } from '../components/footer';
 
 export const siteTitle = "Invisible Hotels"
 const siteDescription = "All the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to.";
@@ -25,7 +24,6 @@ function App({ Component, pageProps }: AppProps) {
                 </Head>
                 <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; };`} />
                 <Component {...pageProps} />
-                <Footer />
             </Theme>
         </PlausibleProvider>
     );

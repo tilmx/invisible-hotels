@@ -9,6 +9,7 @@ import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Color } from '../components/tokens';
 import { Share } from '../components/share';
 import { siteTitle } from './_app';
+import { Footer } from '../components/footer';
 
 export default function Home() {
 	const hotelListRef = useRef<HTMLDivElement>(null);
@@ -27,6 +28,7 @@ export default function Home() {
 				<HotelList />
 			</div>
 			<Share />
+			<Footer />
 		</>
 	)
 }

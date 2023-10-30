@@ -4,6 +4,7 @@ import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
 import { Size } from '../../components/tokens';
 import { siteTitle } from '../_app';
+import { Footer } from '../../components/footer';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -48,6 +49,7 @@ export default function SitesNotice() {
                     </StyledContent>
                 </StyledWrapper>
             </Header>
+            <Footer />
         </>
     )
 }

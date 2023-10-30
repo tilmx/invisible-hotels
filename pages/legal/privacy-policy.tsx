@@ -7,6 +7,7 @@ import { Button } from '../../components/button';
 import { Flex } from '../../components/utils';
 import { Trash2 } from 'lucide-react';
 import { siteTitle } from '../_app';
+import { Footer } from '../../components/footer';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -162,6 +163,7 @@ export default function PrivacyPolicy() {
                     </Flex>
                 </StyledWrapper>
             </Header>
+            <Footer />
         </>
     )
 }

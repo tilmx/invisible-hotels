@@ -10,6 +10,7 @@ import { Button } from '../components/button';
 import { Box } from '../components/box';
 import { HotelCard } from '../components/hotel-card';
 import { siteTitle } from './_app';
+import { Footer } from '../components/footer';
 
 const StyledMapElement = styled.div`
     height: 100vh;
@@ -188,6 +189,7 @@ export default function Map() {
                     />
                 </StyledHotelCardContainer>
             }
+            <Footer />
         </>
     )
 }
