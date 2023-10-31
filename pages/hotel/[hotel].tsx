@@ -203,9 +203,9 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                             data-image-number={i}
                             src={'/images/hotels/' + image.url}
                             alt="Image of Hotel"
-                            width={720}
-                            height={720}
-                            sizes="(max-width: 720px) 100vw, 720px"
+                            width={i === 0 ? 720 : 480}
+                            height={i === 0 ? 720 : 480}
+                            sizes={`(max-width: ${i === 0 ? 720 : 480}px) 100vw, ${i === 0 ? 720 : 480}px`}
                         />
                     )}
                 </StyledImageContainer>
