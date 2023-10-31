@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
     return (
         <>
             <Head>
-                <title>Privacy Policy — {siteTitle}</title>
+                <title>{'Privacy Policy — ' + siteTitle}</title>
                 <meta name="robots" content="noindex" />
             </Head>
             <Header>

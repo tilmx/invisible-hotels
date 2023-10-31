@@ -77,7 +77,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
     return (
         <StyledBackground color={getVacationTypeColor(hotel.vacationType) || Color.Background}>
             <Head>
-                <title>{hotel.name} — {siteTitle}</title>
+                <title>{hotel.name + ' — ' + siteTitle}</title>
             </Head>
             <Wrapper>
                 <Menu />

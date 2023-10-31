@@ -29,7 +29,7 @@ export default function SitesNotice() {
     return (
         <>
             <Head>
-                <title>Site’s notice — {siteTitle}</title>
+                <title>{'Site’s notice — ' + siteTitle}</title>
                 <meta name="robots" content="noindex" />
             </Head>
             <Header>

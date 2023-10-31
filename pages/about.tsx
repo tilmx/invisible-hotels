@@ -47,7 +47,7 @@ export default function About() {
     return (
         <>
             <Head>
-                <title>About — {siteTitle}</title>
+                <title>{'About — ' + siteTitle}</title>
                 <meta name="description" content="Hej, we're Annika & Tilman. We love hotels — we believe that a beautiful hotel is the best start for any vacation." />
             </Head>
             <Header>

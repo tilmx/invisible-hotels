@@ -152,7 +152,7 @@ export default function Map() {
     return (
         <>
             <Head>
-                <title>Map — {siteTitle}</title>
+                <title>{'Map — ' + siteTitle}</title>
             </Head>
             <StyledMenuContainer>
                 <Wrapper>
