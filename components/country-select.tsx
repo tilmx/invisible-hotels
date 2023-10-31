@@ -25,6 +25,7 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?:
     ${props => props.active && `
         background: ${Color.Text};
         color: ${Color.Background};
+        border-color: ${Color.Text};
     `}
 
     ${props => !props.active && `
@@ -43,7 +44,7 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?:
 
 export const CountrySelect: FunctionComponent<CountrySelectProps> = props => {
     return (
-        <StyledSelect disabled={props.disabled} className={props.className} label={props.value || props.label} onClick={props.onClick} active={props.active}>
+        <StyledSelect disabled={props.disabled} className={props.className} label={props.value ? getCountryFlag(props.value) + ' ' + props.value : props.label} onClick={props.onClick} active={props.active}>
             <ChevronDown size="20px" />
         </StyledSelect>
     )
