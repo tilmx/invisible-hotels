@@ -31,7 +31,7 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
     ${props => props.multipleImages ? `
         img:last-of-type {
             margin-left: auto;
-            margin-top: -${Size.XXXXXL};
+            margin-top: -${Size.XXXXL};
         }
     `: `
         img {
