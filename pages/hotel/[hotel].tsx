@@ -28,17 +28,24 @@ const StyledIntro = styled.div`
 const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
     position: relative;
 
-    ${props => props.multipleImages ? `
-        img:last-of-type {
-            margin-left: auto;
-            margin-top: -${Size.XXXXL};
-        }
-    `: `
+    ${props => !props.multipleImages && `
         img {
             margin-left: auto;
             margin-right: auto;
         }
     `}
+
+    [data-image-number="1"] {
+        margin-left: auto;
+        margin-top: -${Size.XXXXXL};
+        max-width: 480px;
+    }
+
+    [data-image-number="2"] {
+        margin-left: ${Size.XXL};
+        margin-top: -${Size.XXXXXL};
+        max-width: 480px;
+    }
 `;
 
 const StyledImage = styled(Image)`
@@ -46,12 +53,12 @@ const StyledImage = styled(Image)`
     margin: 0;
     padding: 0;
     border: none;
-    border-radius: ${Size.M};
+    border-radius: ${Size.S};
     width: 100%;
     max-width: 720px;
     height: auto;
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
-`
+`;
 
 const StyledSimilarSection = styled.div`
     padding-top: ${Size.XXXXXL};
@@ -90,9 +97,10 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     </Flex>
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
-                    {hotel.images?.slice(0, 2).map((image, i) =>
+                    {hotel.images?.slice(0, 3).map((image, i) =>
                         <StyledImage
                             key={i}
+                            data-image-number={i}
                             src={'/images/hotels/' + image.url}
                             alt="Image of Hotel"
                             width={720}

@@ -19,7 +19,7 @@ base('Curated List').select({
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
         if (record.get('Online')) {
-            const onlyFirstTwoImages = record.get('Image')?.slice(0, 2);
+            const onlyFirstImages = record.get('Image')?.slice(0, 2);
 
             savedRecords.push({
                 id: record.get('ID'),
@@ -33,7 +33,7 @@ base('Curated List').select({
                     lat: Number(record.get('Coordinates').split(', ')[0]),
                     long: Number(record.get('Coordinates').split(', ')[1])
                 } : undefined,
-                images: onlyFirstTwoImages?.map((image, i) => {
+                images: onlyFirstImages?.map((image, i) => {
                     return {
                         url: record.get('ID') + '-' + i + '.jpg',
                         width: image.width,
@@ -45,7 +45,7 @@ base('Curated List').select({
                     hotel: record.get('Link (Hotel)')
                 }
             })
-            onlyFirstTwoImages?.map((image, i) => {
+            onlyFirstImages?.map((image, i) => {
                 if (!fs.existsSync(imageFolder)) {
                     fs.mkdirSync(imageFolder, { recursive: true });
                 }
