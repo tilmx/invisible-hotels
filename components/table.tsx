@@ -33,10 +33,6 @@ const StyledRow = styled.div`
     }
 `;
 
-const StyledTextWrapper = styled.div`
-
-`;
-
 const StyledIconWrapper = styled.div<{ disabled?: boolean }>`
     background: ${props => props.disabled ? Color.Text10 : Color.Text};
     color: ${props => props.disabled ? Color.Text : Color.Background};
@@ -57,9 +53,7 @@ export const Table: FunctionComponent<TableProps> = props => {
                 <StyledRow key={i}>
                     <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
                     {typeof row.value === 'string' || typeof row.value === 'number' &&
-                        <StyledTextWrapper>
-                            <Text size={TextSize.Large}>{row.value}</Text>
-                        </StyledTextWrapper>
+                        <Text size={TextSize.Large}>{row.value}</Text>
                     }
                     {typeof row.value === 'boolean' &&
                         <StyledIconWrapper disabled={!row.value}>

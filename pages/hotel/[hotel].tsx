@@ -12,7 +12,7 @@ import { Footer } from '../../components/footer';
 import { Flex, JustifyContent } from '../../components/utils';
 import { Tag } from '../../components/tag';
 import { Table } from '../../components/table';
-import { ImageIcon } from 'lucide-react';
+import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color}
@@ -113,14 +113,60 @@ const StyledNoImagesBanner = styled.div`
     flex-direction: column;
     align-items: center;
     gap: ${Size.S};
-    max-width: 480px;
+    max-width: 560px;
     margin: 0 auto;
+    box-sizing: border-box;
 
     svg {
         display: block;
         height: ${Size.L};
         width: ${Size.L};
         opacity: .5;
+    }
+`;
+
+const StyledStickyContainer = styled.div`
+    position: sticky;
+    width: 100%;
+    bottom: ${Size.M};
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 ${Size.M};
+    pointer-events: none;
+    margin-top: ${Size.XXXL};
+`;
+
+const StyledBookingArea = styled.a`
+    max-width: 560px;
+    margin: 0 auto ${Size.M};
+    background: ${Color.Text80};
+    color: ${Color.Background};
+    box-sizing: border-box;
+    padding: ${Size.M};
+    border-radius: ${Size.M};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: ${Size.XS};
+    backdrop-filter: blur(${Size.XS});
+    cursor: pointer;
+    pointer-events: auto;
+    text-decoration: unset;
+    box-shadow: 0 ${Size.XXS} ${Size.L} ${Color.Shadow};
+
+    @media (hover: hover) {
+        &:hover {
+            background: ${Color.Text};
+        }
+    }
+
+    ${Breakpoint.Mobile} {
+        padding: ${Size.S};
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 `;
 
@@ -174,6 +220,12 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                         { label: 'Sauna', value: hotel.amenities?.includes('Sauna') || amenitieFallback }
                     ]}
                 />
+                <StyledStickyContainer>
+                    <StyledBookingArea href={hotel.links.bookingCom || hotel.links.hotel} target='_blank'>
+                        <Text>Open {hotel.links.bookingCom ? 'on Booking.com' : 'Hotel Website'}</Text>
+                        <ExternalLinkIcon />
+                    </StyledBookingArea>
+                </StyledStickyContainer>
             </Wrapper>
             <Footer />
         </StyledBackground>
