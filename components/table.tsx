@@ -8,7 +8,7 @@ interface TableProps {
     backgroundColor?: string;
     data: {
         label: string;
-        value?: boolean | string;
+        value?: string | number | boolean;
     }[]
 }
 
@@ -56,7 +56,7 @@ export const Table: FunctionComponent<TableProps> = props => {
             {props.data.map((row, i) =>
                 <StyledRow key={i}>
                     <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
-                    {typeof row.value === 'string' &&
+                    {typeof row.value === 'string' || typeof row.value === 'number' &&
                         <StyledTextWrapper>
                             <Text size={TextSize.Large}>{row.value}</Text>
                         </StyledTextWrapper>
