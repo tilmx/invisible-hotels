@@ -212,7 +212,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                 <Table
                     backgroundColor={getVacationTypeColor(hotel.vacationType)}
                     data={[
-                        { label: 'Rooms', value: hotel.rooms },
+                        { label: hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: hotel.rooms },
                         { label: 'Breakfast', value: hotel.amenities?.includes('Breakfast') || amenitieFallback },
                         { label: 'Restaurant', value: hotel.amenities?.includes('Restaurant') || amenitieFallback },
                         { label: 'Bar', value: hotel.amenities?.includes('Bar') || amenitieFallback },
