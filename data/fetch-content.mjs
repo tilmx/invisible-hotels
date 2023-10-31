@@ -29,6 +29,7 @@ base('Curated List').select({
                 housingType: record.get('Housing Type'),
                 vacationType: record.get('Vacation Type'),
                 visited: record.get('Last Visit') ? true : false,
+                amenities: record.get('Amenities'),
                 coordinates: record.get('Coordinates') ? {
                     lat: Number(record.get('Coordinates').split(', ')[0]),
                     long: Number(record.get('Coordinates').split(', ')[1])

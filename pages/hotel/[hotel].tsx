@@ -11,6 +11,7 @@ import { getVacationTypeColor, getVacationTypeIcon } from '../../utils';
 import { Footer } from '../../components/footer';
 import { Flex, JustifyContent } from '../../components/utils';
 import { Tag } from '../../components/tag';
+import { Table } from '../../components/table';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color}
@@ -31,6 +32,7 @@ const StyledIntroTitle = styled.div`
 
 const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
     position: relative;
+    padding-bottom: ${Size.XXXL};
 
     ${props => !props.multipleImages && `
         img {
@@ -103,6 +105,8 @@ const StyledImage = styled(Image)`
 `;
 
 export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
+    const amenitieFallback = hotel.amenities ? false : undefined
+
     return (
         <StyledBackground color={getVacationTypeColor(hotel.vacationType) || Color.Background}>
             <Head>
@@ -133,8 +137,18 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                         />
                     )}
                 </StyledImageContainer>
+                <Table
+                    backgroundColor={getVacationTypeColor(hotel.vacationType)}
+                    data={[
+                        { label: 'Rooms', value: '63' },
+                        { label: 'Breakfast', value: hotel.amenities?.includes('Breakfast') || amenitieFallback },
+                        { label: 'Restaurant', value: hotel.amenities?.includes('Restaurant') || amenitieFallback },
+                        { label: 'Bar', value: hotel.amenities?.includes('Bar') || amenitieFallback },
+                        { label: 'Pool', value: hotel.amenities?.includes('Pool') || amenitieFallback },
+                        { label: 'Sauna', value: hotel.amenities?.includes('Sauna') || amenitieFallback }
+                    ]}
+                />
             </Wrapper>
-
             <Footer />
         </StyledBackground>
     )
@@ -145,8 +159,5 @@ export async function getStaticProps({ params }: { params: { hotel: string } }) 
 }
 
 export async function getStaticPaths() {
-    return {
-        paths: hotels.map((hotel) => { return { params: { hotel: hotel.id } } }),
-        fallback: false,
-    }
+    return { paths: hotels.map((hotel) => { return { params: { hotel: hotel.id } } }), fallback: false }
 }
