@@ -72,7 +72,7 @@ const StyledHotelCard = styled(HotelCard)`
 `;
 
 export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
-    const similarHotels = hotels.filter(hotelItem => hotelItem.vacationType === hotel.vacationType && hotelItem.id !== hotel.id);
+    const similarHotels = hotels.filter(hotelItem => hotelItem.vacationType === hotel.vacationType && hotelItem.country === hotel.country && hotelItem.id !== hotel.id);
 
     return (
         <StyledBackground color={getVacationTypeColor(hotel.vacationType) || Color.Background}>
