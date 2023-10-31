@@ -5,7 +5,6 @@ import { Breakpoint, Color } from './tokens';
 import { Flex, Link } from './utils';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
-import { useRouter } from "next/router";
 
 const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
     padding-top: ${Size.L};
@@ -85,9 +84,9 @@ const StyledGithubLink = styled(StyledLink)`
     }
 `;
 
-export const Footer: FunctionComponent = () => {
+export const Footer: FunctionComponent<{ reducedPadding?: boolean; }> = props => {
     return (
-        <StyledFooter reducedPadding={useRouter().pathname === "/map"}>
+        <StyledFooter reducedPadding={props.reducedPadding}>
             <Wrapper>
                 <StyledFooterList>
                     <StyledLink href='/legal/sites-notice'>

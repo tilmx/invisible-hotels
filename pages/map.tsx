@@ -190,7 +190,7 @@ export default function Map() {
                     />
                 </StyledHotelCardContainer>
             }
-            <Footer />
+            <Footer reducedPadding />
         </>
     )
 }

@@ -133,7 +133,7 @@ const StyledStickyContainer = styled.div`
     box-sizing: border-box;
     padding: 0 ${Size.M};
     pointer-events: none;
-    margin-top: ${Size.XXXL};
+    margin: ${Size.XXXL} 0;
 `;
 
 const StyledBookingArea = styled.a`
@@ -227,7 +227,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     </StyledBookingArea>
                 </StyledStickyContainer>
             </Wrapper>
-            <Footer />
+            <Footer reducedPadding />
         </StyledBackground>
     )
 }
