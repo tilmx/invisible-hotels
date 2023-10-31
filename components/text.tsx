@@ -37,7 +37,7 @@ const StyledText = styled.div<TextProps>`
     ${props => props.size === TextSize.Huge && `
         font-size: 96px;
         line-height: 1;
-        letter-spacing: -.02em;
+        letter-spacing: -.03em;
 
         ${Breakpoint.Tablet} {
             font-size: 72px;

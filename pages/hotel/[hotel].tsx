@@ -12,6 +12,7 @@ import { Footer } from '../../components/footer';
 import { Flex, JustifyContent } from '../../components/utils';
 import { Tag } from '../../components/tag';
 import { Table } from '../../components/table';
+import { ImageIcon } from 'lucide-react';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color}
@@ -104,6 +105,25 @@ const StyledImage = styled(Image)`
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
 `;
 
+const StyledNoImagesBanner = styled.div`
+    background: ${Color.Text10};
+    padding: ${Size.L};
+    border-radius: ${Size.S};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${Size.S};
+    max-width: 480px;
+    margin: 0 auto;
+
+    svg {
+        display: block;
+        height: ${Size.L};
+        width: ${Size.L};
+        opacity: .5;
+    }
+`;
+
 export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
     const amenitieFallback = hotel.amenities ? false : undefined
 
@@ -125,6 +145,12 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     </Flex>
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
+                    {!hotel.images &&
+                        <StyledNoImagesBanner>
+                            <ImageIcon />
+                            <Text color={Color.Text50} center>Unfortunately we don't have any pictures of this hotel yet</Text>
+                        </StyledNoImagesBanner>
+                    }
                     {hotel.images?.slice(0, 3).map((image, i) =>
                         <StyledImage
                             key={i}
