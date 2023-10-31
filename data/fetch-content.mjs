@@ -76,5 +76,5 @@ base('Curated List').select({
                 .sort(),
             null, 2)
     );
-    console.log('Done, ', savedRecords)
+    console.log('Done, ', savedRecords, savedRecords.length + ' hotels')
 });
