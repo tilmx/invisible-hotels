@@ -19,7 +19,7 @@ base('Curated List').select({
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
         if (record.get('Online')) {
-            const onlyFirstImages = record.get('Image')?.slice(0, 2);
+            const onlyFirstImages = record.get('Image')?.slice(0, 3);
 
             savedRecords.push({
                 id: record.get('ID'),
