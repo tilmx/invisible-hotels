@@ -1,7 +1,7 @@
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Tag } from "./tag";
-import { Color } from "./tokens";
+import { Color } from "./tokens/colors";
 import { getVacationTypeColor } from "../utils";
 
 interface FilterProps {

@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
 import { Text, TextSize } from './text';
-import { Breakpoint, Color, Size } from './tokens';
 import { FunctionComponent, ReactNode } from 'react';
 import { CookieIcon } from 'lucide-react';
-import { Link } from './utils';
+import { Link } from './utils/link';
+import { Color } from './tokens/colors';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
 
 const StyledMessage = styled.div`
     padding: ${Size.L};
@@ -36,15 +38,15 @@ const StyledButtonList = styled.div`
 `;
 
 export const Box: FunctionComponent<{ title: string; description: string; children?: ReactNode; }> = props => {
-	return (
-		<StyledMessage>
-			<CookieIcon />
-			<Text size={TextSize.Large} bold>{props.title}</Text>
-			<Text size={TextSize.Regular}>{props.description}</Text>
-			<Text size={TextSize.Small} color={Color.Text50}>Find out more in our <Link href="legal/privacy-policy">privacy policy</Link>.</Text>
-			<StyledButtonList>
-				{props.children}
-			</StyledButtonList>
-		</StyledMessage>
-	)
+    return (
+        <StyledMessage>
+            <CookieIcon />
+            <Text size={TextSize.Large} bold>{props.title}</Text>
+            <Text size={TextSize.Regular}>{props.description}</Text>
+            <Text size={TextSize.Small} color={Color.Text50}>Find out more in our <Link href="legal/privacy-policy">privacy policy</Link>.</Text>
+            <StyledButtonList>
+                {props.children}
+            </StyledButtonList>
+        </StyledMessage>
+    )
 }

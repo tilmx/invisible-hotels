@@ -1,8 +1,9 @@
 import { Size } from './tokens/size';
 import styled from '@emotion/styled';
 import { FunctionComponent } from 'react';
-import { Breakpoint } from './tokens';
-import { Flex, Link } from './utils';
+import { Breakpoint } from './tokens/breakpoint';
+import { Link } from './utils/link';
+import { Flex } from './utils/flex';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 

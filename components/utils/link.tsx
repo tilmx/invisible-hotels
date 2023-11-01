@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 import { FunctionComponent, HTMLAttributeAnchorTarget, ReactNode } from 'react';
-import { Color, Size } from '../tokens';
+import { Size } from '../tokens/size';
+import { Color } from '../tokens/colors';
 
 const StyledUnstyledLink = styled(NextLink)`
     color: unset;

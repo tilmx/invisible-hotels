@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
-import { Breakpoint, Color, Size } from "./tokens";
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import { Text } from "./text";
+import { Color } from "./tokens/colors";
+import { Breakpoint } from "./tokens/breakpoint";
+import { Size } from "./tokens/size";
 
 const StyledButton = styled.div<{ secondary?: boolean; small?: boolean; }>`
     background: ${props => props.secondary ? Color.Text10 : Color.Text};

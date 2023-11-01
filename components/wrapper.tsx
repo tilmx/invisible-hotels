@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Size } from './tokens/size';
-import { Breakpoint } from './tokens';
+import { Breakpoint } from './tokens/breakpoint';
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 const StyledWrapper = styled.div<{ wide?: boolean; }>`

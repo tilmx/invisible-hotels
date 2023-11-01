@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { Button } from "./button";
-import { Flex, JustifyContent } from "./utils";
+import { Flex, JustifyContent } from "./utils/flex";
 import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
-import { Size } from "./tokens";
 import { siteTitle } from "../pages/_app";
+import { Size } from "./tokens/size";
 
 const StyledFlex = styled(Flex)`
     margin-top: ${Size.XXXXL};

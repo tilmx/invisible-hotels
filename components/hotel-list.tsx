@@ -5,15 +5,19 @@ import { Check, Send, Star, X } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, getVacationTypeIcon, saveFavoriteToLocalStorage, setCookieOptIn } from '../utils';
-import { Breakpoint, Color, Size } from './tokens';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
-import { AlignItems, Flex, OutsideClick, UnstyledLink } from './utils';
+import { AlignItems, Flex } from './utils/flex';
+import { OutsideClick } from './utils/outside-click';
+import { UnstyledLink } from './utils/link';
 import { Button } from './button';
 import { Wrapper } from './wrapper';
 import { Filter } from './filter';
 import { CountrySelect, CountrySelectFlyout } from './country-select';
 import { HotelCard } from './hotel-card';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
+import { Color } from './tokens/colors';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};

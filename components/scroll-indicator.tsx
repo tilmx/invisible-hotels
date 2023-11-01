@@ -2,7 +2,8 @@ import { Size } from './tokens/size';
 import styled from '@emotion/styled';
 import { ArrowDown } from 'lucide-react';
 import { FunctionComponent, MouseEventHandler, useEffect, useState } from 'react';
-import { Breakpoint, Color } from './tokens';
+import { Color } from './tokens/colors';
+import { Breakpoint } from './tokens/breakpoint';
 
 const StyledIndicator = styled.div<{ visible: boolean; }>`
     position: fixed;

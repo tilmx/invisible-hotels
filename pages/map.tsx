@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Size } from '../components/tokens';
 import hotels from '../data/hotels.json';
 import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../utils';
 import { Button } from '../components/button';
@@ -11,6 +10,9 @@ import { Box } from '../components/box';
 import { HotelCard } from '../components/hotel-card';
 import { siteTitle } from './_app';
 import { Footer } from '../components/footer';
+import { Size } from '../components/tokens/size';
+import { Breakpoint } from '../components/tokens/breakpoint';
+import { Color } from '../components/tokens/colors';
 
 const StyledMapElement = styled.div`
     height: 100vh;

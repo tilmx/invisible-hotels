@@ -1,9 +1,11 @@
 import { FunctionComponent, MouseEventHandler } from "react";
 import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
-import { Breakpoint, Color, Size } from "./tokens";
 import { ChevronDown, X } from "lucide-react";
 import { Tag } from "./tag";
+import { Size } from "./tokens/size";
+import { Color } from "./tokens/colors";
+import { Breakpoint } from "./tokens/breakpoint";
 
 interface CountrySelectProps {
     label: string;

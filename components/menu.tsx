@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 import { FunctionComponent } from "react";
-import { AlignItems, Flex, Link } from "./utils";
+import { AlignItems, Flex } from "./utils/flex";
+import { Link } from "./utils/link";
 import { Text, TextSize } from "./text";
-import { Color, Size, Breakpoint } from "./tokens";
 import { useRouter } from "next/router";
+import { Size } from "./tokens/size";
+import { Breakpoint } from "./tokens/breakpoint";
+import { Color } from "./tokens/colors";
 
 const StyledMenuContainer = styled.div`
     padding-top: ${Size.M};

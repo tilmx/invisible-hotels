@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react';
-import { Breakpoint, Size } from './tokens';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
 
 const StyledContainer = styled.div`
     display: inline-block;

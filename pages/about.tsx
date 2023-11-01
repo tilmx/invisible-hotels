@@ -2,15 +2,18 @@ import Head from 'next/head'
 import { Header } from '../components/header';
 import { Text, TextSize } from '../components/text';
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Size } from '../components/tokens';
 import AboutPicture from '../public/images/about.jpg'
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { Flex, UnstyledLink } from '../components/utils';
+import { Flex } from '../components/utils/flex';
+import { UnstyledLink } from '../components/utils/link';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
 import { siteTitle } from './_app';
 import { Footer } from '../components/footer';
+import { Size } from '../components/tokens/size';
+import { Breakpoint } from '../components/tokens/breakpoint';
+import { Color } from '../components/tokens/colors';
 
 const StyledWrapper = styled.div`
     max-width: 800px;

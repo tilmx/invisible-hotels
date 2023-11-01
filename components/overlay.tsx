@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, ReactNode } from 'react';
 import { Color } from './tokens/colors'
-import { OutsideClick } from './utils';
+import { OutsideClick } from './utils/outside-click';
 import { Wrapper } from './wrapper';
 import { Box } from './box';
 

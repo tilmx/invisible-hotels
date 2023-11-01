@@ -6,7 +6,7 @@ import { Logo } from '../components/logo';
 import { Text, TextSize } from '../components/text';
 import { ScrollIndicator } from '../components/scroll-indicator';
 import { AccentStyle, AccentedText } from '../components/accented-text';
-import { Color } from '../components/tokens';
+import { Color } from '../components/tokens/colors';
 import { Share } from '../components/share';
 import { siteDescription, siteTitle } from './_app';
 import { Footer } from '../components/footer';

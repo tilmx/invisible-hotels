@@ -1,5 +1,5 @@
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
-import { Color } from '../components/tokens';
+import { Color } from '../components/tokens/colors';
 
 type CookieType = "favorites" | "map"
 

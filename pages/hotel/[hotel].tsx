@@ -2,18 +2,20 @@ import Image from 'next/image';
 import { Text, TextSize } from '../../components/text';
 import hotels from '../../data/hotels.json';
 import styled from '@emotion/styled';
-import { Breakpoint, Color, Size } from '../../components/tokens';
 import Head from 'next/head';
 import { siteTitle } from '../_app';
 import { Wrapper } from '../../components/wrapper';
 import { Menu } from '../../components/menu';
 import { getVacationTypeColor, getVacationTypeIcon } from '../../utils';
 import { Footer } from '../../components/footer';
-import { Flex, JustifyContent } from '../../components/utils';
+import { Flex, JustifyContent } from '../../components/utils/flex';
 import { Tag } from '../../components/tag';
 import { Table } from '../../components/table';
 import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
 import { VisitedBadge } from '../../components/visited-badge';
+import { Size } from '../../components/tokens/size';
+import { Color } from '../../components/tokens/colors';
+import { Breakpoint } from '../../components/tokens/breakpoint';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};

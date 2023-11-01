@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, MouseEventHandler } from 'react';
-import { Breakpoint, Color, Size } from './tokens';
 import { Text, TextSize } from './text';
 import { getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
-import { AlignItems, Flex, JustifyContent } from './utils';
+import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import Link from 'next/link';
+import { Color } from './tokens/colors';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
 
 interface HotelCardProps {
     title: string;

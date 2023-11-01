@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
-import { Size } from '../../components/tokens';
+import { Size } from '../../components/tokens/size';
 import { Button } from '../../components/button';
-import { Flex } from '../../components/utils';
+import { Flex } from '../../components/utils/flex';
 import { Trash2 } from 'lucide-react';
 import { siteTitle } from '../_app';
 import { Footer } from '../../components/footer';

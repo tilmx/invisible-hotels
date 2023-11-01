@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Color, Theme } from '../components/tokens';
+import { Color, Theme } from '../components/tokens/colors';
 import PlausibleProvider from 'next-plausible';
 
 export const siteTitle = "Invisible Hotels"

@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { FunctionComponent, ReactNode } from "react";
-import { Breakpoint, Color } from "./tokens";
 import { Wrapper } from "./wrapper";
 import { Menu } from "./menu";
+import { Breakpoint } from "./tokens/breakpoint";
+import { Color } from "./tokens/colors";
 
 const StyledHeader = styled.div`
 	position: relative;

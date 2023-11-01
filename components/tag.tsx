@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { Text, TextSize } from './text';
-import { Breakpoint, Size } from './tokens';
 import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
 
 const StyledTag = styled.div<{ hasIcon?: boolean; hasLabel?: boolean; }>`
 	border: 2px solid currentColor;
