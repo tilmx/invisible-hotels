@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react';
 import { Text, TextSize } from './text';
-import { Breakpoint, Size } from './tokens';
 import { Check, HelpCircle, X } from 'lucide-react';
+import { Size } from './tokens/size';
+import { Breakpoint } from './tokens/breakpoint';
 
 interface TableProps {
     backgroundColor?: string;
