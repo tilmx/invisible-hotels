@@ -19,7 +19,6 @@ import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
-import { HousingType } from '../types';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -220,7 +219,7 @@ export const HotelList: FunctionComponent = () => {
                                 title={hotel.name}
                                 city={hotel.city}
                                 country={hotel.country}
-                                housingType={hotel.housingType as HousingType}
+                                housingType={hotel.housingType}
                                 vacationType={hotel.vacationType}
                                 visited={hotel.visited}
                                 links={{

@@ -10,13 +10,12 @@ import Link from 'next/link';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
-import { HousingType } from '../types';
 
 interface HotelCardProps {
     title: string;
     city: string;
     country: string;
-    housingType: HousingType;
+    housingType: string;
     vacationType: string;
     visited?: boolean;
     image?: {
