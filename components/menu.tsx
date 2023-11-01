@@ -39,7 +39,7 @@ const StyledDotLink = styled(Link)`
         }
     }
 
-    &:active {
+    :active {
         background: ${Color.Text20};
     }
 `;
@@ -47,7 +47,7 @@ const StyledDotLink = styled(Link)`
 const StyledDot = styled.div`
     height: ${Size.M};
     width: ${Size.M};
-    background: ${Color.Text};
+    background: currentColor;
     border-radius: 50%;
 `;
 
@@ -67,7 +67,7 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
 const StyledMenuItem = styled.div <{ active: boolean; }>`
     padding: ${Size.XXS} ${Size.S};
     border-radius: ${Size.S};
-    color: ${Color.Text80};
+    opacity: .8;
 
     ${props => props.active && `
         background: ${Color.Text10};

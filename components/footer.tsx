@@ -42,8 +42,8 @@ const StyledLink = styled(Link)`
 `
 
 const StyledLinkContainer = styled.div`
-	color: ${Color.Text50};
     text-decoration: inherit;
+    opacity: .5;
     cursor: pointer;
     padding: ${Size.XXS} ${Size.S};
     margin: -${Size.XXS} -${Size.S};
@@ -52,13 +52,13 @@ const StyledLinkContainer = styled.div`
     @media (hover: hover) {
         :hover {
             background: ${Color.Text10};
-            color: ${Color.Text};
+            opacity: .8;
         }
     }
 
     :active {
         background: ${Color.Text20};
-        color: ${Color.Text};
+        opacity: .8;
     }
 `;
 

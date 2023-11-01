@@ -134,7 +134,7 @@ const StyledImageContainer = styled.div`
     overflow: hidden;
     backgroud: ${Color.Shadow};
 
-    &:after {
+    :after {
         content: '';
         position: absolute;
         display: block;

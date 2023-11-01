@@ -15,7 +15,8 @@ import { Table } from '../../components/table';
 import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
 
 const StyledBackground = styled.div<{ color: string; }>`
-    background: ${props => props.color}
+    background: ${props => props.color};
+    color: ${Color.TextAlways};
 `;
 
 const StyledIntro = styled.div`
@@ -106,9 +107,8 @@ const StyledImage = styled(Image)`
 `;
 
 const StyledNoImagesBanner = styled.div`
-    background: ${Color.Text10};
+    position: relative;
     padding: ${Size.L};
-    border-radius: ${Size.S};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,10 +117,27 @@ const StyledNoImagesBanner = styled.div`
     margin: 0 auto;
     box-sizing: border-box;
 
+    :after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: ${Color.TextAlways};
+        border-radius: ${Size.S};
+        opacity: .1;
+        pointer-events: none;
+    }
+
     svg {
         display: block;
         height: ${Size.L};
         width: ${Size.L};
+        opacity: .5;
+    }
+
+    div {
         opacity: .5;
     }
 `;
@@ -155,7 +172,7 @@ const StyledBookingArea = styled.a`
     box-shadow: 0 ${Size.XXS} ${Size.L} ${Color.Shadow};
 
     @media (hover: hover) {
-        &:hover {
+        :hover {
             background: ${Color.Text};
         }
     }
@@ -194,7 +211,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     {!hotel.images &&
                         <StyledNoImagesBanner>
                             <ImageIcon />
-                            <Text color={Color.Text50} center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
+                            <Text center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
                         </StyledNoImagesBanner>
                     }
                     {hotel.images?.slice(0, 3).map((image, i) =>
