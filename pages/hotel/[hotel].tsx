@@ -1,5 +1,5 @@
 import hotels from '../../data/hotels.json';
-import { HotelDetailPage } from '../../components/hotel-detail-page';
+import { HotelDetailPage } from '../../components/pages/hotel-detail';
 
 export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
     return (

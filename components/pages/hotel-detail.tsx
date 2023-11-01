@@ -1,22 +1,22 @@
 import Image from 'next/image';
-import { Text, TextSize } from '../components/text';
+import { Text, TextSize } from '../text';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-import { Wrapper } from '../components/wrapper';
-import { Menu } from '../components/menu';
-import { getVacationTypeColor, getVacationTypeIcon } from '../utils';
-import { Footer } from '../components/footer';
-import { Flex, JustifyContent } from '../components/utils/flex';
-import { Tag } from '../components/tag';
-import { Table } from '../components/table';
+import { Wrapper } from '../wrapper';
+import { Menu } from '../menu';
+import { getVacationTypeColor, getVacationTypeIcon } from '../../utils';
+import { Footer } from '../footer';
+import { Flex, JustifyContent } from '../utils/flex';
+import { Tag } from '../tag';
+import { Table } from '../table';
 import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
-import { VisitedBadge } from '../components/visited-badge';
-import { Size } from '../components/tokens/size';
-import { Color } from '../components/tokens/colors';
-import { Breakpoint } from '../components/tokens/breakpoint';
-import { siteTitle } from '../data/site';
+import { VisitedBadge } from '../visited-badge';
+import { Size } from '../tokens/size';
+import { Color } from '../tokens/colors';
+import { Breakpoint } from '../tokens/breakpoint';
+import { siteTitle } from '../../data/site';
 import { FunctionComponent } from 'react';
-import hotels from '../data/hotels.json';
+import hotels from '../../data/hotels.json';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
