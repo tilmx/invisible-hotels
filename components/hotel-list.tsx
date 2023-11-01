@@ -18,6 +18,7 @@ import { HotelCard } from './hotel-card';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
+import { useFilterStore } from '../store/filter';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -113,24 +114,33 @@ const StyledCountrySelect = styled(CountrySelect)`
 `;
 
 export const HotelList: FunctionComponent = () => {
-    const filterOptions = ["Sea", "Mountains", "Countryside", "City"];
-    const [vacationFilter, setVacationFilter] = useState<string | undefined>();
-    const [countryFilter, setCountryFilter] = useState<string | undefined>();
+    const vacationTypeFilterOptions = ["Sea", "Mountains", "Countryside", "City"];
+
+    const vacationTypeFilter = useFilterStore((state) => state.vacationTypeFilter);
+    const setVacationTypeFilter = useFilterStore((state) => state.setVacationTypeFilter);
+
+    const countryFilter = useFilterStore((state) => state.countryFilter);
+    const setCountryFilter = useFilterStore((state) => state.setCountryFilter);
+
     const [countryFilterOpen, setCountryFilterOpen] = useState(false);
+
+    const favoritesFilter = useFilterStore((state) => state.favoritesFilter);
+    const setFavoritesFilter = useFilterStore((state) => state.setFavoritesFilter);
+
     const [starredHotels, setStarredHotels] = useState<string[]>([]);
+
     useEffect(() => {
         const stored = window.localStorage.getItem('starred-hotels');
         stored && setStarredHotels(JSON.parse(stored));
     }, [])
-    const [starredHotelsFilterActive, setStarredHotelsFilterActive] = useState(false);
 
     const filteredHotels = hotels.filter(hotel =>
-        (typeof vacationFilter === 'undefined' ? true : vacationFilter === hotel.vacationType)
+        (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)
         && (typeof countryFilter === 'undefined' ? true : countryFilter === hotel.country)
-        && ((starredHotelsFilterActive && starredHotels.length > 0) ? starredHotels.includes(hotel.id) : true)
+        && ((favoritesFilter && starredHotels.length > 0) ? starredHotels.includes(hotel.id) : true)
     )
 
-    const emptyState = filteredHotels.length === 0;
+    const isEmpty = filteredHotels.length === 0;
 
     const [cookieOptOverlayVisible, setCookieOptOverlayVisible] = useState(false);
 
@@ -163,15 +173,15 @@ export const HotelList: FunctionComponent = () => {
                 </Overlay>
             }
             <Wrapper>
-                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
+                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <StyledFilterBar>
                 <Wrapper>
                     <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
-                        {filterOptions.map((option, i) => {
-                            const selected = vacationFilter === option;
+                        {vacationTypeFilterOptions.map((option, i) => {
+                            const selected = vacationTypeFilter === option;
                             return (
-                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => setVacationFilter(selected ? undefined : option)} />
+                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => setVacationTypeFilter(selected ? undefined : option)} />
                             )
                         })}
                         <StyledCountrySelect
@@ -182,7 +192,7 @@ export const HotelList: FunctionComponent = () => {
                             onClick={() => setCountryFilterOpen(!countryFilterOpen)}
                         />
                         {starredHotels.length > 0 &&
-                            <Filter icon={<Star />} selected={starredHotelsFilterActive} onClick={() => setStarredHotelsFilterActive(!starredHotelsFilterActive)} />
+                            <Filter icon={<Star />} selected={favoritesFilter} onClick={() => setFavoritesFilter(!favoritesFilter)} />
                         }
                     </StyledFilterBarOptions>
                     <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
@@ -234,8 +244,8 @@ export const HotelList: FunctionComponent = () => {
                         )
                     }
                     )}
-                    <StyledPlaceholderCard emptyState={emptyState}>
-                        <Text center size={TextSize.Regular}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
+                    <StyledPlaceholderCard emptyState={isEmpty}>
+                        <Text center size={TextSize.Regular}>{isEmpty ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
                         <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
                             <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
                         </UnstyledLink>
