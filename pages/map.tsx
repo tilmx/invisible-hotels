@@ -176,6 +176,7 @@ export default function Map() {
             {selectedHotelContent &&
                 <StyledHotelCardContainer>
                     <StyledHotelCard
+                        id={selectedHotelContent.id}
                         title={selectedHotelContent.name}
                         city={selectedHotelContent.city}
                         country={selectedHotelContent.country}

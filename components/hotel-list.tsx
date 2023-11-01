@@ -217,6 +217,7 @@ export const HotelList: FunctionComponent = () => {
                                     bookingCom: hotel.links.bookingCom,
                                     hotel: hotel.links.hotel
                                 }}
+                                id={hotel.id}
                                 image={hotel.images?.at(0)}
                                 starred={starred}
                                 onStarClick={e => {

@@ -7,6 +7,7 @@ import { Tag } from './tag';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { AlignItems, Flex, JustifyContent } from './utils';
+import Link from 'next/link';
 
 interface HotelCardProps {
     title: string;
@@ -20,6 +21,7 @@ interface HotelCardProps {
         width: number;
         height: number;
     };
+    id: string;
     links?: {
         bookingCom?: string;
         hotel?: string;
@@ -30,7 +32,7 @@ interface HotelCardProps {
     className?: string;
 }
 
-const StyledCard = styled.a<{ color?: string; small?: boolean; }>`
+const StyledCard = styled(Link) <{ color?: string; small?: boolean; }>`
     color: ${Color.TextAlways}; 
     text-decoration: none;
     background: ${props => props.color};
@@ -170,7 +172,7 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard small={props.small} href={props.links?.bookingCom || props.links?.hotel} color={getVacationTypeColor(props.vacationType)} target="_blank" className={props.className}>
+        <StyledCard small={props.small} href={`/hotel/${props.id}`} color={getVacationTypeColor(props.vacationType)} className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>

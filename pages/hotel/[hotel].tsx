@@ -194,7 +194,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     {!hotel.images &&
                         <StyledNoImagesBanner>
                             <ImageIcon />
-                            <Text color={Color.Text50} center>Unfortunately we don't have any pictures of this hotel yet</Text>
+                            <Text color={Color.Text50} center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
                         </StyledNoImagesBanner>
                     }
                     {hotel.images?.slice(0, 3).map((image, i) =>
