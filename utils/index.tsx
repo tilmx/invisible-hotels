@@ -1,7 +1,6 @@
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { Color } from '../components/tokens/colors';
-
-type CookieType = "favorites" | "map"
+import { CookieType, HousingType } from '../types';
 
 export function checkIfCookiesAllowed(type: CookieType) {
     if (typeof window !== "undefined") {
@@ -49,4 +48,8 @@ export function getVacationTypeColor(vacationType?: string) {
         case "Countryside":
             return Color.Yellow
     }
+}
+
+export const getHotelUrl = ({ id, housingType }: { id: string, housingType: HousingType }) => {
+    return '/' + housingType.toLowerCase() + '/' + id;
 }

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, MouseEventHandler } from 'react';
 import { Text, TextSize } from './text';
-import { getVacationTypeColor, getVacationTypeIcon } from '../utils';
+import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
@@ -10,12 +10,13 @@ import Link from 'next/link';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
+import { HousingType } from '../types';
 
 interface HotelCardProps {
     title: string;
     city: string;
     country: string;
-    housingType: string;
+    housingType: HousingType;
     vacationType: string;
     visited?: boolean;
     image?: {
@@ -178,7 +179,7 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard small={props.small} href={`/hotel/${props.id}`} color={getVacationTypeColor(props.vacationType)} className={props.className}>
+        <StyledCard small={props.small} href={getHotelUrl({ id: props.id, housingType: props.housingType })} color={getVacationTypeColor(props.vacationType)} className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
