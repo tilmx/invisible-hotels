@@ -3,9 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Color, Theme } from '../components/tokens/colors';
 import PlausibleProvider from 'next-plausible';
-
-export const siteTitle = "Invisible Hotels"
-export const siteDescription = "All the lovely, minimalistic and fancy hotels & apartments where we stayed already — or would love to.";
+import { siteDescription, siteTitle } from '../data/site';
 
 function App({ Component, pageProps }: AppProps) {
     return (

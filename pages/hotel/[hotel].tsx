@@ -3,7 +3,6 @@ import { Text, TextSize } from '../../components/text';
 import hotels from '../../data/hotels.json';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-import { siteTitle } from '../_app';
 import { Wrapper } from '../../components/wrapper';
 import { Menu } from '../../components/menu';
 import { getVacationTypeColor, getVacationTypeIcon } from '../../utils';
@@ -16,6 +15,7 @@ import { VisitedBadge } from '../../components/visited-badge';
 import { Size } from '../../components/tokens/size';
 import { Color } from '../../components/tokens/colors';
 import { Breakpoint } from '../../components/tokens/breakpoint';
+import { siteTitle } from '../../data/site';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};

@@ -9,11 +9,11 @@ import { Flex } from '../components/utils/flex';
 import { UnstyledLink } from '../components/utils/link';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
-import { siteTitle } from './_app';
 import { Footer } from '../components/footer';
 import { Size } from '../components/tokens/size';
 import { Breakpoint } from '../components/tokens/breakpoint';
 import { Color } from '../components/tokens/colors';
+import { siteTitle } from '../data/site';
 
 const StyledWrapper = styled.div`
     max-width: 800px;

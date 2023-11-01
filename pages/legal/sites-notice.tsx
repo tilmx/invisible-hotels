@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
-import { siteTitle } from '../_app';
 import { Footer } from '../../components/footer';
 import { Size } from '../../components/tokens/size';
+import { siteTitle } from '../../data/site';
 
 const StyledWrapper = styled.div`
     max-width: 800px;

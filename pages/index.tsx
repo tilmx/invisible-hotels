@@ -8,8 +8,8 @@ import { ScrollIndicator } from '../components/scroll-indicator';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Color } from '../components/tokens/colors';
 import { Share } from '../components/share';
-import { siteDescription, siteTitle } from './_app';
 import { Footer } from '../components/footer';
+import { siteDescription, siteTitle } from '../data/site';
 
 export default function Home() {
 	const hotelListRef = useRef<HTMLDivElement>(null);

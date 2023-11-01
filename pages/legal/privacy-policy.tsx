@@ -6,8 +6,8 @@ import { Size } from '../../components/tokens/size';
 import { Button } from '../../components/button';
 import { Flex } from '../../components/utils/flex';
 import { Trash2 } from 'lucide-react';
-import { siteTitle } from '../_app';
 import { Footer } from '../../components/footer';
+import { siteTitle } from '../../data/site';
 
 const StyledWrapper = styled.div`
     max-width: 800px;

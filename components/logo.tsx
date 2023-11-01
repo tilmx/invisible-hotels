@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react';
-import { siteTitle } from '../pages/_app';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
+import { siteTitle } from '../data/site';
 
 const StyledLogoWrapper = styled.div`
 	padding-bottom: ${Size.XL};
