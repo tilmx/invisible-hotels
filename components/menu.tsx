@@ -30,6 +30,9 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
     ${Breakpoint.Mobile} {
         padding: ${Size.XS} ${Size.S};
         margin: ${Size.XS} -${Size.S} 0;
+        ${props => !props.flying && `
+            padding-bottom: ${Size.XXL};
+        `}
     }
 `;
 

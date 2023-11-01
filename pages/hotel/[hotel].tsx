@@ -13,6 +13,7 @@ import { Flex, JustifyContent } from '../../components/utils';
 import { Tag } from '../../components/tag';
 import { Table } from '../../components/table';
 import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
+import { VisitedBadge } from '../../components/visited-badge';
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};
@@ -142,6 +143,22 @@ const StyledNoImagesBanner = styled.div`
     }
 `;
 
+const StyledVisitedBadge = styled(VisitedBadge)`
+    position: absolute;
+    top: -${Size.L};
+    left: 660px;
+
+    ${Breakpoint.Tablet} {
+        left: unset;
+        right: ${Size.XL};
+    }
+
+    ${Breakpoint.TabletSmall} {
+        right: ${Size.L};
+        top: -${Size.XL};
+    }
+`;
+
 const StyledStickyContainer = styled.div`
     position: sticky;
     width: 100%;
@@ -208,6 +225,7 @@ export default function Hotel({ hotel }: { hotel: typeof hotels[number] }) {
                     </Flex>
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
+                    {hotel.images && <StyledVisitedBadge />}
                     {!hotel.images &&
                         <StyledNoImagesBanner>
                             <ImageIcon />
