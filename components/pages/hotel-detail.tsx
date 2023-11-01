@@ -114,13 +114,9 @@ const StyledImage = styled(Image)`
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
 `;
 
-const StyledNoImagesBanner = styled.div`
+const StyledNoImagesBannerContainer = styled.div`
     position: relative;
     padding: ${Size.L};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: ${Size.S};
     max-width: 560px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -137,15 +133,21 @@ const StyledNoImagesBanner = styled.div`
         opacity: .1;
         pointer-events: none;
     }
+`;
 
+const StyledNoImagesBanner = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${Size.S};
+
+    div {
+        opacity: .5;
+    }
     svg {
         display: block;
         height: ${Size.L};
         width: ${Size.L};
-        opacity: .5;
-    }
-
-    div {
         opacity: .5;
     }
 `;
@@ -154,6 +156,7 @@ const StyledVisitedBadge = styled(VisitedBadge)`
     position: absolute;
     top: -${Size.L};
     left: 660px;
+    z-index: 2;
 
     ${Breakpoint.Tablet} {
         left: unset;
@@ -163,6 +166,21 @@ const StyledVisitedBadge = styled(VisitedBadge)`
     ${Breakpoint.TabletSmall} {
         right: ${Size.L};
         top: -${Size.XL};
+    }
+`;
+
+const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
+    position: absolute;
+    right: -${Size.XL};
+    top: -${Size.XXL};
+
+    ${Breakpoint.TabletSmall} {
+        right: ${Size.XS};
+    }
+
+    ${Breakpoint.Mobile} {
+        right: ${Size.S};
+        top: -${Size.L};
     }
 `;
 
@@ -235,10 +253,13 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                 <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
                     {hotel.images && <StyledVisitedBadge />}
                     {!hotel.images &&
-                        <StyledNoImagesBanner>
-                            <ImageIcon />
-                            <Text center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
-                        </StyledNoImagesBanner>
+                        <StyledNoImagesBannerContainer>
+                            <StyledVisitedBadgeWithNoImages small />
+                            <StyledNoImagesBanner>
+                                <ImageIcon />
+                                <Text center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
+                            </StyledNoImagesBanner>
+                        </StyledNoImagesBannerContainer>
                     }
                     {hotel.images?.slice(0, 3).map((image, i) =>
                         <StyledImage

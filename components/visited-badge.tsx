@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
     position: relative;
 `;
 
-const StyledVisitedBadge = styled.svg`
+const StyledVisitedBadge = styled.svg<{ small?: boolean; }>`
     animation: rotateBadge 30s infinite linear;
     width: calc(${Size.XXXL} * 2);
     height: calc(${Size.XXXL} * 2);
@@ -21,6 +21,11 @@ const StyledVisitedBadge = styled.svg`
             transform: rotate(360deg);
         }
     }
+
+    ${props => props.small && `
+        width: calc(${Size.XXL} * 2);
+        height: calc(${Size.XXL} * 2);
+    `}
 
     ${Breakpoint.TabletSmall} {
         width: calc(${Size.XXL} * 2);
@@ -49,11 +54,11 @@ const StyledEmoji = styled.div`
     }
 `;
 
-export const VisitedBadge: FunctionComponent<{ className?: string; }> = props => {
+export const VisitedBadge: FunctionComponent<{ small?: boolean; className?: string; }> = props => {
     return (
         <StyledContainer className={props.className}>
             <StyledEmoji>✌️</StyledEmoji>
-            <StyledVisitedBadge width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <StyledVisitedBadge small={props.small} width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="99" stroke="currentColor" strokeWidth="2" />
                 <path d="M172.728 104.21L191.645 102.207L191.175 105.156L175.595 106.364L189.944 112.893L189.462 115.92L173.816 117.542L188.251 123.527L187.781 126.477L170.46 118.626L170.971 115.418L185.806 113.72L172.252 107.371L172.728 104.21Z" fill="currentColor" />
                 <path d="M166.034 129.215C166.553 128.05 167.27 127.126 168.185 126.444C169.11 125.785 170.148 125.406 171.301 125.307C172.454 125.209 173.645 125.433 174.873 125.98C176.118 126.534 177.101 127.268 177.822 128.181C178.536 129.111 178.958 130.14 179.087 131.268C179.208 132.412 179.003 133.582 178.47 134.779C177.952 135.944 177.237 136.84 176.327 137.467C175.433 138.102 174.449 138.467 173.374 138.562C172.299 138.657 171.243 138.474 170.206 138.012C170.046 137.941 169.874 137.855 169.69 137.754C169.514 137.675 169.318 137.579 169.102 137.463L173.215 128.224C172.03 127.792 170.986 127.777 170.081 128.177C169.185 128.6 168.538 129.259 168.141 130.152C167.821 130.871 167.714 131.54 167.82 132.161C167.935 132.805 168.219 133.37 168.671 133.858L167.541 136.396C166.566 135.579 165.917 134.525 165.593 133.234C165.262 131.959 165.409 130.619 166.034 129.215ZM176.398 133.828C176.775 132.983 176.853 132.119 176.634 131.237C176.431 130.363 175.858 129.63 174.917 129.039L171.934 135.741C172.88 136.105 173.76 136.105 174.572 135.74C175.385 135.375 175.994 134.738 176.398 133.828Z" fill="currentColor" />
