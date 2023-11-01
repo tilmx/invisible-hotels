@@ -265,7 +265,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                 />
                 <StyledStickyContainer>
                     <StyledBookingArea href={hotel.links.bookingCom || hotel.links.hotel} target='_blank'>
-                        <Text>Open {hotel.links.bookingCom ? 'on Booking.com' : 'Hotel Website'}</Text>
+                        <Text>Open {hotel.links.bookingCom ? 'on Booking.com' : `${hotel.housingType} Website`}</Text>
                         <ExternalLinkIcon />
                     </StyledBookingArea>
                 </StyledStickyContainer>
