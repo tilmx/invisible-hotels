@@ -147,6 +147,10 @@ const StyledImageContainer = styled.div`
     }
 `;
 
+const StyledImage = styled(Image)`
+    object-fit: cover; 
+`;
+
 const StyledStarArea = styled.div<{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
@@ -191,9 +195,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>
-                        <div style={{ position: 'relative', height: '100%' }}>
-                            <Image fill sizes="400px" src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" style={{ objectFit: 'cover' }} />
-                        </div>
+                        <StyledImage fill sizes="400px" src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" />
                     </StyledImageContainer>
                 }
             </StyledHeader>
