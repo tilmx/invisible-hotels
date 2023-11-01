@@ -6,7 +6,7 @@ import { Breakpoint, Color, Size } from '../components/tokens';
 import AboutPicture from '../public/images/about.jpg'
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { Flex, Link } from '../components/utils';
+import { Flex, UnstyledLink } from '../components/utils';
 import { AccentStyle, AccentedText } from '../components/accented-text';
 import { Button } from '../components/button';
 import { siteTitle } from './_app';
@@ -70,9 +70,9 @@ export default function About() {
                         </svg>
                     </StyledParagraph>
                     <Flex>
-                        <Link href='/'>
+                        <UnstyledLink href='/'>
                             <Button iconRight={<ArrowRight />}>Explore Hotels</Button>
-                        </Link>
+                        </UnstyledLink>
                     </Flex>
                 </StyledWrapper>
             </Header>

@@ -32,7 +32,6 @@ const StyledText = styled.div<TextProps>`
     ${props => props.center && 'text-align: center;'}
     color: ${props => props.color};
     margin: 0;
-	cursor: inherit;
 
     ${props => props.size === TextSize.Huge && `
         font-size: 96px;

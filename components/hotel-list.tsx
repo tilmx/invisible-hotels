@@ -8,7 +8,7 @@ import { checkIfCookiesAllowed, getVacationTypeIcon, saveFavoriteToLocalStorage,
 import { Breakpoint, Color, Size } from './tokens';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
-import { AlignItems, Flex, OutsideClick } from './utils';
+import { AlignItems, Flex, OutsideClick, UnstyledLink } from './utils';
 import { Button } from './button';
 import { Wrapper } from './wrapper';
 import { Filter } from './filter';
@@ -106,11 +106,6 @@ const StyledCountrySelect = styled(CountrySelect)`
     ${Breakpoint.Tablet} {
         margin-left: 0;
     }
-`;
-
-const StyledButtonWrapper = styled.a`
-    color: inherit;
-    text-decoration: inherit;
 `;
 
 export const HotelList: FunctionComponent = () => {
@@ -237,9 +232,9 @@ export const HotelList: FunctionComponent = () => {
                     )}
                     <StyledPlaceholderCard emptyState={emptyState}>
                         <Text center size={TextSize.Regular}>{emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-                        <StyledButtonWrapper href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
+                        <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
                             <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
-                        </StyledButtonWrapper>
+                        </UnstyledLink>
                     </StyledPlaceholderCard>
                 </StyledGrid>
             </Wrapper>

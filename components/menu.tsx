@@ -5,26 +5,32 @@ import { Text, TextSize } from "./text";
 import { Color, Size, Breakpoint } from "./tokens";
 import { useRouter } from "next/router";
 
-const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
+const StyledMenuContainer = styled.div`
     padding-top: ${Size.M};
-    padding-bottom: ${Size.XXXL};
-    gap: ${Size.XXXS};
+`;
+
+const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
+    padding: ${Size.M};
+    padding-right: ${Size.L};
+    margin: 0 -${Size.M};
     align-items: center;
+    gap: ${Size.L};
+
+    ${props => !props.flying && `
+        padding-bottom: ${Size.XXXL};
+    `}
 
     ${props => props.flying && `
-        padding: ${Size.XS} ${Size.M};
-        margin: ${Size.XS} -${Size.M} 0;
-
         backdrop-filter: blur(${Size.XS});
         background: ${Color.Background80};
         border-radius: ${Size.XL};
         box-shadow: 0 0 ${Size.L} ${Color.Shadow};
-
-        ${Breakpoint.Mobile} {
-            padding: ${Size.XS} ${Size.S};
-            margin: ${Size.XS} -${Size.S} 0;
-        }
     `}
+
+    ${Breakpoint.Mobile} {
+        padding: ${Size.XS} ${Size.S};
+        margin: ${Size.XS} -${Size.S} 0;
+    }
 `;
 
 const StyledDotLink = styled(Link)`
@@ -32,6 +38,7 @@ const StyledDotLink = styled(Link)`
     margin: -${Size.XS};
     margin-right: auto;
     border-radius: 50%;
+    opacity: 1;
 
     @media (hover: hover) {
         :hover {
@@ -53,43 +60,32 @@ const StyledDot = styled.div`
 
 export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> = props => {
     return (
-        <StyledMenu flying={props.flying} alignItems={AlignItems.Center} className={props.className}>
-            <StyledDotLink href="/">
-                <StyledDot />
-            </StyledDotLink>
-            <MenuItem link="/" label="Hotels" />
-            <MenuItem link="/map" label="Map" />
-            <MenuItem link="/about" label="About" />
-        </StyledMenu>
+        <StyledMenuContainer>
+
+            <StyledMenu flying={props.flying} alignItems={AlignItems.Center} className={props.className}>
+                <StyledDotLink href="/">
+                    <StyledDot />
+                </StyledDotLink>
+                <MenuItem link="/" label="Hotels" />
+                <MenuItem link="/map" label="Map" />
+                <MenuItem link="/about" label="About" />
+            </StyledMenu>
+        </StyledMenuContainer>
     )
 }
 
-const StyledMenuItem = styled.div <{ active: boolean; }>`
-    padding: ${Size.XXS} ${Size.S};
-    border-radius: ${Size.S};
+const StyledLink = styled(Link) <{ active: boolean; }>`
     opacity: .8;
 
     ${props => props.active && `
         background: ${Color.Text10};
     `}
-
-    @media (hover: hover) {
-        :hover {
-            background: ${Color.Text10};
-        }
-    }
-
-    :active {
-        background: ${Color.Text20};
-    }
 `;
 
 const MenuItem: FunctionComponent<{ label: string; link: string; }> = props => {
     return (
-        <Link href={props.link}>
-            <StyledMenuItem active={useRouter().pathname === props.link}>
-                <Text size={TextSize.Regular}>{props.label}</Text>
-            </StyledMenuItem>
-        </Link>
+        <StyledLink href={props.link} active={useRouter().pathname === props.link}>
+            <Text size={TextSize.Regular}>{props.label}</Text>
+        </StyledLink>
     )
 }
