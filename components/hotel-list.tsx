@@ -19,6 +19,7 @@ import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
+import { useFavoriteStore } from '../store/favorites';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -127,7 +128,8 @@ export const HotelList: FunctionComponent = () => {
     const favoritesFilter = useFilterStore((state) => state.favoritesFilter);
     const setFavoritesFilter = useFilterStore((state) => state.setFavoritesFilter);
 
-    const [starredHotels, setStarredHotels] = useState<string[]>([]);
+    const starredHotels = useFavoriteStore((state) => state.favorites);
+    const setStarredHotels = useFavoriteStore((state) => state.setFavorites);
 
     useEffect(() => {
         const stored = window.localStorage.getItem('starred-hotels');
