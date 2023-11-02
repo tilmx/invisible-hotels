@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
-import { Check, Send, Star, X } from 'lucide-react';
-import { FunctionComponent, useState } from 'react';
-import { Overlay } from './overlay';
-import { checkIfCookiesAllowed, getVacationTypeIcon, saveFavoriteToLocalStorage, setCookieOptIn } from '../utils';
+import { Send, Star } from 'lucide-react';
+import { FunctionComponent, useEffect, useState } from 'react';
+import { checkIfFavoritesStored, getVacationTypeIcon } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
 import { AlignItems, Flex } from './utils/flex';
@@ -115,6 +114,10 @@ const StyledCountrySelect = styled(CountrySelect)`
 `;
 
 export const HotelList: FunctionComponent = () => {
+    useEffect(() => {
+        checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
+    }, [])
+
     const vacationTypeFilterOptions = ["Sea", "Mountains", "Countryside", "City"];
 
     const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
@@ -129,7 +132,8 @@ export const HotelList: FunctionComponent = () => {
     const setFavoritesFilter = useFilterStore(state => state.setFavoritesFilter);
 
     const favorites = useFavoriteStore(state => state.favorites);
-    const setFavorites = useFavoriteStore(state => state.setFavorites);
+    const addFavorite = useFavoriteStore(state => state.addFavorite);
+    const removeFavorite = useFavoriteStore(state => state.removeFavorite);
 
     const filteredHotels = hotels.filter(hotel =>
         (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)
@@ -139,36 +143,8 @@ export const HotelList: FunctionComponent = () => {
 
     const isEmpty = filteredHotels.length === 0;
 
-    const [cookieOptOverlayVisible, setCookieOptOverlayVisible] = useState(false);
-
-    function saveStarredHotelsToLocalStorage(list: string[]) {
-        saveFavoriteToLocalStorage({ key: 'starred-hotels', value: JSON.stringify(list) });
-    }
-
     return (
         <StyledContainer>
-            {cookieOptOverlayVisible &&
-                <Overlay
-                    title='Save your favorites locally'
-                    description='We will save a little cookie with your favorite hotels in this browser. Fine for you?'
-                    onOutsideClick={() => {
-                        setCookieOptOverlayVisible(false);
-                        // clear list immediately if cookies not accepted
-                        setFavorites([]);
-                    }}
-                >
-                    <Button iconLeft={<Check />} onClick={() => {
-                        setCookieOptIn("favorites");
-                        saveStarredHotelsToLocalStorage(favorites);
-                        setCookieOptOverlayVisible(false);
-                    }}>Yes, sure</Button>
-                    <Button iconLeft={<X />} onClick={() => {
-                        setCookieOptOverlayVisible(false);
-                        // clear list immediately if cookies not accepted
-                        setFavorites([]);
-                    }}>No thanks</Button>
-                </Overlay>
-            }
             <Wrapper>
                 <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
@@ -228,14 +204,7 @@ export const HotelList: FunctionComponent = () => {
                                 starred={starred}
                                 onStarClick={e => {
                                     e.preventDefault();
-                                    const newList = !starred ? [...favorites, hotel.id] : [...favorites.filter(id => id !== hotel.id)];
-                                    setFavorites(newList);
-                                    if (checkIfCookiesAllowed("favorites")) {
-                                        saveStarredHotelsToLocalStorage(newList)
-                                    }
-                                    else {
-                                        setCookieOptOverlayVisible(true);
-                                    }
+                                    starred ? removeFavorite(hotel.id) : addFavorite(hotel.id)
                                 }}
                             />
                         )

@@ -92,8 +92,11 @@ export default function PrivacyPolicy() {
                         We use Apple Maps to show the hotels visually on a map. During usage of Apple Maps, data of the map usage is sent to Apple. More information you can find on Apple's privacy website: https://www.apple.com/legal/privacy/data/en/apple-maps/
                     </Text>
 
-                    <Text bold>Cookies</Text>
-                    <Text>We are using cookies to save your favorite hotels locally and for the usage of Apple Maps. The legal base is Art. 6, para. 1, lit. a) GDPR. You can revoke your consent to setting cookies at any time.</Text>
+                    <Text bold>Necessary Cookies</Text>
+                    <Text>We are using cookies to save your favorite hotels locally. The legal base is Art. 6, para. 1, lit. f) GDPR.</Text>
+
+                    <Text bold>Optional Cookies</Text>
+                    <Text>We are using cookies for the usage of Apple Maps. The legal base is Art. 6, para. 1, lit. a) GDPR. You can revoke your consent to setting cookies at any time.</Text>
 
                     <Text size={TextSize.Large}>Rights according to legal data protection regulations</Text>
                     <Text>You have the right to request information, correction, deletion or blocking of your personal data. As far as you should request

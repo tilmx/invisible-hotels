@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { Wrapper } from '../wrapper';
 import { Menu } from '../menu';
-import { getVacationTypeColor, getVacationTypeIcon } from '../../utils';
+import { checkIfFavoritesStored, getVacationTypeColor, getVacationTypeIcon } from '../../utils';
 import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
@@ -15,7 +15,7 @@ import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
 import { Breakpoint } from '../tokens/breakpoint';
 import { siteTitle } from '../../data/site';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import hotels from '../../data/hotels.json';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
@@ -276,7 +276,12 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
 `;
 
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
-    const amenitieFallback = props.hotel.amenities ? false : undefined
+    const amenitiesFallback = props.hotel.amenities ? false : undefined
+
+    useEffect(() => {
+        console.log('check', checkIfFavoritesStored())
+        checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
+    }, [])
 
     const favorites = useFavoriteStore(state => state.favorites);
     const addFavorite = useFavoriteStore(state => state.addFavorite);
@@ -338,11 +343,11 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     backgroundColor={getVacationTypeColor(props.hotel.vacationType)}
                     data={[
                         { label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms },
-                        { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitieFallback },
-                        { label: 'Restaurant', value: props.hotel.amenities?.includes('Restaurant') || amenitieFallback },
-                        { label: 'Bar', value: props.hotel.amenities?.includes('Bar') || amenitieFallback },
-                        { label: 'Pool', value: props.hotel.amenities?.includes('Pool') || amenitieFallback },
-                        { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitieFallback }
+                        { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitiesFallback },
+                        { label: 'Restaurant', value: props.hotel.amenities?.includes('Restaurant') || amenitiesFallback },
+                        { label: 'Bar', value: props.hotel.amenities?.includes('Bar') || amenitiesFallback },
+                        { label: 'Pool', value: props.hotel.amenities?.includes('Pool') || amenitiesFallback },
+                        { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitiesFallback }
                     ]}
                 />
                 <StyledStickyWrapper>

@@ -3,6 +3,10 @@ import { Color } from '../components/tokens/colors';
 
 type CookieType = "favorites" | "map"
 
+export const checkIfFavoritesStored = () => {
+    return window.localStorage.getItem('favorites') !== null;
+}
+
 export function checkIfCookiesAllowed(type: CookieType) {
     if (typeof window !== "undefined") {
         return window.localStorage.getItem('cookies-allowed-' + type) === 'true';
@@ -12,17 +16,6 @@ export function checkIfCookiesAllowed(type: CookieType) {
 
 export function setCookieOptIn(type: CookieType) {
     window.localStorage.setItem('cookies-allowed-' + type, 'true');
-}
-
-export function saveFavoriteToLocalStorage(content: { key: string, value: string }) {
-    // check if set cookies is allowed
-    if (checkIfCookiesAllowed("favorites")) {
-        // save to localstorage
-        window.localStorage.setItem(content.key, content.value);
-    }
-    else {
-        console.error('No cookies are allowed')
-    }
 }
 
 export function getVacationTypeIcon(vacationType: string) {
