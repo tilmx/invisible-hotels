@@ -42,6 +42,7 @@ base('Curated List').select({
                         height: image.height
                     }
                 }),
+                imageCopyright: record.get('Image Copyright'),
                 links: {
                     bookingCom: record.get('Link (Booking.com)'),
                     hotel: record.get('Link (Hotel)')

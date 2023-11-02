@@ -115,6 +115,16 @@ const StyledImage = styled(Image)`
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
 `;
 
+const StyledImageCopyrightText = styled(Text)`
+    opacity: .5;
+    margin-top: ${Size.XS};
+    margin-left: ${Size.XXL};
+
+    ${Breakpoint.DesktopSmall} {
+        margin-left: ${Size.M};
+    }
+`;
+
 const StyledNoImagesBannerContainer = styled.div`
     position: relative;
     padding: ${Size.L};
@@ -280,6 +290,11 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             sizes={`(max-width: ${i === 0 ? 720 : 480}px) 100vw, ${i === 0 ? 720 : 480}px`}
                         />
                     )}
+                    {props.hotel.imageCopyright &&
+                        <StyledImageCopyrightText size={TextSize.Small}>
+                            © Images: {props.hotel.imageCopyright}
+                        </StyledImageCopyrightText>
+                    }
                 </StyledImageContainer>
                 <Table
                     backgroundColor={getVacationTypeColor(props.hotel.vacationType)}
