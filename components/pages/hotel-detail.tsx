@@ -9,7 +9,7 @@ import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
 import { Table } from '../table';
-import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
+import { ExternalLinkIcon, ImageIcon, Star } from 'lucide-react';
 import { VisitedBadge } from '../visited-badge';
 import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
@@ -17,6 +17,7 @@ import { Breakpoint } from '../tokens/breakpoint';
 import { siteTitle } from '../../data/site';
 import { FunctionComponent } from 'react';
 import hotels from '../../data/hotels.json';
+import { useFavoriteStore } from '../../store/favorites';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -173,6 +174,7 @@ const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
     position: absolute;
     right: -${Size.XL};
     top: -${Size.XXL};
+    z-index: 2;
 
     ${Breakpoint.TabletSmall} {
         right: ${Size.XS};
@@ -193,6 +195,7 @@ const StyledStickyContainer = styled.div`
     padding: 0 ${Size.M};
     pointer-events: none;
     margin: ${Size.XXXL} 0;
+    z-index: 5;
 `;
 
 const StyledBookingArea = styled.a`
@@ -200,7 +203,6 @@ const StyledBookingArea = styled.a`
     margin: 0 auto ${Size.M};
     background: ${Color.Text80};
     color: ${Color.Background};
-    box-sizing: border-box;
     padding: ${Size.M};
     border-radius: ${Size.M};
     display: flex;
@@ -231,37 +233,43 @@ const StyledBookingArea = styled.a`
 
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const amenitieFallback = props.hotel.amenities ? false : undefined
-    const hotel = props.hotel;
+
+    const favorites = useFavoriteStore((state) => state.favorites);
+    const isFavorite = favorites.includes(props.hotel.id);
 
     return (
-        <StyledBackground color={getVacationTypeColor(hotel.vacationType) || Color.Background}>
+        <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
             <Head>
-                <title>{hotel.name + ' — ' + siteTitle}</title>
+                <title>{props.hotel.name + ' — ' + siteTitle}</title>
             </Head>
             <Wrapper>
                 <Menu />
                 <StyledIntro>
                     <StyledIntroTitle>
-                        <Text size={TextSize.Huge} bold center>{hotel.name}</Text>
-                        <Text size={TextSize.SuperLarge} center serif>{hotel.city}, {hotel.country}</Text>
+                        <Text size={TextSize.Huge} bold center>{props.hotel.name}</Text>
+                        <Text size={TextSize.SuperLarge} center serif>{props.hotel.city}, {props.hotel.country}</Text>
                     </StyledIntroTitle>
                     <Flex justifyContent={JustifyContent.Center} gap={Size.XXS}>
-                        <Tag icon={getVacationTypeIcon(hotel.vacationType)} label={hotel.vacationType} />
-                        <Tag label={hotel.housingType} />
+                        <Tag icon={getVacationTypeIcon(props.hotel.vacationType)} label={props.hotel.vacationType} />
+                        <Tag label={props.hotel.housingType} />
+                        {isFavorite && <Tag icon={<Star />} />}
+
                     </Flex>
                 </StyledIntro>
-                <StyledImageContainer multipleImages={(hotel.images?.length || 0) > 1}>
-                    {hotel.images && <StyledVisitedBadge />}
-                    {!hotel.images &&
+                <StyledImageContainer multipleImages={(props.hotel.images?.length || 0) > 1}>
+                    {(props.hotel.images && props.hotel.visited) && <StyledVisitedBadge />}
+                    {!props.hotel.images &&
                         <StyledNoImagesBannerContainer>
-                            <StyledVisitedBadgeWithNoImages small />
+                            {props.hotel.visited &&
+                                <StyledVisitedBadgeWithNoImages small />
+                            }
                             <StyledNoImagesBanner>
                                 <ImageIcon />
-                                <Text center>Unfortunately we don't have any pictures of this {hotel.housingType.toLocaleLowerCase()} yet</Text>
+                                <Text center>Unfortunately we don't have any pictures of this {props.hotel.housingType.toLocaleLowerCase()} yet</Text>
                             </StyledNoImagesBanner>
                         </StyledNoImagesBannerContainer>
                     }
-                    {hotel.images?.slice(0, 3).map((image, i) =>
+                    {props.hotel.images?.slice(0, 3).map((image, i) =>
                         <StyledImage
                             key={i}
                             data-image-number={i}
@@ -274,19 +282,19 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     )}
                 </StyledImageContainer>
                 <Table
-                    backgroundColor={getVacationTypeColor(hotel.vacationType)}
+                    backgroundColor={getVacationTypeColor(props.hotel.vacationType)}
                     data={[
-                        { label: hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: hotel.rooms },
-                        { label: 'Breakfast', value: hotel.amenities?.includes('Breakfast') || amenitieFallback },
-                        { label: 'Restaurant', value: hotel.amenities?.includes('Restaurant') || amenitieFallback },
-                        { label: 'Bar', value: hotel.amenities?.includes('Bar') || amenitieFallback },
-                        { label: 'Pool', value: hotel.amenities?.includes('Pool') || amenitieFallback },
-                        { label: 'Sauna', value: hotel.amenities?.includes('Sauna') || amenitieFallback }
+                        { label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms },
+                        { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitieFallback },
+                        { label: 'Restaurant', value: props.hotel.amenities?.includes('Restaurant') || amenitieFallback },
+                        { label: 'Bar', value: props.hotel.amenities?.includes('Bar') || amenitieFallback },
+                        { label: 'Pool', value: props.hotel.amenities?.includes('Pool') || amenitieFallback },
+                        { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitieFallback }
                     ]}
                 />
                 <StyledStickyContainer>
-                    <StyledBookingArea href={hotel.links.bookingCom || hotel.links.hotel} target='_blank'>
-                        <Text>Open {hotel.links.bookingCom ? 'on Booking.com' : `${hotel.housingType} Website`}</Text>
+                    <StyledBookingArea href={props.hotel.links.bookingCom || props.hotel.links.hotel} target='_blank'>
+                        <Text>Open {props.hotel.links.bookingCom ? 'on Booking.com' : `${props.hotel.housingType} Website`}</Text>
                         <ExternalLinkIcon />
                     </StyledBookingArea>
                 </StyledStickyContainer>
