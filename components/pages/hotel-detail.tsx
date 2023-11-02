@@ -351,7 +351,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     <StyledActionBar>
                         <StyledFavoriteArea active={isFavorite} onClick={isFavorite ? () => removeFavorite(props.hotel.id) : () => addFavorite(props.hotel.id)}>
                             <StarIcon />
-                            <Text>Favorit</Text>
+                            <Text>Favorite</Text>
                         </StyledFavoriteArea>
                         {link &&
                             <UnstyledLink href={link} target='_blank'>
