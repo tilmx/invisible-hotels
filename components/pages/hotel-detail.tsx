@@ -304,8 +304,6 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     <Flex justifyContent={JustifyContent.Center} gap={Size.XXS}>
                         <Tag icon={getVacationTypeIcon(props.hotel.vacationType)} label={props.hotel.vacationType} />
                         <Tag label={props.hotel.housingType} />
-                        {isFavorite && <Tag icon={<Star />} />}
-
                     </Flex>
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(props.hotel.images?.length || 0) > 1}>
