@@ -1,7 +1,7 @@
 import { Hotel, MountainSnow, TreeDeciduous, Waves } from 'lucide-react';
 import { Color } from '../components/tokens/colors';
 
-type CookieType = "favorites" | "map"
+type CookieType = "map"
 
 export const checkIfFavoritesStored = () => {
     return window.localStorage.getItem('favorites') !== null;
