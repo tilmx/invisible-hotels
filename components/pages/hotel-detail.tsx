@@ -9,7 +9,7 @@ import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
 import { Table } from '../table';
-import { ExternalLinkIcon, ImageIcon, Star, StarIcon } from 'lucide-react';
+import { ExternalLinkIcon, ImageIcon, StarIcon } from 'lucide-react';
 import { VisitedBadge } from '../visited-badge';
 import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
