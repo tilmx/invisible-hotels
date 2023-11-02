@@ -279,7 +279,6 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const amenitiesFallback = props.hotel.amenities ? false : undefined
 
     useEffect(() => {
-        console.log('check', checkIfFavoritesStored())
         checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
     }, [])
 
