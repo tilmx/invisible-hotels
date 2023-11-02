@@ -164,7 +164,7 @@ export default function Map() {
             {mapCookiesAllowed === false &&
                 <Wrapper>
                     <StyledCookieContainer>
-                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and also you need to a single cookie from Apple, so it works properly.'>
+                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
                             <Button onClick={() => {
                                 setMapCookiesAllowed(true);
                                 setCookieOptIn("map")
