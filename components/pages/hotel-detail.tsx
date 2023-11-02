@@ -9,7 +9,7 @@ import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
 import { Table } from '../table';
-import { ExternalLinkIcon, ImageIcon, Star } from 'lucide-react';
+import { ExternalLinkIcon, ImageIcon, Star, StarIcon } from 'lucide-react';
 import { VisitedBadge } from '../visited-badge';
 import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
@@ -18,6 +18,8 @@ import { siteTitle } from '../../data/site';
 import { FunctionComponent } from 'react';
 import hotels from '../../data/hotels.json';
 import { useFavoriteStore } from '../../store/favorites';
+import { Button } from '../button';
+import { UnstyledLink } from '../utils/link';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -196,38 +198,70 @@ const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
     }
 `;
 
-const StyledStickyContainer = styled.div`
+const StyledStickyWrapper = styled.div`
     position: sticky;
     width: 100%;
     bottom: ${Size.M};
     left: 0;
     box-sizing: border-box;
-    padding: 0 ${Size.M};
     pointer-events: none;
     margin: ${Size.XXXL} 0;
     z-index: 5;
 `;
 
-const StyledBookingArea = styled.a`
+const StyledActionBar = styled.div`
     max-width: 560px;
     margin: 0 auto ${Size.M};
-    background: ${Color.Text80};
-    color: ${Color.Background};
-    padding: ${Size.M};
-    border-radius: ${Size.M};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: ${Size.XS};
+    background: ${Color.Background80};
+    border-radius: ${Size.XL};
     backdrop-filter: blur(${Size.XS});
-    cursor: pointer;
-    pointer-events: auto;
-    text-decoration: unset;
     box-shadow: 0 ${Size.XXS} ${Size.L} ${Color.Shadow};
+    padding: ${Size.S};
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: auto;
+    gap: ${Size.XXS};
 
-    @media (hover: hover) {
-        :hover {
-            background: ${Color.Text};
+    ${Breakpoint.Mobile} {
+        margin-left: -${Size.S};
+        margin-right: -${Size.S};
+    }
+`;
+
+const StyledFavoriteArea = styled.div<{ active: boolean }>`
+    color: ${Color.Text};
+    display: flex;
+    padding: ${Size.S} ${Size.M} ${Size.S} ${Size.S};
+    gap: ${Size.XXS};
+    box-shadow: inset 0 0 0 2px ${Color.Text};
+    border-radius: ${Size.L};
+    cursor: pointer;
+
+    ${props => props.active && `
+        background: ${Color.Yellow};
+        box-shadow: none;
+
+        svg {
+            fill: currentColor;
+        }
+    `}
+    
+    ${props => !props.active && `
+        @media (hover: hover) {
+            :hover {
+                color: ${Color.Yellow};
+                box-shadow: inset 0 0 0 2px ${Color.Yellow};
+            }
+        }
+    `}
+
+    ${Breakpoint.TabletSmall} {
+        padding: ${Size.S};
+
+        div {
+            display: none;
         }
     }
 
@@ -244,8 +278,12 @@ const StyledBookingArea = styled.a`
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const amenitieFallback = props.hotel.amenities ? false : undefined
 
-    const favorites = useFavoriteStore((state) => state.favorites);
+    const favorites = useFavoriteStore(state => state.favorites);
+    const addFavorite = useFavoriteStore(state => state.addFavorite);
+    const removeFavorite = useFavoriteStore(state => state.removeFavorite);
+
     const isFavorite = favorites.includes(props.hotel.id);
+    const link = props.hotel.links.bookingCom || props.hotel.links.hotel;
 
     return (
         <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
@@ -307,12 +345,19 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitieFallback }
                     ]}
                 />
-                <StyledStickyContainer>
-                    <StyledBookingArea href={props.hotel.links.bookingCom || props.hotel.links.hotel} target='_blank'>
-                        <Text>Open {props.hotel.links.bookingCom ? 'on Booking.com' : `${props.hotel.housingType} Website`}</Text>
-                        <ExternalLinkIcon />
-                    </StyledBookingArea>
-                </StyledStickyContainer>
+                <StyledStickyWrapper>
+                    <StyledActionBar>
+                        <StyledFavoriteArea active={isFavorite} onClick={isFavorite ? () => removeFavorite(props.hotel.id) : () => addFavorite(props.hotel.id)}>
+                            <StarIcon />
+                            <Text>Favorit</Text>
+                        </StyledFavoriteArea>
+                        {link &&
+                            <UnstyledLink href={link} target='_blank'>
+                                <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.bookingCom ? 'on Booking.com' : `${props.hotel.housingType} Website`}</Button>
+                            </UnstyledLink>
+                        }
+                    </StyledActionBar>
+                </StyledStickyWrapper>
             </Wrapper>
             <Footer reducedPadding />
         </StyledBackground>

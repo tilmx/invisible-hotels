@@ -117,19 +117,19 @@ const StyledCountrySelect = styled(CountrySelect)`
 export const HotelList: FunctionComponent = () => {
     const vacationTypeFilterOptions = ["Sea", "Mountains", "Countryside", "City"];
 
-    const vacationTypeFilter = useFilterStore((state) => state.vacationTypeFilter);
-    const setVacationTypeFilter = useFilterStore((state) => state.setVacationTypeFilter);
+    const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
+    const setVacationTypeFilter = useFilterStore(state => state.setVacationTypeFilter);
 
-    const countryFilter = useFilterStore((state) => state.countryFilter);
-    const setCountryFilter = useFilterStore((state) => state.setCountryFilter);
+    const countryFilter = useFilterStore(state => state.countryFilter);
+    const setCountryFilter = useFilterStore(state => state.setCountryFilter);
 
     const [countryFilterOpen, setCountryFilterOpen] = useState(false);
 
-    const favoritesFilter = useFilterStore((state) => state.favoritesFilter);
-    const setFavoritesFilter = useFilterStore((state) => state.setFavoritesFilter);
+    const favoritesFilter = useFilterStore(state => state.favoritesFilter);
+    const setFavoritesFilter = useFilterStore(state => state.setFavoritesFilter);
 
-    const favorites = useFavoriteStore((state) => state.favorites);
-    const setFavorites = useFavoriteStore((state) => state.setFavorites);
+    const favorites = useFavoriteStore(state => state.favorites);
+    const setFavorites = useFavoriteStore(state => state.setFavorites);
 
     useEffect(() => {
         const stored = window.localStorage.getItem('starred-hotels');
