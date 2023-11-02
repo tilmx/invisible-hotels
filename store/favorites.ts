@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface FilterState {
+interface FavoriteState {
     favorites: string[];
     addFavorite: (value: string) => void;
     removeFavorite: (value: string) => void;
@@ -8,7 +8,7 @@ interface FilterState {
     clearFavorites: () => void;
 }
 
-export const useFavoriteStore = create<FilterState>((set) => ({
+export const useFavoriteStore = create<FavoriteState>((set) => ({
     favorites: [],
     addFavorite: value => set(state => ({ favorites: [...state.favorites, value] })),
     removeFavorite: value => set(state => ({ favorites: [...state.favorites.filter(favorite => favorite !== value)] })),
