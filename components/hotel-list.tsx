@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import hotels from '../data/hotels.json';
 import countries from '../data/countries.json';
 import { Check, Send, Star, X } from 'lucide-react';
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { Overlay } from './overlay';
 import { checkIfCookiesAllowed, getVacationTypeIcon, saveFavoriteToLocalStorage, setCookieOptIn } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
@@ -130,11 +130,6 @@ export const HotelList: FunctionComponent = () => {
 
     const favorites = useFavoriteStore(state => state.favorites);
     const setFavorites = useFavoriteStore(state => state.setFavorites);
-
-    useEffect(() => {
-        const stored = window.localStorage.getItem('starred-hotels');
-        stored && setFavorites(JSON.parse(stored));
-    }, [])
 
     const filteredHotels = hotels.filter(hotel =>
         (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)

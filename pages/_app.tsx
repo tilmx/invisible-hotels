@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Color, Theme } from '../components/tokens/colors';
 import PlausibleProvider from 'next-plausible';
 import { siteDescription, siteTitle } from '../data/site';
+import { CookieManager } from '../components/cookie-manager';
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -21,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
                     <meta property="og:type" content="website" />
                 </Head>
                 <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; };`} />
+                <CookieManager />
                 <Component {...pageProps} />
             </Theme>
         </PlausibleProvider>
