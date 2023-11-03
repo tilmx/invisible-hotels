@@ -24,10 +24,6 @@ interface HotelCardProps {
         height: number;
     };
     id: string;
-    links?: {
-        bookingCom?: string;
-        hotel?: string;
-    };
     starred?: boolean;
     onStarClick?: MouseEventHandler;
     small?: boolean;

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
-import hotels from '../data/hotels.json';
+import hotelsPreview from '../data/hotels-preview.json';
 import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../utils';
 import { Button } from '../components/button';
 import { Box } from '../components/box';
@@ -108,7 +108,7 @@ export default function Map() {
                     return annotation;
                 },
                 colorScheme: darkMode ? mapkit.Map.ColorSchemes.Dark : mapkit.Map.ColorSchemes.Light,
-                annotations: hotels.filter(hotel => hotel.coordinates)?.map(hotel => {
+                annotations: hotelsPreview.filter(hotel => hotel.coordinates)?.map(hotel => {
                     if (hotel.coordinates.lat && hotel.coordinates.long) {
                         return new mapkit.MarkerAnnotation(
                             new mapkit.Coordinate(hotel.coordinates?.lat, hotel.coordinates?.long),
@@ -149,7 +149,7 @@ export default function Map() {
         }
     }, [map])
 
-    const selectedHotelContent = hotels.find(hotel => hotel.id === selectedHotel)
+    const selectedHotelContent = hotelsPreview.find(hotel => hotel.id === selectedHotel)
 
     return (
         <>
@@ -185,10 +185,6 @@ export default function Map() {
                         housingType={selectedHotelContent.housingType}
                         vacationType={selectedHotelContent.vacationType}
                         visited={selectedHotelContent.visited}
-                        links={{
-                            bookingCom: selectedHotelContent.links.bookingCom,
-                            hotel: selectedHotelContent.links.hotel
-                        }}
                         small
                     />
                 </StyledHotelCardContainer>

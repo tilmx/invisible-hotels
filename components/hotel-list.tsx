@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import hotels from '../data/hotels.json';
+import hotelsPreview from '../data/hotels-preview.json';
 import countries from '../data/countries.json';
 import { Send, Star } from 'lucide-react';
 import { FunctionComponent, useEffect, useState } from 'react';
@@ -135,7 +135,7 @@ export const HotelList: FunctionComponent = () => {
     const addFavorite = useFavoriteStore(state => state.addFavorite);
     const removeFavorite = useFavoriteStore(state => state.removeFavorite);
 
-    const filteredHotels = hotels.filter(hotel =>
+    const filteredHotels = hotelsPreview.filter(hotel =>
         (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)
         && (typeof countryFilter === 'undefined' ? true : countryFilter === hotel.country)
         && ((favoritesFilter && favorites.length > 0) ? favorites.includes(hotel.id) : true)
@@ -195,12 +195,8 @@ export const HotelList: FunctionComponent = () => {
                                 housingType={hotel.housingType}
                                 vacationType={hotel.vacationType}
                                 visited={hotel.visited}
-                                links={{
-                                    bookingCom: hotel.links.bookingCom,
-                                    hotel: hotel.links.hotel
-                                }}
                                 id={hotel.id}
-                                image={hotel.images?.at(0)}
+                                image={hotel.image}
                                 starred={starred}
                                 onStarClick={e => {
                                     e.preventDefault();

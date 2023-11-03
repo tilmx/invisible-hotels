@@ -69,6 +69,23 @@ base('Curated List').select({
     );
 
     fs.writeFileSync(
+        'data/hotels-preview.json',
+        JSON.stringify([...savedRecords.map(record => {
+            return {
+                id: record.id,
+                name: record.name,
+                city: record.city,
+                country: record.country,
+                housingType: record.housingType,
+                vacationType: record.vacationType,
+                visited: record.visited,
+                coordinates: record.coordinates,
+                image: record.images?.at(0),
+            }
+        })], null, 2)
+    );
+
+    fs.writeFileSync(
         'data/countries.json',
         JSON.stringify(
             savedRecords
