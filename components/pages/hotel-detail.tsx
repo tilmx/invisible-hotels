@@ -363,11 +363,11 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         <StyledFavoriteArea active={isFavorite} onClick={() => {
                             if (isFavorite) {
                                 removeFavorite(props.hotel.id)
-                                plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
+                                plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
                             }
                             else {
                                 addFavorite(props.hotel.id)
-                                plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
+                                plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
                             }
                         }}>
                             <StarIcon />

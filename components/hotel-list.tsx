@@ -205,19 +205,12 @@ export const HotelList: FunctionComponent = () => {
                                     e.preventDefault();
                                     if (isFavorite) {
                                         removeFavorite(hotel.id)
-                                        plausible('add-to-favorites', {
-                                            props: {
-                                                hotel: hotel.id,
-                                            },
-                                        })
+                                        plausible('remove-from-favorites', { props: { hotel: hotel.id } })
                                     }
                                     else {
                                         addFavorite(hotel.id)
-                                        plausible('remove-from-favorites', {
-                                            props: {
-                                                hotel: hotel.id,
-                                            },
-                                        })
+                                        plausible('add-to-favorites', { props: { hotel: hotel.id } })
+
                                     }
                                 }}
                             />
