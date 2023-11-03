@@ -207,6 +207,10 @@ const StyledStickyWrapper = styled.div`
     pointer-events: none;
     margin: ${Size.XXXL} 0;
     z-index: 5;
+
+    ${Breakpoint.Mobile} {
+        bottom: ${Size.XS};
+    }
 `;
 
 const StyledActionBar = styled.div`
@@ -227,6 +231,7 @@ const StyledActionBar = styled.div`
     ${Breakpoint.Mobile} {
         margin-left: -${Size.S};
         margin-right: -${Size.S};
+        padding: ${Size.XXS};
     }
 `;
 
