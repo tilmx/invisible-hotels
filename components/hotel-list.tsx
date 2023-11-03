@@ -19,6 +19,7 @@ import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
 import { useFavoriteStore } from '../store/favorites';
+import { usePlausible } from 'next-plausible';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -114,6 +115,8 @@ const StyledCountrySelect = styled(CountrySelect)`
 `;
 
 export const HotelList: FunctionComponent = () => {
+    const plausible = usePlausible()
+
     useEffect(() => {
         checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
     }, [])
@@ -185,7 +188,7 @@ export const HotelList: FunctionComponent = () => {
             <Wrapper wide>
                 <StyledGrid>
                     {filteredHotels.map((hotel, i) => {
-                        const starred = favorites.includes(hotel.id);
+                        const isFavorite = favorites.includes(hotel.id);
                         return (
                             <HotelCard
                                 key={i}
@@ -197,10 +200,25 @@ export const HotelList: FunctionComponent = () => {
                                 visited={hotel.visited}
                                 id={hotel.id}
                                 image={hotel.image}
-                                starred={starred}
+                                starred={isFavorite}
                                 onStarClick={e => {
                                     e.preventDefault();
-                                    starred ? removeFavorite(hotel.id) : addFavorite(hotel.id)
+                                    if (isFavorite) {
+                                        removeFavorite(hotel.id)
+                                        plausible('add-to-favorites', {
+                                            props: {
+                                                hotel: hotel.id,
+                                            },
+                                        })
+                                    }
+                                    else {
+                                        addFavorite(hotel.id)
+                                        plausible('remove-from-favorites', {
+                                            props: {
+                                                hotel: hotel.id,
+                                            },
+                                        })
+                                    }
                                 }}
                             />
                         )

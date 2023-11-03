@@ -5,12 +5,14 @@ import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
 import { Size } from "./tokens/size";
 import { siteTitle } from "../data/site";
+import { usePlausible } from 'next-plausible'
 
 const StyledFlex = styled(Flex)`
     margin-top: ${Size.XXXXL};
 `;
 
 export const Share: FunctionComponent = () => {
+    const plausible = usePlausible()
     const [shareAvailable, setShareAvailable] = useState(false);
 
     useEffect(() => {
@@ -25,8 +27,9 @@ export const Share: FunctionComponent = () => {
                 title: siteTitle,
                 text: 'Check out our personal list of lovely, minimalistic and fancy hotels & apartments',
                 url: 'https://invisible-hotels.com/',
-            })
-                .catch((error) => console.log('Something went wrong with sharing: ', error));
+            }).then(() => {
+                plausible('share')
+            }).catch((error) => console.log('Something went wrong with sharing: ', error));
         }
     }
 

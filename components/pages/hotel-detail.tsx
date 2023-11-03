@@ -20,6 +20,7 @@ import hotels from '../../data/hotels.json';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
+import { usePlausible } from 'next-plausible';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -281,6 +282,8 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
 `;
 
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
+    const plausible = usePlausible()
+
     const amenitiesFallback = props.hotel.amenities ? false : undefined
 
     useEffect(() => {
@@ -357,7 +360,16 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                 />
                 <StyledStickyWrapper>
                     <StyledActionBar>
-                        <StyledFavoriteArea active={isFavorite} onClick={isFavorite ? () => removeFavorite(props.hotel.id) : () => addFavorite(props.hotel.id)}>
+                        <StyledFavoriteArea active={isFavorite} onClick={() => {
+                            if (isFavorite) {
+                                removeFavorite(props.hotel.id)
+                                plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
+                            }
+                            else {
+                                addFavorite(props.hotel.id)
+                                plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
+                            }
+                        }}>
                             <StarIcon />
                             <Text>Favorite</Text>
                         </StyledFavoriteArea>
