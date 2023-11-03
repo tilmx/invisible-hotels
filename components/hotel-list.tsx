@@ -186,7 +186,7 @@ export const HotelList: FunctionComponent = () => {
                             onSet={country => {
                                 setCountryFilter(country);
                                 setCountryFilterOpen(false);
-                                plausible('select-country-filter', { props: { country: country } })
+                                plausible('enable-filter', { props: { filter: 'Country', country: country } })
                             }}
                         />
                     </OutsideClick>
