@@ -157,7 +157,10 @@ export const HotelList: FunctionComponent = () => {
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (
-                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => setVacationTypeFilter(selected ? undefined : option)} />
+                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => {
+                                    setVacationTypeFilter(selected ? undefined : option);
+                                    !selected && plausible('enable-filter', { props: { filter: option } })
+                                }} />
                             )
                         })}
                         <StyledCountrySelect
@@ -168,7 +171,10 @@ export const HotelList: FunctionComponent = () => {
                             onClick={() => setCountryFilterOpen(!countryFilterOpen)}
                         />
                         {favorites.length > 0 &&
-                            <Filter icon={<Star />} selected={favoritesFilter} onClick={() => setFavoritesFilter(!favoritesFilter)} />
+                            <Filter icon={<Star />} selected={favoritesFilter} onClick={() => {
+                                !favoritesFilter && plausible('enable-filter', { props: { filter: 'Favorites' } })
+                                setFavoritesFilter(!favoritesFilter);
+                            }} />
                         }
                     </StyledFilterBarOptions>
                     <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
@@ -180,6 +186,7 @@ export const HotelList: FunctionComponent = () => {
                             onSet={country => {
                                 setCountryFilter(country);
                                 setCountryFilterOpen(false);
+                                plausible('select-country-filter', { props: { country: country } })
                             }}
                         />
                     </OutsideClick>
@@ -210,7 +217,6 @@ export const HotelList: FunctionComponent = () => {
                                     else {
                                         addFavorite(hotel.id)
                                         plausible('add-to-favorites', { props: { hotel: hotel.id } })
-
                                     }
                                 }}
                             />
