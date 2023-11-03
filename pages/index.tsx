@@ -19,6 +19,10 @@ export default function Home() {
 			<Head>
 				<title>{siteTitle}</title>
 				<meta name="description" content={siteDescription} />
+				<meta property="og:title" content={siteTitle} />
+				<meta property="og:description" content={siteDescription} />
+				<meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
+				<meta property="og:url" content="https://invisible-hotels.com/" />
 			</Head>
 			<Header>
 				<Logo />

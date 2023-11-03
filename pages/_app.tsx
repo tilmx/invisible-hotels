@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Color, Theme } from '../components/tokens/colors';
 import PlausibleProvider from 'next-plausible';
-import { siteDescription, siteTitle } from '../data/site';
+import { siteTitle } from '../data/site';
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -14,10 +14,7 @@ function App({ Component, pageProps }: AppProps) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
                     <meta name="language" content="en" />
                     <meta name="keywords" content="Hotels, Hotel, Travel, Boutique Hotels, Design Hotels, Hotel Tips, Hotel Collection, Hotel Recommendations" />
-                    <meta property="og:title" content={siteTitle} />
-                    <meta property="og:description" content={siteDescription} />
-                    <meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
-                    <meta property="og:url" content="https://invisible-hotels.com/" />
+                    <meta property="og:site_name" content={siteTitle} />
                     <meta property="og:type" content="website" />
                 </Head>
                 <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; };`} />

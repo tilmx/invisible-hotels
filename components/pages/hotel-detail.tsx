@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { Wrapper } from '../wrapper';
 import { Menu } from '../menu';
-import { checkIfFavoritesStored, getVacationTypeColor, getVacationTypeIcon } from '../../utils';
+import { checkIfFavoritesStored, getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../../utils';
 import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
@@ -298,6 +298,9 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
         <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
             <Head>
                 <title>{props.hotel.name + ' — ' + siteTitle}</title>
+                <meta property="og:title" content={props.hotel.name} />
+                <meta property="og:image" content={props.hotel.images ? "https://invisible-hotels.com/images/hotels/" + props.hotel.images.at(0)?.url : "https://invisible-hotels.com/images/og-image.jpg"} />
+                <meta property="og:url" content={"https://invisible-hotels.com" + getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })} />
             </Head>
             <Wrapper>
                 <Menu />
