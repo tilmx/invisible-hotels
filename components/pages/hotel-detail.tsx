@@ -295,7 +295,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const removeFavorite = useFavoriteStore(state => state.removeFavorite);
 
     const isFavorite = favorites.includes(props.hotel.id);
-    const link = props.hotel.links.bookingCom || props.hotel.links.hotel;
+    const link = props.hotel.links.hotel || props.hotel.links.bookingCom;
 
     return (
         <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
@@ -375,7 +375,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         </StyledFavoriteArea>
                         {link &&
                             <UnstyledLink href={link} target='_blank'>
-                                <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.bookingCom ? 'on Booking.com' : `${props.hotel.housingType} Website`}</Button>
+                                <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
                             </UnstyledLink>
                         }
                     </StyledActionBar>
