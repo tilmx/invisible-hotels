@@ -1,18 +1,13 @@
 import styled from '@emotion/styled';
 import hotelsPreview from '../data/hotels-preview.json';
-import countries from '../data/countries.json';
-import { Send, Star } from 'lucide-react';
-import { FunctionComponent, useEffect, useState } from 'react';
-import { checkIfFavoritesStored, getVacationTypeIcon } from '../utils';
+import { Send } from 'lucide-react';
+import { FunctionComponent, useEffect } from 'react';
+import { checkIfFavoritesStored } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
-import { AlignItems, Flex } from './utils/flex';
-import { OutsideClick } from './utils/outside-click';
 import { UnstyledLink } from './utils/link';
 import { Button } from './button';
 import { Wrapper } from './wrapper';
-import { Filter } from './filter';
-import { CountrySelect, CountrySelectFlyout } from './country-select';
 import { HotelCard } from './hotel-card';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
@@ -20,6 +15,7 @@ import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
 import { useFavoriteStore } from '../store/favorites';
 import { usePlausible } from 'next-plausible';
+import { Filter } from './filter';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XXXL};
@@ -69,51 +65,6 @@ const StyledLabel = styled(Text)`
     margin-bottom: ${Size.XS};
 `;
 
-const StyledFilterBar = styled.div`
-    position: sticky;
-    top: ${Size.M};
-    z-index: 10;
-
-    ${Breakpoint.Tablet} {
-        top: ${Size.XS};
-    }
-
-    ${Breakpoint.Mobile} {
-        top: ${Size.XXS};
-    }
-`;
-
-const StyledFilterBarOptions = styled(Flex)`
-    background: ${Color.Background80};
-    backdrop-filter: blur(16px);
-    border-radius: ${Size.XL};
-    padding: calc(${Size.S} + ${Size.XXXS}) ${Size.M};
-    margin: 0 -${Size.M};
-    box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
-    gap: ${Size.XXS};
-
-    ${Breakpoint.Tablet} {
-        padding: ${Size.S};
-        margin: 0 -${Size.S};
-        border-radius: calc(${Size.M} + ${Size.XXS});
-    }
-
-    ${Breakpoint.Mobile} {
-        padding: ${Size.XS};
-        margin: 0 -${Size.XS};
-        border-radius: ${Size.M};
-    }
-`;
-
-const StyledCountrySelect = styled(CountrySelect)`
-    margin-left: auto;
-    flex-shrink: 0;
-
-    ${Breakpoint.Tablet} {
-        margin-left: 0;
-    }
-`;
-
 export const HotelList: FunctionComponent = () => {
     const plausible = usePlausible()
 
@@ -121,18 +72,9 @@ export const HotelList: FunctionComponent = () => {
         checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
     }, [])
 
-    const vacationTypeFilterOptions = ["Sea", "Mountains", "Countryside", "City"];
-
     const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
-    const setVacationTypeFilter = useFilterStore(state => state.setVacationTypeFilter);
-
     const countryFilter = useFilterStore(state => state.countryFilter);
-    const setCountryFilter = useFilterStore(state => state.setCountryFilter);
-
-    const [countryFilterOpen, setCountryFilterOpen] = useState(false);
-
     const favoritesFilter = useFilterStore(state => state.favoritesFilter);
-    const setFavoritesFilter = useFilterStore(state => state.setFavoritesFilter);
 
     const favorites = useFavoriteStore(state => state.favorites);
     const addFavorite = useFavoriteStore(state => state.addFavorite);
@@ -151,47 +93,7 @@ export const HotelList: FunctionComponent = () => {
             <Wrapper>
                 <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
-            <StyledFilterBar>
-                <Wrapper>
-                    <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
-                        {vacationTypeFilterOptions.map((option, i) => {
-                            const selected = vacationTypeFilter === option;
-                            return (
-                                <Filter key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => {
-                                    setVacationTypeFilter(selected ? undefined : option);
-                                    !selected && plausible('enable-filter', { props: { filter: option } })
-                                }} />
-                            )
-                        })}
-                        <StyledCountrySelect
-                            label='All Countries'
-                            value={countryFilter}
-                            active={typeof countryFilter !== 'undefined' || countryFilterOpen}
-                            disabled={countryFilterOpen}
-                            onClick={() => setCountryFilterOpen(!countryFilterOpen)}
-                        />
-                        {favorites.length > 0 &&
-                            <Filter icon={<Star />} selected={favoritesFilter} onClick={() => {
-                                !favoritesFilter && plausible('enable-filter', { props: { filter: 'Favorites' } })
-                                setFavoritesFilter(!favoritesFilter);
-                            }} />
-                        }
-                    </StyledFilterBarOptions>
-                    <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
-                        <CountrySelectFlyout
-                            options={countries}
-                            label='All Countries'
-                            open={countryFilterOpen}
-                            value={countryFilter}
-                            onSet={country => {
-                                setCountryFilter(country);
-                                setCountryFilterOpen(false);
-                                plausible('enable-filter', { props: { filter: 'Country', country: country } })
-                            }}
-                        />
-                    </OutsideClick>
-                </Wrapper>
-            </StyledFilterBar>
+            <Filter />
             <Wrapper wide>
                 <StyledGrid>
                     {filteredHotels.map((hotel, i) => {
