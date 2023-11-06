@@ -76,6 +76,13 @@ const StyledIconWrapper = styled.div<{ greyedOut?: boolean }>`
         stroke-width: 3;
         ${props => props.greyedOut && 'opacity: .3;'}
     }
+
+    ${Breakpoint.Mobile} {
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+    }
 `;
 
 export const Table: FunctionComponent<TableProps> = props => {

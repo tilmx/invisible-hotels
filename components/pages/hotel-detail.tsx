@@ -74,8 +74,10 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: ${Size.M};
-            width: 100%;
+            margin-top: ${Size.S};
+            margin-left: auto;
+            margin-right: 0;
+            width: 80%;
             max-width: none;
         }
     }
@@ -98,9 +100,10 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: ${Size.M};
+            margin-top: -${Size.L};
+            margin-right: auto;
             margin-left: 0;
-            width: 100%;
+            width: 80%;
             max-width: none;
         }
     }
