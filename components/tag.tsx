@@ -17,7 +17,7 @@ const StyledTag = styled.div<{ hasIcon?: boolean; hasLabel?: boolean; }>`
 	${Breakpoint.Mobile} {
 		padding: ${Size.Special6} ${Size.XS};
 		${props => props.hasIcon && `padding-left: ${Size.XXS};`}
-		${props => !props.hasLabel && `padding-right: ${Size.Special6};`}
+		${props => !props.hasLabel && `padding-right: ${Size.XXS};`}
 		border-width: 1.5px;
 		gap: ${Size.XXXS};
 		svg {
