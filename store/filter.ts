@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 
 interface FilterState {
+    filterExpanded: boolean;
+    toggleFilterExpanded: () => void;
+
     vacationTypeFilter?: string;
     setVacationTypeFilter: (value?: string) => void;
 
@@ -12,6 +15,9 @@ interface FilterState {
 }
 
 export const useFilterStore = create<FilterState>((set) => ({
+    filterExpanded: false,
+    toggleFilterExpanded: () => set((state) => ({ filterExpanded: !state.filterExpanded })),
+
     vacationTypeFilter: undefined,
     setVacationTypeFilter: value => set({ vacationTypeFilter: value }),
 

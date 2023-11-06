@@ -12,10 +12,10 @@ import { useFavoriteStore } from "../store/favorites";
 import { usePlausible } from "next-plausible";
 import { Size } from "./tokens/size";
 import { OutsideClick } from "./utils/outside-click";
-import { StarIcon } from "lucide-react";
+import { ChevronDownIcon, StarIcon } from "lucide-react";
 import countries from '../data/countries.json';
 
-const StyledFilterBar = styled.div`
+const StyledContainer = styled.div`
     position: sticky;
     top: ${Size.M};
     z-index: 10;
@@ -29,25 +29,47 @@ const StyledFilterBar = styled.div`
     }
 `;
 
-const StyledFilterBarOptions = styled(Flex)`
+const StyledFilterBar = styled.div`
     background: ${Color.Background80};
     backdrop-filter: blur(16px);
     border-radius: ${Size.XL};
-    padding: calc(${Size.S} + ${Size.XXXS}) ${Size.M};
+    padding: 0 ${Size.M};
     margin: 0 -${Size.M};
     box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
-    gap: ${Size.XXS};
+    position: relative;
 
     ${Breakpoint.Tablet} {
-        padding: ${Size.S};
+        padding: 0 ${Size.S};
         margin: 0 -${Size.S};
         border-radius: calc(${Size.M} + ${Size.XXS});
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.XS};
+        padding: 0 ${Size.XS};
         margin: 0 -${Size.XS};
         border-radius: ${Size.M};
+    }
+`;
+
+const StyledFilterBarInner = styled(Flex) <{ filterExpanded?: boolean; }>`  
+    gap: ${Size.XXS};
+    height: 100%;
+    overflow: hidden;
+    padding: calc(${Size.S} + ${Size.XXXS}) 0;
+    box-sizing: border-box;
+
+    ${Breakpoint.Tablet} {
+        padding: ${Size.S} 0;
+    }
+
+    ${Breakpoint.Mobile} {
+        padding: ${Size.XS} 0;
+        padding-right: ${Size.L};
+
+        ${props => !props.filterExpanded && `
+            max-height: ${Size.XXL};
+            mask-image: linear-gradient(black 60%, transparent);
+        `}
     }
 `;
 
@@ -59,8 +81,41 @@ const StyledCountrySelect = styled(CountrySelect)`
         margin-left: 0;
     }
 `;
-export const Filter: FunctionComponent = props => {
-    const plausible = usePlausible()
+
+const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
+    position: absolute;
+    right: 0;
+    padding-right: ${Size.XS};
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    align-items: center;
+    display: none;
+
+    svg {
+        padding: ${Size.XXXXS};
+        border-radius: 50%;
+        background: ${Color.Text10};
+        width: 20px;
+        height: 20px;
+        transition: transform .2s;
+        transform: rotate(${props => props.filterExpanded ? '180deg' : '0deg'});
+    }
+
+    :active svg {
+        background: ${Color.Text20};
+    }
+
+    ${Breakpoint.Mobile} {
+        display: flex;
+    }
+`;
+
+export const Filter: FunctionComponent = () => {
+    const plausible = usePlausible();
+
+    const filterExpanded = useFilterStore(state => state.filterExpanded);
+    const toggleFilterExpanded = useFilterStore(state => state.toggleFilterExpanded);
 
     const vacationTypeFilterOptions = ["Sea", "Mountains", "Countryside", "City"];
 
@@ -78,32 +133,37 @@ export const Filter: FunctionComponent = props => {
     const favorites = useFavoriteStore(state => state.favorites);
 
     return (
-        <StyledFilterBar>
+        <StyledContainer>
             <Wrapper>
-                <StyledFilterBarOptions alignItems={AlignItems.FlexStart} flexWrap='wrap'>
-                    {vacationTypeFilterOptions.map((option, i) => {
-                        const selected = vacationTypeFilter === option;
-                        return (
-                            <FilterItem key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => {
-                                setVacationTypeFilter(selected ? undefined : option);
-                                !selected && plausible('enable-filter', { props: { filter: option } })
+                <StyledFilterBar>
+                    <StyledFilterBarInner filterExpanded={filterExpanded} alignItems={AlignItems.FlexStart} flexWrap='wrap'>
+                        {vacationTypeFilterOptions.map((option, i) => {
+                            const selected = vacationTypeFilter === option;
+                            return (
+                                <FilterItem key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => {
+                                    setVacationTypeFilter(selected ? undefined : option);
+                                    !selected && plausible('enable-filter', { props: { filter: option } })
+                                }} />
+                            )
+                        })}
+                        <StyledCountrySelect
+                            label='All Countries'
+                            value={countryFilter}
+                            active={typeof countryFilter !== 'undefined' || countryFilterOpen}
+                            disabled={countryFilterOpen}
+                            onClick={() => setCountryFilterOpen(!countryFilterOpen)}
+                        />
+                        {favorites.length > 0 &&
+                            <FilterItem icon={<StarIcon />} selected={favoritesFilter} onClick={() => {
+                                !favoritesFilter && plausible('enable-filter', { props: { filter: 'Favorites' } })
+                                setFavoritesFilter(!favoritesFilter);
                             }} />
-                        )
-                    })}
-                    <StyledCountrySelect
-                        label='All Countries'
-                        value={countryFilter}
-                        active={typeof countryFilter !== 'undefined' || countryFilterOpen}
-                        disabled={countryFilterOpen}
-                        onClick={() => setCountryFilterOpen(!countryFilterOpen)}
-                    />
-                    {favorites.length > 0 &&
-                        <FilterItem icon={<StarIcon />} selected={favoritesFilter} onClick={() => {
-                            !favoritesFilter && plausible('enable-filter', { props: { filter: 'Favorites' } })
-                            setFavoritesFilter(!favoritesFilter);
-                        }} />
-                    }
-                </StyledFilterBarOptions>
+                        }
+                    </StyledFilterBarInner>
+                    <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
+                        <ChevronDownIcon color={Color.Text50} />
+                    </StyledExpandArea>
+                </StyledFilterBar>
                 <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
                     <CountrySelectFlyout
                         options={countries}
@@ -118,6 +178,6 @@ export const Filter: FunctionComponent = props => {
                     />
                 </OutsideClick>
             </Wrapper>
-        </StyledFilterBar>
+        </StyledContainer>
     )
 }
