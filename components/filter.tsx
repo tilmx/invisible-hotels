@@ -12,9 +12,9 @@ import { useFavoriteStore } from "../store/favorites";
 import { usePlausible } from "next-plausible";
 import { Size } from "./tokens/size";
 import { OutsideClick } from "./utils/outside-click";
-import { ChevronDownIcon, SearchIcon, StarIcon, XIcon } from "lucide-react";
+import { ChevronDownIcon, SearchIcon, StarIcon } from "lucide-react";
 import countries from '../data/countries.json';
-import { Text, TextSize } from "./text";
+import { Search } from "./search";
 
 const StyledContainer = styled.div`
     position: sticky;
@@ -117,55 +117,6 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     }
 `;
 
-const StyledSearchWrapper = styled(Text)`
-    
-`;
-
-const StyledSearchInput = styled.input`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: unset;
-    display: block;
-    padding: 0 ${Size.L};
-    box-sizing: border-box;
-    margin: 0;
-    font-family: unset;
-    font-size: unset;
-    color: unset;
-
-    ::placeholder {
-        color: ${Color.Text20};
-    }
-`;
-
-const StyledSearchCloseButton = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 ${Size.M};
-
-    svg {
-        background: ${Color.Text10};
-        padding: ${Size.XXS};
-        border-radius: 50%;
-        height: 20px;
-        width: 20px;
-        cursor: pointer;
-    }
-
-    @media (hover: hover) {
-        svg:hover {
-            background: ${Color.Text20};
-        }
-    }
-`;
-
 export const Filter: FunctionComponent = () => {
     const plausible = usePlausible();
 
@@ -221,12 +172,10 @@ export const Filter: FunctionComponent = () => {
                         <FilterItem icon={<SearchIcon />} selected={searchActive} onClick={() => toggleSearchActive()} />
                     </StyledFilterBarInner>
                     {(searchActive && setSearchTerm) &&
-                        <StyledSearchWrapper size={TextSize.Large}>
-                            <StyledSearchInput placeholder="Search" onChange={e => setSearchTerm(e.target.value)} />
-                            <StyledSearchCloseButton onClick={() => toggleSearchActive()}>
-                                <XIcon />
-                            </StyledSearchCloseButton>
-                        </StyledSearchWrapper>
+                        <Search
+                            onChange={value => setSearchTerm(value)}
+                            onCloseClick={() => toggleSearchActive()}
+                        />
                     }
                     {!searchActive &&
                         <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
