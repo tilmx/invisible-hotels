@@ -4,6 +4,7 @@ import { Color } from "./tokens/colors";
 import { Size } from "./tokens/size";
 import { XIcon } from "lucide-react";
 import { Text, TextSize } from "./text";
+import { Breakpoint } from "./tokens/breakpoint";
 
 const StyledSearchInput = styled.input`
     position: absolute;
@@ -19,9 +20,24 @@ const StyledSearchInput = styled.input`
     font-family: unset;
     font-size: unset;
     color: unset;
+    border-radius: ${Size.XL};
+    outline: none;
+    border: none;
+
+    ${Breakpoint.Tablet} {
+        border-radius: calc(${Size.M} + ${Size.XXS});
+    }
+
+    ${Breakpoint.Mobile} {
+        border-radius: ${Size.M};
+    }
 
     ::placeholder {
         color: ${Color.Text20};
+    }
+
+    :focus {
+        outline: 2px solid ${Color.Text80};
     }
 `;
 

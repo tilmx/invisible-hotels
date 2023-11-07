@@ -38,7 +38,6 @@ const StyledFilterBar = styled.div`
     margin: 0 -${Size.M};
     box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
     position: relative;
-    overflow: hidden;
 
     ${Breakpoint.Tablet} {
         padding: 0 ${Size.S};
