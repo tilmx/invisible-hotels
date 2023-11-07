@@ -37,7 +37,7 @@ const StyledSearchInput = styled.input`
     }
 
     :focus {
-        outline: 2px solid ${Color.Text80};
+        outline: 2px solid ${Color.Text50};
     }
 `;
 
