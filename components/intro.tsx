@@ -73,6 +73,7 @@ const StyledLogoWrapper = styled.div`
 
 const StyledText = styled(Text)`
 	max-width: 840px;
+	width: 95%
 `;
 
 export const Intro: FunctionComponent = () => {

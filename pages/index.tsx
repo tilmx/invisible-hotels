@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRef } from 'react'
 import { HotelList } from '../components/hotel-list';
 import { Header } from '../components/header';
-import { Intro } from '../components/logo';
+import { Intro } from '../components/intro';
 import { ScrollIndicator } from '../components/scroll-indicator';
 import { Share } from '../components/share';
 import { Footer } from '../components/footer';
