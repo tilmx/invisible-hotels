@@ -94,7 +94,7 @@ export const HotelList: FunctionComponent = () => {
     const isEmpty = filteredHotels.length === 0;
 
     return (
-        <StyledContainer>
+        <StyledContainer id="hotel-list">
             <Wrapper>
                 <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>

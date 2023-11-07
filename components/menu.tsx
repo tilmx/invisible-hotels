@@ -67,12 +67,11 @@ const StyledDot = styled.div`
 export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> = props => {
     return (
         <StyledMenuContainer>
-
             <StyledMenu flying={props.flying} alignItems={AlignItems.Center} className={props.className}>
                 <StyledDotLink href="/">
                     <StyledDot />
                 </StyledDotLink>
-                <MenuItem link="/" label="Hotels" />
+                <MenuItem link="/#hotel-list" label="Hotels" />
                 <MenuItem link="/map" label="Map" />
                 <MenuItem link="/about" label="About" />
             </StyledMenu>

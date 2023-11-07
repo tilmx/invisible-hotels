@@ -17,7 +17,7 @@ function App({ Component, pageProps }: AppProps) {
                     <meta property="og:site_name" content={siteTitle} />
                     <meta property="og:type" content="website" />
                 </Head>
-                <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; };`} />
+                <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; } html { scroll-behavior: smooth; }`} />
                 <Component {...pageProps} />
             </Theme>
         </PlausibleProvider>
