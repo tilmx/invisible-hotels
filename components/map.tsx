@@ -1,4 +1,10 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
+import { checkIfCookiesAllowed, setCookieOptIn } from "../utils";
+import { Wrapper } from "./wrapper";
+import { Size } from "./tokens/size";
+import styled from "@emotion/styled";
+import { Button } from "./button";
+import { Box } from "./box";
 
 interface MapProps {
     className?: string;
@@ -11,6 +17,11 @@ interface MapProps {
     })[];
     onAnnotationClick: (id?: string) => void;
 }
+
+const StyledCookieContainer = styled.div`
+    padding: ${Size.XXXXL} 0;
+`;
+
 
 let loadingMapPromise: Promise<void> | null = null;
 function loadMap(token: string): Promise<void> {
@@ -37,12 +48,18 @@ export const Map: FunctionComponent<MapProps> = props => {
 
     const [darkMode, setDarkMode] = useState(false);
 
+    const [mapCookiesAllowed, setMapCookiesAllowed] = useState<boolean | undefined>(undefined);
+
+    useEffect(() => {
+        setMapCookiesAllowed(checkIfCookiesAllowed("map"))
+    })
+
     useEffect(() => {
         setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
     }, []);
 
     useEffect(() => {
-        if (mapExists.current) return;
+        if (mapExists.current || !mapCookiesAllowed) return;
 
         loadMap(process.env.NEXT_PUBLIC_MAPKIT_TOKEN!).then(() => {
             if (mapExists.current) return;
@@ -78,7 +95,7 @@ export const Map: FunctionComponent<MapProps> = props => {
                 mapExists.current = false;
             }
         };
-    }, [])
+    }, [mapCookiesAllowed])
 
     useEffect(() => {
         if (!map) { return }
@@ -98,6 +115,22 @@ export const Map: FunctionComponent<MapProps> = props => {
     }, [map])
 
     return (
-        <div id="mapContainer" ref={element} className={props.className} />
+        <>
+            {mapCookiesAllowed === false &&
+                <Wrapper>
+                    <StyledCookieContainer>
+                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
+                            <Button onClick={() => {
+                                setMapCookiesAllowed(true);
+                                setCookieOptIn("map")
+                            }}>Accept</Button>
+                        </Box>
+                    </StyledCookieContainer>
+                </Wrapper>
+            }
+            {mapCookiesAllowed &&
+                <div id="mapContainer" ref={element} className={props.className} />
+            }
+        </>
     )
 }

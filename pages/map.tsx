@@ -1,12 +1,10 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
 import styled from '@emotion/styled';
 import hotelsPreview from '../data/hotels-preview.json';
-import { checkIfCookiesAllowed, getVacationTypeColor, setCookieOptIn } from '../utils';
-import { Button } from '../components/button';
-import { Box } from '../components/box';
+import { getVacationTypeColor } from '../utils';
 import { HotelCard } from '../components/hotel-card';
 import { Footer } from '../components/footer';
 import { Size } from '../components/tokens/size';
@@ -26,10 +24,6 @@ const StyledMenuContainer = styled.div`
     left: 0;
     width: 100%;
     z-index: 10;
-`;
-
-const StyledCookieContainer = styled.div`
-    padding: ${Size.XXXXL} 0;
 `;
 
 const StyledHotelCardContainer = styled.div`
@@ -56,14 +50,7 @@ const StyledHotelCard = styled(HotelCard)`
 `;
 
 export default function Map() {
-    const [mapCookiesAllowed, setMapCookiesAllowed] = useState<boolean | undefined>(undefined);
-
     const [selectedHotel, setSelectedHotel] = useState<string | undefined>();
-
-    useEffect(() => {
-        setMapCookiesAllowed(checkIfCookiesAllowed("map"))
-    })
-
     const selectedHotelContent = hotelsPreview.find(hotel => hotel.id === selectedHotel)
 
     return (
@@ -76,32 +63,19 @@ export default function Map() {
                     <Menu flying />
                 </Wrapper>
             </StyledMenuContainer>
-            {mapCookiesAllowed === false &&
-                <Wrapper>
-                    <StyledCookieContainer>
-                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
-                            <Button onClick={() => {
-                                setMapCookiesAllowed(true);
-                                setCookieOptIn("map")
-                            }}>Accept</Button>
-                        </Box>
-                    </StyledCookieContainer>
-                </Wrapper>
-            }
-            {mapCookiesAllowed &&
-                <StyledMapElement
-                    annotations={hotelsPreview.filter(hotel => hotel.coordinates)?.map(hotel => {
-                        return {
-                            id: hotel.id,
-                            name: hotel.name,
-                            coordinates: { lat: hotel.coordinates.lat, long: hotel.coordinates.long },
-                            color: getVacationTypeColor(hotel.vacationType) || Color.Background,
-                            clusteringIdentifier: hotel.country,
-                        }
-                    })}
-                    onAnnotationClick={id => setSelectedHotel(id)}
-                />
-            }
+
+            <StyledMapElement
+                annotations={hotelsPreview.filter(hotel => hotel.coordinates)?.map(hotel => {
+                    return {
+                        id: hotel.id,
+                        name: hotel.name,
+                        coordinates: { lat: hotel.coordinates.lat, long: hotel.coordinates.long },
+                        color: getVacationTypeColor(hotel.vacationType) || Color.Background,
+                        clusteringIdentifier: hotel.country,
+                    }
+                })}
+                onAnnotationClick={id => setSelectedHotel(id)}
+            />
 
             {selectedHotelContent &&
                 <StyledHotelCardContainer>
