@@ -85,7 +85,10 @@ export const HotelList: FunctionComponent = () => {
         (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)
         && (typeof countryFilter === 'undefined' ? true : countryFilter === hotel.country)
         && ((favoritesFilter && favorites.length > 0) ? favorites.includes(hotel.id) : true)
-        && (typeof searchTerm === 'undefined' ? true : hotel.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        && (typeof searchTerm === 'undefined' ? true : (
+            hotel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            hotel.city.toLowerCase().includes(searchTerm.toLowerCase())
+        ))
     )
 
     const isEmpty = filteredHotels.length === 0;
