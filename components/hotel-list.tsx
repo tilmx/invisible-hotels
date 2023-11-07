@@ -18,7 +18,7 @@ import { usePlausible } from 'next-plausible';
 import { Filter } from './filter';
 
 const StyledContainer = styled.div`
-    margin-top: ${Size.XXXL};
+    margin-top: ${Size.XL};
     padding-top: ${Size.XL};
 
     ${Breakpoint.Tablet} {
