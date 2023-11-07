@@ -119,6 +119,8 @@ const StyledImage = styled(Image)`
     max-width: 720px;
     height: auto;
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
+    background: ${Color.Text50};
+    backdrop-filter: blur(${Size.XL});
 `;
 
 const StyledImageCopyrightText = styled(Text)`
