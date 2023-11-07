@@ -12,8 +12,9 @@ import { useFavoriteStore } from "../store/favorites";
 import { usePlausible } from "next-plausible";
 import { Size } from "./tokens/size";
 import { OutsideClick } from "./utils/outside-click";
-import { ChevronDownIcon, StarIcon } from "lucide-react";
+import { ChevronDownIcon, SearchIcon, StarIcon, XIcon } from "lucide-react";
 import countries from '../data/countries.json';
+import { Text, TextSize } from "./text";
 
 const StyledContainer = styled.div`
     position: sticky;
@@ -37,6 +38,7 @@ const StyledFilterBar = styled.div`
     margin: 0 -${Size.M};
     box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
     position: relative;
+    overflow: hidden;
 
     ${Breakpoint.Tablet} {
         padding: 0 ${Size.S};
@@ -51,12 +53,16 @@ const StyledFilterBar = styled.div`
     }
 `;
 
-const StyledFilterBarInner = styled(Flex) <{ filterExpanded?: boolean; }>`  
+const StyledFilterBarInner = styled(Flex) <{ filterExpanded: boolean; searchActive: boolean; }>`  
     gap: ${Size.XXS};
     height: 100%;
     overflow: hidden;
     padding: calc(${Size.S} + ${Size.XXXS}) 0;
     box-sizing: border-box;
+
+    ${props => props.searchActive && `
+        visibility: hidden;
+    `}
 
     ${Breakpoint.Tablet} {
         padding: ${Size.S} 0;
@@ -111,6 +117,55 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     }
 `;
 
+const StyledSearchWrapper = styled(Text)`
+    
+`;
+
+const StyledSearchInput = styled.input`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: unset;
+    display: block;
+    padding: 0 ${Size.L};
+    box-sizing: border-box;
+    margin: 0;
+    font-family: unset;
+    font-size: unset;
+    color: unset;
+
+    ::placeholder {
+        color: ${Color.Text20};
+    }
+`;
+
+const StyledSearchCloseButton = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 ${Size.M};
+
+    svg {
+        background: ${Color.Text10};
+        padding: ${Size.XXS};
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+    }
+
+    @media (hover: hover) {
+        svg:hover {
+            background: ${Color.Text20};
+        }
+    }
+`;
+
 export const Filter: FunctionComponent = () => {
     const plausible = usePlausible();
 
@@ -132,11 +187,15 @@ export const Filter: FunctionComponent = () => {
 
     const favorites = useFavoriteStore(state => state.favorites);
 
+    const searchActive = useFilterStore(state => state.searchActive);
+    const toggleSearchActive = useFilterStore(state => state.toggleSearchActive);
+    const setSearchTerm = useFilterStore(state => state.setSearchTerm);
+
     return (
         <StyledContainer>
             <Wrapper>
                 <StyledFilterBar>
-                    <StyledFilterBarInner filterExpanded={filterExpanded} alignItems={AlignItems.FlexStart} flexWrap='wrap'>
+                    <StyledFilterBarInner searchActive={searchActive} filterExpanded={filterExpanded} alignItems={AlignItems.FlexStart} flexWrap='wrap'>
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (
@@ -159,10 +218,21 @@ export const Filter: FunctionComponent = () => {
                                 setFavoritesFilter(!favoritesFilter);
                             }} />
                         }
+                        <FilterItem icon={<SearchIcon />} selected={searchActive} onClick={() => toggleSearchActive()} />
                     </StyledFilterBarInner>
-                    <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
-                        <ChevronDownIcon color={Color.Text50} />
-                    </StyledExpandArea>
+                    {(searchActive && setSearchTerm) &&
+                        <StyledSearchWrapper size={TextSize.Large}>
+                            <StyledSearchInput placeholder="Search" onChange={e => setSearchTerm(e.target.value)} />
+                            <StyledSearchCloseButton onClick={() => toggleSearchActive()}>
+                                <XIcon />
+                            </StyledSearchCloseButton>
+                        </StyledSearchWrapper>
+                    }
+                    {!searchActive &&
+                        <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
+                            <ChevronDownIcon color={Color.Text50} />
+                        </StyledExpandArea>
+                    }
                 </StyledFilterBar>
                 <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
                     <CountrySelectFlyout

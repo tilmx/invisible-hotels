@@ -12,6 +12,11 @@ interface FilterState {
 
     favoritesFilter: boolean;
     setFavoritesFilter: (value: boolean) => void;
+
+    searchActive: boolean;
+    searchTerm?: string;
+    toggleSearchActive: () => void;
+    setSearchTerm?: (value?: string) => void;
 }
 
 export const useFilterStore = create<FilterState>((set) => ({
@@ -25,5 +30,10 @@ export const useFilterStore = create<FilterState>((set) => ({
     setCountryFilter: value => set({ countryFilter: value }),
 
     favoritesFilter: false,
-    setFavoritesFilter: value => set({ favoritesFilter: value })
+    setFavoritesFilter: value => set({ favoritesFilter: value }),
+
+    searchActive: false,
+    toggleSearchActive: () => set((state) => ({ searchActive: !state.searchActive, searchTerm: undefined })),
+    searchTerm: undefined,
+    setSearchTerm: value => set((state) => ({ searchTerm: value })),
 }))
