@@ -1,4 +1,4 @@
-import { FunctionComponent, MouseEventHandler } from "react";
+import { FunctionComponent, MouseEventHandler, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { Color } from "./tokens/colors";
 import { Size } from "./tokens/size";
@@ -38,7 +38,8 @@ const StyledSearchInput = styled.input`
     }
 
     :focus {
-        outline: 2px solid ${Color.Text50};
+        outline: 2px solid ${Color.Blue};
+        box-shadow: 0 0 0 6px ${Color.Blue}33;
     }
 `;
 
@@ -68,11 +69,16 @@ const StyledSearchCloseButton = styled.div`
 `;
 
 export const Search: FunctionComponent<{ onChange: (value: string) => void; onCloseClick?: MouseEventHandler; className?: string; }> = props => {
-    const search = debounce(query => props.onChange(query), 500);
+    const search = debounce(query => props.onChange(query), 250);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [])
 
     return (
         <Text size={TextSize.Large} className={props.className}>
-            <StyledSearchInput placeholder="Search" onChange={e => search(e.target.value)} />
+            <StyledSearchInput ref={inputRef} placeholder="Search" onChange={e => search(e.target.value)} />
             <StyledSearchCloseButton onClick={props.onCloseClick}>
                 <XIcon />
             </StyledSearchCloseButton>
