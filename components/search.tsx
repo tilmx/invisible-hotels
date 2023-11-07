@@ -5,6 +5,7 @@ import { Size } from "./tokens/size";
 import { XIcon } from "lucide-react";
 import { Text, TextSize } from "./text";
 import { Breakpoint } from "./tokens/breakpoint";
+import debounce from "lodash.debounce";
 
 const StyledSearchInput = styled.input`
     position: absolute;
@@ -67,9 +68,11 @@ const StyledSearchCloseButton = styled.div`
 `;
 
 export const Search: FunctionComponent<{ onChange: (value: string) => void; onCloseClick?: MouseEventHandler; className?: string; }> = props => {
+    const search = debounce(query => props.onChange(query), 500);
+
     return (
         <Text size={TextSize.Large} className={props.className}>
-            <StyledSearchInput placeholder="Search" onChange={e => props.onChange(e.target.value)} />
+            <StyledSearchInput placeholder="Search" onChange={e => search(e.target.value)} />
             <StyledSearchCloseButton onClick={props.onCloseClick}>
                 <XIcon />
             </StyledSearchCloseButton>
