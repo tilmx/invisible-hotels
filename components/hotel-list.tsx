@@ -75,6 +75,7 @@ export const HotelList: FunctionComponent = () => {
     const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
     const countryFilter = useFilterStore(state => state.countryFilter);
     const favoritesFilter = useFilterStore(state => state.favoritesFilter);
+    const searchTerm = useFilterStore(state => state.searchTerm);
 
     const favorites = useFavoriteStore(state => state.favorites);
     const addFavorite = useFavoriteStore(state => state.addFavorite);
@@ -84,6 +85,7 @@ export const HotelList: FunctionComponent = () => {
         (typeof vacationTypeFilter === 'undefined' ? true : vacationTypeFilter === hotel.vacationType)
         && (typeof countryFilter === 'undefined' ? true : countryFilter === hotel.country)
         && ((favoritesFilter && favorites.length > 0) ? favorites.includes(hotel.id) : true)
+        && (typeof searchTerm === 'undefined' ? true : hotel.name.toLowerCase().includes(searchTerm.toLowerCase()))
     )
 
     const isEmpty = filteredHotels.length === 0;
