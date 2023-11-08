@@ -290,7 +290,7 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
 const StyledMap = styled(Map)`
     height: 560px;
     border-radius: ${Size.XS};
-    margin-top: ${Size.XXL};
+    margin-top: ${Size.XXXL};
     overflow: hidden;
     box-shadow: inset 0 0 0 2px currentColor;
 
