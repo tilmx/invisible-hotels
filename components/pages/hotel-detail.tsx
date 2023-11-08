@@ -21,6 +21,7 @@ import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
 import { usePlausible } from 'next-plausible';
+import { Map } from '../map';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -286,6 +287,22 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
     }
 `;
 
+const StyledMap = styled(Map)`
+    height: 560px;
+    border-radius: ${Size.XS};
+    margin-top: ${Size.XXL};
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px currentColor;
+
+    ${Breakpoint.Tablet} {
+        height: 480px;
+    }
+
+    ${Breakpoint.Mobile} {
+        height: 420px;
+    }
+`;
+
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const plausible = usePlausible()
 
@@ -362,6 +379,16 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         { label: 'Pool', value: props.hotel.amenities?.includes('Pool') || amenitiesFallback },
                         { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitiesFallback }
                     ]}
+                />
+                <StyledMap
+                    center={{ lat: props.hotel.coordinates.lat, long: props.hotel.coordinates.long }}
+                    annotations={[{
+                        id: props.hotel.id,
+                        name: props.hotel.name,
+                        coordinates: { lat: props.hotel.coordinates.lat, long: props.hotel.coordinates.long },
+                        color: 'red',
+                        clusteringIdentifier: ''
+                    }]}
                 />
                 <StyledStickyWrapper>
                     <StyledActionBar>

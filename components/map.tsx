@@ -1,13 +1,13 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { checkIfCookiesAllowed, setCookieOptIn } from "../utils";
-import { Wrapper } from "./wrapper";
-import { Size } from "./tokens/size";
 import styled from "@emotion/styled";
 import { Button } from "./button";
 import { Box } from "./box";
+import { Size } from "./tokens/size";
 
 interface MapProps {
     className?: string;
+    center?: { lat: number; long: number; }
     annotations?: ({
         id: string;
         name: string;
@@ -15,13 +15,26 @@ interface MapProps {
         color: string;
         clusteringIdentifier: string;
     })[];
-    onAnnotationClick: (id?: string) => void;
+    onAnnotationClick?: (id?: string) => void;
 }
 
-const StyledCookieContainer = styled.div`
-    padding: ${Size.XXXXL} 0;
+const StyledContainer = styled.div`
+    width: 100%;
+    height: 480px;
 `;
 
+const StyledCookieContainer = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: ${Size.M};
+    box-sizing: border-box;
+`;
+
+const StyledMapContainer = styled.div`
+    width: 100%;
+    height: 100%;
+`;
 
 let loadingMapPromise: Promise<void> | null = null;
 function loadMap(token: string): Promise<void> {
@@ -65,7 +78,7 @@ export const Map: FunctionComponent<MapProps> = props => {
             if (mapExists.current) return;
 
             setMap(new mapkit.Map(element.current!, {
-                center: new mapkit.Coordinate(53.551086, 9.993682),
+                center: new mapkit.Coordinate(props.center?.lat || 53.551086, props.center?.long || 9.993682),
                 showsMapTypeControl: false,
                 isRotationEnabled: false,
                 showsPointsOfInterest: false,
@@ -100,10 +113,10 @@ export const Map: FunctionComponent<MapProps> = props => {
     useEffect(() => {
         if (!map) { return }
         const listenToSelect = (e: mapkit.EventBase<mapkit.Map> & { annotation?: mapkit.Annotation | undefined }) => {
-            props.onAnnotationClick(e.annotation?.data.id)
+            props.onAnnotationClick && props.onAnnotationClick(e.annotation?.data.id)
         }
         const listenToDeselect = () => {
-            props.onAnnotationClick(undefined)
+            props.onAnnotationClick && props.onAnnotationClick(undefined)
         }
         map?.addEventListener('select', listenToSelect)
         map?.addEventListener('deselect', listenToDeselect)
@@ -115,22 +128,20 @@ export const Map: FunctionComponent<MapProps> = props => {
     }, [map])
 
     return (
-        <>
+        <StyledContainer className={props.className} >
             {mapCookiesAllowed === false &&
-                <Wrapper>
-                    <StyledCookieContainer>
-                        <Box title='Accept cookies' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
-                            <Button onClick={() => {
-                                setMapCookiesAllowed(true);
-                                setCookieOptIn("map")
-                            }}>Accept</Button>
-                        </Box>
-                    </StyledCookieContainer>
-                </Wrapper>
+                <StyledCookieContainer>
+                    <Box title='Show Hotel Map' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
+                        <Button onClick={() => {
+                            setMapCookiesAllowed(true);
+                            setCookieOptIn("map")
+                        }}>Accept</Button>
+                    </Box>
+                </StyledCookieContainer>
             }
             {mapCookiesAllowed &&
-                <div id="mapContainer" ref={element} className={props.className} />
+                <StyledMapContainer id="mapContainer" ref={element} />
             }
-        </>
+        </StyledContainer>
     )
 }

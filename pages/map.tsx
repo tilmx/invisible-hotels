@@ -87,7 +87,7 @@ export default function Map() {
                         housingType={selectedHotelContent.housingType}
                         vacationType={selectedHotelContent.vacationType}
                         visited={selectedHotelContent.visited}
-                        small
+                        small={true}
                     />
                 </StyledHotelCardContainer>
             }
