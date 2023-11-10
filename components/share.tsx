@@ -4,11 +4,23 @@ import { Flex, JustifyContent } from "./utils/flex";
 import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
 import { Size } from "./tokens/size";
-import { siteTitle } from "../data/site";
+import { siteDescription, siteTitle } from "../data/site";
 import { usePlausible } from 'next-plausible'
+import { Text, TextSize } from "./text";
+import { Color } from "./tokens/colors";
+import { AccentStyle, AccentedText } from "./accented-text";
+
+const StyledContainer = styled.div`
+    max-width: 480px;
+    margin: 0 auto;
+    padding-top: ${Size.XXXXL};
+    display: flex;
+    flex-direction: column;
+    gap: ${Size.S};
+`;
 
 const StyledFlex = styled(Flex)`
-    margin-top: ${Size.XXXXL};
+    margin-top: ${Size.M};
 `;
 
 export const Share: FunctionComponent = () => {
@@ -34,11 +46,20 @@ export const Share: FunctionComponent = () => {
     }
 
     return (
-        shareAvailable ?
-            <StyledFlex justifyContent={JustifyContent.Center}>
-                <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
-            </StyledFlex>
-            :
-            <div />
+        <StyledContainer>
+            <Text size={TextSize.SuperLarge} center bold>
+                <AccentedText color={Color.Text80} accentStyle={AccentStyle.Circled}>
+                    {siteTitle}
+                </AccentedText>
+            </Text>
+            <Text size={TextSize.Large} serif center color={Color.Text50}>{siteDescription}</Text>
+            {shareAvailable ?
+                <StyledFlex justifyContent={JustifyContent.Center}>
+                    <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
+                </StyledFlex>
+                :
+                <div />
+            }
+        </StyledContainer>
     )
 }
