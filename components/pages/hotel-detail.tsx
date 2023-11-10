@@ -22,6 +22,7 @@ import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
 import { usePlausible } from 'next-plausible';
 import { Map } from '../map';
+import { RoomDistribution } from '../room-distribution';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -378,9 +379,11 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     data={[
                         {
                             label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms, content:
-                                <Flex justifyContent={JustifyContent.FlexEnd}>
-                                    Small | Medium | Large
-                                </Flex>
+                                props.hotel.housingType === 'Hotel' ?
+                                    <Flex justifyContent={JustifyContent.FlexEnd}>
+                                        <RoomDistribution rooms={props.hotel.rooms} />
+                                    </Flex>
+                                    : undefined
                         },
                         { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitiesFallback },
                         { label: 'Restaurant', value: props.hotel.amenities?.includes('Restaurant') || amenitiesFallback },

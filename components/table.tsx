@@ -1,15 +1,17 @@
 import styled from '@emotion/styled'
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
 import { Text, TextSize } from './text';
 import { Check, HelpCircle, X } from 'lucide-react';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
+import { AlignItems, Flex, JustifyContent } from './utils/flex';
 
 interface TableProps {
     backgroundColor?: string;
     data: {
         label: string;
         value?: string | number | boolean;
+        content?: ReactNode;
     }[]
 }
 
@@ -19,9 +21,6 @@ const StyledContainer = styled.div`
 `;
 
 const StyledRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: ${Size.L} 0;
     border-bottom: 2px solid transparent;
     position: relative;
@@ -90,20 +89,23 @@ export const Table: FunctionComponent<TableProps> = props => {
         <StyledContainer>
             {props.data.map((row, i) =>
                 <StyledRow key={i}>
-                    <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
-                    {typeof row.value === 'string' || typeof row.value === 'number' &&
-                        <Text size={TextSize.Large}>{row.value}</Text>
-                    }
-                    {typeof row.value === 'boolean' &&
-                        <StyledIconWrapper greyedOut={!row.value}>
-                            {row.value ? <Check color={props.backgroundColor} /> : <X />}
-                        </StyledIconWrapper>
-                    }
-                    {typeof row.value === 'undefined' &&
-                        <StyledIconWrapper greyedOut>
-                            <HelpCircle />
-                        </StyledIconWrapper>
-                    }
+                    <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center}>
+                        <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
+                        {typeof row.value === 'string' || typeof row.value === 'number' &&
+                            <Text size={TextSize.Large}>{row.value}</Text>
+                        }
+                        {typeof row.value === 'boolean' &&
+                            <StyledIconWrapper greyedOut={!row.value}>
+                                {row.value ? <Check color={props.backgroundColor} /> : <X />}
+                            </StyledIconWrapper>
+                        }
+                        {typeof row.value === 'undefined' &&
+                            <StyledIconWrapper greyedOut>
+                                <HelpCircle />
+                            </StyledIconWrapper>
+                        }
+                    </Flex>
+                    {row.content}
                 </StyledRow>
             )}
         </StyledContainer>
