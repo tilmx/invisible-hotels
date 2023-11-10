@@ -9,8 +9,9 @@ import { usePlausible } from 'next-plausible'
 import { Text, TextSize } from "./text";
 import { Color } from "./tokens/colors";
 import { AccentStyle, AccentedText } from "./accented-text";
+import { Wrapper } from "./wrapper";
 
-const StyledContainer = styled.div`
+const StyledWrapper = styled(Wrapper)`
     max-width: 480px;
     margin: 0 auto;
     padding-top: ${Size.XXXXL};
@@ -46,7 +47,7 @@ export const Share: FunctionComponent = () => {
     }
 
     return (
-        <StyledContainer>
+        <StyledWrapper>
             <Text size={TextSize.SuperLarge} center bold>
                 <AccentedText color={Color.Text80} accentStyle={AccentStyle.Circled}>
                     {siteTitle}
@@ -60,6 +61,6 @@ export const Share: FunctionComponent = () => {
                 :
                 <div />
             }
-        </StyledContainer>
+        </StyledWrapper>
     )
 }
