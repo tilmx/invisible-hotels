@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { FunctionComponent } from 'react';
 import roomDistribution from '../data/room-distribution.json';
 import { Size } from './tokens/size';
-import { Flex, JustifyContent } from './utils/flex';
+import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import { Text, TextSize } from './text';
 import { Color } from './tokens/colors';
 
@@ -41,12 +41,13 @@ const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
 
     div {
         display: none;
+        z-index: 1;
         position: absolute;
         top: calc(${Size.XL} + ${Size.XXS});
         background: ${Color.Background80};
         backdrop-filter: blur(${Size.XXS});
         padding: ${Size.XS};
-        border-radius: ${Size.XXS};
+        border-radius: ${Size.XS};
         width: ${Size.XXXL};
     }
 
@@ -63,19 +64,24 @@ const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
 `;
 
 export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => {
-    const maximum = Math.max(...roomDistribution.distribution.map(item => item || 0));
+    const below100 = roomDistribution.distribution.slice(0, 12);
+    const above100 = roomDistribution.distribution.slice(12).reduce((p, c) => ((p || 0) + (c || 0)), 0);
+
+    const combinedArray = [...below100, above100]
+    const maximum = Math.max(...combinedArray.map(item => item || 0));
+
     return (
         <StyledContainer>
             <StyledDistribution>
-                {roomDistribution.distribution.filter((_, i) => i < 10).map((item, i) =>
+                {combinedArray.map((item, i) =>
                     <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
-                        <Text size={TextSize.Small}>{item} Hotels have {Math.max(i * 10, 1)} - {i * 10 + 9} rooms</Text>
+                        <Text size={TextSize.Small}>{item} Hotels have {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? '- ' + (i * 10 + 9) : 'or more'} rooms</Text>
                     </StyledBar>
                 )}
             </StyledDistribution>
-            <Flex justifyContent={JustifyContent.SpaceBetween}>
-                <Text size={TextSize.Small}>1</Text>
-                <Text size={TextSize.Small}>100+</Text>
+            <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center}>
+                <Text size={TextSize.Small}>1 Room</Text>
+                <Text size={TextSize.Small}>120+</Text>
             </Flex>
         </StyledContainer>
     )
