@@ -5,21 +5,20 @@ import { Size } from './tokens/size';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import { Text, TextSize } from './text';
 import { Color } from './tokens/colors';
+import { HelpCircleIcon } from 'lucide-react';
 
 const StyledContainer = styled.div`
     background: rgba(0,0,0,0.07);
     padding: ${Size.XS} ${Size.S};
     margin-top: ${Size.XS};
     border-radius: ${Size.XS};
-    display: flex;
-    flex-direction: column;
-    gap: ${Size.XXS};
 `;
 
 const StyledDistribution = styled.div`
     display: flex;
     gap: ${Size.XXXXS};
     height: ${Size.XL};
+    margin: ${Size.XS} 0 ${Size.XXS};
     align-items: flex-end;
 `;
 
@@ -74,7 +73,10 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
 
     return (
         <StyledContainer>
-            <Text size={TextSize.Small}>Compare hotel size</Text>
+            <Flex alignItems={AlignItems.Center} gap={Size.XXXS}>
+                <HelpCircleIcon size={Size.S} />
+                <Text size={TextSize.Small}>Compare hotel size</Text>
+            </Flex>
             <StyledDistribution>
                 {combinedArray.map((item, i) =>
                     <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
