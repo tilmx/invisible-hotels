@@ -9,8 +9,11 @@ import { Color } from './tokens/colors';
 const StyledContainer = styled.div`
     background: rgba(0,0,0,0.07);
     padding: ${Size.XS} ${Size.S};
-    margin-top: ${Size.XXS};
+    margin-top: ${Size.XS};
     border-radius: ${Size.XS};
+    display: flex;
+    flex-direction: column;
+    gap: ${Size.XXS};
 `;
 
 const StyledDistribution = styled.div`
@@ -18,7 +21,6 @@ const StyledDistribution = styled.div`
     gap: ${Size.XXXXS};
     height: ${Size.XL};
     align-items: flex-end;
-    margin-bottom: ${Size.XXS};
 `;
 
 const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
@@ -72,6 +74,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
 
     return (
         <StyledContainer>
+            <Text size={TextSize.Small}>Compare hotel size</Text>
             <StyledDistribution>
                 {combinedArray.map((item, i) =>
                     <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
@@ -80,7 +83,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
                 )}
             </StyledDistribution>
             <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center}>
-                <Text size={TextSize.Small}>1 Room</Text>
+                <Text size={TextSize.Small}>1</Text>
                 <Text size={TextSize.Small}>120+</Text>
             </Flex>
         </StyledContainer>
