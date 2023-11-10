@@ -22,7 +22,6 @@ import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
 import { usePlausible } from 'next-plausible';
 import { Map } from '../map';
-import { RoomDistribution } from '../room-distribution';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -320,10 +319,14 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const isFavorite = favorites.includes(props.hotel.id);
     const link = props.hotel.links.hotel || props.hotel.links.bookingCom;
 
+    const description = `${props.hotel.name} is a lovely ${props.hotel.housingType.toLocaleLowerCase()} in ${props.hotel.city}, ${props.hotel.country}. ${props.hotel.housingType === "Hotel" ? `It has ${props.hotel.rooms.toString()} beautiful rooms.` : '.'}`;
+
     return (
         <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
             <Head>
                 <title>{props.hotel.name + ' — ' + siteTitle}</title>
+                <meta name="description" content={description} />
+                <meta property="og:description" content={description} />
                 <meta property="og:title" content={props.hotel.name} />
                 <meta property="og:image" content={props.hotel.images ? "https://invisible-hotels.com/images/hotels/" + props.hotel.images.at(0)?.url : "https://invisible-hotels.com/images/og-image.jpg"} />
                 <meta property="og:url" content={"https://invisible-hotels.com" + getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })} />
@@ -339,7 +342,6 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         <Tag icon={getVacationTypeIcon(props.hotel.vacationType)} label={props.hotel.vacationType} />
                         <Tag label={props.hotel.housingType} />
                     </Flex>
-                    <RoomDistribution rooms={props.hotel.rooms} />
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(props.hotel.images?.length || 0) > 1}>
                     {(props.hotel.images && props.hotel.visited) && <StyledVisitedBadge />}
@@ -374,7 +376,12 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                 <Table
                     backgroundColor={getVacationTypeColor(props.hotel.vacationType)}
                     data={[
-                        { label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms },
+                        {
+                            label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms, content:
+                                <Flex justifyContent={JustifyContent.FlexEnd}>
+                                    Small | Medium | Large
+                                </Flex>
+                        },
                         { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitiesFallback },
                         { label: 'Restaurant', value: props.hotel.amenities?.includes('Restaurant') || amenitiesFallback },
                         { label: 'Bar', value: props.hotel.amenities?.includes('Bar') || amenitiesFallback },
