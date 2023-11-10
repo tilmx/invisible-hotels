@@ -49,7 +49,7 @@ const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
         backdrop-filter: blur(${Size.XXS});
         padding: ${Size.XS};
         border-radius: ${Size.XS};
-        width: ${Size.XXXL};
+        width: calc(${Size.XXXL} + ${Size.XL});
     }
 
     @media (hover: hover) {
@@ -80,7 +80,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
             <StyledDistribution>
                 {combinedArray.map((item, i) =>
                     <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
-                        <Text size={TextSize.Small}>{item} Hotels have {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? '- ' + (i * 10 + 9) : 'or more'} rooms</Text>
+                        <Text size={TextSize.Small}>{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
                     </StyledBar>
                 )}
             </StyledDistribution>
