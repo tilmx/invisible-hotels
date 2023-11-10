@@ -96,5 +96,27 @@ base('Curated List').select({
                 .sort(),
             null, 2)
     );
+
+    const onlyHotels = savedRecords.filter(item => item.housingType === "Hotel");
+    function calculateRoomCountDistribution(roomCountArray) {
+        const roomArray = [];
+        roomCountArray.forEach(hotelRooms => {
+            var interval = Math.floor(hotelRooms / 10);
+            roomArray[interval] = (roomArray[interval] || []).concat(hotelRooms);
+        });
+        return roomArray.map(element => element.length);
+    }
+
+    fs.writeFileSync(
+        'data/room-distribution.json',
+        JSON.stringify(
+            {
+                minimum: Math.min(...onlyHotels.map(hotel => hotel.rooms)),
+                maximum: Math.max(...onlyHotels.map(hotel => hotel.rooms)),
+                distribution: calculateRoomCountDistribution(onlyHotels.map(item => item.rooms))
+            },
+            null, 2)
+    );
+
     console.log('Done, ', savedRecords, savedRecords.length + ' hotels')
 });

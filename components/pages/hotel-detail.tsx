@@ -22,6 +22,7 @@ import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
 import { usePlausible } from 'next-plausible';
 import { Map } from '../map';
+import { RoomDistribution } from '../room-distribution';
 
 interface HotelDetailProps {
     hotel: typeof hotels[number]
@@ -338,6 +339,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         <Tag icon={getVacationTypeIcon(props.hotel.vacationType)} label={props.hotel.vacationType} />
                         <Tag label={props.hotel.housingType} />
                     </Flex>
+                    <RoomDistribution rooms={props.hotel.rooms} />
                 </StyledIntro>
                 <StyledImageContainer multipleImages={(props.hotel.images?.length || 0) > 1}>
                     {(props.hotel.images && props.hotel.visited) && <StyledVisitedBadge />}
