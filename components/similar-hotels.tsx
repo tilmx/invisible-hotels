@@ -42,7 +42,7 @@ export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country:
     const similarHotelsPreview = similarHotels.slice(0, 3);
     const [similarHotelsExpanded, setSimilarHotelsExpanded] = useState(false);
 
-    const plural = similarHotels.length > 1;
+    const plural = similarHotels.length !== 1;
 
     return (
         <StyledSimilarHotelSection>
