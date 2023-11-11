@@ -8,7 +8,6 @@ import { Text, TextSize } from "./text";
 import { HotelCard } from "./hotel-card";
 import { Maximize2Icon } from "lucide-react";
 import { Button } from "./button";
-import { getVacationTypeDescription } from "../utils";
 import { Color } from "./tokens/colors";
 import { PlaceholderCard } from "./placeholder-card";
 import { AccentStyle, AccentedText } from "./accented-text";
@@ -32,35 +31,34 @@ const StyledSimilarButtonWrapper = styled(Wrapper)`
     justify-content: center;
 `;
 
-export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country: string; vacationType: string; accentColor?: string; }> = props => {
+export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: number }[]; accentColor?: string; }> = props => {
 
-    const similarHotels = hotelsPreview.filter(hotel =>
-        hotel.vacationType === props.vacationType
-        && hotel.country === props.country
-        && hotel.id !== props.currentHotelId
-    )
-    const similarHotelsPreview = similarHotels.slice(0, 3);
+    const similarHotelsPreview = props.hotels.slice(0, 3);
     const [similarHotelsExpanded, setSimilarHotelsExpanded] = useState(false);
 
-    const plural = similarHotels.length !== 1;
+    const plural = props.hotels.length !== 1;
 
     return (
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
                 <Text size={TextSize.SuperLarge} bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
-                <Text color={Color.Text50} size={TextSize.Large} serif>{similarHotels.length.toString()} Hotel{plural ? 's' : undefined} & Apartment{plural ? 's' : undefined} {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
+                <Text color={Color.Text50} size={TextSize.Large} serif>{props.hotels.length.toString()} nearby Hotel{plural ? 's' : undefined} & Apartment{plural ? 's' : undefined} within 200 km</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
-                {(similarHotelsExpanded ? similarHotels : similarHotelsPreview).map((hotel, i) =>
-                    <HotelCard title={hotel.name} image={hotel.image} city={hotel.city} country={hotel.country} id={hotel.id} vacationType={hotel.vacationType} housingType={hotel.housingType} key={i} />
+                {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) => {
+                    const hotelContent = hotelsPreview.find(element => element.id === hotel.id)
+                    return hotelContent ? (
+                        <HotelCard title={hotelContent.name} image={hotelContent.image} city={hotelContent.city} country={hotelContent.country} id={hotelContent.id} vacationType={hotelContent.vacationType} housingType={hotelContent.housingType} key={i} />
+                    ) : undefined
+                }
                 )}
-                {similarHotels.length === 0 &&
+                {props.hotels.length === 0 &&
                     <PlaceholderCard emptyState />
                 }
             </StyledHotelListWrapper>
             <StyledSimilarButtonWrapper>
-                {(!similarHotelsExpanded && similarHotels.length > 3) &&
-                    <Button iconLeft={<Maximize2Icon />} onClick={() => setSimilarHotelsExpanded(true)}>Show all similar hotels</Button>
+                {(!similarHotelsExpanded && props.hotels.length > 3) &&
+                    <Button iconLeft={<Maximize2Icon />} onClick={() => setSimilarHotelsExpanded(true)}>Show more nearby hotels</Button>
                 }
             </StyledSimilarButtonWrapper>
         </StyledSimilarHotelSection>

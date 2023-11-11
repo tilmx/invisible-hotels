@@ -324,7 +324,6 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
 
     const description = `${props.hotel.name} is a lovely ${props.hotel.housingType.toLocaleLowerCase()} ${getVacationTypeDescription(props.hotel.vacationType)} in ${props.hotel.city}, ${props.hotel.country}. ${props.hotel.housingType === "Hotel" ? `It has ${props.hotel.rooms.toString()} beautiful rooms.` : ''}`;
 
-
     return (
         <>
             <StyledBackground color={getVacationTypeColor(props.hotel.vacationType) || Color.Background}>
@@ -430,7 +429,10 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     </StyledActionBar>
                 </StyledStickyWrapper>
             </StyledBackground>
-            <SimilarHotels accentColor={getVacationTypeColor(props.hotel.vacationType)} currentHotelId={props.hotel.id} vacationType={props.hotel.vacationType} country={props.hotel.country} />
+            <SimilarHotels
+                accentColor={getVacationTypeColor(props.hotel.vacationType)}
+                hotels={props.hotel.nearby}
+            />
             <Footer reducedPadding />
         </>
     )

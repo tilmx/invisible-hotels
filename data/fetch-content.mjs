@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
 import http from 'https';
+import { getDistance } from 'geolib';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') })
 
@@ -65,7 +66,29 @@ base('Curated List').select({
 
     fs.writeFileSync(
         'data/hotels.json',
-        JSON.stringify(savedRecords, null, 2)
+        JSON.stringify(savedRecords.map(record => {
+            return {
+                ...record,
+                nearby: savedRecords
+                    .filter(item => item.id !== record.id)
+                    .filter(item => getDistance(
+                        { lat: record.coordinates.lat, lon: record.coordinates.long },
+                        { lat: item.coordinates.lat, lon: item.coordinates.long },
+                        1000
+                    ) / 1000 <= 200)
+                    .map(item => {
+                        return {
+                            id: item.id,
+                            distance: getDistance(
+                                { lat: record.coordinates.lat, lon: record.coordinates.long },
+                                { lat: item.coordinates.lat, lon: item.coordinates.long },
+                                1000
+                            ) / 1000
+                        }
+                    })
+                    .sort((a, b) => a.distance - b.distance)
+            }
+        }), null, 2)
     );
 
     fs.writeFileSync(

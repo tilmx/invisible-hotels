@@ -69,7 +69,7 @@ const StyledEmoji = styled.div<{ superSmall?: boolean; }>`
     }
 
     ${props => props.superSmall && `
-        font-size: 16px;
+        font-size: 20px;
 
         ${Breakpoint.Mobile} {
             font-size: 16px;
