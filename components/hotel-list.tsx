@@ -16,6 +16,7 @@ import { useFilterStore } from '../store/filter';
 import { useFavoriteStore } from '../store/favorites';
 import { usePlausible } from 'next-plausible';
 import { Filter } from './filter';
+import { HotelListWrapper } from './hotel-list-wrapper';
 
 const StyledContainer = styled.div`
     margin-top: ${Size.XL};
@@ -28,25 +29,6 @@ const StyledContainer = styled.div`
 
     ${Breakpoint.Mobile} {
         margin-top: ${Size.XL};
-    }
-`;
-
-const StyledGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: ${Size.M};
-    margin-top: ${Size.XXXL};
-
-    ${Breakpoint.DesktopSmall} {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    ${Breakpoint.TabletSmall} {
-        grid-template-columns: 1fr;
-        margin-top: ${Size.XL};
-    }
-    ${Breakpoint.Mobile} {
-        gap: ${Size.XS};
     }
 `;
 
@@ -63,6 +45,15 @@ const StyledLabel = styled(Text)`
     position: relative;
     transform: translate3d(0,0,0); 
     margin-bottom: ${Size.XS};
+`;
+
+const StyledHotelListWrapper = styled(HotelListWrapper)`
+    margin-top: ${Size.XXXL};
+
+    ${Breakpoint.TabletSmall} {
+        grid-template-columns: 1fr;
+        margin-top: ${Size.XL};
+    }
 `;
 
 export const HotelList: FunctionComponent = () => {
@@ -99,45 +90,43 @@ export const HotelList: FunctionComponent = () => {
                 <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
             </Wrapper>
             <Filter />
-            <Wrapper wide>
-                <StyledGrid>
-                    {filteredHotels.map((hotel, i) => {
-                        const isFavorite = favorites.includes(hotel.id);
-                        return (
-                            <HotelCard
-                                key={i}
-                                title={hotel.name}
-                                city={hotel.city}
-                                country={hotel.country}
-                                housingType={hotel.housingType}
-                                vacationType={hotel.vacationType}
-                                visited={hotel.visited}
-                                id={hotel.id}
-                                image={hotel.image}
-                                starred={isFavorite}
-                                onStarClick={e => {
-                                    e.preventDefault();
-                                    if (isFavorite) {
-                                        removeFavorite(hotel.id)
-                                        plausible('remove-from-favorites', { props: { hotel: hotel.id } })
-                                    }
-                                    else {
-                                        addFavorite(hotel.id)
-                                        plausible('add-to-favorites', { props: { hotel: hotel.id } })
-                                    }
-                                }}
-                            />
-                        )
-                    }
-                    )}
-                    <StyledPlaceholderCard emptyState={isEmpty}>
-                        <Text center size={TextSize.Regular}>{isEmpty ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-                        <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
-                            <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
-                        </UnstyledLink>
-                    </StyledPlaceholderCard>
-                </StyledGrid>
-            </Wrapper>
+            <StyledHotelListWrapper>
+                {filteredHotels.map((hotel, i) => {
+                    const isFavorite = favorites.includes(hotel.id);
+                    return (
+                        <HotelCard
+                            key={i}
+                            title={hotel.name}
+                            city={hotel.city}
+                            country={hotel.country}
+                            housingType={hotel.housingType}
+                            vacationType={hotel.vacationType}
+                            visited={hotel.visited}
+                            id={hotel.id}
+                            image={hotel.image}
+                            starred={isFavorite}
+                            onStarClick={e => {
+                                e.preventDefault();
+                                if (isFavorite) {
+                                    removeFavorite(hotel.id)
+                                    plausible('remove-from-favorites', { props: { hotel: hotel.id } })
+                                }
+                                else {
+                                    addFavorite(hotel.id)
+                                    plausible('add-to-favorites', { props: { hotel: hotel.id } })
+                                }
+                            }}
+                        />
+                    )
+                }
+                )}
+                <StyledPlaceholderCard emptyState={isEmpty}>
+                    <Text center size={TextSize.Regular}>{isEmpty ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
+                    <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
+                        <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
+                    </UnstyledLink>
+                </StyledPlaceholderCard>
+            </StyledHotelListWrapper>
         </StyledContainer>
     )
 }

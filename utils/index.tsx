@@ -44,6 +44,19 @@ export function getVacationTypeColor(vacationType?: string) {
     }
 }
 
+export function getVacationTypeDescription(vacationType?: string) {
+    switch (vacationType) {
+        case "Sea":
+            return "near the sea"
+        case "Mountains":
+            return "near the mountains"
+        case "City":
+            return "in the city"
+        case "Countryside":
+            return "in the contryside"
+    }
+}
+
 export const getHotelUrl = ({ id, housingType }: { id: string, housingType: string }) => {
     return '/' + housingType.toLowerCase() + '/' + id;
 }
