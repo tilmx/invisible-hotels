@@ -65,10 +65,10 @@ const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
 `;
 
 export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => {
-    const below100 = roomDistribution.distribution.slice(0, 12);
-    const above100 = roomDistribution.distribution.slice(12).reduce((p, c) => ((p || 0) + (c || 0)), 0);
+    const below120 = roomDistribution.distribution.slice(0, 12);
+    const above120 = roomDistribution.distribution.slice(12).reduce((p, c) => ((p || 0) + (c || 0)), 0);
 
-    const combinedArray = [...below100, above100]
+    const combinedArray = [...below120, above120]
     const maximum = Math.max(...combinedArray.map(item => item || 0));
 
     return (
@@ -79,7 +79,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
             </Flex>
             <StyledDistribution>
                 {combinedArray.map((item, i) =>
-                    <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
+                    <StyledBar highlighted={Math.min(Math.floor((props.rooms || 0) / 10), 12) === i} height={(item || 0) / maximum * 100} key={i}>
                         <Text color={Color.Text} size={TextSize.Small}>{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
                     </StyledBar>
                 )}
