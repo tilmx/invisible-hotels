@@ -178,10 +178,23 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
 
 const StyledDistanceArea = styled.div`
     padding: ${Size.XXXS} ${Size.XS};
-    background: ${Color.Text10};
     margin-top: ${Size.XXS};
     border-radius: ${Size.XS};
     backdrop-filter: blur(${Size.XXS});
+    position: relative;
+
+    :after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: currentColor;
+        opacity: .15;
+        border-radius: ${Size.XS};
+    }
 `;
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
