@@ -405,29 +405,30 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             clusteringIdentifier: ''
                         }]}
                     />
+
+                    <StyledStickyWrapper>
+                        <StyledActionBar>
+                            <StyledFavoriteArea active={isFavorite} onClick={() => {
+                                if (isFavorite) {
+                                    removeFavorite(props.hotel.id)
+                                    plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
+                                }
+                                else {
+                                    addFavorite(props.hotel.id)
+                                    plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
+                                }
+                            }}>
+                                <StarIcon />
+                                <Text>Favorite</Text>
+                            </StyledFavoriteArea>
+                            {link &&
+                                <UnstyledLink href={link} target='_blank'>
+                                    <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
+                                </UnstyledLink>
+                            }
+                        </StyledActionBar>
+                    </StyledStickyWrapper>
                 </Wrapper>
-                <StyledStickyWrapper>
-                    <StyledActionBar>
-                        <StyledFavoriteArea active={isFavorite} onClick={() => {
-                            if (isFavorite) {
-                                removeFavorite(props.hotel.id)
-                                plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
-                            }
-                            else {
-                                addFavorite(props.hotel.id)
-                                plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
-                            }
-                        }}>
-                            <StarIcon />
-                            <Text>Favorite</Text>
-                        </StyledFavoriteArea>
-                        {link &&
-                            <UnstyledLink href={link} target='_blank'>
-                                <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
-                            </UnstyledLink>
-                        }
-                    </StyledActionBar>
-                </StyledStickyWrapper>
             </StyledBackground>
             <SimilarHotels
                 accentColor={getVacationTypeColor(props.hotel.vacationType)}
