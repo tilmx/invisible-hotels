@@ -72,11 +72,12 @@ export const HotelList: FunctionComponent = () => {
     )
 
     const isEmpty = filteredHotels.length === 0;
+    const plural = filteredHotels.length !== 1;
 
     return (
         <StyledContainer id="hotel-list">
             <Wrapper>
-                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length} hotels & apartments</StyledLabel>
+                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length.toString()} hotel{plural && 's'} & apartment{plural && 's'}</StyledLabel>
             </Wrapper>
             <Filter />
             <StyledHotelListWrapper>
