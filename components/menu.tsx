@@ -71,7 +71,7 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
                 <StyledDotLink href="/">
                     <StyledDot />
                 </StyledDotLink>
-                <MenuItem link="/#hotel-list" label="Hotels" />
+                <MenuItem link="/" label="Hotels" />
                 <MenuItem link="/map" label="Map" />
                 <MenuItem link="/about" label="About" />
             </StyledMenu>

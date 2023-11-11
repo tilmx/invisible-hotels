@@ -44,7 +44,7 @@ export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country:
     return (
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
-                <Text size={TextSize.SuperLarge} bold>Similar Hotels</Text>
+                <Text size={TextSize.SuperLarge} bold>Similar Hotels & Apartments</Text>
                 <Text color={Color.Text50} size={TextSize.Large} serif>{similarHotels.length.toString()} Hotels & Apartments {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
