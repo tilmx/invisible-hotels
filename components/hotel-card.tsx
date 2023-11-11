@@ -6,10 +6,10 @@ import { Tag } from './tag';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
-import Link from 'next/link';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
+import { UnstyledLink } from './utils/link';
 
 interface HotelCardProps {
     title: string;
@@ -30,7 +30,7 @@ interface HotelCardProps {
     className?: string;
 }
 
-const StyledCard = styled(Link) <{ color?: string; small?: boolean; }>`
+const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
     color: ${Color.TextAlways}; 
     text-decoration: none;
     background: ${props => props.color};

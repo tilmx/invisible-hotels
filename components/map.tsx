@@ -49,6 +49,7 @@ function loadMap(token: string): Promise<void> {
         }, { once: true });
         scriptTag.src = 'https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js';
         scriptTag.crossOrigin = '';
+        scriptTag.dataset.libraries = 'map, annotations'
         document.head.appendChild(scriptTag);
     });
     return loadingMapPromise;
@@ -82,7 +83,6 @@ export const Map: FunctionComponent<MapProps> = props => {
                 showsMapTypeControl: false,
                 isRotationEnabled: false,
                 showsPointsOfInterest: false,
-                mapType: 'mutedStandard',
                 annotationForCluster(annotation) {
                     (annotation as any).color = 'black';
                     return annotation;
