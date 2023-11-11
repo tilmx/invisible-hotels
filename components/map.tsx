@@ -123,7 +123,6 @@ export const Map: FunctionComponent<MapProps> = props => {
         return () => {
             map.removeEventListener('select', listenToSelect)
             map?.addEventListener('deselect', listenToDeselect)
-
         }
     }, [map])
 
