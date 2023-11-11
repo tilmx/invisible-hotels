@@ -80,7 +80,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
             <StyledDistribution>
                 {combinedArray.map((item, i) =>
                     <StyledBar highlighted={Math.floor((props.rooms || 0) / 10) === i} height={(item || 0) / maximum * 100} key={i}>
-                        <Text size={TextSize.Small}>{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
+                        <Text color={Color.Text} size={TextSize.Small}>{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
                     </StyledBar>
                 )}
             </StyledDistribution>
