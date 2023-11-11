@@ -1,12 +1,9 @@
 import styled from '@emotion/styled';
 import hotelsPreview from '../data/hotels-preview.json';
-import { Send } from 'lucide-react';
 import { FunctionComponent, useEffect } from 'react';
 import { checkIfFavoritesStored } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
-import { UnstyledLink } from './utils/link';
-import { Button } from './button';
 import { Wrapper } from './wrapper';
 import { HotelCard } from './hotel-card';
 import { Size } from './tokens/size';
@@ -30,14 +27,6 @@ const StyledContainer = styled.div`
     ${Breakpoint.Mobile} {
         margin-top: ${Size.XL};
     }
-`;
-
-const StyledPlaceholderCard = styled(PlaceholderCard) <{ emptyState: boolean; }>`
-    ${props => props.emptyState && `
-        max-width: 400px;
-        place-self: center;
-        grid-column: 1/4;
-    `}
 `;
 
 const StyledLabel = styled(Text)`
@@ -120,12 +109,7 @@ export const HotelList: FunctionComponent = () => {
                     )
                 }
                 )}
-                <StyledPlaceholderCard emptyState={isEmpty}>
-                    <Text center size={TextSize.Regular}>{isEmpty ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-                    <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
-                        <Button iconLeft={<Send />} small secondary>Send E-Mail</Button>
-                    </UnstyledLink>
-                </StyledPlaceholderCard>
+                <PlaceholderCard emptyState={isEmpty} />
             </StyledHotelListWrapper>
         </StyledContainer>
     )

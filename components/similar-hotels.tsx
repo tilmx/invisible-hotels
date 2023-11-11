@@ -10,6 +10,7 @@ import { Maximize2Icon } from "lucide-react";
 import { Button } from "./button";
 import { getVacationTypeDescription } from "../utils";
 import { Color } from "./tokens/colors";
+import { PlaceholderCard } from "./placeholder-card";
 
 
 const StyledSimilarHotelSection = styled.div`
@@ -51,6 +52,9 @@ export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country:
                 {(similarHotelsExpanded ? similarHotels : similarHotelsPreview).map((hotel, i) =>
                     <HotelCard title={hotel.name} image={hotel.image} city={hotel.city} country={hotel.country} id={hotel.id} vacationType={hotel.vacationType} housingType={hotel.housingType} key={i} />
                 )}
+                {similarHotels.length === 0 &&
+                    <PlaceholderCard emptyState />
+                }
             </StyledHotelListWrapper>
             <StyledSimilarButtonWrapper>
                 {(!similarHotelsExpanded && similarHotels.length > 3) &&
