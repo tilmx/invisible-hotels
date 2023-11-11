@@ -75,7 +75,7 @@ base('Curated List').select({
                         { lat: record.coordinates.lat, lon: record.coordinates.long },
                         { lat: item.coordinates.lat, lon: item.coordinates.long },
                         1000
-                    ) / 1000 <= 200)
+                    ) / 1000 <= 100)
                     .map(item => {
                         return {
                             id: item.id,

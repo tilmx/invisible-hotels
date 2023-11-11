@@ -16,6 +16,7 @@ interface HotelCardProps {
     title: string;
     city: string;
     country: string;
+    distance?: number;
     housingType: string;
     vacationType: string;
     visited?: boolean;
@@ -175,6 +176,13 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
     }    
 `;
 
+const StyledDistanceArea = styled.div`
+    padding: ${Size.XXXS} ${Size.XS};
+    background: ${Color.Text10};
+    margin-top: ${Size.XXS};
+    border-radius: ${Size.XS};
+    backdrop-filter: blur(${Size.XXS});
+`;
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
@@ -194,6 +202,15 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                     <Text size={TextSize.Large} serif>
                         {props.city}, {props.country}
                     </Text>
+                    {typeof props.distance !== 'undefined' &&
+                        <Flex>
+                            <StyledDistanceArea>
+                                <Text>
+                                    {props.distance === 0 ? '<1' : props.distance} km away
+                                </Text>
+                            </StyledDistanceArea>
+                        </Flex>
+                    }
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>

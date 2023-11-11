@@ -42,13 +42,23 @@ export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: 
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
                 <Text size={TextSize.SuperLarge} bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
-                <Text color={Color.Text50} size={TextSize.Large} serif>{props.hotels.length.toString()} nearby Hotel{plural ? 's' : undefined} & Apartment{plural ? 's' : undefined} within 200 km</Text>
+                <Text color={Color.Text50} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby Hotel{plural ? 's' : undefined} & Apartment{plural ? 's' : undefined} within 100 km</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
                 {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) => {
                     const hotelContent = hotelsPreview.find(element => element.id === hotel.id)
                     return hotelContent ? (
-                        <HotelCard title={hotelContent.name} image={hotelContent.image} city={hotelContent.city} country={hotelContent.country} id={hotelContent.id} vacationType={hotelContent.vacationType} housingType={hotelContent.housingType} key={i} />
+                        <HotelCard
+                            title={hotelContent.name}
+                            image={hotelContent.image}
+                            city={hotelContent.city}
+                            distance={hotel.distance}
+                            country={hotelContent.country}
+                            id={hotelContent.id}
+                            vacationType={hotelContent.vacationType}
+                            housingType={hotelContent.housingType}
+                            key={i}
+                        />
                     ) : undefined
                 }
                 )}
