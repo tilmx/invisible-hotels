@@ -21,17 +21,15 @@ const StyledContainer = styled.div`
 `;
 
 const StyledRow = styled.div`
-    padding: ${Size.L} 0;
+    padding: ${Size.L} 0 0;
     border-bottom: 2px solid transparent;
     position: relative;
 
     :after {
         content: '';
-        position: absolute;
         display: block;
-        left: 0;
-        bottom: 0;
         height: 2px;
+        margin-top: ${Size.L};
         width: 100%;
         background: currentColor;
         opacity: .1;
