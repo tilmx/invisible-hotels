@@ -14,19 +14,26 @@ const StyledContainer = styled.div<{ small?: boolean; superSmall?: boolean; }>`
         height: calc(${Size.XXL} * 2);
     `}
 
-    ${Breakpoint.TabletSmall} {
-        width: calc(${Size.XXL} * 2);
-        height: calc(${Size.XXL} * 2);
-    }
-
-    ${Breakpoint.Mobile} {
-        width: ${Size.XXXL};
-        height: ${Size.XXXL};
-    }
+    ${props => !props.superSmall && `
+        ${Breakpoint.TabletSmall} {
+            width: calc(${Size.XXL} * 2);
+            height: calc(${Size.XXL} * 2);
+        }
+        
+        ${Breakpoint.Mobile} {
+            width: ${Size.XXXL};
+            height: ${Size.XXXL};
+        }
+    `}
 
     ${props => props.superSmall && `
         width: ${Size.XXL};
         height: ${Size.XXL};
+
+        ${Breakpoint.Mobile} {
+            width: calc(${Size.XL} + ${Size.XS});
+            height: calc(${Size.XL} + ${Size.XS});
+        }
     `}
 `;
 
@@ -63,6 +70,10 @@ const StyledEmoji = styled.div<{ superSmall?: boolean; }>`
 
     ${props => props.superSmall && `
         font-size: 16px;
+
+        ${Breakpoint.Mobile} {
+            font-size: 16px;
+        }
     `}
 `;
 
