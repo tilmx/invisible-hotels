@@ -9,10 +9,11 @@ import { HotelCard } from "./hotel-card";
 import { Maximize2Icon } from "lucide-react";
 import { Button } from "./button";
 import { getVacationTypeDescription } from "../utils";
+import { Color } from "./tokens/colors";
 
 
 const StyledSimilarHotelSection = styled.div`
-    margin-top: ${Size.XXXL};
+    margin: ${Size.XXXL} 0;
 `;
 
 const StyledSimilarIntro = styled(Wrapper)`
@@ -22,15 +23,13 @@ const StyledSimilarIntro = styled(Wrapper)`
 `;
 
 const StyledHotelListWrapper = styled(HotelListWrapper)`
-    margin: ${Size.XL} 0;
+    margin: ${Size.XXL} 0;
 `;
 
 const StyledSimilarButtonWrapper = styled(Wrapper)`
     display: flex;
     justify-content: center;
 `;
-
-
 
 export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country: string; vacationType: string; }> = props => {
 
@@ -46,7 +45,7 @@ export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country:
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
                 <Text size={TextSize.SuperLarge} bold>Similar Hotels</Text>
-                <Text size={TextSize.Large} serif>{similarHotels.length.toString()} Hotels & Apartments {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
+                <Text color={Color.Text50} size={TextSize.Large} serif>{similarHotels.length.toString()} Hotels & Apartments {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
                 {(similarHotelsExpanded ? similarHotels : similarHotelsPreview).map((hotel, i) =>

@@ -32,7 +32,7 @@ interface HotelDetailProps {
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};
     color: ${Color.TextAlways};
-    padding-bottom: ${Size.XXXXXL};
+    padding-bottom: ${Size.XXXL};
 `;
 
 const StyledIntro = styled.div`
@@ -215,7 +215,7 @@ const StyledStickyWrapper = styled.div`
     left: 0;
     box-sizing: border-box;
     pointer-events: none;
-    margin: ${Size.XXXL} 0;
+    margin-top: ${Size.XXXL};
     z-index: 5;
 
     ${Breakpoint.Mobile} {
@@ -407,30 +407,30 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         }]}
                     />
                 </Wrapper>
+                <StyledStickyWrapper>
+                    <StyledActionBar>
+                        <StyledFavoriteArea active={isFavorite} onClick={() => {
+                            if (isFavorite) {
+                                removeFavorite(props.hotel.id)
+                                plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
+                            }
+                            else {
+                                addFavorite(props.hotel.id)
+                                plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
+                            }
+                        }}>
+                            <StarIcon />
+                            <Text>Favorite</Text>
+                        </StyledFavoriteArea>
+                        {link &&
+                            <UnstyledLink href={link} target='_blank'>
+                                <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
+                            </UnstyledLink>
+                        }
+                    </StyledActionBar>
+                </StyledStickyWrapper>
             </StyledBackground>
             <SimilarHotels currentHotelId={props.hotel.id} vacationType={props.hotel.vacationType} country={props.hotel.country} />
-            <StyledStickyWrapper>
-                <StyledActionBar>
-                    <StyledFavoriteArea active={isFavorite} onClick={() => {
-                        if (isFavorite) {
-                            removeFavorite(props.hotel.id)
-                            plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
-                        }
-                        else {
-                            addFavorite(props.hotel.id)
-                            plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
-                        }
-                    }}>
-                        <StarIcon />
-                        <Text>Favorite</Text>
-                    </StyledFavoriteArea>
-                    {link &&
-                        <UnstyledLink href={link} target='_blank'>
-                            <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
-                        </UnstyledLink>
-                    }
-                </StyledActionBar>
-            </StyledStickyWrapper>
             <Footer reducedPadding />
         </>
     )
