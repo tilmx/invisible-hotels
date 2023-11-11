@@ -430,7 +430,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     </StyledActionBar>
                 </StyledStickyWrapper>
             </StyledBackground>
-            <SimilarHotels currentHotelId={props.hotel.id} vacationType={props.hotel.vacationType} country={props.hotel.country} />
+            <SimilarHotels accentColor={getVacationTypeColor(props.hotel.vacationType)} currentHotelId={props.hotel.id} vacationType={props.hotel.vacationType} country={props.hotel.country} />
             <Footer reducedPadding />
         </>
     )

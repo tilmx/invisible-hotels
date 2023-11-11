@@ -11,7 +11,7 @@ import { Button } from "./button";
 import { getVacationTypeDescription } from "../utils";
 import { Color } from "./tokens/colors";
 import { PlaceholderCard } from "./placeholder-card";
-
+import { AccentStyle, AccentedText } from "./accented-text";
 
 const StyledSimilarHotelSection = styled.div`
     margin: ${Size.XXXL} 0;
@@ -32,7 +32,7 @@ const StyledSimilarButtonWrapper = styled(Wrapper)`
     justify-content: center;
 `;
 
-export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country: string; vacationType: string; }> = props => {
+export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country: string; vacationType: string; accentColor?: string; }> = props => {
 
     const similarHotels = hotelsPreview.filter(hotel =>
         hotel.vacationType === props.vacationType
@@ -42,11 +42,13 @@ export const SimilarHotels: FunctionComponent<{ currentHotelId: string, country:
     const similarHotelsPreview = similarHotels.slice(0, 3);
     const [similarHotelsExpanded, setSimilarHotelsExpanded] = useState(false);
 
+    const plural = similarHotels.length > 1;
+
     return (
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
-                <Text size={TextSize.SuperLarge} bold>Similar Hotels & Apartments</Text>
-                <Text color={Color.Text50} size={TextSize.Large} serif>{similarHotels.length.toString()} Hotels & Apartments {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
+                <Text size={TextSize.SuperLarge} bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
+                <Text color={Color.Text50} size={TextSize.Large} serif>{similarHotels.length.toString()} Hotel{plural ? 's' : undefined} & Apartment{plural ? 's' : undefined} {getVacationTypeDescription(props.vacationType)} in {props.country}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
                 {(similarHotelsExpanded ? similarHotels : similarHotelsPreview).map((hotel, i) =>
