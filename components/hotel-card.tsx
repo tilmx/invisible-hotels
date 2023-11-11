@@ -105,6 +105,11 @@ const StyledDetails = styled.div<{ visited?: boolean; }>`
 
     ${props => props.visited && `
         margin-right: calc(${Size.XXL} + ${Size.XS});
+
+        ${Breakpoint.Mobile} {
+            margin-right: ${Size.XXL};
+
+        }
     `}
 `;
 
