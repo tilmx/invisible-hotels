@@ -8,6 +8,16 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.invisiblehotels.com" }],
+        destination: "https://invisiblehotels.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig
