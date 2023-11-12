@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  output: 'export',
   experimental: {
     scrollRestoration: true
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  }
 }
 
 module.exports = nextConfig
