@@ -10,6 +10,10 @@ import { Color } from "./tokens/colors";
 
 const StyledMenuContainer = styled.div`
     padding-top: ${Size.M};
+
+    ${Breakpoint.TabletSmall} {
+        padding-top: ${Size.XXXXS};
+    }
 `;
 
 const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
@@ -40,8 +44,8 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
 `;
 
 const StyledDotLink = styled(Link)`
-    padding: ${Size.XS};
-    margin: -${Size.XS};
+    padding: ${Size.XXS};
+    margin: -${Size.XXS};
     margin-right: auto;
     border-radius: 50%;
     opacity: 1;
