@@ -7,6 +7,7 @@ import { ScrollIndicator } from '../components/scroll-indicator';
 import { Share } from '../components/share';
 import { Footer } from '../components/footer';
 import { siteDescription, siteTitle } from '../data/site';
+import { Color } from '../components/tokens/colors';
 
 export default function Home() {
 	const hotelListRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ export default function Home() {
 				<meta property="og:description" content={siteDescription} />
 				<meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
 				<meta property="og:url" content="https://invisible-hotels.com/" />
+				<meta name="theme-color" content={Color.Background} />
 			</Head>
 			<Header>
 				<Intro />

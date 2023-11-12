@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { Footer } from '../../components/footer';
 import { Size } from '../../components/tokens/size';
 import { siteTitle } from '../../data/site';
+import { Color } from '../../components/tokens/colors';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -31,6 +32,7 @@ export default function SitesNotice() {
             <Head>
                 <title>{'Site’s notice — ' + siteTitle}</title>
                 <meta name="robots" content="noindex" />
+                <meta name="theme-color" content={Color.Background} />
             </Head>
             <Header>
                 <StyledWrapper>

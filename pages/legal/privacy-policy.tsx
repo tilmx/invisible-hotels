@@ -8,6 +8,7 @@ import { Flex } from '../../components/utils/flex';
 import { Trash2 } from 'lucide-react';
 import { Footer } from '../../components/footer';
 import { siteTitle } from '../../data/site';
+import { Color } from '../../components/tokens/colors';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
@@ -23,6 +24,7 @@ export default function PrivacyPolicy() {
             <Head>
                 <title>{'Privacy Policy — ' + siteTitle}</title>
                 <meta name="robots" content="noindex" />
+                <meta name="theme-color" content={Color.Background} />
             </Head>
             <Header>
                 <StyledWrapper>

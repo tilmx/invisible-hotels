@@ -57,6 +57,7 @@ export default function Map() {
         <>
             <Head>
                 <title>{'Map — ' + siteTitle}</title>
+                <meta name="theme-color" content={Color.Background} />
             </Head>
             <StyledMenuContainer>
                 <Wrapper>
