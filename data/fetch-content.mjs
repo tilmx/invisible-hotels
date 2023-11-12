@@ -141,5 +141,5 @@ base('Curated List').select({
             null, 2)
     );
 
-    console.log('Done, ', savedRecords, savedRecords.length + ' hotels')
+    console.log('Fetched content for ' + savedRecords.length + ' hotels')
 });
