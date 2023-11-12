@@ -1,5 +1,5 @@
 # Invisible Hotels
-https://invisible-hotels.com
+https://invisiblehotels.com
 
 A list of our favorite lovely & wonderful hotels around the world. The single page application is built with Next.js and Typescript.
 

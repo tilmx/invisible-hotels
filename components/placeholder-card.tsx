@@ -41,7 +41,7 @@ export const PlaceholderCard: FunctionComponent<PlaceholderCardProps> = props =>
     return (
         <StyledCard emptyState={props.emptyState} className={props.className}>
             <Text center size={TextSize.Regular}>{props.emptyState ? "It looks like we haven't been in such a place. Any tips?" : "You have a secret hotel tip for us or some feedback? Let us know!"}</Text>
-            <UnstyledLink href={`mailto:mail@invisible-hotels.com?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
+            <UnstyledLink href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}?subject=${encodeURI('I have a secret hotel tip for you!')}&body=${encodeURI('Hey Annika and Tilman! \n\n I have a super secret hotel tip for you — here it is:')}`}>
                 <Button iconLeft={<SendIcon />} small secondary>Send E-Mail</Button>
             </UnstyledLink>
         </StyledCard>

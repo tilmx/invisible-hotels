@@ -39,7 +39,7 @@ export const Share: FunctionComponent = () => {
             navigator.share({
                 title: siteTitle,
                 text: 'Check out our personal list of lovely, minimalistic and fancy hotels & apartments',
-                url: 'https://invisible-hotels.com/',
+                url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/`,
             }).then(() => {
                 plausible('share')
             }).catch((error) => console.log('Something went wrong with sharing: ', error));

@@ -19,8 +19,8 @@ export default function Home() {
 				<meta name="description" content={siteDescription} />
 				<meta property="og:title" content={siteTitle} />
 				<meta property="og:description" content={siteDescription} />
-				<meta property="og:image" content="https://invisible-hotels.com/images/og-image.jpg" />
-				<meta property="og:url" content="https://invisible-hotels.com/" />
+				<meta property="og:image" content={`https://${process.env.NEXT_PUBLIC_DOMAIN}/images/og-image.jpg`} />
+				<meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_DOMAIN}/`} />
 				<meta name="theme-color" content={Color.Background} />
 			</Head>
 			<Header>
