@@ -7,7 +7,7 @@ import { siteTitle } from '../data/site';
 
 function App({ Component, pageProps }: AppProps) {
     return (
-        <PlausibleProvider domain={process.env.NEXT_PUBLIC_DOMAIN || ''} trackOutboundLinks>
+        <PlausibleProvider domain="invisiblehotels.com" trackOutboundLinks>
             <Theme>
                 <Head>
                     <link rel="icon" href="/favicon.png" />
