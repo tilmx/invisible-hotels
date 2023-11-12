@@ -6,6 +6,10 @@ jobs:
   build-and-deploy:
     name: Build and deploy site
     runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: production
+      cancel-in-progress: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -23,10 +27,7 @@ jobs:
         env:
           AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
           AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
-          NEXT_PUBLIC_MAPKIT_TOKEN: ${{ env.NEXT_PUBLIC_MAPKIT_TOKEN }}
-          NEXT_PUBLIC_SITESNOTICE_ADDRESS: ${{ env.NEXT_PUBLIC_SITESNOTICE_ADDRESS }}
-          NEXT_PUBLIC_SITESNOTICE_EMAIL: ${{ env.NEXT_PUBLIC_SITESNOTICE_EMAIL }}
-          NEXT_PUBLIC_SITESNOTICE_PHONE: ${{ env.NEXT_PUBLIC_SITESNOTICE_PHONE }}
+          NEXT_PUBLIC_MAPKIT_TOKEN: ${{ secrets.NEXT_PUBLIC_MAPKIT_TOKEN }}
 
       - name: Verify build
         run: ls -la out
