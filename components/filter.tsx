@@ -122,7 +122,7 @@ export const Filter: FunctionComponent = () => {
     const filterExpanded = useFilterStore(state => state.filterExpanded);
     const toggleFilterExpanded = useFilterStore(state => state.toggleFilterExpanded);
 
-    const vacationTypeFilterOptions = ["City", "Sea", "Mountains", "Countryside"];
+    const vacationTypeFilterOptions = ["City", "Sea", "Countryside", "Mountains"];
 
     const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
     const setVacationTypeFilter = useFilterStore(state => state.setVacationTypeFilter);
