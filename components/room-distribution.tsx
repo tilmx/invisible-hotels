@@ -53,8 +53,8 @@ const StyledBar = styled.div<{ height: number; highlighted: boolean }>`
     }
 
     @media (hover: hover) {
-        &:hover {
-            &:after {
+        :hover {
+            :after {
                 opacity: .8;
             }
             div {

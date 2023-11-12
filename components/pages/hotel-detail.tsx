@@ -334,6 +334,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     <meta property="og:title" content={props.hotel.name} />
                     <meta property="og:image" content={props.hotel.images ? "https://invisible-hotels.com/images/hotels/" + props.hotel.images.at(0)?.url : "https://invisible-hotels.com/images/og-image.jpg"} />
                     <meta property="og:url" content={"https://invisible-hotels.com" + getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })} />
+                    <meta name="theme-color" content={getVacationTypeColor(props.hotel.vacationType)} />
                 </Head>
                 <Wrapper>
                     <Menu />
