@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next-image-export-optimizer';
 import { Text, TextSize } from '../text';
 import styled from '@emotion/styled';
 import Head from 'next/head';
@@ -366,10 +366,11 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                                 key={i}
                                 data-image-number={i}
                                 src={'/images/hotels/' + image.url}
-                                alt="Image of Hotel"
+                                alt={`Picture of ${props.hotel.name}`}
                                 width={i === 0 ? 720 : 480}
                                 height={i === 0 ? 720 : 480}
                                 sizes={`(max-width: ${i === 0 ? 720 : 480}px) 100vw, ${i === 0 ? 720 : 480}px`}
+                                placeholder="blur"
                             />
                         )}
                         {props.hotel.imageCopyright &&

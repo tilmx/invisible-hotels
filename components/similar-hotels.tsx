@@ -49,7 +49,7 @@ export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: 
                     const hotelContent = hotelsPreview.find(element => element.id === hotel.id)
                     return hotelContent ? (
                         <HotelCard
-                            title={hotelContent.name}
+                            name={hotelContent.name}
                             image={hotelContent.image}
                             city={hotelContent.city}
                             distance={hotel.distance}

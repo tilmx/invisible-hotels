@@ -3,7 +3,7 @@ import { FunctionComponent, MouseEventHandler } from 'react';
 import { Text, TextSize } from './text';
 import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
-import Image from 'next/image';
+import Image from 'next-image-export-optimizer';
 import { Star } from 'lucide-react';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import { Color } from './tokens/colors';
@@ -13,7 +13,7 @@ import { UnstyledLink } from './utils/link';
 import { VisitedBadge } from './visited-badge';
 
 interface HotelCardProps {
-    title: string;
+    name: string;
     city: string;
     country: string;
     distance?: number;
@@ -204,7 +204,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 <StyledContent image={typeof props.image !== 'undefined'}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
                         <Text size={props.small ? TextSize.Large : TextSize.SuperLarge} bold>
-                            {props.title}
+                            {props.name}
                         </Text>
                         {props.onStarClick &&
                             <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
@@ -227,7 +227,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                 </StyledContent>
                 {props.image &&
                     <StyledImageContainer>
-                        <StyledImage fill sizes="400px" src={'/images/hotels/' + props.image.url} alt="Picture of Hotel" />
+                        <StyledImage fill sizes="400px" src={'/images/hotels/' + props.image.url} alt={`Picture of ${props.name}`} placeholder="blur" />
                     </StyledImageContainer>
                 }
             </StyledHeader>

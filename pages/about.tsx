@@ -3,7 +3,7 @@ import { Header } from '../components/header';
 import { Text, TextSize } from '../components/text';
 import styled from '@emotion/styled';
 import AboutPicture from '../public/images/about.jpg'
-import Image from 'next/image';
+import Image from 'next-image-export-optimizer';
 import { ArrowRight } from 'lucide-react';
 import { Flex } from '../components/utils/flex';
 import { UnstyledLink } from '../components/utils/link';
@@ -59,7 +59,7 @@ export default function About() {
                     <Text size={TextSize.ExtraLarge} serif>
                         Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We love hotels — we believe that a beautiful hotel is the best start for any vacation.
                     </Text>
-                    <StyledImage width={800} src={AboutPicture} alt="Picture of Tilman & Annika" />
+                    <StyledImage width={800} src={AboutPicture} alt="Picture of Tilman & Annika" placeholder="blur" />
                     <StyledParagraph scribbleColor={Color.Yellow} size={TextSize.ExtraLarge} serif>
                         For the past 5 years we had a long list on Google Maps with all the pretty hotels where we wanted to stay in this world …
                         <svg width="595" height="186" viewBox="0 0 595 186" fill="none" xmlns="http://www.w3.org/2000/svg">
