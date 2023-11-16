@@ -27,6 +27,7 @@ base('Curated List').select({
                 name: record.get('Name'),
                 city: record.get('City'),
                 country: record.get('Country'),
+                description: record.get('Description'),
                 housingType: record.get('Housing Type'),
                 vacationType: record.get('Vacation Type'),
                 visited: record.get('Last Visit') ? true : false,

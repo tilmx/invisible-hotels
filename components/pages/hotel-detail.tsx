@@ -306,6 +306,15 @@ const StyledMap = styled(Map)`
     }
 `;
 
+const StyledDescriptionContainer = styled.div`
+    padding: ${Size.XXL} 0 ${Size.XXXL};
+`;
+
+const StyledDescriptionLabel = styled(Text)`
+    padding-bottom: ${Size.M};
+    opacity: .5;
+`;
+
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const plausible = usePlausible()
 
@@ -322,7 +331,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const isFavorite = favorites.includes(props.hotel.id);
     const link = props.hotel.links.hotel || props.hotel.links.bookingCom;
 
-    const description = `${props.hotel.name} is a lovely ${props.hotel.housingType.toLocaleLowerCase()} ${getVacationTypeDescription(props.hotel.vacationType)} in ${props.hotel.city}, ${props.hotel.country}. ${props.hotel.housingType === "Hotel" ? `It has ${props.hotel.rooms.toString()} beautiful rooms.` : ''}`;
+    const description = props.hotel.description || `${props.hotel.name} is a lovely ${props.hotel.housingType.toLocaleLowerCase()} ${getVacationTypeDescription(props.hotel.vacationType)} in ${props.hotel.city}, ${props.hotel.country}. ${props.hotel.housingType === "Hotel" ? `It has ${props.hotel.rooms.toString()} beautiful rooms.` : ''}`;
 
     return (
         <>
@@ -379,6 +388,14 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             </StyledImageCopyrightText>
                         }
                     </StyledImageContainer>
+                    {props.hotel.description &&
+                        <StyledDescriptionContainer>
+                            <StyledDescriptionLabel center>About the {props.hotel.housingType.toLowerCase()}</StyledDescriptionLabel>
+                            <Text serif center size={TextSize.ExtraLarge}>
+                                {props.hotel.description}
+                            </Text>
+                        </StyledDescriptionContainer>
+                    }
                     <Table
                         backgroundColor={getVacationTypeColor(props.hotel.vacationType)}
                         data={[
