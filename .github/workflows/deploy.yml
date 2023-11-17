@@ -4,7 +4,7 @@ on:
     branches: main
 jobs:
   prepare:
-    name: Prepare Environment
+    name: Build & Deploy
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -46,7 +46,10 @@ jobs:
           NEXT_PUBLIC_SITESNOTICE_PHONE: ${{ vars.NEXT_PUBLIC_SITESNOTICE_PHONE }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.NEXT_PUBLIC_CONTACT_EMAIL }}
           NEXT_PUBLIC_DOMAIN: ${{ env.NEXT_PUBLIC_DOMAIN }}
-          
+
+      - name: Optimize Images
+        run: npm run optimize-images
+
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
