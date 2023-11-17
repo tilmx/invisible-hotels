@@ -372,6 +372,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                         }
                         {props.hotel.images?.slice(0, 3).map((image, i) =>
                             <StyledImage
+                                priority={i === 0}
                                 key={i}
                                 data-image-number={i}
                                 src={'/images/hotels/' + image.url}
