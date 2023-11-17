@@ -49,11 +49,12 @@ jobs:
       - name: Verify build
         run: ls -la out
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.4
         with:
-          server: ${{ secrets.sftp_server }}
-          username: ${{ secrets.sftp_username }}
-          password: ${{ secrets.sftp_password }}
-          protocol: ftps
-          local-dir: ./out/
+          host: ${{ secrets.SSH_SERVER }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          source: "out/*"
+          target: ${{ secrets.SSH_PATH }}
