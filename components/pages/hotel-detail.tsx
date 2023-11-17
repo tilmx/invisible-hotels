@@ -307,7 +307,7 @@ const StyledMap = styled(Map)`
 `;
 
 const StyledDescriptionContainer = styled.div`
-    padding: ${Size.XXL} 0 ${Size.XXXL};
+    padding: ${Size.XXL} 0 ${Size.XXXXL};
 `;
 
 const StyledDescriptionLabel = styled(Text)`
