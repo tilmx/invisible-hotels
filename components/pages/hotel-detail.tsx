@@ -123,12 +123,12 @@ const StyledImage = styled(Image)`
     max-width: 720px;
     height: auto;
     box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
-    background: ${Color.Text50};
+    background: ${Color.Text60};
     backdrop-filter: blur(${Size.XL});
 `;
 
 const StyledImageCopyrightText = styled(Text)`
-    opacity: .5;
+    opacity: .6;
     margin-top: ${Size.XS};
     margin-left: ${Size.XXL};
 
@@ -165,13 +165,13 @@ const StyledNoImagesBanner = styled.div`
     gap: ${Size.S};
 
     div {
-        opacity: .5;
+        opacity: .6;
     }
     svg {
         display: block;
         height: ${Size.L};
         width: ${Size.L};
-        opacity: .5;
+        opacity: .6;
     }
 `;
 
@@ -312,7 +312,7 @@ const StyledDescriptionContainer = styled.div`
 
 const StyledDescriptionLabel = styled(Text)`
     padding-bottom: ${Size.M};
-    opacity: .5;
+    opacity: .6;
 `;
 
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {

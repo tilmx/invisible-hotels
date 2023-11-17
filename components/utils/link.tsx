@@ -18,7 +18,7 @@ export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttrib
 };
 
 const StyledLink = styled(StyledUnstyledLink)`
-    opacity: .5;
+    opacity: .6;
     cursor: pointer;
     padding: ${Size.XXS} ${Size.S};
     margin: -${Size.XXS} -${Size.S};

@@ -21,7 +21,7 @@ const StyledCard = styled.div<{ emptyState: boolean }>`
     flex-direction: column;
     gap: ${Size.M};
     box-shadow: inset 0 0 0 2px ${Color.Text10};
-    color: ${Color.Text50};
+    color: ${Color.Text60};
     justify-content: center;
     align-items: center;
 

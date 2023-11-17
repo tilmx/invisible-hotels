@@ -151,7 +151,7 @@ const StyledImageContainer = styled.div`
 
 const StyledImage = styled(Image)`
     object-fit: cover; 
-    background: ${Color.Text50};
+    background: ${Color.Text60};
 `;
 
 const StyledStarArea = styled.div<{ starred?: boolean; }>`

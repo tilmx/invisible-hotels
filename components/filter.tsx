@@ -178,7 +178,7 @@ export const Filter: FunctionComponent = () => {
                     }
                     {!searchActive &&
                         <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
-                            <ChevronDownIcon color={Color.Text50} />
+                            <ChevronDownIcon color={Color.Text60} />
                         </StyledExpandArea>
                     }
                 </StyledFilterBar>

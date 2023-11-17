@@ -7,7 +7,7 @@ import { Size } from "./tokens/size";
 
 const StyledButton = styled.div<{ secondary?: boolean; small?: boolean; }>`
     background: ${props => props.secondary ? Color.Text10 : Color.Text};
-    color: ${props => props.secondary ? Color.Text50 : Color.Background};
+    color: ${props => props.secondary ? Color.Text60 : Color.Background};
     padding: ${props => props.small ? `${Size.XXS} ${Size.S}` : `${Size.S} ${Size.M}`};
     border-radius: ${Size.L};
     cursor: pointer;

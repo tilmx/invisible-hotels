@@ -77,7 +77,7 @@ export const HotelList: FunctionComponent = () => {
     return (
         <StyledContainer id="hotel-list">
             <Wrapper>
-                <StyledLabel size={TextSize.Regular} color={Color.Text50}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length.toString()} hotel{plural && 's'} & apartment{plural && 's'}</StyledLabel>
+                <StyledLabel size={TextSize.Regular} color={Color.Text60}>{(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} {filteredHotels.length.toString()} hotel{plural && 's'} & apartment{plural && 's'}</StyledLabel>
             </Wrapper>
             <Filter />
             <StyledHotelListWrapper>

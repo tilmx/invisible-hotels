@@ -53,7 +53,7 @@ export const Share: FunctionComponent = () => {
                     {siteTitle}
                 </AccentedText>
             </Text>
-            <Text size={TextSize.Large} serif center color={Color.Text50}>{siteDescription}</Text>
+            <Text size={TextSize.Large} serif center color={Color.Text60}>{siteDescription}</Text>
             {shareAvailable ?
                 <StyledFlex justifyContent={JustifyContent.Center}>
                     <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>

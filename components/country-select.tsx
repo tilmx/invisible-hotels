@@ -32,13 +32,13 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?:
 
     ${props => !props.active && `
         :active {
-            border-color: ${Color.Text50};
-            color: ${Color.Text50};
+            border-color: ${Color.Text60};
+            color: ${Color.Text60};
         }
         @media (hover: hover) {
             :hover {
-                border-color: ${Color.Text50};
-                color: ${Color.Text50};
+                border-color: ${Color.Text60};
+                color: ${Color.Text60};
             }
         }
     `};
@@ -138,7 +138,7 @@ const StyledOption = styled.div<{ selected?: boolean }>`
 `;
 
 const StyledCloseIcon = styled(X)`
-    color: ${Color.Text50};
+    color: ${Color.Text60};
     margin-left: auto;
 `;
 

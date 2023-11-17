@@ -42,7 +42,7 @@ export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: 
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
                 <Text size={TextSize.SuperLarge} bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
-                <Text color={Color.Text50} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
+                <Text color={Color.Text60} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
                 {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) => {
