@@ -7,9 +7,6 @@ jobs:
     name: Build site
     runs-on: ubuntu-latest
     environment: production
-    concurrency:
-      group: production
-      cancel-in-progress: true
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -53,9 +50,6 @@ jobs:
     name: Deploy site
     runs-on: ubuntu-latest
     environment: production
-    concurrency:
-      group: production
-      cancel-in-progress: true
     steps:
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
