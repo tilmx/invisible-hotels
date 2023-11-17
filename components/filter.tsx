@@ -15,6 +15,7 @@ import { OutsideClick } from "./utils/outside-click";
 import { ChevronDownIcon, SearchIcon, StarIcon } from "lucide-react";
 import countries from '../data/countries.json';
 import { Search } from "./search";
+import { vacationTypeFilterOptions } from "../data/site";
 
 const StyledContainer = styled.div`
     position: sticky;
@@ -121,8 +122,6 @@ export const Filter: FunctionComponent = () => {
 
     const filterExpanded = useFilterStore(state => state.filterExpanded);
     const toggleFilterExpanded = useFilterStore(state => state.toggleFilterExpanded);
-
-    const vacationTypeFilterOptions = ["City", "Sea", "Countryside", "Mountains"];
 
     const vacationTypeFilter = useFilterStore(state => state.vacationTypeFilter);
     const setVacationTypeFilter = useFilterStore(state => state.setVacationTypeFilter);

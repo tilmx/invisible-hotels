@@ -20,7 +20,7 @@ const StyledTag = styled(Text) <{ hasIcon?: boolean; hasLabel?: boolean; }>`
 		${props => !props.hasLabel && `padding-right: ${Size.XXS};`}
 		border-width: 1.5px;
 		gap: ${Size.XXXS};
-		svg {
+		svg, img {
 			width: 20px;
 			height: 20px;
 		}
