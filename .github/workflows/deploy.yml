@@ -65,7 +65,6 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: out
-          path: out
 
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
@@ -74,5 +73,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
-          source: "out/*"
+          source: "*"
           target: ${{ secrets.SSH_PATH }}
