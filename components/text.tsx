@@ -16,11 +16,11 @@ interface TextProps {
 }
 
 export enum TextSize {
+    Regular,
     Huge,
     ExtraLarge,
     SuperLarge,
     Large,
-    Regular,
     Small
 }
 
