@@ -4,7 +4,7 @@ on:
     branches: main
 jobs:
   prepare:
-    name: Build site
+    name: Prepare Environment
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -31,24 +31,31 @@ jobs:
       - name: Install Project Dependencies
         run: npm install
 
-  fetch-content:
-    name: Fetch Content
-    runs-on: ubuntu-latest
-    environment: production
-    needs: prepare
-    steps:
       - name: Fetch from Airtable
         run: npm run fetch-content
         env:
           AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
           AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
 
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+
   build:
-    name: Build site
+    name: Build Site
     runs-on: ubuntu-latest
     environment: production
-    needs: [prepare, fetch-content]
+    needs: prepare
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
       - name: Build
         run: npm run build
         env:
@@ -63,13 +70,20 @@ jobs:
     name: Optimize Images
     runs-on: ubuntu-latest
     environment: production
-    needs: [prepare, fetch-content]
+    needs: prepare
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
       - name: Build
         run: npm run optimize-images
       
   deploy:
-    name: Deploy site
+    name: Deploy Site
     runs-on: ubuntu-latest
     environment: production
     needs: [ build, optimize-images ]
