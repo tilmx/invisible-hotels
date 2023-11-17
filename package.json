@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node ./data/fetch-content.mjs && next build && next-image-export-optimizer",
+    "build": "next build",
+    "optimize-images": "next-image-export-optimizer",
     "start": "next start",
     "lint": "next lint",
     "fetch-content": "node ./data/fetch-content.mjs"

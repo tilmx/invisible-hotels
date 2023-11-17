@@ -3,7 +3,7 @@ on:
   push:
     branches: main
 jobs:
-  build:
+  prepare:
     name: Build site
     runs-on: ubuntu-latest
     environment: production
@@ -31,11 +31,27 @@ jobs:
       - name: Install Project Dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
+  fetch-content:
+    name: Fetch Content
+    runs-on: ubuntu-latest
+    environment: production
+    needs: prepare
+    steps:
+      - name: Fetch from Airtable
+        run: npm run fetch-content
         env:
           AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
           AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
+
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [prepare, fetch-content]
+    steps:
+      - name: Build
+        run: npm run build
+        env:
           NEXT_PUBLIC_MAPKIT_TOKEN: ${{ secrets.NEXT_PUBLIC_MAPKIT_TOKEN }}
           NEXT_PUBLIC_SITESNOTICE_ADDRESS: ${{ vars.NEXT_PUBLIC_SITESNOTICE_ADDRESS }}
           NEXT_PUBLIC_SITESNOTICE_EMAIL: ${{ vars.NEXT_PUBLIC_SITESNOTICE_EMAIL }}
@@ -43,14 +59,24 @@ jobs:
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.NEXT_PUBLIC_CONTACT_EMAIL }}
           NEXT_PUBLIC_DOMAIN: ${{ env.NEXT_PUBLIC_DOMAIN }}
 
-      - name: Verify build
-        run: ls -la out
-
+  optimize-images:
+    name: Optimize Images
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [prepare, fetch-content]
+    steps:
+      - name: Build
+        run: npm run optimize-images
+      
   deploy:
     name: Deploy site
     runs-on: ubuntu-latest
     environment: production
+    needs: [ build, optimize-images ]
     steps:
+      - name: Verify build
+        run: ls -la out
+
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
