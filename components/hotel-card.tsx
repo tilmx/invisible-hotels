@@ -5,7 +5,7 @@ import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils
 import { Tag } from './tag';
 import Image from 'next-image-export-optimizer';
 import { StarIcon } from 'lucide-react';
-import { AlignItems, Flex, JustifyContent } from './utils/flex';
+import { Flex } from './utils/flex';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
@@ -154,6 +154,12 @@ const StyledImage = styled(Image)`
     background: ${Color.Text60};
 `;
 
+const StyledTitle = styled(Text)`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+`;
+
 const StyledStarArea = styled(StarIcon) <{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
@@ -201,14 +207,12 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
         <StyledCard small={props.small} href={getHotelUrl({ id: props.id, housingType: props.housingType })} color={getVacationTypeColor(props.vacationType)} className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.image !== 'undefined'}>
-                    <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.FlexStart}>
-                        <Text size={props.small ? TextSize.Large : TextSize.SuperLarge} bold>
-                            {props.name}
-                        </Text>
+                    <StyledTitle size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
+                        {props.name}
                         {props.onStarClick &&
                             <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick} />
                         }
-                    </Flex>
+                    </StyledTitle>
                     <Text size={TextSize.Large} serif>
                         {`${props.city}, ${props.country}`}
                     </Text>
