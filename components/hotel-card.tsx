@@ -4,7 +4,7 @@ import { Text, TextSize } from './text';
 import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
 import Image from 'next-image-export-optimizer';
-import { Star } from 'lucide-react';
+import { StarIcon } from 'lucide-react';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
@@ -154,11 +154,14 @@ const StyledImage = styled(Image)`
     background: ${Color.Text60};
 `;
 
-const StyledStarArea = styled.div<{ starred?: boolean; }>`
+const StyledStarArea = styled(StarIcon) <{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
     margin-right: -${Size.XS};
     border-radius: 50%;
+    display: block;
+    ${props => props.starred && `fill: currentColor`}; 
+
     @media (hover: hover) {
        visibility: ${props => props.starred ? 'visible' : 'hidden'};
        :hover {
@@ -170,10 +173,6 @@ const StyledStarArea = styled.div<{ starred?: boolean; }>`
         background: ${Color.Text20};
         backdrop-filter: blur(${Size.XXS});
     }
-    svg {
-        display: block;
-        ${props => props.starred && `fill: currentColor`};
-    }    
 `;
 
 const StyledDistanceArea = styled.div`
@@ -207,9 +206,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                             {props.name}
                         </Text>
                         {props.onStarClick &&
-                            <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick}>
-                                <Star />
-                            </StyledStarArea>
+                            <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick} />
                         }
                     </Flex>
                     <Text size={TextSize.Large} serif>
