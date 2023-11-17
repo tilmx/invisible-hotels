@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import { Text, TextSize } from './text';
+import { Text } from './text';
 import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 
-const StyledTag = styled.div<{ hasIcon?: boolean; hasLabel?: boolean; }>`
+const StyledTag = styled(Text) <{ hasIcon?: boolean; hasLabel?: boolean; }>`
 	border: 2px solid currentColor;
 	padding: ${Size.XXS} ${Size.S};
 	${props => props.hasIcon && `padding-left: ${Size.XS};`}
@@ -31,9 +31,7 @@ export const Tag: FunctionComponent<{ icon?: ReactNode; label?: string; children
 	return (
 		<StyledTag hasIcon={typeof props.icon !== 'undefined'} hasLabel={typeof props.label !== 'undefined'} onClick={props.onClick} className={props.className}>
 			{props.icon}
-			{props.label &&
-				<Text size={TextSize.Regular}>{props.label}</Text>
-			}
+			{props.label}
 			{props.children}
 		</StyledTag>
 	)

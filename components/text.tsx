@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
 import { DM_Sans, EB_Garamond } from "next/font/google"
-import { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import { CSSProperties, FunctionComponent, MouseEventHandler, ReactNode } from 'react';
 
 interface TextProps {
     size?: TextSize;
@@ -12,6 +12,7 @@ interface TextProps {
     serif?: boolean;
     bold?: boolean;
     className?: string;
+    onClick?: MouseEventHandler;
 }
 
 export enum TextSize {
