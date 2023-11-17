@@ -213,7 +213,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                         }
                     </Flex>
                     <Text size={TextSize.Large} serif>
-                        {props.city}, {props.country}
+                        {`${props.city}, ${props.country}`}
                     </Text>
                     {typeof props.distance !== 'undefined' &&
                         <Flex>
