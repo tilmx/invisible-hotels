@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: dist
+          path: /
 
   build:
     name: Build Site
@@ -55,7 +55,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
-          path: dist
+          path: /
       - name: Build
         run: npm run build
         env:
@@ -78,7 +78,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
-          path: dist
+          path: /
       - name: Build
         run: npm run optimize-images
       
