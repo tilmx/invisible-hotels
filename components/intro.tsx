@@ -102,7 +102,7 @@ export const Intro: FunctionComponent = () => {
 					<path data-scribble="1" d="M158 104.218C162.191 91.008 172.121 65.3656 178.311 68.4738C186.048 72.359 179.278 137.631 193.785 136.077C208.293 134.523 234.407 -10.7836 245.045 28.8451C255.684 68.4738 251.816 128.306 268.258 95.6705C284.699 63.0346 297.273 -1.46006 297.273 35.8381C297.273 73.1362 306.944 143.847 310.813 126.752C314.682 109.657 345.631 21.8514 354.336 45.1626C363.04 68.4738 354.336 139.962 373.679 122.09C393.023 104.218 399.793 -3.79119 403.662 35.8381C407.53 75.4673 423.972 167.936 427.841 126.752C431.71 85.5689 482.97 32.7299 482.97 58.3723C482.97 84.0148 512.952 150.064 521.657 136.077C528.62 124.887 537.454 100.851 541 90.2312" stroke="currentColor" strokeWidth="24" strokeLinecap="round" />
 				</svg>
 			</StyledLogoWrapper>
-			<StyledText size={TextSize.ExtraLarge} serif>are all the <AccentedText italic color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText italic color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText> and <AccentedText italic color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</StyledText>
+			<StyledText size={TextSize.ExtraLarge} serif>are all the <AccentedText italic color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText italic color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText>, and <AccentedText italic color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</StyledText>
 		</>
 	)
 }

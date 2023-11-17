@@ -38,7 +38,7 @@ export const Share: FunctionComponent = () => {
         if (navigator.share) {
             navigator.share({
                 title: siteTitle,
-                text: 'Check out our personal list of lovely, minimalistic and fancy hotels & apartments',
+                text: 'Check out our personal list of lovely, minimalistic, and fancy hotels & apartments',
                 url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/`,
             }).then(() => {
                 plausible('share')
