@@ -72,7 +72,7 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
     return (
         <StyledMenuContainer>
             <StyledMenu flying={props.flying} alignItems={AlignItems.Center} className={props.className}>
-                <StyledDotLink href="/">
+                <StyledDotLink href="/" aria-label="Back to home page">
                     <StyledDot />
                 </StyledDotLink>
                 <MenuItem link="/" label="Hotels" />
