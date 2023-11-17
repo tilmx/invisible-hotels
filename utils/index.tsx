@@ -1,3 +1,4 @@
+import { HotelIcon, MountainSnowIcon, TreeDeciduousIcon, WavesIcon } from 'lucide-react';
 import { Color } from '../components/tokens/colors';
 import { vacationTypeFilterOptions } from '../data/site';
 
@@ -18,8 +19,20 @@ export function setCookieOptIn(type: CookieType) {
     window.localStorage.setItem('cookies-allowed-' + type, 'true');
 }
 
-export function getVacationTypeIcon(vacationType: typeof vacationTypeFilterOptions[number]) {
-    return <img src={`/icons/${vacationType.toLowerCase()}.svg`} />
+export function getVacationTypeIcon(vacationType: typeof vacationTypeFilterOptions[number], optimized: boolean) {
+    if (optimized) {
+        return <img src={`/icons/${vacationType.toLowerCase()}.svg`} />;
+    }
+    switch (vacationType) {
+        case "Sea":
+            return <WavesIcon />
+        case "Mountains":
+            return <MountainSnowIcon />
+        case "City":
+            return <HotelIcon />
+        case "Countryside":
+            return <TreeDeciduousIcon />
+    }
 }
 
 export function getVacationTypeColor(vacationType?: string) {

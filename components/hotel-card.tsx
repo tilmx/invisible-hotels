@@ -234,7 +234,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
             </StyledHeader>
             <StyledDetails visited={props.visited}>
                 <StyledTagList>
-                    <Tag icon={getVacationTypeIcon(props.vacationType)} label={props.vacationType} />
+                    <Tag icon={getVacationTypeIcon(props.vacationType, true)} label={props.vacationType} />
                     <Tag label={props.housingType} />
                 </StyledTagList>
                 {props.visited &&

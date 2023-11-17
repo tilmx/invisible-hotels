@@ -148,7 +148,7 @@ export const Filter: FunctionComponent = () => {
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (
-                                <FilterItem key={i} icon={getVacationTypeIcon(option)} label={option} selected={selected} onClick={() => {
+                                <FilterItem key={i} icon={getVacationTypeIcon(option, false)} label={option} selected={selected} onClick={() => {
                                     setVacationTypeFilter(selected ? undefined : option);
                                     !selected && plausible('enable-filter', { props: { filter: option } })
                                 }} />

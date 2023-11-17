@@ -353,7 +353,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             <Text size={TextSize.SuperLarge} center serif>{props.hotel.city}, {props.hotel.country}</Text>
                         </StyledIntroTitle>
                         <Flex justifyContent={JustifyContent.Center} gap={Size.XXS}>
-                            <Tag icon={getVacationTypeIcon(props.hotel.vacationType)} label={props.hotel.vacationType} />
+                            <Tag icon={getVacationTypeIcon(props.hotel.vacationType, true)} label={props.hotel.vacationType} />
                             <Tag label={props.hotel.housingType} />
                         </Flex>
                     </StyledIntro>

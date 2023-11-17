@@ -117,7 +117,7 @@ const StyledText = styled.div<TextProps>`
 
 export const Text: FunctionComponent<TextProps> = props => {
     return (
-        <StyledText size={props.size || TextSize.Regular} {...props}>
+        <StyledText size={props.size || TextSize.Regular} color={props.color} center={props.center} style={props.style} serif={props.serif} bold={props.bold} className={props.className} onClick={props.onClick}>
             {props.children}
         </StyledText>
     );
