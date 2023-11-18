@@ -166,6 +166,7 @@ const StyledStarArea = styled(StarIcon) <{ starred?: boolean; }>`
     margin-right: -${Size.XS};
     border-radius: 50%;
     display: block;
+    flex-shrink: 0;
     ${props => props.starred && `fill: currentColor`}; 
 
     @media (hover: hover) {
