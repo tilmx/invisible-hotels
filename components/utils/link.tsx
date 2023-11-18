@@ -9,9 +9,9 @@ const StyledUnstyledLink = styled(NextLink)`
     text-decoration: unset;
 `;
 
-export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; }> = props => {
+export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; description?: string; }> = props => {
     return (
-        <StyledUnstyledLink href={props.href} target={props.target} className={props.className}>
+        <StyledUnstyledLink aria-label={props.description} href={props.href} target={props.target} className={props.className}>
             {props.children}
         </StyledUnstyledLink>
     );
@@ -37,9 +37,9 @@ const StyledLink = styled(StyledUnstyledLink)`
     }
 `;
 
-export const Link: FunctionComponent<{ href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; }> = props => {
+export const Link: FunctionComponent<{ description?: string; href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; }> = props => {
     return (
-        <StyledLink href={props.href} target={props.target} className={props.className}>
+        <StyledLink aria-label={props.description} href={props.href} target={props.target} className={props.className}>
             {props.children}
         </StyledLink>
     );
