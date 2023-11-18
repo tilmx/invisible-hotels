@@ -29,7 +29,7 @@ export const Box: FunctionComponent<{ title: string; description: string; childr
             <MapPinIcon />
             <Text center size={TextSize.Large} bold>{props.title}</Text>
             <Text center size={TextSize.Regular}>{props.description}</Text>
-            <Text center size={TextSize.Small} color={Color.Text60}>Find out more in our <Link href="legal/privacy-policy">privacy policy</Link>.</Text>
+            <Text center size={TextSize.Small}>Find out more in our <Link href="legal/privacy-policy">privacy policy</Link>.</Text>
             {props.children}
         </StyledMessage>
     )
