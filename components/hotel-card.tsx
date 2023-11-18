@@ -12,26 +12,15 @@ import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { UnstyledLink } from './utils/link';
 import { VisitedBadge } from './visited-badge';
+import { HotelPreview, NearbyHotelPreview } from '../types';
 
-interface HotelCardProps {
-    name: string;
-    city: string;
-    country: string;
-    distance?: number;
-    housingType: string;
-    vacationType: string;
-    visited?: boolean;
-    image?: {
-        url: string;
-        width: number;
-        height: number;
-    };
-    id: string;
+type HotelCardProps = {
+    hotel: (HotelPreview & { distance?: number }) | NearbyHotelPreview;
     starred?: boolean;
     onStarClick?: MouseEventHandler;
     small?: boolean;
     className?: string;
-}
+};
 
 const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
     color: ${Color.TextAlways}; 
@@ -210,40 +199,40 @@ const StyledDistanceArea = styled.div`
 
 export const HotelCard: FunctionComponent<HotelCardProps> = props => {
     return (
-        <StyledCard small={props.small} href={getHotelUrl({ id: props.id, housingType: props.housingType })} color={getVacationTypeColor(props.vacationType)} className={props.className}>
+        <StyledCard small={props.small} href={getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })} color={getVacationTypeColor(props.hotel.vacationType)} className={props.className}>
             <StyledHeader>
-                <StyledContent image={typeof props.image !== 'undefined'}>
+                <StyledContent image={typeof props.hotel.image !== 'undefined'}>
                     <StyledTitle size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
-                        {props.name}
+                        {props.hotel.name}
                         {props.onStarClick &&
                             <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick} />
                         }
                     </StyledTitle>
                     <Text size={TextSize.Large} serif>
-                        {`${props.city}, ${props.country}`}
+                        {`${props.hotel.city}, ${props.hotel.country}`}
                     </Text>
-                    {typeof props.distance !== 'undefined' &&
+                    {props.hotel.distance &&
                         <Flex>
                             <StyledDistanceArea>
                                 <Text>
-                                    {props.distance === 0 ? '<1' : props.distance} km away
+                                    {props.hotel.distance === 0 ? '<1' : props.hotel.distance} km away
                                 </Text>
                             </StyledDistanceArea>
                         </Flex>
                     }
                 </StyledContent>
-                {props.image &&
+                {props.hotel.image &&
                     <StyledImageContainer>
-                        <StyledImage fill sizes="400px" src={'/images/hotels/' + props.image.url} alt={`Picture of ${props.name}`} placeholder="blur" />
+                        <StyledImage fill sizes="400px" src={'/images/hotels/' + props.hotel.image.url} alt={`Picture of ${props.hotel.name}`} placeholder="blur" />
                     </StyledImageContainer>
                 }
             </StyledHeader>
-            <StyledDetails visited={props.visited}>
+            <StyledDetails visited={props.hotel.visited}>
                 <StyledTagList>
-                    <Tag icon={getVacationTypeIcon(props.vacationType, true)} label={props.vacationType} />
-                    <Tag label={props.housingType} />
+                    <Tag icon={getVacationTypeIcon(props.hotel.vacationType, true)} label={props.hotel.vacationType} />
+                    <Tag label={props.hotel.housingType} />
                 </StyledTagList>
-                {props.visited &&
+                {props.hotel.visited &&
                     <StyledVisitedBadge superSmall />
                 }
             </StyledDetails>

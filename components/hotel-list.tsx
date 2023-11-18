@@ -88,14 +88,7 @@ export const HotelList: FunctionComponent = () => {
                     return (
                         <HotelCard
                             key={i}
-                            name={hotel.name}
-                            city={hotel.city}
-                            country={hotel.country}
-                            housingType={hotel.housingType}
-                            vacationType={hotel.vacationType}
-                            visited={hotel.visited}
-                            id={hotel.id}
-                            image={hotel.image}
+                            hotel={hotel}
                             starred={isFavorite}
                             onStarClick={e => {
                                 e.preventDefault();

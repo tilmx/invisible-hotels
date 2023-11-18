@@ -81,14 +81,8 @@ export default function Map() {
             {selectedHotelContent &&
                 <StyledHotelCardContainer>
                     <StyledHotelCard
-                        id={selectedHotelContent.id}
-                        name={selectedHotelContent.name}
-                        city={selectedHotelContent.city}
-                        country={selectedHotelContent.country}
-                        housingType={selectedHotelContent.housingType}
-                        vacationType={selectedHotelContent.vacationType}
-                        visited={selectedHotelContent.visited}
-                        small={true}
+                        hotel={selectedHotelContent}
+                        small
                     />
                 </StyledHotelCardContainer>
             }

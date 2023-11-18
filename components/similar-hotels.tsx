@@ -1,6 +1,5 @@
 import { FunctionComponent, useState } from "react";
 import styled from "@emotion/styled";
-import hotelsPreview from '../data/hotels-preview.json';
 import { Size } from "./tokens/size";
 import { Wrapper } from "./wrapper";
 import { HotelListWrapper } from "./hotel-list-wrapper";
@@ -11,6 +10,7 @@ import { Button } from "./button";
 import { Color } from "./tokens/colors";
 import { PlaceholderCard } from "./placeholder-card";
 import { AccentStyle, AccentedText } from "./accented-text";
+import { NearbyHotelPreview } from "../types";
 
 const StyledSimilarHotelSection = styled.div`
     margin: ${Size.XXXL} 0;
@@ -31,7 +31,7 @@ const StyledSimilarButtonWrapper = styled(Wrapper)`
     justify-content: center;
 `;
 
-export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: number }[]; accentColor?: string; }> = props => {
+export const SimilarHotels: FunctionComponent<{ hotels: NearbyHotelPreview[]; accentColor?: string; }> = props => {
 
     const similarHotelsPreview = props.hotels.slice(0, 3);
     const [similarHotelsExpanded, setSimilarHotelsExpanded] = useState(false);
@@ -45,22 +45,11 @@ export const SimilarHotels: FunctionComponent<{ hotels: { id: string; distance: 
                 <Text color={Color.Text60} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
-                {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) => {
-                    const hotelContent = hotelsPreview.find(element => element.id === hotel.id)
-                    return hotelContent ? (
-                        <HotelCard
-                            name={hotelContent.name}
-                            image={hotelContent.image}
-                            city={hotelContent.city}
-                            distance={hotel.distance}
-                            country={hotelContent.country}
-                            id={hotelContent.id}
-                            vacationType={hotelContent.vacationType}
-                            housingType={hotelContent.housingType}
-                            key={i}
-                        />
-                    ) : undefined
-                }
+                {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) =>
+                    <HotelCard
+                        key={i}
+                        hotel={hotel}
+                    />
                 )}
                 {props.hotels.length === 0 &&
                     <PlaceholderCard emptyState />

@@ -16,7 +16,6 @@ import { Color } from '../tokens/colors';
 import { Breakpoint } from '../tokens/breakpoint';
 import { siteTitle } from '../../data/site';
 import { FunctionComponent, useEffect } from 'react';
-import hotels from '../../data/hotels.json';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
@@ -24,9 +23,10 @@ import { usePlausible } from 'next-plausible';
 import { Map } from '../map';
 import { RoomDistribution } from '../room-distribution';
 import { SimilarHotels } from '../similar-hotels';
+import { Hotel } from '../../types';
 
 interface HotelDetailProps {
-    hotel: typeof hotels[number]
+    hotel: Hotel;
 }
 
 const StyledBackground = styled.div<{ color: string; }>`

@@ -1,6 +1,7 @@
 import { HotelIcon, MountainSnowIcon, TreeDeciduousIcon, WavesIcon } from 'lucide-react';
 import { Color } from '../components/tokens/colors';
 import { vacationTypeFilterOptions } from '../data/site';
+import { Hotel } from '../types';
 
 type CookieType = "map"
 
@@ -61,6 +62,6 @@ export function getVacationTypeDescription(vacationType?: string) {
     }
 }
 
-export const getHotelUrl = ({ id, housingType }: { id: string, housingType: string }) => {
+export const getHotelUrl = ({ id, housingType }: Pick<Hotel, 'id' | 'housingType'>) => {
     return '/' + housingType.toLowerCase() + '/' + id;
 }

@@ -3,7 +3,6 @@ import { Text, TextSize } from './text';
 import { FunctionComponent, ReactNode } from 'react';
 import { MapPinIcon } from 'lucide-react';
 import { Link } from './utils/link';
-import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 
 const StyledMessage = styled.div`

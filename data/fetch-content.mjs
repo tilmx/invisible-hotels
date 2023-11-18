@@ -80,6 +80,13 @@ base('Curated List').select({
                     .map(item => {
                         return {
                             id: item.id,
+                            name: item.name,
+                            city: item.city,
+                            image: item.images?.at(0),
+                            country: item.country,
+                            housingType: item.housingType,
+                            vacationType: item.vacationType,
+                            visited: item.visited,
                             distance: getDistance(
                                 { lat: record.coordinates.lat, lon: record.coordinates.long },
                                 { lat: item.coordinates.lat, lon: item.coordinates.long },
