@@ -6,7 +6,6 @@ import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils
 import { Tag } from './tag';
 import Image from 'next-image-export-optimizer';
 import { StarIcon } from 'lucide-react';
-import { Flex } from './utils/flex';
 import { Color } from './tokens/colors';
 import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
