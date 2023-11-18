@@ -176,12 +176,13 @@ const StyledStarArea = styled(StarIcon, {
     }
 `;
 
-const StyledDistanceArea = styled.div`
+const StyledDistanceArea = styled(Text)`
     padding: ${Size.XXXS} ${Size.XS};
     margin-top: ${Size.XXS};
     border-radius: ${Size.XS};
     backdrop-filter: blur(${Size.XXS});
     position: relative;
+    margin-right: auto;
 
     :after {
         content: '';
@@ -211,14 +212,10 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                     <Text size={TextSize.Large} serif>
                         {`${props.hotel.city}, ${props.hotel.country}`}
                     </Text>
-                    {props.hotel.distance &&
-                        <Flex>
-                            <StyledDistanceArea>
-                                <Text>
-                                    {props.hotel.distance === 0 ? '<1' : props.hotel.distance} km away
-                                </Text>
-                            </StyledDistanceArea>
-                        </Flex>
+                    {typeof props.hotel.distance !== 'undefined' &&
+                        <StyledDistanceArea>
+                            {props.hotel.distance === 0 ? '<1' : props.hotel.distance} km away
+                        </StyledDistanceArea>
                     }
                 </StyledContent>
                 {props.hotel.image &&
