@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import isPropValid from '@emotion/is-prop-valid';
 import { FunctionComponent, MouseEventHandler } from 'react';
 import { Text, TextSize } from './text';
 import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
@@ -160,7 +161,10 @@ const StyledTitle = styled(Text)`
     align-items: flex-start;
 `;
 
-const StyledStarArea = styled(StarIcon) <{ starred?: boolean; }>`
+
+const StyledStarArea = styled(StarIcon, {
+    shouldForwardProp: prop => isPropValid(prop)
+}) <{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
     margin-right: -${Size.XS};
