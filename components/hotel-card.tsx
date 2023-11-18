@@ -68,6 +68,7 @@ const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
             background: ${Color.TextAlways};
             opacity: .1;
             pointer-events: none;
+            border-radius: ${Size.M};
         }
     }
 
