@@ -82,9 +82,9 @@ export const VisitedBadge: FunctionComponent<{ small?: boolean; superSmall?: boo
         <StyledContainer small={props.small} superSmall={props.superSmall} className={props.className}>
             <StyledEmoji superSmall={props.superSmall}>✌️</StyledEmoji>
             {props.superSmall ?
-                <img src="/images/visited-badge-small.svg" />
+                <img src="/images/visited-badge-small.svg" width={72} height={72} alt="We stayed here" />
                 :
-                <img src="/images/visited-badge-large.svg" />
+                <img src="/images/visited-badge-large.svg" width={200} height={200} alt="We stayed here" />
             }
         </StyledContainer>
     )

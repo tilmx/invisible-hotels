@@ -22,7 +22,7 @@ export function setCookieOptIn(type: CookieType) {
 
 export function getVacationTypeIcon(vacationType: typeof vacationTypeFilterOptions[number], optimized: boolean) {
     if (optimized) {
-        return <img src={`/images/icons/${vacationType.toLowerCase()}.svg`} alt="" />;
+        return <img src={`/images/icons/${vacationType.toLowerCase()}.svg`} alt="" width={24} height={24} />;
     }
     switch (vacationType) {
         case "Sea":
