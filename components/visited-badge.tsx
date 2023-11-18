@@ -13,7 +13,6 @@ const StyledContainer = styled.div<{ small?: boolean; superSmall?: boolean; }>`
         width: 100%;
         height: 100%;
         animation: rotateBadge 30s infinite linear;
-        overflow: visible;
 
         @keyframes rotateBadge {
             0% {
