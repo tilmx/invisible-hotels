@@ -57,7 +57,7 @@ export default function About() {
             <Header>
                 <StyledWrapper>
                     <Text size={TextSize.ExtraLarge} serif>
-                        Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We love hotels — we believe that a beautiful hotel is the best start for any vacation.
+                        Hej, we're <AccentedText color={Color.Blue} accentStyle={AccentStyle.Scribbled}>Annika</AccentedText> & <AccentedText color={Color.Green} accentStyle={AccentStyle.Underlined}>Tilman</AccentedText>. We love hotels — and believe that a beautiful hotel is the best start for any vacation.
                     </Text>
                     <StyledImage width={800} src={AboutPicture} alt="Picture of Tilman & Annika" placeholder="blur" />
                     <StyledParagraph scribbleColor={Color.Yellow} size={TextSize.ExtraLarge} serif>

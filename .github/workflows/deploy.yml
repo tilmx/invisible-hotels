@@ -4,7 +4,7 @@ on:
     branches: main
 jobs:
   build:
-    name: Build
+    name: Build & Deploy
     runs-on: ubuntu-latest
     environment: production
     steps:
