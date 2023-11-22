@@ -2,12 +2,12 @@ import { css, Global } from '@emotion/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Color, Theme } from '../components/tokens/colors';
-import PlausibleProvider from 'next-plausible';
 import { siteTitle } from '../data/site';
+import { TrackingProvider } from '../utils/tracking-provider';
 
 function App({ Component, pageProps }: AppProps) {
     return (
-        <PlausibleProvider domain="invisiblehotels.com" trackOutboundLinks>
+        <TrackingProvider>
             <Theme>
                 <Head>
                     <link rel="icon" href="/favicon.png" />
@@ -20,7 +20,7 @@ function App({ Component, pageProps }: AppProps) {
                 <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
                 <Component {...pageProps} />
             </Theme>
-        </PlausibleProvider>
+        </TrackingProvider>
     );
 }
 

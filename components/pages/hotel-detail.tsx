@@ -19,7 +19,6 @@ import { FunctionComponent, useEffect } from 'react';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
 import { UnstyledLink } from '../utils/link';
-import { usePlausible } from 'next-plausible';
 import { Map } from '../map';
 import { RoomDistribution } from '../room-distribution';
 import { SimilarHotels } from '../similar-hotels';
@@ -316,8 +315,6 @@ const StyledDescriptionLabel = styled(Text)`
 `;
 
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
-    const plausible = usePlausible()
-
     const amenitiesFallback = props.hotel.amenities ? false : undefined
 
     useEffect(() => {
@@ -428,16 +425,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
 
                     <StyledStickyWrapper>
                         <StyledActionBar>
-                            <StyledFavoriteArea active={isFavorite} onClick={() => {
-                                if (isFavorite) {
-                                    removeFavorite(props.hotel.id)
-                                    plausible('remove-from-favorites', { props: { hotel: props.hotel.id } })
-                                }
-                                else {
-                                    addFavorite(props.hotel.id)
-                                    plausible('add-to-favorites', { props: { hotel: props.hotel.id } })
-                                }
-                            }}>
+                            <StyledFavoriteArea pirsch-event={isFavorite ? "Remove from favorites" : "Add to favorite"} pirsch-meta-hotel={props.hotel.id} pirsch-meta-page="Hotel Detail" active={isFavorite} onClick={() => isFavorite ? removeFavorite(props.hotel.id) : addFavorite(props.hotel.id)}>
                                 <StarIcon />
                                 <Text>Favorite</Text>
                             </StyledFavoriteArea>

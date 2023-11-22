@@ -107,7 +107,12 @@ export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = 
             <StyledOptionList open={props.open}>
                 <CountrySelectOption label={props.label} onClick={() => props.onSet(undefined)} />
                 {props.options.map((option, i) =>
-                    <CountrySelectOption selected={option === props.value} label={option} key={i} onClick={() => props.onSet(props.value === option ? undefined : option)} />
+                    <CountrySelectOption
+                        selected={option === props.value}
+                        label={option}
+                        key={i}
+                        onClick={() => props.onSet(props.value === option ? undefined : option)}
+                    />
                 )}
             </StyledOptionList>
         </StyledFlyoutContainer>
@@ -144,7 +149,13 @@ const StyledCloseIcon = styled(X)`
 
 const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean; onClick: MouseEventHandler; }> = props => {
     return (
-        <StyledOption onClick={props.onClick} selected={props.selected}>
+        <StyledOption
+            onClick={props.onClick}
+            selected={props.selected}
+            pirsch-event="Enable filter"
+            pirsch-meta-filter="Country"
+            pirsch-meta-country={props.label}
+        >
             <Text size={TextSize.Regular}>
                 {getCountryFlag(props.label)}
             </Text>

@@ -78,12 +78,25 @@ export default function PrivacyPolicy() {
                     </Text>
                     <Text>Your IP address is generally not stored, we especially do not use it for analysing personal data. A full storage of the IP address would only happen so that we can track technical errors or hacker attacks. Our web servers are configured in a way that your IP address is deleted in a timely manner after your visit of our site.</Text>
                     <Text>This website is hosted by All-Inkl (Neue Medien Münnich, owner René Münnich, Hauptstraße 68, 02742 Friedersdorf). Details can be found in their privacy policy: https://all-inkl.com/datenschutzinformationen/. The legal base is Art. 6, para. 1, lit. f) GDPR. </Text>
-                    <Text bold>Plausible Tracking</Text>
+                    <Text bold>Tracking</Text>
+                    <Text>Tracking</Text>
                     <Text>
-                        We run Plausible Analytics to collect some anonymous usage data for statistical purposes. The goal is to track overall trends in our website traffic, it is not to track individual visitors. All the data is in aggregate only. No personal data is collected.
+                        For web analytics, we use Pirsch Analytics. Pirsch Analytics is
+                        a cookie-free web analytics software that was developed
+                        according to the Privacy by Design principle. To analyze visitor
+                        flows, Pirsch Analytics uses a hashing algorithm to generate a
+                        16-digit number as the visitor ID when the page request is
+                        received. The input values are the IP address, the user agent,
+                        the date and a salt.
                     </Text>
                     <Text>
-                        Data collected includes referral sources, top pages, visit duration, information from the devices (device type, operating system, country and browser) used during the visit and more. You can see full details in their <a href="https://plausible.io/data-policy" rel="noreferrer">data policy</a>.
+                        The visitor's IP address is not persisted in whole or in part,
+                        and is anonymized completely and non-reversibly by the hash. The
+                        inclusion of the date and the use of one salt per website
+                        ensures that website visitors cannot be recognized for more than
+                        24 hours and cannot be tracked across multiple websites. A rough
+                        localization (country/city) is performed via a locally
+                        integrated database.
                     </Text>
 
                     <Text bold>Apple Maps</Text>

@@ -9,7 +9,6 @@ import { AlignItems, Flex } from "./utils/flex";
 import { FilterItem } from "./filter-item";
 import { useFilterStore } from "../store/filter";
 import { useFavoriteStore } from "../store/favorites";
-import { usePlausible } from "next-plausible";
 import { Size } from "./tokens/size";
 import { OutsideClick } from "./utils/outside-click";
 import { ChevronDownIcon, SearchIcon, StarIcon } from "lucide-react";
@@ -118,8 +117,6 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
 `;
 
 export const Filter: FunctionComponent = () => {
-    const plausible = usePlausible();
-
     const filterExpanded = useFilterStore(state => state.filterExpanded);
     const toggleFilterExpanded = useFilterStore(state => state.toggleFilterExpanded);
 
@@ -148,10 +145,17 @@ export const Filter: FunctionComponent = () => {
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (
-                                <FilterItem key={i} icon={getVacationTypeIcon(option, false)} label={option} selected={selected} onClick={() => {
-                                    setVacationTypeFilter(selected ? undefined : option);
-                                    !selected && plausible('enable-filter', { props: { filter: option } })
-                                }} />
+                                <FilterItem
+                                    key={i}
+                                    icon={getVacationTypeIcon(option, false)}
+                                    label={option}
+                                    selected={selected}
+                                    {...(!selected && {
+                                        "pirsch-event": "Enable filter",
+                                        "pirsch-meta-filter": option
+                                    })}
+                                    onClick={() => setVacationTypeFilter(selected ? undefined : option)}
+                                />
                             )
                         })}
                         <StyledCountrySelect
@@ -162,10 +166,15 @@ export const Filter: FunctionComponent = () => {
                             onClick={() => setCountryFilterOpen(!countryFilterOpen)}
                         />
                         {favorites.length > 0 &&
-                            <FilterItem icon={<StarIcon />} selected={favoritesFilter} onClick={() => {
-                                !favoritesFilter && plausible('enable-filter', { props: { filter: 'Favorites' } })
-                                setFavoritesFilter(!favoritesFilter);
-                            }} />
+                            <FilterItem
+                                icon={<StarIcon />}
+                                selected={favoritesFilter}
+                                {...(!favoritesFilter && {
+                                    "pirsch-event": "Enable filter",
+                                    "pirsch-meta-filter": "Favorites"
+                                })}
+                                onClick={() => setFavoritesFilter(!favoritesFilter)}
+                            />
                         }
                         <FilterItem icon={<SearchIcon />} selected={searchActive} onClick={() => toggleSearchActive()} />
                     </StyledFilterBarInner>
@@ -190,7 +199,6 @@ export const Filter: FunctionComponent = () => {
                         onSet={country => {
                             setCountryFilter(country);
                             setCountryFilterOpen(false);
-                            plausible('enable-filter', { props: { filter: 'Country', country: country } })
                         }}
                     />
                 </OutsideClick>

@@ -11,7 +11,6 @@ import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
 import { useFavoriteStore } from '../store/favorites';
-import { usePlausible } from 'next-plausible';
 import { Filter } from './filter';
 import { HotelListWrapper } from './hotel-list-wrapper';
 
@@ -46,7 +45,6 @@ const StyledHotelListWrapper = styled(HotelListWrapper)`
 `;
 
 export const HotelList: FunctionComponent = () => {
-    const plausible = usePlausible()
 
     useEffect(() => {
         checkIfFavoritesStored() && useFavoriteStore.persist.rehydrate();
@@ -90,16 +88,12 @@ export const HotelList: FunctionComponent = () => {
                             key={i}
                             hotel={hotel}
                             starred={isFavorite}
+                            pirsch-event={isFavorite ? "Remove from favorites" : "Add to favorite"}
+                            pirsch-meta-hotel={hotel.id}
+                            pirsch-meta-page="List"
                             onStarClick={e => {
                                 e.preventDefault();
-                                if (isFavorite) {
-                                    removeFavorite(hotel.id)
-                                    plausible('remove-from-favorites', { props: { hotel: hotel.id } })
-                                }
-                                else {
-                                    addFavorite(hotel.id)
-                                    plausible('add-to-favorites', { props: { hotel: hotel.id } })
-                                }
+                                isFavorite ? removeFavorite(hotel.id) : addFavorite(hotel.id);
                             }}
                         />
                     )

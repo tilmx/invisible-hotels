@@ -5,7 +5,6 @@ import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
 import { Size } from "./tokens/size";
 import { siteDescription, siteTitle } from "../data/site";
-import { usePlausible } from 'next-plausible'
 import { Text, TextSize } from "./text";
 import { Color } from "./tokens/colors";
 import { AccentStyle, AccentedText } from "./accented-text";
@@ -25,7 +24,6 @@ const StyledFlex = styled(Flex)`
 `;
 
 export const Share: FunctionComponent = () => {
-    const plausible = usePlausible()
     const [shareAvailable, setShareAvailable] = useState(false);
 
     useEffect(() => {
@@ -40,8 +38,6 @@ export const Share: FunctionComponent = () => {
                 title: siteTitle,
                 text: 'Check out our personal list of lovely, minimalistic, and fancy hotels & apartments',
                 url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/`,
-            }).then(() => {
-                plausible('share')
             }).catch((error) => console.log('Something went wrong with sharing: ', error));
         }
     }
@@ -56,7 +52,7 @@ export const Share: FunctionComponent = () => {
             <Text size={TextSize.Large} serif center color={Color.Text60}>{siteDescription}</Text>
             {shareAvailable ?
                 <StyledFlex justifyContent={JustifyContent.Center}>
-                    <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
+                    <Button pirsch-event="Share" iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
                 </StyledFlex>
                 :
                 <div />
