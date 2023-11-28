@@ -1,0 +1,21 @@
+[
+    {
+        "id": "example-hotel",
+        "name": "Example Hotel",
+        "city": "City",
+        "country": "Country",
+        "housingType": "Hotel",
+        "vacationType": "Sea",
+        "visited": "true",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam ni",
+        "coordinates": {
+            "lat": 52.520008,
+            "lon": 13.404954
+        },
+        "links": {
+            "hotel": "https://www.example.com",
+            "booking.com": "https://www.example.com"
+        },
+        "nearby": []
+    }
+]
