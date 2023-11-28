@@ -45,7 +45,7 @@ jobs:
           NEXT_PUBLIC_SITESNOTICE_EMAIL: ${{ vars.NEXT_PUBLIC_SITESNOTICE_EMAIL }}
           NEXT_PUBLIC_SITESNOTICE_PHONE: ${{ vars.NEXT_PUBLIC_SITESNOTICE_PHONE }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.NEXT_PUBLIC_CONTACT_EMAIL }}
-          NEXT_PUBLIC_DOMAIN: ${{ env.NEXT_PUBLIC_DOMAIN }}
+          NEXT_PUBLIC_DOMAIN: ${{ vars.NEXT_PUBLIC_DOMAIN }}
       
       - name: Optimize Images
         run: npm run optimize-images

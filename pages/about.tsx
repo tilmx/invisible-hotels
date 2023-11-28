@@ -51,7 +51,7 @@ export default function About() {
         <>
             <Head>
                 <title>{'About — ' + siteTitle}</title>
-                <meta name="description" content="Hej, we're Annika & Tilman. We love hotels — we believe that a beautiful hotel is the best start for any vacation." />
+                <meta name="description" content="Hej, we're Annika & Tilman. We love hotels — and believe that a beautiful hotel is the best start for any vacation." />
                 <meta name="theme-color" content={Color.Background} />
             </Head>
             <Header>
