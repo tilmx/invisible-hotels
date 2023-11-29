@@ -18,7 +18,6 @@ import { siteTitle } from '../../data/site';
 import { FunctionComponent, useEffect } from 'react';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
-import { UnstyledLink } from '../utils/link';
 import { Map } from '../map';
 import { RoomDistribution } from '../room-distribution';
 import { SimilarHotels } from '../similar-hotels';
