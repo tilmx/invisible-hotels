@@ -314,6 +314,11 @@ const StyledDescriptionLabel = styled(Text)`
     opacity: .6;
 `;
 
+const StyledOutLink = styled.a`
+    color: unset;
+    text-decoration: unset;
+`;
+
 export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
     const amenitiesFallback = props.hotel.amenities ? false : undefined
 
@@ -430,9 +435,9 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                                 <Text>Favorite</Text>
                             </StyledFavoriteArea>
                             {link &&
-                                <UnstyledLink href={link} target='_blank'>
+                                <StyledOutLink href={link} target='_blank'>
                                     <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
-                                </UnstyledLink>
+                                </StyledOutLink>
                             }
                         </StyledActionBar>
                     </StyledStickyWrapper>

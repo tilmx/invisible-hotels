@@ -41,5 +41,6 @@ next-env.d.ts
 data/hotels.json
 data/hotels-preview.json
 data/countries.json
+data/room-distribution.json
 public/images/hotels
 public/**/optimized

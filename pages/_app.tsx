@@ -27,9 +27,6 @@ function App({ Component, pageProps }: AppProps) {
                     src="https://api.pirsch.io/pirsch-extended.js"
                     id="pirschextendedjs"
                     data-code="lTp1KC9kQJ72klGFeYBab8pf59w9VPaW"
-                    onLoad={() => {
-                        console.log('loaddedd')
-                    }}
                 />
             }
             <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
