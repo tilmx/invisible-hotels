@@ -88,9 +88,6 @@ export const HotelList: FunctionComponent = () => {
                             key={i}
                             hotel={hotel}
                             starred={isFavorite}
-                            pirsch-event={isFavorite ? "Remove from favorites" : "Add to favorite"}
-                            pirsch-meta-hotel={hotel.id}
-                            pirsch-meta-page="List"
                             onStarClick={e => {
                                 e.preventDefault();
                                 isFavorite ? removeFavorite(hotel.id) : addFavorite(hotel.id);

@@ -11,7 +11,7 @@ interface FilterProps {
     onClick?: MouseEventHandler;
 }
 
-const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`
+const StyledTag = styled(Tag, { shouldForwardProp: () => true }) <{ selected?: boolean; color?: string; }>`
     cursor: pointer;
 
     ${props => props.selected && `
@@ -34,6 +34,6 @@ const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`
 
 export const FilterItem: FunctionComponent<FilterProps> = props => {
     return (
-        <StyledTag label={props.label} icon={props.icon} onClick={props.onClick} color={getVacationTypeColor(props.label) || Color.Yellow} selected={props.selected} />
+        <StyledTag {...props} color={getVacationTypeColor(props.label) || Color.Yellow} />
     )
 }

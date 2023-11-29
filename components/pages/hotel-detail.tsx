@@ -243,7 +243,7 @@ const StyledActionBar = styled.div`
     }
 `;
 
-const StyledFavoriteArea = styled.div<{ active: boolean }>`
+const StyledFavoriteArea = styled('div', { shouldForwardProp: () => true }) <{ active: boolean }>`
     color: ${Color.Text};
     display: flex;
     padding: ${Size.S} ${Size.M} ${Size.S} ${Size.S};

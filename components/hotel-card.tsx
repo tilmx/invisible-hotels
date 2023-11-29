@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import isPropValid from '@emotion/is-prop-valid';
 import { FunctionComponent, MouseEventHandler } from 'react';
 import { Text, TextSize } from './text';
 import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
@@ -152,7 +151,7 @@ const StyledTitle = styled(Text)`
 
 
 const StyledStarArea = styled(StarIcon, {
-    shouldForwardProp: prop => isPropValid(prop)
+    shouldForwardProp: () => true
 }) <{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
@@ -205,7 +204,14 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                     <StyledTitle size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
                         {props.hotel.name}
                         {props.onStarClick &&
-                            <StyledStarArea data-stararea starred={props.starred} onClick={props.onStarClick} />
+                            <StyledStarArea
+                                data-stararea
+                                starred={props.starred}
+                                onClick={props.onStarClick}
+                                pirsch-event={props.starred ? "Remove from favorites" : "Add to favorite"}
+                                pirsch-meta-hotel={props.hotel.id}
+                                pirsch-meta-page="List"
+                            />
                         }
                     </StyledTitle>
                     <Text size={TextSize.Large} serif>

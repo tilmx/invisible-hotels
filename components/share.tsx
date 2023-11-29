@@ -52,7 +52,7 @@ export const Share: FunctionComponent = () => {
             <Text size={TextSize.Large} serif center color={Color.Text60}>{siteDescription}</Text>
             {shareAvailable ?
                 <StyledFlex justifyContent={JustifyContent.Center}>
-                    <Button pirsch-event="Share" iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
+                    <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>
                 </StyledFlex>
                 :
                 <div />
