@@ -65,3 +65,42 @@ export function getVacationTypeDescription(vacationType?: string) {
 export const getHotelUrl = ({ id, housingType }: Pick<Hotel, 'id' | 'housingType'>) => {
     return '/' + housingType.toLowerCase() + '/' + id;
 }
+
+export function getCountryFlag(country: string) {
+    switch (country) {
+        case "Austria":
+            return "🇦🇹";
+        case "Belgium":
+            return "🇧🇪";
+        case "Denmark":
+            return "🇩🇰";
+        case "Georgia":
+            return "🇬🇪";
+        case "Germany":
+            return "🇩🇪";
+        case "Greece":
+            return "🇬🇷";
+        case "Island":
+            return "🇮🇸";
+        case "Italy":
+            return "🇮🇹";
+        case "Japan":
+            return "🇯🇵";
+        case "Netherlands":
+            return "🇳🇱";
+        case "Norway":
+            return "🇳🇴";
+        case "Portugal":
+            return "🇵🇹";
+        case "Spain":
+            return "🇪🇸";
+        case "Sweden":
+            return "🇸🇪";
+        case "Turkey":
+            return "🇹🇷";
+        case "United Kingdom":
+            return "🇬🇧"
+        case "United States":
+            return "🇺🇸"
+    }
+}

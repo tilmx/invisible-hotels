@@ -6,6 +6,7 @@ import { Tag } from "./tag";
 import { Size } from "./tokens/size";
 import { Color } from "./tokens/colors";
 import { Breakpoint } from "./tokens/breakpoint";
+import { getCountryFlag } from "../utils";
 
 interface CountrySelectProps {
     label: string;
@@ -167,43 +168,4 @@ const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean
             }
         </StyledOption>
     )
-}
-
-export function getCountryFlag(country: string) {
-    switch (country) {
-        case "Austria":
-            return "🇦🇹";
-        case "Belgium":
-            return "🇧🇪";
-        case "Denmark":
-            return "🇩🇰";
-        case "Georgia":
-            return "🇬🇪";
-        case "Germany":
-            return "🇩🇪";
-        case "Greece":
-            return "🇬🇷";
-        case "Island":
-            return "🇮🇸";
-        case "Italy":
-            return "🇮🇹";
-        case "Japan":
-            return "🇯🇵";
-        case "Netherlands":
-            return "🇳🇱";
-        case "Norway":
-            return "🇳🇴";
-        case "Portugal":
-            return "🇵🇹";
-        case "Spain":
-            return "🇪🇸";
-        case "Sweden":
-            return "🇸🇪";
-        case "Turkey":
-            return "🇹🇷";
-        case "United Kingdom":
-            return "🇬🇧"
-        case "United States":
-            return "🇺🇸"
-    }
 }

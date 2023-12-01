@@ -151,7 +151,7 @@ const StyledTitle = styled(Text)`
 
 
 const StyledStarArea = styled(StarIcon, {
-    shouldForwardProp: () => true
+    shouldForwardProp: prop => prop !== 'starred'
 }) <{ starred?: boolean; }>`
     padding: ${Size.XS};
     margin-top: -${Size.XXS};
