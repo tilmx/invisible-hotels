@@ -13,7 +13,8 @@ function App({ Component, pageProps }: AppProps) {
     return (
         <Theme>
             <Head>
-                <link rel="icon" href="/favicon.svg" />
+                <link rel="icon" type="image/png" href="/favicon.png" />
+                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
                 <meta name="language" content="en" />
                 <meta name="keywords" content="Hotels, Hotel, Travel, Boutique Hotels, Design Hotels, Hotel Tips, Hotel Collection, Hotel Recommendations" />

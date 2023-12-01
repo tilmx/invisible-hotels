@@ -6,9 +6,9 @@
         d="M48 92V36C48 33.7909 49.7909 32 52 32H56C58.2091 32 60 33.7909 60 36V54C60 56.2091 61.7909 58 64 58H80C82.2091 58 84 59.7909 84 62V66C84 68.2091 82.2091 70 80 70H64C61.7909 70 60 71.7909 60 74V92C60 94.2091 58.2091 96 56 96H52C49.7909 96 48 94.2091 48 92Z"
         fill="black" />
     <style>
-        path, rect { fill: #000; }
+        path { fill: #000; }
         @media (prefers-color-scheme: dark) {
-        path, rect { fill: #FFF; }
+        path { fill: #FFF; }
         }
     </style>
 </svg>
