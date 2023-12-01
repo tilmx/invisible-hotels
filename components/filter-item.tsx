@@ -34,6 +34,6 @@ const StyledTag = styled(Tag, { shouldForwardProp: () => true }) <{ selected?: b
 
 export const FilterItem: FunctionComponent<FilterProps> = props => {
     return (
-        <StyledTag {...props} color={getVacationTypeColor(props.label) || Color.Yellow} />
+        <StyledTag {...props} color={getVacationTypeColor(props.label) || Color.Text60} />
     )
 }
