@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
+import { FunctionComponent, ReactNode } from "react";
 
 export enum AccentStyle {
 	Circled,
@@ -26,9 +26,9 @@ const StyledSpan = styled.span<{ color: string; italic?: boolean; }>`
 	}
 `;
 
-export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; italic?: boolean; color: string; children?: ReactNode; onMouseEnter?: MouseEventHandler; onMouseOut?: MouseEventHandler }> = props => {
+export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; italic?: boolean; color: string; children?: ReactNode; }> = props => {
 	return (
-		<StyledSpan italic={props.italic} color={props.color} onMouseEnter={props.onMouseEnter} onMouseOut={props.onMouseOut} >
+		<StyledSpan italic={props.italic} color={props.color} >
 			{props.children}
 			{props.accentStyle === AccentStyle.Circled &&
 				<svg width="435" height="96" viewBox="0 0 435 96" fill="none" xmlns="http://www.w3.org/2000/svg">

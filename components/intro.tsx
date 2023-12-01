@@ -16,6 +16,6 @@ const StyledHeadline = styled(Text)`
 
 export const Intro: FunctionComponent = () => {
 	return (
-		<StyledText size={TextSize.ExtraLarge} serif><StyledHeadline bold size={TextSize.ExtraLarge}>Invisible Hotels</StyledHeadline> are all the <AccentedText italic color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText italic color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText>, and <AccentedText italic color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</StyledText>
+		<StyledText size={TextSize.ExtraLarge} serif><StyledHeadline bold size={TextSize.Unset}>Invisible Hotels</StyledHeadline> are all the <AccentedText italic color={Color.Blue} accentStyle={AccentStyle.Scribbled}>lovely</AccentedText>, <AccentedText italic color={Color.Green} accentStyle={AccentStyle.Circled}>minimalistic</AccentedText>, and <AccentedText italic color={Color.Yellow} accentStyle={AccentStyle.Underlined}>fancy</AccentedText> hotels & apartments where we stayed already — or would love to.</StyledText>
 	)
 }

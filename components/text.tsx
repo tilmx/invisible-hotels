@@ -21,7 +21,8 @@ export enum TextSize {
     ExtraLarge,
     SuperLarge,
     Large,
-    Small
+    Small,
+    Unset
 }
 
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
