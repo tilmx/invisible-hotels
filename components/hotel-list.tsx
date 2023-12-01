@@ -72,7 +72,7 @@ export const HotelList: FunctionComponent = () => {
     const isEmpty = filteredHotels.length === 0;
     const plural = filteredHotels.length !== 1;
 
-    const labelText = `${(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} ${filteredHotels.length.toString()} hotel${plural && 's'} & apartment${plural && 's'}`;
+    const labelText = `${(vacationTypeFilter || countryFilter) ? 'Filtered' : 'Filter all'} ${filteredHotels.length.toString()} hotel${plural ? 's' : ''} & apartment${plural ? 's' : ''}`;
 
     return (
         <StyledContainer id="hotel-list">
