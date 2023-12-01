@@ -1,21 +1,21 @@
 import Head from 'next/head'
-import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
-import { Size } from '../../components/tokens/size';
 import { Button } from '../../components/button';
 import { Flex } from '../../components/utils/flex';
 import { Trash2 } from 'lucide-react';
 import { Footer } from '../../components/footer';
 import { siteTitle } from '../../data/site';
 import { Color } from '../../components/tokens/colors';
+import { TableText } from '../../components/table-text';
+import { Menu } from '../../components/menu';
+import { Size } from '../../components/tokens/size';
+import { Wrapper } from '../../components/wrapper';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: ${Size.L};
+    padding: 0 ${Size.M};
 `;
 
 export default function PrivacyPolicy() {
@@ -26,29 +26,32 @@ export default function PrivacyPolicy() {
                 <meta name="robots" content="noindex" />
                 <meta name="theme-color" content={Color.Background} />
             </Head>
-            <Header>
-                <StyledWrapper>
-                    <Text size={TextSize.ExtraLarge} serif>
-                        Privacy Policy
-                    </Text>
-                    <Text size={TextSize.Large}>Data Protection Declaration</Text>
-                    <Text size={TextSize.Large}>General Information</Text>
-                    <Text>
-                        As being responsible for this website, we take the protection of your personal data very seriously. We treat your personal data confidentiality in particular in accordance with the statutory data protection regulations. By using this website, various personal data is collected. Personal data is data that you can be personally identified with. This data protection declaration describes which data we collect and for what we use it. It also explains how and for what purpose this is done. We would like to point out that data transmission over the Internet (e.g. communication by e-mail) can have security gaps. A complete protection of data against access by third parties is not possible.
-                    </Text>
+            <Wrapper>
+                <Menu />
+            </Wrapper>
+            <StyledWrapper>
+                <Text size={TextSize.ExtraLarge} serif>
+                    Data Protection Declaration
+                </Text>
+                <TableText title="General Information">
+                    <Text>As being responsible for this website, we take the protection of your personal data very seriously. We treat your personal data confidentiality in particular in accordance with the statutory data protection regulations. By using this website, various personal data is collected. Personal data is data that you can be personally identified with. This data protection declaration describes which data we collect and for what we use it. It also explains how and for what purpose this is done. We would like to point out that data transmission over the Internet (e.g. communication by e-mail) can have security gaps. A complete protection of data against access by third parties is not possible.</Text>
                     <Text>Our website  may be used without entering personal information. Different rules may apply to  certain services on our site, however, and are explained separately below. We  collect personal information from you (e.g. name, address, email address,  telephone number, etc.) in accordance with the provisions of German data  protection statutes. Information is considered personal if it can be associated  exclusively to a specific natural person. The legal framework for data  protection may be found in the German Federal Data Protection Act (BDSG) and the  Telemedia Act (TMG). The provisions below serve to provide information as to  the manner, extent and purpose for collecting, using and processing personal  information by the provider.</Text>
-                    <Text size={TextSize.Large}>Responsible for the website</Text>
+                </TableText>
+                <TableText title='Responsible for the website'>
                     <Text>
                         {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS}
                     </Text>
-                    <Text size={TextSize.Large}>Responsible for data protection</Text>
+                </TableText>
+                <TableText title='Responsible for data protection'>
                     <Text>
                         {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS} <br />
                         {process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}
                     </Text>
-                    <Text size={TextSize.Large}>Visiting our website</Text>
+                </TableText>
+                <TableText title='Visiting our website'>
                     <Text>By visiting our website we process certain data of our visitors. What kind of data, on which legal basis, for what purpose and for how long we process, please read our subsequent data privacy policy.</Text>
-                    <Text bold>Providing our website</Text>
+                </TableText>
+                <TableText title='Providing our website'>
                     <Text>By loading our webpage, some data is being stored in a web server protocol file:
                         <ul>
                             <li>Date and time of the request for the load of the web page</li>
@@ -78,8 +81,9 @@ export default function PrivacyPolicy() {
                     </Text>
                     <Text>Your IP address is generally not stored, we especially do not use it for analysing personal data. A full storage of the IP address would only happen so that we can track technical errors or hacker attacks. Our web servers are configured in a way that your IP address is deleted in a timely manner after your visit of our site.</Text>
                     <Text>This website is hosted by All-Inkl (Neue Medien Münnich, owner René Münnich, Hauptstraße 68, 02742 Friedersdorf). Details can be found in their privacy policy: https://all-inkl.com/datenschutzinformationen/. The legal base is Art. 6, para. 1, lit. f) GDPR. </Text>
-                    <Text bold>Tracking</Text>
-                    <Text>Tracking</Text>
+                </TableText>
+
+                <TableText title='Tracking'>
                     <Text>
                         For web analytics, we use Pirsch Analytics. Pirsch Analytics is
                         a cookie-free web analytics software that was developed
@@ -98,19 +102,23 @@ export default function PrivacyPolicy() {
                         localization (country/city) is performed via a locally
                         integrated database.
                     </Text>
+                </TableText>
 
-                    <Text bold>Apple Maps</Text>
+                <TableText title='Apple Maps'>
                     <Text>
                         We use Apple Maps to show the hotels visually on a map. During usage of Apple Maps, data of the map usage is sent to Apple. More information you can find on Apple's privacy website: https://www.apple.com/legal/privacy/data/en/apple-maps/
                     </Text>
+                </TableText>
 
-                    <Text bold>Necessary Cookies</Text>
+                <TableText title='Necessary Cookies'>
                     <Text>We are using cookies to save your favorite hotels locally. The legal base is Art. 6, para. 1, lit. f) GDPR.</Text>
+                </TableText>
 
-                    <Text bold>Optional Cookies</Text>
+                <TableText title='Optional Cookies'>
                     <Text>We are using cookies for the usage of Apple Maps. The legal base is Art. 6, para. 1, lit. a) GDPR. You can revoke your consent to setting cookies at any time.</Text>
+                </TableText>
 
-                    <Text size={TextSize.Large}>Rights according to legal data protection regulations</Text>
+                <TableText title="Rights according to legal data protection regulations">
                     <Text>You have the right to request information, correction, deletion or blocking of your personal data. As far as you should request
                         deletion of your personal data stored by us, we will execute your request without undue delay, unless legal duties for documentation
                         or storage apply. You can object to the usage of your personal data for advertising or market research purposes or revoke
@@ -166,18 +174,17 @@ export default function PrivacyPolicy() {
                         in particular to protect your personal data from unauthorized access by third parties. We would like to point out that we
                         reserve the right not to process requests that are received inappropriately frequently or without corresponding proof of
                         identity. We will inform you of this in writing (via E-Mail).</Text>
-                    <Text size={TextSize.Large}>Children</Text>
-                    <Text>Persons under 16 should not send us personal data without the consent of their parents or persons with parental power. We
-                        ask for no personal data from children and adolescents, nor do we collect such information nor pass it on to third parties.</Text>
-                    <Text size={TextSize.Large}>Cookie Opt-out</Text>
+                </TableText>
+
+                <TableText title='Cookie Opt-out'>
                     <Text>You can clear all cookies and delete your locally stored favorites.</Text>
                     <Flex>
                         <Button iconLeft={<Trash2 />} onClick={() => {
                             window.localStorage.clear();
                         }}>Clear all cookies</Button>
                     </Flex>
-                </StyledWrapper>
-            </Header>
+                </TableText>
+            </StyledWrapper>
             <Footer />
         </>
     )
