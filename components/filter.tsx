@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import styled from "@emotion/styled";
 import { Color } from "./tokens/colors";
-import { getVacationTypeIcon } from "../utils";
+import { getVacationTypeIcon, track } from "../utils";
 import { CountrySelect, CountrySelectFlyout } from "./country-select";
 import { Breakpoint } from "./tokens/breakpoint";
 import { Wrapper } from "./wrapper";
@@ -150,11 +150,10 @@ export const Filter: FunctionComponent = () => {
                                     icon={getVacationTypeIcon(option, false)}
                                     label={option}
                                     selected={selected}
-                                    {...(!selected && {
-                                        "pirsch-event": "Enable filter",
-                                        "pirsch-meta-filter": option
-                                    })}
-                                    onClick={() => setVacationTypeFilter(selected ? undefined : option)}
+                                    onClick={() => {
+                                        setVacationTypeFilter(selected ? undefined : option);
+                                        !selected && track('Enable Filter', { Filter: option })
+                                    }}
                                 />
                             )
                         })}
@@ -169,11 +168,10 @@ export const Filter: FunctionComponent = () => {
                             <FilterItem
                                 icon={<StarIcon />}
                                 selected={favoritesFilter}
-                                {...(!favoritesFilter && {
-                                    "pirsch-event": "Enable filter",
-                                    "pirsch-meta-filter": "Favorites"
-                                })}
-                                onClick={() => setFavoritesFilter(!favoritesFilter)}
+                                onClick={() => {
+                                    setFavoritesFilter(!favoritesFilter)
+                                    !favoritesFilter && track('Enable Filter', { Filter: 'Favorites' })
+                                }}
                             />
                         }
                         <FilterItem icon={<SearchIcon />} selected={searchActive} onClick={() => toggleSearchActive()} />
@@ -199,6 +197,7 @@ export const Filter: FunctionComponent = () => {
                         onSet={country => {
                             setCountryFilter(country);
                             setCountryFilterOpen(false);
+                            track('Enable Filter', { Filter: 'Country', Country: country || 'All' })
                         }}
                     />
                 </OutsideClick>

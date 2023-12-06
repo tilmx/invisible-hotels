@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import hotelsPreview from '../data/hotels-preview.json';
 import { FunctionComponent, useEffect } from 'react';
-import { checkIfFavoritesStored } from '../utils';
+import { checkIfFavoritesStored, track } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
@@ -91,6 +91,7 @@ export const HotelList: FunctionComponent = () => {
                             onStarClick={e => {
                                 e.preventDefault();
                                 isFavorite ? removeFavorite(hotel.id) : addFavorite(hotel.id);
+                                track(isFavorite ? 'Remove from Favorites' : 'Add to Favorites', { Hotel: hotel.id, Page: 'Hotel List' });
                             }}
                         />
                     )

@@ -11,7 +11,7 @@ interface FilterProps {
     onClick?: MouseEventHandler;
 }
 
-const StyledTag = styled(Tag, { shouldForwardProp: () => true }) <{ selected?: boolean; color?: string; }>`
+const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`
     cursor: pointer;
 
     ${props => props.selected && `

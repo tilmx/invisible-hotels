@@ -208,9 +208,6 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                                 data-stararea
                                 starred={props.starred}
                                 onClick={props.onStarClick}
-                                pirsch-event={props.starred ? "Remove from favorites" : "Add to favorite"}
-                                pirsch-meta-hotel={props.hotel.id}
-                                pirsch-meta-page="List"
                             />
                         }
                     </StyledTitle>

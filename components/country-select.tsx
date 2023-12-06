@@ -153,9 +153,6 @@ const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean
         <StyledOption
             onClick={props.onClick}
             selected={props.selected}
-            pirsch-event="Enable filter"
-            pirsch-meta-filter="Country"
-            pirsch-meta-country={props.label}
         >
             <Text size={TextSize.Regular}>
                 {getCountryFlag(props.label)}
