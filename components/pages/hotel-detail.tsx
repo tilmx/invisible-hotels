@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { Wrapper } from '../wrapper';
 import { Menu } from '../menu';
-import { checkIfFavoritesStored, getHotelUrl, getVacationTypeColor, getVacationTypeDescription, getVacationTypeIcon } from '../../utils';
+import { checkIfFavoritesStored, getHotelUrl, getVacationTypeColor, getVacationTypeDescription, getVacationTypeIcon, track } from '../../utils';
 import { Footer } from '../footer';
 import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
@@ -429,12 +429,17 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
 
                     <StyledStickyWrapper>
                         <StyledActionBar>
-                            <StyledFavoriteArea pirsch-event={isFavorite ? "Remove from favorites" : "Add to favorite"} pirsch-meta-hotel={props.hotel.id} pirsch-meta-page="Hotel Detail" active={isFavorite} onClick={() => isFavorite ? removeFavorite(props.hotel.id) : addFavorite(props.hotel.id)}>
+                            <StyledFavoriteArea
+                                pirsch-event={isFavorite ? "Remove from favorites" : "Add to favorite"}
+                                pirsch-meta-hotel={props.hotel.id}
+                                pirsch-meta-page="Hotel Detail"
+                                active={isFavorite}
+                                onClick={() => isFavorite ? removeFavorite(props.hotel.id) : addFavorite(props.hotel.id)}>
                                 <StarIcon />
                                 <Text>Favorite</Text>
                             </StyledFavoriteArea>
                             {link &&
-                                <StyledOutLink href={link} target='_blank'>
+                                <StyledOutLink href={link} target='_blank' onClick={() => track('Outbound Link Click', { Hotel: props.hotel.id })}>
                                     <Button iconRight={<ExternalLinkIcon />}>Open {props.hotel.links.hotel ? `${props.hotel.housingType} Website` : 'on Booking.com'}</Button>
                                 </StyledOutLink>
                             }

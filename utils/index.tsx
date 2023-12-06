@@ -104,3 +104,7 @@ export function getCountryFlag(country: string) {
             return "🇺🇸"
     }
 }
+
+export function track(eventName: string, meta?: { [key: string]: string }) {
+    (window as any).pirsch?.(eventName, { meta });
+}

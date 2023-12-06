@@ -6,10 +6,6 @@ import { siteTitle } from '../data/site';
 import Script from 'next/script';
 
 function App({ Component, pageProps }: AppProps) {
-    const trackingEnabled = process.env.NODE_ENV === 'production' &&
-        (!process.env.NEXT_PUBLIC_VERCEL_ENV ||
-            process.env.NEXT_PUBLIC_VERCEL_ENV === 'production');
-
     return (
         <Theme>
             <Head>
@@ -21,15 +17,13 @@ function App({ Component, pageProps }: AppProps) {
                 <meta property="og:site_name" content={siteTitle} />
                 <meta property="og:type" content="website" />
             </Head>
-            {trackingEnabled &&
-                <Script
-                    defer
-                    type="text/javascript"
-                    src="https://api.pirsch.io/pirsch-extended.js"
-                    id="pirschextendedjs"
-                    data-code="lTp1KC9kQJ72klGFeYBab8pf59w9VPaW"
-                />
-            }
+            <Script
+                defer
+                type="text/javascript"
+                src="https://api.pirsch.io/pirsch-extended.js"
+                id="pirschextendedjs"
+                data-code="lTp1KC9kQJ72klGFeYBab8pf59w9VPaW"
+            />
             <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
             <Component {...pageProps} />
         </Theme>
