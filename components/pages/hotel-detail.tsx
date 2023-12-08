@@ -350,7 +350,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     <Menu />
                     <StyledIntro>
                         <StyledIntroTitle>
-                            <Text size={TextSize.Huge} bold center>{props.hotel.name}</Text>
+                            <Text as="h1" size={TextSize.Huge} bold center>{props.hotel.name}</Text>
                             <Text size={TextSize.SuperLarge} center serif>{props.hotel.city}, {props.hotel.country}</Text>
                         </StyledIntroTitle>
                         <Flex justifyContent={JustifyContent.Center} gap={Size.XXS}>
@@ -392,7 +392,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     </StyledImageContainer>
                     {props.hotel.description &&
                         <StyledDescriptionContainer>
-                            <StyledDescriptionLabel center>About the {props.hotel.housingType.toLowerCase()}</StyledDescriptionLabel>
+                            <StyledDescriptionLabel as="h3" center>About the {props.hotel.housingType.toLowerCase()}</StyledDescriptionLabel>
                             <Text serif center size={TextSize.ExtraLarge}>
                                 {props.hotel.description}
                             </Text>

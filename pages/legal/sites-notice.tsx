@@ -37,7 +37,7 @@ export default function SitesNotice() {
             <Header>
                 <StyledWrapper>
                     <StyledIntro>
-                        <Text size={TextSize.ExtraLarge} serif>
+                        <Text as="h1" size={TextSize.ExtraLarge} serif>
                             Site’s notice
                         </Text>
                     </StyledIntro>

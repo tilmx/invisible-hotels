@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
                 <Menu />
             </Wrapper>
             <StyledWrapper>
-                <Text size={TextSize.ExtraLarge} serif>
+                <Text size={TextSize.ExtraLarge} serif as="h1">
                     Data Protection Declaration
                 </Text>
                 <TableText title="General Information">

@@ -201,7 +201,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
         <StyledCard small={props.small} href={getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })} color={getVacationTypeColor(props.hotel.vacationType)} className={props.className}>
             <StyledHeader>
                 <StyledContent image={typeof props.hotel.image !== 'undefined'}>
-                    <StyledTitle size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
+                    <StyledTitle as="h3" size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
                         {props.hotel.name}
                         {props.onStarClick &&
                             <StyledStarArea

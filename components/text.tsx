@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Breakpoint } from './tokens/breakpoint';
 import { DM_Sans, EB_Garamond } from "next/font/google"
 import { CSSProperties, FunctionComponent, MouseEventHandler, ReactNode } from 'react';
+import isPropValid from '@emotion/is-prop-valid'
 
 interface TextProps {
     size?: TextSize;
@@ -13,6 +14,7 @@ interface TextProps {
     bold?: boolean;
     className?: string;
     onClick?: MouseEventHandler;
+    as?: React.ElementType;
 }
 
 export enum TextSize {
@@ -28,7 +30,7 @@ export enum TextSize {
 const FontSerif = EB_Garamond({ weight: '400', style: ['normal', 'italic'], subsets: ['latin'] })
 const FontSans = DM_Sans({ weight: ['600', '400'], subsets: ['latin'] })
 
-const StyledText = styled.div<TextProps>`
+const StyledText = styled('div', { shouldForwardProp: prop => isPropValid(prop) && prop !== 'size' }) <TextProps>`
     ${props => props.serif ? FontSerif.style : FontSans.style}
     line-height: 1.4;
     ${props => props.center && 'text-align: center;'}
@@ -118,7 +120,7 @@ const StyledText = styled.div<TextProps>`
 
 export const Text: FunctionComponent<TextProps> = props => {
     return (
-        <StyledText size={props.size || TextSize.Regular} color={props.color} center={props.center} style={props.style} serif={props.serif} bold={props.bold} className={props.className} onClick={props.onClick}>
+        <StyledText as={props.as} size={props.size || TextSize.Regular} color={props.color} center={props.center} style={props.style} serif={props.serif} bold={props.bold} className={props.className} onClick={props.onClick}>
             {props.children}
         </StyledText>
     );

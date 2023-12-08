@@ -41,7 +41,7 @@ export const SimilarHotels: FunctionComponent<{ hotels: NearbyHotelPreview[]; ac
     return (
         <StyledSimilarHotelSection>
             <StyledSimilarIntro>
-                <Text size={TextSize.SuperLarge} bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
+                <Text size={TextSize.SuperLarge} as="h2" bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
                 <Text color={Color.Text60} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
             </StyledSimilarIntro>
             <StyledHotelListWrapper>
