@@ -5,7 +5,7 @@ import fs from 'fs';
 import http from 'https';
 import { getDistance } from 'geolib';
 
-dotenv.config({ path: path.resolve(process.cwd(), '.env') })
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
 
 Airtable.configure({
     apiKey: process.env.AIRTABLE_TOKEN,
