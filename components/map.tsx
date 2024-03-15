@@ -47,7 +47,7 @@ function loadMap(token: string): Promise<void> {
             mapkit.init({ authorizationCallback: (done) => done(token) });
             resolve();
         }, { once: true });
-        scriptTag.src = 'https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js';
+        scriptTag.src = 'https://cdn.apple-mapkit.com/mk/5.45.x/mapkit.js';
         scriptTag.crossOrigin = '';
         scriptTag.dataset.libraries = 'map, annotations'
         document.head.appendChild(scriptTag);
