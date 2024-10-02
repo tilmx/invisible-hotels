@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
                 <meta property="og:type" content="website" />
             </Head>
             <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
-            <PlausibleProvider domain="invisiblehotels.com">
+            <PlausibleProvider domain="invisiblehotels.com" trackOutboundLinks>
                 <Component {...pageProps} />
             </PlausibleProvider>
         </Theme>
