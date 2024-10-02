@@ -102,6 +102,8 @@ export function getCountryFlag(country: string) {
             return "🇬🇧"
         case "United States":
             return "🇺🇸"
+        case "France":
+            return "🇫🇷"
     }
 }
 
