@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Color, Theme } from '../components/tokens/colors';
 import { siteTitle } from '../data/site';
-import Script from 'next/script';
+import PlausibleProvider from 'next-plausible'
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -17,15 +17,10 @@ function App({ Component, pageProps }: AppProps) {
                 <meta property="og:site_name" content={siteTitle} />
                 <meta property="og:type" content="website" />
             </Head>
-            <Script
-                defer
-                type="text/javascript"
-                src="https://api.pirsch.io/pirsch-extended.js"
-                id="pirschextendedjs"
-                data-code="lTp1KC9kQJ72klGFeYBab8pf59w9VPaW"
-            />
             <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
-            <Component {...pageProps} />
+            <PlausibleProvider domain="invisiblehotels.com">
+                <Component {...pageProps} />
+            </PlausibleProvider>
         </Theme>
     );
 }
