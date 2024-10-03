@@ -2,51 +2,14 @@ import Head from 'next/head'
 import { useState } from 'react';
 import { Menu } from '../components/menu';
 import { Wrapper } from '../components/wrapper';
-import styled from '@emotion/styled';
 import hotelsPreview from '../data/hotels-preview.json';
 import { getVacationTypeColor } from '../utils';
 import { HotelCard } from '../components/hotel-card';
 import { Footer } from '../components/footer';
-import { Breakpoint } from '../components/tokens/breakpoint';
 import { Color } from '../components/tokens/colors';
 import { Map as MapComponent } from '../components/map';
 import { siteTitle } from '../data/site';
-
-const StyledMapElement = styled(MapComponent)`
-    height: 100vh;
-    width: 100vw;
-`;
-
-const StyledMenuContainer = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-`;
-
-const StyledHotelCardContainer = styled.div`
-    position: absolute;
-    left: 0;
-    bottom: var(--size-l);
-    width: 100%;
-    pointer-events: none;
-    box-sizing: border-box;
-    padding: 0 var(--size-s);
-
-    ${Breakpoint.Mobile} {
-        bottom: var(--size-s);
-    }
-`;
-
-const StyledHotelCard = styled(HotelCard)`
-    pointer-events: auto;
-    max-width: 480px;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
-    box-shadow: 0 var(--size-xxs) var(--size-m) var(--color-shadow);
-`;
+import styles from './map.module.scss';
 
 export default function Map() {
     const [selectedHotel, setSelectedHotel] = useState<string | undefined>();
@@ -58,13 +21,14 @@ export default function Map() {
                 <title>{'Map — ' + siteTitle}</title>
                 <meta name="theme-color" content={Color.Background} />
             </Head>
-            <StyledMenuContainer>
+            <div className={styles.menuContainer}>
                 <Wrapper>
                     <Menu flying />
                 </Wrapper>
-            </StyledMenuContainer>
+            </div>
 
-            <StyledMapElement
+            <MapComponent
+                className={styles.map}
                 annotations={hotelsPreview.filter(hotel => hotel.coordinates)?.map(hotel => {
                     return {
                         id: hotel.id,
@@ -78,12 +42,13 @@ export default function Map() {
             />
 
             {selectedHotelContent &&
-                <StyledHotelCardContainer>
-                    <StyledHotelCard
+                <div className={styles.hotelCardContainer}>
+                    <HotelCard
+                        className={styles.hotelCard}
                         hotel={selectedHotelContent}
                         small
                     />
-                </StyledHotelCardContainer>
+                </div>
             }
             <Footer reducedPadding />
         </>
