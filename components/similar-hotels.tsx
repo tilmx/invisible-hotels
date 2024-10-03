@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import styled from "@emotion/styled";
 import { Wrapper } from "./wrapper";
 import { HotelListWrapper } from "./hotel-list-wrapper";
 import { Text, TextSize } from "./text";
@@ -10,40 +9,21 @@ import { Color } from "./tokens/colors";
 import { PlaceholderCard } from "./placeholder-card";
 import { AccentStyle, AccentedText } from "./accented-text";
 import { NearbyHotelPreview } from "../types";
-
-const StyledSimilarHotelSection = styled.div`
-    margin: var(--size-xxxl) 0;
-`;
-
-const StyledSimilarIntro = styled(Wrapper)`
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-xs);
-`;
-
-const StyledHotelListWrapper = styled(HotelListWrapper)`
-    margin: var(--size-xxl) 0;
-`;
-
-const StyledSimilarButtonWrapper = styled(Wrapper)`
-    display: flex;
-    justify-content: center;
-`;
+import styles from './similar-hotels.module.scss';
 
 export const SimilarHotels: FunctionComponent<{ hotels: NearbyHotelPreview[]; accentColor?: string; }> = props => {
-
     const similarHotelsPreview = props.hotels.slice(0, 3);
     const [similarHotelsExpanded, setSimilarHotelsExpanded] = useState(false);
 
     const plural = props.hotels.length !== 1;
 
     return (
-        <StyledSimilarHotelSection>
-            <StyledSimilarIntro>
+        <div className={styles.similar}>
+            <Wrapper className={styles.intro}>
                 <Text size={TextSize.SuperLarge} as="h2" bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
                 <Text color={Color.Text60} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
-            </StyledSimilarIntro>
-            <StyledHotelListWrapper>
+            </Wrapper>
+            <HotelListWrapper className={styles.list}>
                 {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) =>
                     <HotelCard
                         key={i}
@@ -53,12 +33,12 @@ export const SimilarHotels: FunctionComponent<{ hotels: NearbyHotelPreview[]; ac
                 {props.hotels.length === 0 &&
                     <PlaceholderCard emptyState />
                 }
-            </StyledHotelListWrapper>
-            <StyledSimilarButtonWrapper>
+            </HotelListWrapper>
+            <Wrapper className={styles.buttonWrapper}>
                 {(!similarHotelsExpanded && props.hotels.length > 3) &&
                     <Button iconLeft={<Maximize2Icon />} onClick={() => setSimilarHotelsExpanded(true)}>Show more nearby hotels</Button>
                 }
-            </StyledSimilarButtonWrapper>
-        </StyledSimilarHotelSection>
+            </Wrapper>
+        </div>
     )
 }
