@@ -1,0 +1,48 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.button {
+    background: var(--color-text);
+    color: var(--color-background);
+    padding: var(--size-s) var(--size-m);
+    border-radius: var(--size-l);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--size-xxs);
+
+    &.secondary {
+        background: var(--color-text10);
+        color: var(--color-text60);
+    }
+
+    &.small {
+        padding: var(--size-xxs) var(--size-s)
+    }
+
+    &:active {
+        background: var(--color-text80);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--color-text80);
+            color: var(--color-background);
+
+            &.secondary {
+                background-color: var(--color-text20);
+                color: var(--color-text);
+            }
+        }
+    }
+
+    svg {
+        height: 20px;
+        width: auto;
+
+        @include breakpoint($breakpoint-mobile) {
+            height: unset;
+            width: unset;
+        }
+    }
+}
