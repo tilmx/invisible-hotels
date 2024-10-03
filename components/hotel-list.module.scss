@@ -1,0 +1,31 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.hotelList {
+    margin-top: var(--size-xl);
+    padding-top: var(--size-xl);
+
+    @include breakpoint($breakpoint-mobile) {
+        margin-top: var(--size-xxl);
+    }
+
+    @include breakpoint($breakpoint-tablet) {
+        margin-top: var(--size-xl);
+    }
+
+    .label {
+        z-index: 11;
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        margin-bottom: var(--size-xs);
+    }
+
+    .hotelListWrapper {
+        margin-top: var(--size-xl);
+        grid-template-columns: 1fr;
+
+        @include breakpoint($breakpoint-tablet-small) {
+            margin-top: var(--size-xxxl);
+            grid-template-columns: unset;
+        }
+    }
+}
