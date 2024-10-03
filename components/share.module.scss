@@ -1,0 +1,14 @@
+.share {
+    max-width: 480px;
+    margin: 0 auto;
+    padding-top: var(--size-xxxxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-s);
+
+    .shareContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--size-m);
+    }
+}
