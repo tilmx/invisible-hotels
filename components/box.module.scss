@@ -1,0 +1,16 @@
+.box {
+    padding: var(--size-l);
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: var(--size-m);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-s);
+
+    >svg {
+        display: block;
+        width: var(--size-l);
+        height: var(--size-l);
+    }
+}
