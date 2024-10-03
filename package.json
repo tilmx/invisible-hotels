@@ -11,8 +11,6 @@
     "fetch-content": "node ./data/fetch-content.mjs"
   },
   "dependencies": {
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
     "clsx": "^2.1.1",
     "lodash.debounce": "^4",
     "lucide-react": "^0",

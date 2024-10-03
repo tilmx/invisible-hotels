@@ -1,6 +1,5 @@
 {
     "recommendations": [
-        "styled-components.vscode-styled-components",
         "github.vscode-github-actions"
     ]
 }
