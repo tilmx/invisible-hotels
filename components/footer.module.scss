@@ -1,0 +1,89 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.footer {
+    margin-top: var(--size-l);
+    padding-top: var(--size-xl);
+    padding-bottom: var(--size-l);
+
+    @include breakpoint($breakpoint-mobile) {
+        padding-bottom: var(--size-xxl);
+    }
+
+    &.reducedPadding {
+        margin-top: var(--size-xxxl);
+
+        @include breakpoint($breakpoint-mobile) {
+            margin-top: var(--size-xxxxl);
+        }
+
+        @include breakpoint($breakpoint-tablet) {
+            margin-top: var(--size-xxxxxl);
+        }
+    }
+
+    .content {
+        display: flex;
+        gap: var(--size-s);
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: var(--size-xl);
+        border-top: 1px solid var(--color-text20);
+
+        @include breakpoint($breakpoint-mobile) {
+            gap: var(--size-l);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--size-s);
+
+            .github {
+                display: flex;
+                align-items: center;
+                gap: var(--size-xxs);
+
+                svg {
+                    height: 20px;
+                    width: auto;
+                }
+
+                @include breakpoint($breakpoint-mobile) {
+                    svg {
+                        height: 24px;
+                    }
+                }
+            }
+        }
+
+        .madeBy {
+            display: flex;
+            gap: var(--size-s);
+            align-items: center;
+            padding: var(--size-s);
+            border-radius: var(--size-s);
+            box-shadow: inset 0 0 0 1px var(--color-text20);
+            align-self: flex-start;
+            color: unset;
+            text-decoration: unset;
+
+            svg {
+                height: var(--size-l);
+                width: var(--size-l);
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    background: var(--color-text20);
+                }
+            }
+
+            .label {
+                display: flex;
+                flex-direction: column;
+                gap: var(--size-xxxs);
+            }
+        }
+    }
+}
