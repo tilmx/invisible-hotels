@@ -1,0 +1,26 @@
+.unstyledLink {
+    color: unset;
+    text-decoration: unset;
+}
+
+.styledLink {
+    color: unset;
+    text-decoration: unset;
+    opacity: .6;
+    cursor: pointer;
+    padding: var(--size-xxs) var(--size-s);
+    margin: calc(-1 * var(--size-xxs)) calc(-1 * var(--size-s));
+    border-radius: var(--size-m);
+
+    @media (hover: hover) {
+        &:hover {
+            background: var(--color-text10);
+            opacity: .8;
+        }
+    }
+
+    &:active {
+        background: var(--color-text20);
+        opacity: .8;
+    }
+}
