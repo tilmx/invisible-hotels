@@ -1,21 +1,20 @@
 import styled from '@emotion/styled'
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 const StyledWrapper = styled.div<{ wide?: boolean; }>`
-    padding: 0 ${Size.XXL};
+    padding: 0 var(--size-xxl);
     margin: 0 auto;
     max-width: ${props => props.wide ? '1280px' : '1080px'};
 
     ${Breakpoint.Tablet} {
-        padding-left: ${Size.L};
-        padding-right: ${Size.L};
+        padding-left: var(--size-l);
+        padding-right: var(--size-l);
     }
 
     ${Breakpoint.Mobile} {
-        padding-left: ${Size.M};
-        padding-right: ${Size.M};
+        padding-left: var(--size-m);
+        padding-right: var(--size-m);
     }
 `
 

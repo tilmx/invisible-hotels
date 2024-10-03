@@ -1,25 +1,24 @@
 import styled from '@emotion/styled'
 import { Text } from './text';
 import { FunctionComponent, MouseEventHandler, ReactNode } from 'react';
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 
 const StyledTag = styled(Text) <{ hasIcon?: boolean; hasLabel?: boolean; }>`
 	border: 2px solid currentColor;
-	padding: ${Size.XXS} ${Size.S};
-	${props => props.hasIcon && `padding-left: ${Size.XS};`}
-	${props => !props.hasLabel && `padding-right: ${Size.XS};`}
+	padding: var(--size-xxs) var(--size-s);
+	${props => props.hasIcon && `padding-left: var(--size-xs);`}
+	${props => !props.hasLabel && `padding-right: var(--size-xs);`}
 	border-radius: 24px;
 	display: flex;
-	gap: ${Size.XXS};
+	gap: var(--size-xxs);
 	align-items: center;
 
 	${Breakpoint.Mobile} {
-		padding: ${Size.Special6} ${Size.XS};
-		${props => props.hasIcon && `padding-left: ${Size.XXS};`}
-		${props => !props.hasLabel && `padding-right: ${Size.XXS};`}
+		padding: var(--size-special6) var(--size-xs);
+		${props => props.hasIcon && `padding-left: var(--size-xxs);`}
+		${props => !props.hasLabel && `padding-right: var(--size-xxs);`}
 		border-width: 1.5px;
-		gap: ${Size.XXXS};
+		gap: var(--size-xxxs);
 		svg, img {
 			width: 20px;
 			height: 20px;

@@ -6,7 +6,6 @@ import { PlaceholderCard } from './placeholder-card';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
 import { HotelCard } from './hotel-card';
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { Color } from './tokens/colors';
 import { useFilterStore } from '../store/filter';
@@ -15,16 +14,16 @@ import { Filter } from './filter';
 import { HotelListWrapper } from './hotel-list-wrapper';
 
 const StyledContainer = styled.div`
-    margin-top: ${Size.XL};
-    padding-top: ${Size.XL};
+    margin-top: var(--size-xl);
+    padding-top: var(--size-xl);
 
     ${Breakpoint.Tablet} {
-        margin-top: ${Size.XXL};
+        margin-top: var(--size-xxl);
         grid-template-columns: 1fr;
     }
 
     ${Breakpoint.Mobile} {
-        margin-top: ${Size.XL};
+        margin-top: var(--size-xl);
     }
 `;
 
@@ -32,15 +31,15 @@ const StyledLabel = styled(Text)`
     z-index: 11;
     position: relative;
     transform: translate3d(0,0,0); 
-    margin-bottom: ${Size.XS};
+    margin-bottom: var(--size-xs);
 `;
 
 const StyledHotelListWrapper = styled(HotelListWrapper)`
-    margin-top: ${Size.XXXL};
+    margin-top: var(--size-xxxl);
 
     ${Breakpoint.TabletSmall} {
         grid-template-columns: 1fr;
-        margin-top: ${Size.XL};
+        margin-top: var(--size-xl);
     }
 `;
 

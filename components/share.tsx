@@ -3,7 +3,6 @@ import { Button } from "./button";
 import { Flex, JustifyContent } from "./utils/flex";
 import { ShareIcon } from "lucide-react";
 import styled from "@emotion/styled";
-import { Size } from "./tokens/size";
 import { siteDescription, siteTitle } from "../data/site";
 import { Text, TextSize } from "./text";
 import { Color } from "./tokens/colors";
@@ -13,14 +12,14 @@ import { Wrapper } from "./wrapper";
 const StyledWrapper = styled(Wrapper)`
     max-width: 480px;
     margin: 0 auto;
-    padding-top: ${Size.XXXXL};
+    padding-top: var(--size-xxxxl);
     display: flex;
     flex-direction: column;
-    gap: ${Size.S};
+    gap: var(--size-s);
 `;
 
 const StyledFlex = styled(Flex)`
-    margin-top: ${Size.M};
+    margin-top: var(--size-m);
 `;
 
 export const Share: FunctionComponent = () => {

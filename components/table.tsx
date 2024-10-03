@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import { FunctionComponent, ReactNode } from 'react';
 import { Text, TextSize } from './text';
 import { Check, HelpCircle, X } from 'lucide-react';
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
 
@@ -21,7 +20,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledRow = styled.div`
-    padding: ${Size.L} 0 0;
+    padding: var(--size-l) 0 0;
     border-bottom: 2px solid transparent;
     position: relative;
 
@@ -29,7 +28,7 @@ const StyledRow = styled.div`
         content: '';
         display: block;
         height: 2px;
-        margin-top: ${Size.L};
+        margin-top: var(--size-l);
         width: 100%;
         background: currentColor;
         opacity: .1;
@@ -37,7 +36,7 @@ const StyledRow = styled.div`
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.M} 0;
+        padding: var(--size-m) 0;
     }
 
     :last-of-type {
@@ -50,7 +49,7 @@ const StyledRow = styled.div`
 `;
 
 const StyledIconWrapper = styled.div<{ greyedOut?: boolean }>`
-    padding: ${Size.XXS};
+    padding: var(--size-xxs);
     position: relative;
 
     :after {

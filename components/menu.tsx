@@ -4,48 +4,47 @@ import { AlignItems, Flex } from "./utils/flex";
 import { Link } from "./utils/link";
 import { Text, TextSize } from "./text";
 import { useRouter } from "next/router";
-import { Size } from "./tokens/size";
 import { Breakpoint } from "./tokens/breakpoint";
 import { Color } from "./tokens/colors";
 
 const StyledMenuContainer = styled.div`
-    padding-top: ${Size.M};
+    padding-top: var(--size-m);
 
     ${Breakpoint.TabletSmall} {
-        padding-top: ${Size.XXXXS};
+        padding-top: var(--size-xxxxs);
     }
 `;
 
 const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
-    padding: ${Size.M};
-    padding-right: ${Size.L};
-    margin: 0 calc(-1 * ${Size.M});
+    padding: var(--size-m);
+    padding-right: var(--size-l);
+    margin: 0 calc(-1 * var(--size-m));
     align-items: center;
-    gap: ${Size.L};
+    gap: var(--size-l);
 
     ${props => !props.flying && `
-        padding-bottom: ${Size.XXXL};
+        padding-bottom: var(--size-xxxl);
     `}
 
     ${props => props.flying && `
-        backdrop-filter: blur(${Size.XS});
+        backdrop-filter: blur(var(--size-xs));
         background: ${Color.Background80};
-        border-radius: ${Size.XL};
-        box-shadow: 0 0 ${Size.L} ${Color.Shadow};
+        border-radius: var(--size-xl);
+        box-shadow: 0 0 var(--size-l) ${Color.Shadow};
     `}
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.XS} ${Size.S};
-        margin: ${Size.XS} calc(-1 * ${Size.S}) 0;
+        padding: var(--size-xs) var(--size-s);
+        margin: var(--size-xs) calc(-1 * var(--size-s)) 0;
         ${props => !props.flying && `
-            padding-bottom: ${Size.XXL};
+            padding-bottom: var(--size-xxl);
         `}
     }
 `;
 
 const StyledDotLink = styled(Link)`
-    padding: ${Size.XXS};
-    margin: calc(-1 * ${Size.XXS});
+    padding: var(--size-xxs);
+    margin: calc(-1 * var(--size-xxs));
     margin-right: auto;
     border-radius: 50%;
     opacity: 1;
@@ -62,8 +61,8 @@ const StyledDotLink = styled(Link)`
 `;
 
 const StyledDot = styled.svg`
-    height: ${Size.L};
-    width: ${Size.L};
+    height: var(--size-l);
+    width: var(--size-l);
     display: block;
 `;
 

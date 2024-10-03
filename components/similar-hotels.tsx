@@ -1,6 +1,5 @@
 import { FunctionComponent, useState } from "react";
 import styled from "@emotion/styled";
-import { Size } from "./tokens/size";
 import { Wrapper } from "./wrapper";
 import { HotelListWrapper } from "./hotel-list-wrapper";
 import { Text, TextSize } from "./text";
@@ -13,17 +12,17 @@ import { AccentStyle, AccentedText } from "./accented-text";
 import { NearbyHotelPreview } from "../types";
 
 const StyledSimilarHotelSection = styled.div`
-    margin: ${Size.XXXL} 0;
+    margin: var(--size-xxxl) 0;
 `;
 
 const StyledSimilarIntro = styled(Wrapper)`
     display: flex;
     flex-direction: column;
-    gap: ${Size.XS};
+    gap: var(--size-xs);
 `;
 
 const StyledHotelListWrapper = styled(HotelListWrapper)`
-    margin: ${Size.XXL} 0;
+    margin: var(--size-xxl) 0;
 `;
 
 const StyledSimilarButtonWrapper = styled(Wrapper)`

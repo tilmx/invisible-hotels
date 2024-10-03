@@ -3,18 +3,17 @@ import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import { Text } from "./text";
 import { Color } from "./tokens/colors";
 import { Breakpoint } from "./tokens/breakpoint";
-import { Size } from "./tokens/size";
 
 const StyledButton = styled.div<{ secondary?: boolean; small?: boolean; }>`
     background: ${props => props.secondary ? Color.Text10 : Color.Text};
     color: ${props => props.secondary ? Color.Text60 : Color.Background};
-    padding: ${props => props.small ? `${Size.XXS} ${Size.S}` : `${Size.S} ${Size.M}`};
-    border-radius: ${Size.L};
+    padding: ${props => props.small ? `var(--size-xxs) var(--size-s)` : `var(--size-s) var(--size-m)`};
+    border-radius: var(--size-l);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-	gap: ${Size.XXS};
+	gap: var(--size-xxs);
 
     :active {
         background: ${Color.Text80};

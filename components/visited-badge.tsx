@@ -1,13 +1,12 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react';
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 
 const StyledContainer = styled.div<{ small?: boolean; superSmall?: boolean; }>`
     display: inline-block;
     position: relative;
-    width: calc(${Size.XXXL} * 2);
-    height: calc(${Size.XXXL} * 2);
+    width: calc(var(--size-xxxl) * 2);
+    height: calc(var(--size-xxxl) * 2);
 
     img {
         width: 100%;
@@ -25,29 +24,29 @@ const StyledContainer = styled.div<{ small?: boolean; superSmall?: boolean; }>`
     }
 
     ${props => props.small && `
-        width: calc(${Size.XXL} * 2);
-        height: calc(${Size.XXL} * 2);
+        width: calc(var(--size-xxl) * 2);
+        height: calc(var(--size-xxl) * 2);
     `}
 
     ${props => !props.superSmall && `
         ${Breakpoint.TabletSmall} {
-            width: calc(${Size.XXL} * 2);
-            height: calc(${Size.XXL} * 2);
+            width: calc(var(--size-xxl) * 2);
+            height: calc(var(--size-xxl) * 2);
         }
         
         ${Breakpoint.Mobile} {
-            width: ${Size.XXXL};
-            height: ${Size.XXXL};
+            width: var(--size-xxxl);
+            height: var(--size-xxxl);
         }
     `}
 
     ${props => props.superSmall && `
-        width: ${Size.XXL};
-        height: ${Size.XXL};
+        width: var(--size-xxl);
+        height: var(--size-xxl);
 
         ${Breakpoint.Mobile} {
-            width: calc(${Size.XL} + ${Size.XS});
-            height: calc(${Size.XL} + ${Size.XS});
+            width: calc(var(--size-xl) + var(--size-xs));
+            height: calc(var(--size-xl) + var(--size-xs));
         }
     `}
 `;

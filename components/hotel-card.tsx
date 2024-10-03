@@ -6,7 +6,6 @@ import { Tag } from './tag';
 import Image from 'next-image-export-optimizer';
 import { StarIcon } from 'lucide-react';
 import { Color } from './tokens/colors';
-import { Size } from './tokens/size';
 import { Breakpoint } from './tokens/breakpoint';
 import { UnstyledLink } from './utils/link';
 import { VisitedBadge } from './visited-badge';
@@ -24,19 +23,19 @@ const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
     color: ${Color.TextAlways}; 
     text-decoration: none;
     background: ${props => props.color};
-    padding: ${Size.XXS};
-    border-radius: ${Size.M};
+    padding: var(--size-xxs);
+    border-radius: var(--size-m);
     ${props => !props.small && 'min-height: 400px;'}
     display: flex;
     flex-direction: column;
-    gap: ${Size.XXXS};
+    gap: var(--size-xxxs);
     transition: transform .2s, box-shadow .2s;
     transform: translate3d(0,0,0);
 
     @media (hover: hover) {
         :hover {
             transform: scale(1.03);
-            box-shadow: 0 ${Size.S} ${Size.XXXL} ${Color.Shadow}, 0 ${Size.XXXS} ${Size.S} ${Color.Shadow};
+            box-shadow: 0 var(--size-s) var(--size-xxxl) ${Color.Shadow}, 0 var(--size-xxxs) var(--size-s) ${Color.Shadow};
             [data-stararea] {
                 visibility: visible;
             } 
@@ -55,7 +54,7 @@ const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
             background: ${Color.TextAlways};
             opacity: .1;
             pointer-events: none;
-            border-radius: ${Size.M};
+            border-radius: var(--size-m);
         }
     }
 
@@ -70,34 +69,34 @@ const StyledHeader = styled.div`
 `;
 
 const StyledContent = styled.div<{ image: boolean }>`
-    border-radius: ${Size.S};
-    padding: ${Size.XS} ${Size.S};
+    border-radius: var(--size-s);
+    padding: var(--size-xs) var(--size-s);
     color: ${props => props.image && Color.BackgroundAlways};
     height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
     z-index: 1;
     position: relative;
     word-break: break-word;
 
     ${Breakpoint.Mobile} {
-        gap: ${Size.XXXS};
+        gap: var(--size-xxxs);
     }
 `;
 
 const StyledDetails = styled.div<{ visited?: boolean; }>`
     display: flex;
     align-items: flex-end;
-    padding: ${Size.XS} ${Size.S};
-    gap: ${Size.XXS};
+    padding: var(--size-xs) var(--size-s);
+    gap: var(--size-xxs);
 
     ${props => props.visited && `
-        margin-right: calc(${Size.XXL} + ${Size.XS});
+        margin-right: calc(var(--size-xxl) + var(--size-xs));
 
         ${Breakpoint.Mobile} {
-            margin-right: ${Size.XXL};
+            margin-right: var(--size-xxl);
 
         }
     `}
@@ -105,18 +104,18 @@ const StyledDetails = styled.div<{ visited?: boolean; }>`
 
 const StyledTagList = styled.div`
     display: flex;
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
     flex-wrap: wrap;
     align-items: stretch;
 `;
 
 const StyledVisitedBadge = styled(VisitedBadge)`
     position: absolute;
-    right: ${Size.S};
+    right: var(--size-s);
 `;
 
 const StyledImageContainer = styled.div`
-    border-radius: ${Size.S};
+    border-radius: var(--size-s);
     position: absolute;
     top: 0;
     left: 0;
@@ -153,9 +152,9 @@ const StyledTitle = styled(Text)`
 const StyledStarArea = styled(StarIcon, {
     shouldForwardProp: prop => prop !== 'starred'
 }) <{ starred?: boolean; }>`
-    padding: ${Size.XS};
-    margin-top:calc(-1 * ${Size.XXS});
-    margin-right: calc(-1 * ${Size.XS});
+    padding: var(--size-xs);
+    margin-top:calc(-1 * var(--size-xxs));
+    margin-right: calc(-1 * var(--size-xs));
     border-radius: 50%;
     display: block;
     flex-shrink: 0;
@@ -165,20 +164,20 @@ const StyledStarArea = styled(StarIcon, {
        visibility: ${props => props.starred ? 'visible' : 'hidden'};
        :hover {
             background: ${Color.Text10};
-            backdrop-filter: blur(${Size.XXS});
+            backdrop-filter: blur(var(--size-xxs));
         }
     }
     :active {
         background: ${Color.Text20};
-        backdrop-filter: blur(${Size.XXS});
+        backdrop-filter: blur(var(--size-xxs));
     }
 `;
 
 const StyledDistanceArea = styled(Text)`
-    padding: ${Size.XXXS} ${Size.XS};
-    margin-top: ${Size.XXS};
-    border-radius: ${Size.XS};
-    backdrop-filter: blur(${Size.XXS});
+    padding: var(--size-xxxs) var(--size-xs);
+    margin-top: var(--size-xxs);
+    border-radius: var(--size-xs);
+    backdrop-filter: blur(var(--size-xxs));
     position: relative;
     margin-right: auto;
 
@@ -192,7 +191,7 @@ const StyledDistanceArea = styled(Text)`
         height: 100%;
         background: currentColor;
         opacity: .15;
-        border-radius: ${Size.XS};
+        border-radius: var(--size-xs);
     }
 `;
 

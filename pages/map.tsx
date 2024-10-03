@@ -7,7 +7,6 @@ import hotelsPreview from '../data/hotels-preview.json';
 import { getVacationTypeColor } from '../utils';
 import { HotelCard } from '../components/hotel-card';
 import { Footer } from '../components/footer';
-import { Size } from '../components/tokens/size';
 import { Breakpoint } from '../components/tokens/breakpoint';
 import { Color } from '../components/tokens/colors';
 import { Map as MapComponent } from '../components/map';
@@ -29,14 +28,14 @@ const StyledMenuContainer = styled.div`
 const StyledHotelCardContainer = styled.div`
     position: absolute;
     left: 0;
-    bottom: ${Size.L};
+    bottom: var(--size-l);
     width: 100%;
     pointer-events: none;
     box-sizing: border-box;
-    padding: 0 ${Size.S};
+    padding: 0 var(--size-s);
 
     ${Breakpoint.Mobile} {
-        bottom: ${Size.S};
+        bottom: var(--size-s);
     }
 `;
 
@@ -46,7 +45,7 @@ const StyledHotelCard = styled(HotelCard)`
     width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
-    box-shadow: 0 ${Size.XXS} ${Size.M} ${Color.Shadow};
+    box-shadow: 0 var(--size-xxs) var(--size-m) ${Color.Shadow};
 `;
 
 export default function Map() {

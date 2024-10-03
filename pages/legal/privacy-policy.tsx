@@ -9,13 +9,12 @@ import { siteTitle } from '../../data/site';
 import { Color } from '../../components/tokens/colors';
 import { TableText } from '../../components/table-text';
 import { Menu } from '../../components/menu';
-import { Size } from '../../components/tokens/size';
 import { Wrapper } from '../../components/wrapper';
 
 const StyledWrapper = styled.div`
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 ${Size.M};
+    padding: 0 var(--size-m);
 `;
 
 export default function PrivacyPolicy() {

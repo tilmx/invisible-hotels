@@ -3,7 +3,6 @@ import { checkIfCookiesAllowed, setCookieOptIn } from "../utils";
 import styled from "@emotion/styled";
 import { Button } from "./button";
 import { Box } from "./box";
-import { Size } from "./tokens/size";
 
 interface MapProps {
     className?: string;
@@ -27,7 +26,7 @@ const StyledCookieContainer = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    padding: ${Size.M};
+    padding: var(--size-m);
     box-sizing: border-box;
 `;
 

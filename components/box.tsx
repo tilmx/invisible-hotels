@@ -3,22 +3,21 @@ import { Text, TextSize } from './text';
 import { FunctionComponent, ReactNode } from 'react';
 import { MapPinIcon } from 'lucide-react';
 import { Link } from './utils/link';
-import { Size } from './tokens/size';
 
 const StyledMessage = styled.div`
-    padding: ${Size.L};
+    padding: var(--size-l);
     max-width: 400px;
     margin: 0 auto;
-    border-radius: ${Size.M};
+    border-radius: var(--size-m);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: ${Size.S};
+    gap: var(--size-s);
 
     > svg {
         display: block;
-        width: ${Size.L};
-        height: ${Size.L};
+        width: var(--size-l);
+        height: var(--size-l);
     }
 `;
 

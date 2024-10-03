@@ -11,7 +11,6 @@ import { Tag } from '../tag';
 import { Table } from '../table';
 import { ExternalLinkIcon, ImageIcon, StarIcon } from 'lucide-react';
 import { VisitedBadge } from '../visited-badge';
-import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
 import { Breakpoint } from '../tokens/breakpoint';
 import { siteTitle } from '../../data/site';
@@ -22,6 +21,7 @@ import { Map } from '../map';
 import { RoomDistribution } from '../room-distribution';
 import { SimilarHotels } from '../similar-hotels';
 import { Hotel } from '../../types';
+import styles from './hotel-detail.module.scss';
 
 interface HotelDetailProps {
     hotel: Hotel;
@@ -30,25 +30,25 @@ interface HotelDetailProps {
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};
     color: ${Color.TextAlways};
-    padding-bottom: ${Size.XXXL};
+    padding-bottom: var(--size-xxxl);
 `;
 
 const StyledIntro = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${Size.M};
-    padding-bottom: ${Size.XXXL};
+    gap: var(--size-m);
+    padding-bottom: var(--size-xxxl);
 `;
 
 const StyledIntroTitle = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${Size.S};
+    gap: var(--size-s);
 `;
 
 const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
     position: relative;
-    padding-bottom: ${Size.XXXL};
+    padding-bottom: var(--size-xxxl);
 
     ${props => !props.multipleImages && `
         img {
@@ -63,20 +63,20 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
 
     [data-image-number="1"] {
         margin-left: auto;
-        margin-top: calc(-1 * ${Size.XXXXXL});
+        margin-top: calc(-1 * var(--size-xxxxxl));
         max-width: 480px;
 
         ${Breakpoint.DesktopSmall} {
-            margin-top: calc(-1 * ${Size.XXXXL});
-            margin-right: ${Size.M};
+            margin-top: calc(-1 * var(--size-xxxxl));
+            margin-right: var(--size-m);
         }
 
         ${Breakpoint.TabletSmall} {
-            margin-top: calc(-1 * ${Size.XL});
+            margin-top: calc(-1 * var(--size-xl));
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: ${Size.S};
+            margin-top: var(--size-s);
             margin-left: auto;
             margin-right: 0;
             width: 80%;
@@ -85,24 +85,24 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
     }
 
     [data-image-number="2"] {
-        margin-left: ${Size.XXL};
-        margin-top: calc(-1 * ${Size.XXXXXL});
+        margin-left: var(--size-xxl);
+        margin-top: calc(-1 * var(--size-xxxxxl));
         max-width: 480px;
 
         ${Breakpoint.DesktopSmall} {
-            margin-left: ${Size.M};
+            margin-left: var(--size-m);
         }
 
         ${Breakpoint.Tablet} {
-            margin-top: calc(-1 * ${Size.XXXL});
+            margin-top: calc(-1 * var(--size-xxxl));
         }
 
         ${Breakpoint.TabletSmall} {
-            margin-top: calc(-1 * ${Size.XL});
+            margin-top: calc(-1 * var(--size-xl));
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: calc(-1 * ${Size.L});
+            margin-top: calc(-1 * var(--size-l));
             margin-right: auto;
             margin-left: 0;
             width: 80%;
@@ -116,28 +116,28 @@ const StyledImage = styled(Image)`
     margin: 0;
     padding: 0;
     border: none;
-    border-radius: ${Size.S};
+    border-radius: var(--size-s);
     width: 100%;
     max-width: 720px;
     height: auto;
-    box-shadow: 0 ${Size.M} ${Size.XXXL} ${Color.Shadow};
+    box-shadow: 0 var(--size-m) var(--size-xxxl) ${Color.Shadow};
     background: ${Color.Text60};
-    backdrop-filter: blur(${Size.XL});
+    backdrop-filter: blur(var(--size-xl));
 `;
 
 const StyledImageCopyrightText = styled(Text)`
     opacity: .6;
-    margin-top: ${Size.XS};
-    margin-left: ${Size.XXL};
+    margin-top: var(--size-xs);
+    margin-left: var(--size-xxl);
 
     ${Breakpoint.DesktopSmall} {
-        margin-left: ${Size.M};
+        margin-left: var(--size-m);
     }
 `;
 
 const StyledNoImagesBannerContainer = styled.div`
     position: relative;
-    padding: ${Size.L};
+    padding: var(--size-l);
     max-width: 560px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -150,7 +150,7 @@ const StyledNoImagesBannerContainer = styled.div`
         width: 100%;
         height: 100%;
         background: ${Color.TextAlways};
-        border-radius: ${Size.S};
+        border-radius: var(--size-s);
         opacity: .1;
         pointer-events: none;
     }
@@ -160,96 +160,96 @@ const StyledNoImagesBanner = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: ${Size.S};
+    gap: var(--size-s);
 
     div {
         opacity: .6;
     }
     svg {
         display: block;
-        height: ${Size.L};
-        width: ${Size.L};
+        height: var(--size-l);
+        width: var(--size-l);
         opacity: .6;
     }
 `;
 
 const StyledVisitedBadge = styled(VisitedBadge)`
     position: absolute;
-    top: calc(-1 * ${Size.L});
+    top: calc(-1 * var(--size-l));
     left: 660px;
     z-index: 2;
 
     ${Breakpoint.Tablet} {
         left: unset;
-        right: ${Size.XL};
+        right: var(--size-xl);
     }
 
     ${Breakpoint.TabletSmall} {
-        right: ${Size.L};
-        top: calc(-1 * ${Size.XL});
+        right: var(--size-l);
+        top: calc(-1 * var(--size-xl));
     }
 `;
 
 const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
     position: absolute;
-    right: calc(-1 * ${Size.XL});
-    top: calc(-1 * ${Size.XXL});
+    right: calc(-1 * var(--size-xl));
+    top: calc(-1 * var(--size-xxl));
     z-index: 2;
 
     ${Breakpoint.TabletSmall} {
-        right: ${Size.XS};
+        right: var(--size-xs);
     }
 
     ${Breakpoint.Mobile} {
-        right: ${Size.S};
-        top: calc(-1 * ${Size.L});
+        right: var(--size-s);
+        top: calc(-1 * var(--size-l));
     }
 `;
 
 const StyledStickyWrapper = styled.div`
     position: sticky;
     width: 100%;
-    bottom: ${Size.M};
+    bottom: var(--size-m);
     left: 0;
     box-sizing: border-box;
     pointer-events: none;
-    margin-top: ${Size.XXXL};
+    margin-top: var(--size-xxxl);
     z-index: 5;
 
     ${Breakpoint.Mobile} {
-        bottom: ${Size.XS};
+        bottom: var(--size-xs);
     }
 `;
 
 const StyledActionBar = styled.div`
     max-width: 560px;
-    margin: 0 auto ${Size.M};
+    margin: 0 auto var(--size-m);
     background: ${Color.Background80};
-    border-radius: ${Size.XL};
-    backdrop-filter: blur(${Size.XS});
-    box-shadow: 0 ${Size.XXS} ${Size.L} ${Color.Shadow};
-    padding: ${Size.S};
+    border-radius: var(--size-xl);
+    backdrop-filter: blur(var(--size-xs));
+    box-shadow: 0 var(--size-xxs) var(--size-l) ${Color.Shadow};
+    padding: var(--size-s);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     pointer-events: auto;
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
 
     ${Breakpoint.Mobile} {
-        margin-left: calc(-1 * ${Size.S});
-        margin-right: calc(-1 * ${Size.S});
-        padding: ${Size.XXS};
+        margin-left: calc(-1 * var(--size-s));
+        margin-right: calc(-1 * var(--size-s));
+        padding: var(--size-xxs);
     }
 `;
 
 const StyledFavoriteArea = styled.div<{ active: boolean }>`
     color: ${Color.Text};
     display: flex;
-    padding: ${Size.S} ${Size.M} ${Size.S} ${Size.S};
-    gap: ${Size.XXS};
+    padding: var(--size-s) var(--size-m) var(--size-s) var(--size-s);
+    gap: var(--size-xxs);
     box-shadow: inset 0 0 0 2px ${Color.Text};
-    border-radius: ${Size.L};
+    border-radius: var(--size-l);
     cursor: pointer;
 
     ${props => props.active && `
@@ -271,7 +271,7 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
     `}
 
     ${Breakpoint.TabletSmall} {
-        padding: ${Size.S};
+        padding: var(--size-s);
 
         div {
             display: none;
@@ -279,7 +279,7 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.S};
+        padding: var(--size-s);
 
         svg {
             width: 20px;
@@ -290,8 +290,8 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
 
 const StyledMap = styled(Map)`
     height: 560px;
-    border-radius: ${Size.XS};
-    margin-top: ${Size.XXXL};
+    border-radius: var(--size-xs);
+    margin-top: var(--size-xxxl);
     overflow: hidden;
     box-shadow: inset 0 0 0 2px currentColor;
 
@@ -305,11 +305,11 @@ const StyledMap = styled(Map)`
 `;
 
 const StyledDescriptionContainer = styled.div`
-    padding: ${Size.XXL} 0 ${Size.XXXXL};
+    padding: var(--size-xxl) 0 var(--size-xxxxl);
 `;
 
 const StyledDescriptionLabel = styled(Text)`
-    padding-bottom: ${Size.M};
+    padding-bottom: var(--size-m);
     opacity: .6;
 `;
 
@@ -353,10 +353,10 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             <Text as="h1" size={TextSize.Huge} bold center>{props.hotel.name}</Text>
                             <Text size={TextSize.SuperLarge} center serif>{props.hotel.city}, {props.hotel.country}</Text>
                         </StyledIntroTitle>
-                        <Flex justifyContent={JustifyContent.Center} gap={Size.XXS}>
+                        <div className={styles.tags}>
                             <Tag icon={getVacationTypeIcon(props.hotel.vacationType, true)} label={props.hotel.vacationType} />
                             <Tag label={props.hotel.housingType} />
-                        </Flex>
+                        </div>
                     </StyledIntro>
                     <StyledImageContainer multipleImages={(props.hotel.images?.length || 0) > 1}>
                         {(props.hotel.images && props.hotel.visited) && <StyledVisitedBadge />}

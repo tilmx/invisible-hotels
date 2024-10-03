@@ -9,7 +9,6 @@ import { AlignItems, Flex } from "./utils/flex";
 import { FilterItem } from "./filter-item";
 import { useFilterStore } from "../store/filter";
 import { useFavoriteStore } from "../store/favorites";
-import { Size } from "./tokens/size";
 import { OutsideClick } from "./utils/outside-click";
 import { ChevronDownIcon, SearchIcon, StarIcon } from "lucide-react";
 import countries from '../data/countries.json';
@@ -18,45 +17,45 @@ import { vacationTypeFilterOptions } from "../data/site";
 
 const StyledContainer = styled.div`
     position: sticky;
-    top: ${Size.M};
+    top: var(--size-m);
     z-index: 10;
 
     ${Breakpoint.Tablet} {
-        top: ${Size.XS};
+        top: var(--size-xs);
     }
 
     ${Breakpoint.Mobile} {
-        top: ${Size.XXS};
+        top: var(--size-xxs);
     }
 `;
 
 const StyledFilterBar = styled.div`
     background: ${Color.Background80};
     backdrop-filter: blur(16px);
-    border-radius: ${Size.XL};
-    padding: 0 ${Size.M};
-    margin: 0 calc(-1 * ${Size.M});
-    box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
+    border-radius: var(--size-xl);
+    padding: 0 var(--size-m);
+    margin: 0 calc(-1 * var(--size-m));
+    box-shadow: 0 var(--size-s) var(--size-xl) ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
     position: relative;
 
     ${Breakpoint.Tablet} {
-        padding: 0 ${Size.S};
-        margin: 0 calc(-1 * ${Size.S});
-        border-radius: calc(${Size.M} + ${Size.XXS});
+        padding: 0 var(--size-s);
+        margin: 0 calc(-1 * var(--size-s));
+        border-radius: calc(var(--size-m) + var(--size-xxs));
     }
 
     ${Breakpoint.Mobile} {
-        padding: 0 ${Size.XS};
-        margin: 0 calc(-1 * ${Size.XS});
-        border-radius: ${Size.M};
+        padding: 0 var(--size-xs);
+        margin: 0 calc(-1 * var(--size-xs));
+        border-radius: var(--size-m);
     }
 `;
 
 const StyledFilterBarInner = styled(Flex) <{ filterExpanded: boolean; searchActive: boolean; }>`  
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
     height: 100%;
     overflow: hidden;
-    padding: calc(${Size.S} + ${Size.XXXS}) 0;
+    padding: calc(var(--size-s) + var(--size-xxxs)) 0;
     box-sizing: border-box;
 
     ${props => props.searchActive && `
@@ -64,15 +63,15 @@ const StyledFilterBarInner = styled(Flex) <{ filterExpanded: boolean; searchActi
     `}
 
     ${Breakpoint.Tablet} {
-        padding: ${Size.S} 0;
+        padding: var(--size-s) 0;
     }
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.XS} 0;
-        padding-right: ${Size.L};
+        padding: var(--size-xs) 0;
+        padding-right: var(--size-l);
 
         ${props => !props.filterExpanded && `
-            max-height: ${Size.XXL};
+            max-height: var(--size-xxl);
             mask-image: linear-gradient(black 60%, transparent);
         `}
     }
@@ -90,7 +89,7 @@ const StyledCountrySelect = styled(CountrySelect)`
 const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     position: absolute;
     right: 0;
-    padding-right: ${Size.XS};
+    padding-right: var(--size-xs);
     top: 0;
     height: 100%;
     z-index: 1;
@@ -98,7 +97,7 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     display: none;
 
     svg {
-        padding: ${Size.XXXXS};
+        padding: var(--size-xxxxs);
         border-radius: 50%;
         background: ${Color.Text10};
         width: 20px;

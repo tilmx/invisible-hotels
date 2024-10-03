@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, ReactNode } from 'react';
-import { Size } from './tokens/size';
 import { Color } from './tokens/colors';
 import { Breakpoint } from './tokens/breakpoint';
 import { Text, TextSize } from './text';
@@ -15,11 +14,11 @@ interface PlaceholderCardProps {
 }
 
 const StyledCard = styled.div<{ emptyState: boolean }>`
-    border-radius: ${Size.M};
-    padding: ${Size.L};
+    border-radius: var(--size-m);
+    padding: var(--size-l);
     display: flex;
     flex-direction: column;
-    gap: ${Size.M};
+    gap: var(--size-m);
     box-shadow: inset 0 0 0 2px ${Color.Text10};
     color: ${Color.Text60};
     justify-content: center;
@@ -32,8 +31,8 @@ const StyledCard = styled.div<{ emptyState: boolean }>`
     `}
 
     ${Breakpoint.Mobile} {
-        padding: ${Size.M};
-        border-radius: ${Size.S};
+        padding: var(--size-m);
+        border-radius: var(--size-s);
     }
 `;
 

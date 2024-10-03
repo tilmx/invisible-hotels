@@ -1,9 +1,7 @@
 import { CSSProperties, FunctionComponent } from 'react';
 import roomDistribution from '../data/room-distribution.json';
-import { Size } from './tokens/size';
 import { Text, TextSize } from './text';
 import { Color } from './tokens/colors';
-import { HelpCircleIcon } from 'lucide-react';
 import styles from './room-distribution.module.scss'
 import clsx from 'clsx';
 
@@ -16,10 +14,7 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
 
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <HelpCircleIcon size={Size.S} />
-                <Text size={TextSize.Small}>Compare hotel size</Text>
-            </div>
+            <Text size={TextSize.Small}>Compare hotel size</Text>
             <div className={styles.distribution}>
                 {combinedArray.map((item, i) =>
                     <div className={clsx(styles.bar, (Math.min(Math.floor((props.rooms || 0) / 10), 12) === i && styles.highlighted))} style={{ '--height': `${Math.round((item || 0) / maximum * 100)}%` } as CSSProperties} key={i}>

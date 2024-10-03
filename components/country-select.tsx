@@ -3,7 +3,6 @@ import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { ChevronDown, X } from "lucide-react";
 import { Tag } from "./tag";
-import { Size } from "./tokens/size";
 import { Color } from "./tokens/colors";
 import { Breakpoint } from "./tokens/breakpoint";
 import { getCountryFlag } from "../utils";
@@ -18,7 +17,7 @@ interface CountrySelectProps {
 }
 
 const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?: boolean; }>`
-	gap: ${Size.XXXS};
+	gap: var(--size-xxxs);
     cursor: pointer;
 
     ${props => props.disabled && `
@@ -73,13 +72,13 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
     flex-direction: column;
     grid-template-columns: repeat(5, 1fr);
 
-    padding: ${Size.XS};
-    margin-top: calc(${Size.XS} * -1);
+    padding: var(--size-xs);
+    margin-top: calc(var(--size-xs) * -1);
     background: ${Color.Background80};
-    backdrop-filter: blur(${Size.M});
-    border-radius: ${Size.XS};
-    gap: ${Size.XXXXS};
-    box-shadow: 0 ${Size.XS} ${Size.L} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
+    backdrop-filter: blur(var(--size-m));
+    border-radius: var(--size-xs);
+    gap: var(--size-xxxxs);
+    box-shadow: 0 var(--size-xs) var(--size-l) ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
 
     ${Breakpoint.DesktopSmall} {
         grid-template-columns: repeat(4, 1fr);
@@ -87,14 +86,14 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
 
     ${Breakpoint.Tablet} {
         grid-template-columns: repeat(3, 1fr);
-        margin-left: ${Size.M};
-        margin-right: ${Size.M};
+        margin-left: var(--size-m);
+        margin-right: var(--size-m);
     }
 
     ${Breakpoint.TabletSmall} {
         grid-template-columns: repeat(2, 1fr);
-        margin-left: ${Size.XS};
-        margin-right: ${Size.XS};
+        margin-left: var(--size-xs);
+        margin-right: var(--size-xs);
     }
 
     ${Breakpoint.MobileSmall} {
@@ -121,10 +120,10 @@ export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = 
 }
 
 const StyledOption = styled.div<{ selected?: boolean }>`
-    padding: ${Size.XXS} ${Size.S};
+    padding: var(--size-xxs) var(--size-s);
     cursor: pointer;
-    border-radius: ${Size.XXS};
-    gap: ${Size.XXXS};
+    border-radius: var(--size-xxs);
+    gap: var(--size-xxxs);
     display: flex;
     align-items: center;
 
@@ -161,7 +160,7 @@ const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean
                 {props.label}
             </Text>
             {props.selected &&
-                <StyledCloseIcon size={Size.S} />
+                <StyledCloseIcon size="16px" />
             }
         </StyledOption>
     )

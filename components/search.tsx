@@ -1,7 +1,6 @@
 import { FunctionComponent, MouseEventHandler, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { Color } from "./tokens/colors";
-import { Size } from "./tokens/size";
 import { XIcon } from "lucide-react";
 import { Text, TextSize } from "./text";
 import { Breakpoint } from "./tokens/breakpoint";
@@ -15,22 +14,22 @@ const StyledSearchInput = styled.input`
     height: 100%;
     background: unset;
     display: block;
-    padding: 0 ${Size.L};
+    padding: 0 var(--size-l);
     box-sizing: border-box;
     margin: 0;
     font-family: unset;
     font-size: unset;
     color: unset;
-    border-radius: ${Size.XL};
+    border-radius: var(--size-xl);
     outline: none;
     border: none;
 
     ${Breakpoint.Tablet} {
-        border-radius: calc(${Size.M} + ${Size.XXS});
+        border-radius: calc(var(--size-m) + var(--size-xxs));
     }
 
     ${Breakpoint.Mobile} {
-        border-radius: ${Size.M};
+        border-radius: var(--size-m);
     }
 
     ::placeholder {
@@ -50,11 +49,11 @@ const StyledSearchCloseButton = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 ${Size.M};
+    padding: 0 var(--size-m);
 
     svg {
         background: ${Color.Text10};
-        padding: ${Size.XXS};
+        padding: var(--size-xxs);
         border-radius: 50%;
         height: 20px;
         width: 20px;

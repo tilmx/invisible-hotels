@@ -3,7 +3,6 @@ import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
 import styled from '@emotion/styled';
 import { Footer } from '../../components/footer';
-import { Size } from '../../components/tokens/size';
 import { siteTitle } from '../../data/site';
 import { Color } from '../../components/tokens/colors';
 
@@ -15,14 +14,14 @@ const StyledWrapper = styled.div`
 const StyledIntro = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${Size.M};
+    gap: var(--size-m);
 `;
 
 const StyledContent = styled.div`
-    margin-top: ${Size.XL};
+    margin-top: var(--size-xl);
     display: flex;
     flex-direction: column;
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
 `;
 
 

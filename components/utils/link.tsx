@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 import { FunctionComponent, HTMLAttributeAnchorTarget, ReactNode } from 'react';
-import { Size } from '../tokens/size';
 import { Color } from '../tokens/colors';
 
 const StyledUnstyledLink = styled(NextLink)`
@@ -20,9 +19,9 @@ export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttrib
 const StyledLink = styled(StyledUnstyledLink)`
     opacity: .6;
     cursor: pointer;
-    padding: ${Size.XXS} ${Size.S};
-    margin: calc(-1 * ${Size.XXS}) calc(-1 * ${Size.S});
-    border-radius: ${Size.M};
+    padding: var(--size-xxs) var(--size-s);
+    margin: calc(-1 * var(--size-xxs)) calc(-1 * var(--size-s));
+    border-radius: var(--size-m);
 
     @media (hover: hover) {
         :hover {

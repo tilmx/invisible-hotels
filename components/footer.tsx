@@ -1,4 +1,3 @@
-import { Size } from './tokens/size';
 import styled from '@emotion/styled';
 import { FunctionComponent } from 'react';
 import { Breakpoint } from './tokens/breakpoint';
@@ -8,37 +7,37 @@ import { Wrapper } from './wrapper';
 import { Color } from './tokens/colors';
 
 const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
-    margin-top: ${Size.L};
-    padding-top: ${Size.XL};
-    padding-bottom: ${Size.XXL};
+    margin-top: var(--size-l);
+    padding-top: var(--size-xl);
+    padding-bottom: var(--size-xxl);
 
     ${Breakpoint.Mobile} {
-        padding-bottom: ${Size.L};
+        padding-bottom: var(--size-l);
     }
 
     ${props => !props.reducedPadding && `
-        margin-top: ${Size.XXXXXL};
+        margin-top: var(--size-xxxxxl);
 
         ${Breakpoint.Tablet} {
-            margin-top: ${Size.XXXXL};
+            margin-top: var(--size-xxxxl);
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: ${Size.XXXL};
+            margin-top: var(--size-xxxl);
         }
     `}
 `;
 
 const StyledFooterContent = styled.div`
     display: flex;
-    gap: ${Size.L};
+    gap: var(--size-l);
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: ${Size.XL};
+    padding-top: var(--size-xl);
     border-top: 1px solid ${Color.Text20};
 
     ${Breakpoint.Mobile} {
-        gap: ${Size.S};
+        gap: var(--size-s);
     }
 `;
 
@@ -46,13 +45,13 @@ const StyledFooterLinks = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: ${Size.S};
+    gap: var(--size-s);
 `;
 
 const StyledGithubLink = styled(Link)`
     display: flex; 
     align-items: center;
-    gap: ${Size.XXS};
+    gap: var(--size-xxs);
 
     svg {
         height: 24px;
@@ -68,18 +67,18 @@ const StyledGithubLink = styled(Link)`
 
 const ProjectTeaser = styled.a`
     display: flex;
-    gap: ${Size.S};
+    gap: var(--size-s);
     align-items: center;
-    padding: ${Size.S};
-    border-radius: ${Size.S};
+    padding: var(--size-s);
+    border-radius: var(--size-s);
     box-shadow: inset 0 0 0 1px ${Color.Text20};
     align-self: flex-start;
     color: unset;
     text-decoration: unset;
 
     svg {
-        height: ${Size.L};
-        width: ${Size.L};
+        height: var(--size-l);
+        width: var(--size-l);
     }
 
     @media (hover: hover) {
@@ -92,7 +91,7 @@ const ProjectTeaser = styled.a`
 const ProjectTeaserLabel = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${Size.XXXS};
+    gap: var(--size-xxxs);
 `;
 
 export const Footer: FunctionComponent<{ reducedPadding?: boolean; }> = props => {
