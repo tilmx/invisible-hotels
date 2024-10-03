@@ -1,0 +1,105 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.select {
+    gap: var(--size-xxxs);
+    cursor: pointer;
+
+    &.disabled {
+        pointer-events: none;
+    }
+
+    &.active {
+        background: var(--color-text);
+        color: var(--color-background);
+        border-color: var(--color-text);
+    }
+
+    &:not(.active) {
+        &:active {
+            border-color: var(--color-text60);
+            color: var(--color-text60);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--color-text60);
+                color: var(--color-text60);
+            }
+        }
+    }
+}
+
+.flyout {
+    position: relative;
+
+    .flyoutList {
+        position: absolute;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        padding: var(--size-xs);
+        margin-top: calc(var(--size-xs) * -1);
+        background: var(--color-background80);
+        backdrop-filter: blur(var(--size-m));
+        border-radius: var(--size-xs);
+        gap: var(--size-xxxxs);
+        box-shadow: 0 var(--size-xs) var(--size-l) var(--color-shadow), inset 0 0 0 1px var(--color-text20);
+        display: none;
+
+        &.open {
+            display: grid;
+        }
+
+        grid-template-columns: repeat(1, 1fr);
+        margin-left: var(--size-xs);
+        margin-right: var(--size-xs);
+
+        @include breakpoint($breakpoint-mobile) {
+            grid-template-columns: repeat(2, 1fr);
+            margin-left: var(--size-m);
+            margin-right: var(--size-m);
+        }
+
+        @include breakpoint($breakpoint-tablet-small) {
+            grid-template-columns: repeat(3, 1fr);
+            margin-left: unset;
+            margin-right: unset;
+        }
+
+        @include breakpoint($breakpoint-tablet) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include breakpoint($breakpoint-desktop-small) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .option {
+            padding: var(--size-xxs) var(--size-s);
+            cursor: pointer;
+            border-radius: var(--size-xxs);
+            gap: var(--size-xxxs);
+            display: flex;
+            align-items: center;
+
+            &.selected {
+                background: var(--color-text10)
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    background: var(--color-text10);
+                }
+            }
+
+            &:active {
+                background: var(--color-text20);
+            }
+
+            .removeIcon {
+                color: var(--color-text60);
+                margin-left: auto;
+            }
+        }
+    }
+}
