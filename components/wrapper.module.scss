@@ -9,11 +9,11 @@
         max-width: 1280px;
     }
 
-    @include breakpoint($breakpoint-tablet-small) {
+    @include breakpoint($breakpoint-mobile) {
         padding: 0 var(--size-l);
     }
 
-    @include breakpoint($breakpoint-desktop-small) {
+    @include breakpoint($breakpoint-tablet) {
         padding: 0 var(--size-xxl);
     }
 }
