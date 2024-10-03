@@ -1,9 +1,7 @@
 import { FunctionComponent, useState } from "react";
-import styled from "@emotion/styled";
 import { Color } from "./tokens/colors";
 import { getVacationTypeIcon, track } from "../utils";
 import { CountrySelect, CountrySelectFlyout } from "./country-select";
-import { Breakpoint } from "./tokens/breakpoint";
 import { Wrapper } from "./wrapper";
 import { FilterItem } from "./filter-item";
 import { useFilterStore } from "../store/filter";
@@ -13,109 +11,8 @@ import { ChevronDownIcon, SearchIcon, StarIcon } from "lucide-react";
 import countries from '../data/countries.json';
 import { Search } from "./search";
 import { vacationTypeFilterOptions } from "../data/site";
-
-const StyledContainer = styled.div`
-    position: sticky;
-    top: var(--size-m);
-    z-index: 10;
-
-    ${Breakpoint.Tablet} {
-        top: var(--size-xs);
-    }
-
-    ${Breakpoint.Mobile} {
-        top: var(--size-xxs);
-    }
-`;
-
-const StyledFilterBar = styled.div`
-    background: var(--color-background80);
-    backdrop-filter: blur(16px);
-    border-radius: var(--size-xl);
-    padding: 0 var(--size-m);
-    margin: 0 calc(-1 * var(--size-m));
-    box-shadow: 0 var(--size-s) var(--size-xl) var(--color-shadow), inset 0 0 0 1px var(--color-text10);
-    position: relative;
-
-    ${Breakpoint.Tablet} {
-        padding: 0 var(--size-s);
-        margin: 0 calc(-1 * var(--size-s));
-        border-radius: calc(var(--size-m) + var(--size-xxs));
-    }
-
-    ${Breakpoint.Mobile} {
-        padding: 0 var(--size-xs);
-        margin: 0 calc(-1 * var(--size-xs));
-        border-radius: var(--size-m);
-    }
-`;
-
-const StyledFilterBarInner = styled.div <{ filterExpanded: boolean; searchActive: boolean; }>`  
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: var(--size-xxs);
-    height: 100%;
-    overflow: hidden;
-    padding: calc(var(--size-s) + var(--size-xxxs)) 0;
-    box-sizing: border-box;
-
-    ${props => props.searchActive && `
-        visibility: hidden;
-    `}
-
-    ${Breakpoint.Tablet} {
-        padding: var(--size-s) 0;
-    }
-
-    ${Breakpoint.Mobile} {
-        padding: var(--size-xs) 0;
-        padding-right: var(--size-l);
-
-        ${props => !props.filterExpanded && `
-            max-height: var(--size-xxl);
-            mask-image: linear-gradient(black 60%, transparent);
-        `}
-    }
-`;
-
-const StyledCountrySelect = styled(CountrySelect)`
-    margin-left: auto;
-    flex-shrink: 0;
-
-    ${Breakpoint.Tablet} {
-        margin-left: 0;
-    }
-`;
-
-const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
-    position: absolute;
-    right: 0;
-    padding-right: var(--size-xs);
-    top: 0;
-    height: 100%;
-    z-index: 1;
-    align-items: center;
-    display: none;
-
-    svg {
-        padding: var(--size-xxxxs);
-        border-radius: 50%;
-        background: var(--color-text10);
-        width: 20px;
-        height: 20px;
-        transition: transform .2s;
-        transform: rotate(${props => props.filterExpanded ? '180deg' : '0deg'});
-    }
-
-    :active svg {
-        background: var(--color-text20);
-    }
-
-    ${Breakpoint.Mobile} {
-        display: flex;
-    }
-`;
+import styles from './filter.module.scss';
+import clsx from "clsx";
 
 export const Filter: FunctionComponent = () => {
     const filterExpanded = useFilterStore(state => state.filterExpanded);
@@ -139,10 +36,10 @@ export const Filter: FunctionComponent = () => {
     const setSearchTerm = useFilterStore(state => state.setSearchTerm);
 
     return (
-        <StyledContainer>
+        <div className={styles.filter}>
             <Wrapper>
-                <StyledFilterBar>
-                    <StyledFilterBarInner searchActive={searchActive} filterExpanded={filterExpanded}>
+                <div className={styles.filterBar}>
+                    <div className={clsx(styles.filterBarInner, searchActive && styles.searchActive, filterExpanded && styles.expanded)}>
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (
@@ -158,7 +55,8 @@ export const Filter: FunctionComponent = () => {
                                 />
                             )
                         })}
-                        <StyledCountrySelect
+                        <CountrySelect
+                            className={styles.countrySelect}
                             label='All Countries'
                             value={countryFilter}
                             active={typeof countryFilter !== 'undefined' || countryFilterOpen}
@@ -176,7 +74,7 @@ export const Filter: FunctionComponent = () => {
                             />
                         }
                         <FilterItem icon={<SearchIcon />} selected={searchActive} onClick={() => toggleSearchActive()} />
-                    </StyledFilterBarInner>
+                    </div>
                     {(searchActive && setSearchTerm) &&
                         <Search
                             onChange={value => setSearchTerm(value)}
@@ -184,11 +82,11 @@ export const Filter: FunctionComponent = () => {
                         />
                     }
                     {!searchActive &&
-                        <StyledExpandArea filterExpanded={filterExpanded} onClick={() => toggleFilterExpanded()}>
+                        <div className={clsx(styles.expand, filterExpanded && styles.expanded)} onClick={() => toggleFilterExpanded()}>
                             <ChevronDownIcon color={Color.Text60} />
-                        </StyledExpandArea>
+                        </div>
                     }
-                </StyledFilterBar>
+                </div>
                 <OutsideClick onOutsideClick={() => setCountryFilterOpen(false)}>
                     <CountrySelectFlyout
                         options={countries}
@@ -203,6 +101,6 @@ export const Filter: FunctionComponent = () => {
                     />
                 </OutsideClick>
             </Wrapper>
-        </StyledContainer>
+        </div>
     )
 }
