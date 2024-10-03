@@ -1,7 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react';
 import { Text, TextSize } from './text';
 import { Check, HelpCircle, X } from 'lucide-react';
-import { AlignItems, Flex, JustifyContent } from './utils/flex';
 import styles from './table.module.scss';
 import clsx from 'clsx';
 
@@ -19,7 +18,7 @@ export const Table: FunctionComponent<TableProps> = props => {
         <div className={styles.table}>
             {props.data.map((row, i) =>
                 <div className={styles.row} key={i}>
-                    <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center}>
+                    <div className={styles.rowInner}>
                         <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
                         {typeof row.value === 'string' || typeof row.value === 'number' &&
                             <Text size={TextSize.Large}>{row.value}</Text>
@@ -34,7 +33,7 @@ export const Table: FunctionComponent<TableProps> = props => {
                                 <HelpCircle />
                             </div>
                         }
-                    </Flex>
+                    </div>
                     {row.content}
                 </div>
             )}

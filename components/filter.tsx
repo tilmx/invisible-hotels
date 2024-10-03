@@ -5,7 +5,6 @@ import { getVacationTypeIcon, track } from "../utils";
 import { CountrySelect, CountrySelectFlyout } from "./country-select";
 import { Breakpoint } from "./tokens/breakpoint";
 import { Wrapper } from "./wrapper";
-import { AlignItems, Flex } from "./utils/flex";
 import { FilterItem } from "./filter-item";
 import { useFilterStore } from "../store/filter";
 import { useFavoriteStore } from "../store/favorites";
@@ -51,7 +50,10 @@ const StyledFilterBar = styled.div`
     }
 `;
 
-const StyledFilterBarInner = styled(Flex) <{ filterExpanded: boolean; searchActive: boolean; }>`  
+const StyledFilterBarInner = styled.div <{ filterExpanded: boolean; searchActive: boolean; }>`  
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
     gap: var(--size-xxs);
     height: 100%;
     overflow: hidden;
@@ -140,7 +142,7 @@ export const Filter: FunctionComponent = () => {
         <StyledContainer>
             <Wrapper>
                 <StyledFilterBar>
-                    <StyledFilterBarInner searchActive={searchActive} filterExpanded={filterExpanded} alignItems={AlignItems.FlexStart} flexWrap='wrap'>
+                    <StyledFilterBarInner searchActive={searchActive} filterExpanded={filterExpanded}>
                         {vacationTypeFilterOptions.map((option, i) => {
                             const selected = vacationTypeFilter === option;
                             return (

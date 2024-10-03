@@ -6,7 +6,6 @@ import { Wrapper } from '../wrapper';
 import { Menu } from '../menu';
 import { checkIfFavoritesStored, getHotelUrl, getVacationTypeColor, getVacationTypeDescription, getVacationTypeIcon, track } from '../../utils';
 import { Footer } from '../footer';
-import { Flex, JustifyContent } from '../utils/flex';
 import { Tag } from '../tag';
 import { Table } from '../table';
 import { ExternalLinkIcon, ImageIcon, StarIcon } from 'lucide-react';
@@ -404,9 +403,9 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             {
                                 label: props.hotel.housingType === 'Hotel' ? 'Rooms' : 'Apartments', value: props.hotel.rooms, content:
                                     props.hotel.housingType === 'Hotel' ?
-                                        <Flex justifyContent={JustifyContent.FlexEnd}>
+                                        <div className={styles.roomDistributionContainer}>
                                             <RoomDistribution rooms={props.hotel.rooms} />
-                                        </Flex>
+                                        </div>
                                         : undefined
                             },
                             { label: 'Breakfast', value: props.hotel.amenities?.includes('Breakfast') || amenitiesFallback },

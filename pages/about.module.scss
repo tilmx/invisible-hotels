@@ -10,6 +10,10 @@
     @include breakpoint($breakpoint-tablet-small) {
         gap: var(--size-xxxl);
     }
+
+    .teaserContainer {
+        display: flex;
+    }
 }
 
 .image {
