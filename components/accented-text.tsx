@@ -1,5 +1,6 @@
-import styled from "@emotion/styled";
-import { FunctionComponent, ReactNode } from "react";
+import { CSSProperties, FunctionComponent, ReactNode } from "react";
+import styles from "./accented-text.module.scss";
+import clsx from "clsx";
 
 export enum AccentStyle {
 	Circled,
@@ -7,28 +8,9 @@ export enum AccentStyle {
 	Underlined
 }
 
-const StyledSpan = styled.span<{ color: string; italic?: boolean; }>`
-	color: ${props => props.color};
-	${props => props.italic && 'font-style: italic;'}
-	position: relative;
-	display: inline-block;
-	transition: color .1s;
-
-	svg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: .3;
-		pointer-events: none;
-		overflow: visible;
-	}
-`;
-
 export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; italic?: boolean; color: string; children?: ReactNode; }> = props => {
 	return (
-		<StyledSpan italic={props.italic} color={props.color} >
+		<span className={clsx(styles.accentedText, props.italic && styles.italic)} style={{ '--color': props.color } as CSSProperties} >
 			{props.children}
 			{props.accentStyle === AccentStyle.Circled &&
 				<svg width="435" height="96" viewBox="0 0 435 96" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,6 +27,6 @@ export const AccentedText: FunctionComponent<{ accentStyle?: AccentStyle; italic
 					<path d="M8 91.5054C27.9364 88.8217 193 81.6758 193 94.0053C193 99.6053 94.3333 102.339 45 103.005" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
 				</svg>
 			}
-		</StyledSpan>
+		</span>
 	)
 }
