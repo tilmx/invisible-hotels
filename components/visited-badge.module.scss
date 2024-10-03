@@ -1,0 +1,77 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.badge {
+    display: inline-block;
+    position: relative;
+    width: var(--size-xxxl);
+    height: var(--size-xxxl);
+
+    img {
+        width: 100%;
+        height: 100%;
+        animation: rotateBadge 30s infinite linear;
+
+        @keyframes rotateBadge {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    &:not(.superSmall, .small) {
+        @include breakpoint($breakpoint-mobile) {
+            width: calc(var(--size-xxl) * 2);
+            height: calc(var(--size-xxl) * 2);
+        }
+
+        @include breakpoint($breakpoint-tablet-small) {
+            width: calc(var(--size-xxxl) * 2);
+            height: calc(var(--size-xxxl) * 2);
+        }
+    }
+
+    &.small {
+        @include breakpoint($breakpoint-mobile) {
+            width: calc(var(--size-xxxl) * 2);
+            height: calc(var(--size-xxl) * 2);
+        }
+    }
+
+    &.superSmall {
+        width: calc(var(--size-xl) + var(--size-xs));
+        height: calc(var(--size-xl) + var(--size-xs));
+
+        @include breakpoint($breakpoint-mobile) {
+            width: var(--size-xxl);
+            height: var(--size-xxl);
+        }
+    }
+
+    .emoji {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 72px;
+        }
+
+        &.superSmall {
+            font-size: 16px;
+
+            @include breakpoint($breakpoint-mobile) {
+                font-size: 20px;
+            }
+        }
+    }
+}
