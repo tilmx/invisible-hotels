@@ -1,0 +1,38 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.scrollIndicator {
+    position: fixed;
+    left: 50%;
+    height: var(--size-xl);
+    width: var(--size-xl);
+    border-radius: 50%;
+    background: var(--color-yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s, opacity .2s;
+    transform: translateX(-50%);
+    box-shadow: 0 0 var(--size-xxl) var(--color-shadow);
+    cursor: pointer;
+    bottom: var(--size-l);
+
+    @include breakpoint($breakpoint-tablet-small) {
+        bottom: var(--size-xl);
+
+    }
+
+    &:active {
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+    }
+
+    &:not(.visible) {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+}
