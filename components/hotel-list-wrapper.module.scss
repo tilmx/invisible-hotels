@@ -1,0 +1,20 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.hotelListWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--size-xs);
+    grid-template-columns: 1fr;
+
+    @include breakpoint($breakpoint-mobile) {
+        gap: var(--size-m);
+    }
+
+    @include breakpoint($breakpoint-tablet-small) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint($breakpoint-desktop-small) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
