@@ -1,0 +1,45 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.tag {
+    border-radius: 24px;
+    display: flex;
+    gap: var(--size-xxxs);
+    align-items: center;
+    border: 1.5px solid currentColor;
+    padding: var(--size-special6) var(--size-xs);
+
+    &.hasIcon {
+        padding-left: var(--size-xxs);
+    }
+
+    &.hasLabel {
+        padding-right: var(--size-xxs);
+    }
+
+    svg,
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    @include breakpoint($breakpoint-tablet-small) {
+        padding: var(--size-xxs) var(--size-s);
+        border-width: unset;
+        gap: var(--size-xxs);
+        border-width: 2px;
+
+        &.hasIcon {
+            padding-left: var(--size-xs);
+        }
+
+        &.hasLabel {
+            padding-right: var(--size-xs);
+        }
+
+        svg,
+        img {
+            width: unset;
+            height: unset;
+        }
+    }
+}
