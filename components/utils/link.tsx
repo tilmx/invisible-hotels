@@ -21,7 +21,7 @@ const StyledLink = styled(StyledUnstyledLink)`
     opacity: .6;
     cursor: pointer;
     padding: ${Size.XXS} ${Size.S};
-    margin: -${Size.XXS} -${Size.S};
+    margin: calc(-1 * ${Size.XXS}) calc(-1 * ${Size.S});
     border-radius: ${Size.M};
 
     @media (hover: hover) {

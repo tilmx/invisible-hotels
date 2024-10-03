@@ -35,19 +35,19 @@ const StyledFilterBar = styled.div`
     backdrop-filter: blur(16px);
     border-radius: ${Size.XL};
     padding: 0 ${Size.M};
-    margin: 0 -${Size.M};
+    margin: 0 calc(-1 * ${Size.M});
     box-shadow: 0 ${Size.S} ${Size.XL} ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
     position: relative;
 
     ${Breakpoint.Tablet} {
         padding: 0 ${Size.S};
-        margin: 0 -${Size.S};
+        margin: 0 calc(-1 * ${Size.S});
         border-radius: calc(${Size.M} + ${Size.XXS});
     }
 
     ${Breakpoint.Mobile} {
         padding: 0 ${Size.XS};
-        margin: 0 -${Size.XS};
+        margin: 0 calc(-1 * ${Size.XS});
         border-radius: ${Size.M};
     }
 `;

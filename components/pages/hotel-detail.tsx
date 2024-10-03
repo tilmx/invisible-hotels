@@ -63,16 +63,16 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
 
     [data-image-number="1"] {
         margin-left: auto;
-        margin-top: -${Size.XXXXXL};
+        margin-top: calc(-1 * ${Size.XXXXXL});
         max-width: 480px;
 
         ${Breakpoint.DesktopSmall} {
-            margin-top: -${Size.XXXXL};
+            margin-top: calc(-1 * ${Size.XXXXL});
             margin-right: ${Size.M};
         }
 
         ${Breakpoint.TabletSmall} {
-            margin-top: -${Size.XL};
+            margin-top: calc(-1 * ${Size.XL});
         }
 
         ${Breakpoint.Mobile} {
@@ -86,7 +86,7 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
 
     [data-image-number="2"] {
         margin-left: ${Size.XXL};
-        margin-top: -${Size.XXXXXL};
+        margin-top: calc(-1 * ${Size.XXXXXL});
         max-width: 480px;
 
         ${Breakpoint.DesktopSmall} {
@@ -94,15 +94,15 @@ const StyledImageContainer = styled.div<{ multipleImages: boolean }>`
         }
 
         ${Breakpoint.Tablet} {
-            margin-top: -${Size.XXXL};
+            margin-top: calc(-1 * ${Size.XXXL});
         }
 
         ${Breakpoint.TabletSmall} {
-            margin-top: -${Size.XL};
+            margin-top: calc(-1 * ${Size.XL});
         }
 
         ${Breakpoint.Mobile} {
-            margin-top: -${Size.L};
+            margin-top: calc(-1 * ${Size.L});
             margin-right: auto;
             margin-left: 0;
             width: 80%;
@@ -175,7 +175,7 @@ const StyledNoImagesBanner = styled.div`
 
 const StyledVisitedBadge = styled(VisitedBadge)`
     position: absolute;
-    top: -${Size.L};
+    top: calc(-1 * ${Size.L});
     left: 660px;
     z-index: 2;
 
@@ -186,14 +186,14 @@ const StyledVisitedBadge = styled(VisitedBadge)`
 
     ${Breakpoint.TabletSmall} {
         right: ${Size.L};
-        top: -${Size.XL};
+        top: calc(-1 * ${Size.XL});
     }
 `;
 
 const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
     position: absolute;
-    right: -${Size.XL};
-    top: -${Size.XXL};
+    right: calc(-1 * ${Size.XL});
+    top: calc(-1 * ${Size.XXL});
     z-index: 2;
 
     ${Breakpoint.TabletSmall} {
@@ -202,7 +202,7 @@ const StyledVisitedBadgeWithNoImages = styled(VisitedBadge)`
 
     ${Breakpoint.Mobile} {
         right: ${Size.S};
-        top: -${Size.L};
+        top: calc(-1 * ${Size.L});
     }
 `;
 
@@ -237,8 +237,8 @@ const StyledActionBar = styled.div`
     gap: ${Size.XXS};
 
     ${Breakpoint.Mobile} {
-        margin-left: -${Size.S};
-        margin-right: -${Size.S};
+        margin-left: calc(-1 * ${Size.S});
+        margin-right: calc(-1 * ${Size.S});
         padding: ${Size.XXS};
     }
 `;

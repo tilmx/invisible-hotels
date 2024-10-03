@@ -1,0 +1,44 @@
+:root {
+    // Colors
+    --color-text: #000000;
+    --color-text-always: #000000;
+    --color-text10: #0000001A;
+    --color-text20: #00000033;
+    --color-text60: #00000099;
+    --color-text80: #000000CC;
+    --color-background: #FFFFFF;
+    --color-background-always: #FFFFFF;
+    --color-background80: #FFFFFFCC;
+    --color-shadow: #00000033;
+
+    @media (prefers-color-scheme: dark) {
+        --color-text: #FFFFFF;
+        --color-text10: #FFFFFF1A;
+        --color-text20: #FFFFFF33;
+        --color-text60: #FFFFFF99;
+        --color-text80: #FFFFFFCC;
+        --color-background: #000000;
+        --color-background80: #000000CC;
+    }
+
+    // Sizes
+    --size-xxxxs: 2px;
+    --size-xxxs: 4px;
+    --size-xxs: 8px;
+    --size-xs: 12px;
+    --size-s: 16px;
+    --size-m: 24px;
+    --size-l: 36px;
+    --size-xl: 48px;
+    --size-xxl: 72px;
+    --size-xxxl: 96px;
+    --size-xxxxl: 168px;
+    --size-xxxxxl: 256px;
+    --size-special6: 6px;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+}

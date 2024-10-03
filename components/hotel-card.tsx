@@ -154,8 +154,8 @@ const StyledStarArea = styled(StarIcon, {
     shouldForwardProp: prop => prop !== 'starred'
 }) <{ starred?: boolean; }>`
     padding: ${Size.XS};
-    margin-top: -${Size.XXS};
-    margin-right: -${Size.XS};
+    margin-top:calc(-1 * ${Size.XXS});
+    margin-right: calc(-1 * ${Size.XS});
     border-radius: 50%;
     display: block;
     flex-shrink: 0;

@@ -19,7 +19,7 @@ const StyledMenuContainer = styled.div`
 const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
     padding: ${Size.M};
     padding-right: ${Size.L};
-    margin: 0 -${Size.M};
+    margin: 0 calc(-1 * ${Size.M});
     align-items: center;
     gap: ${Size.L};
 
@@ -36,7 +36,7 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
 
     ${Breakpoint.Mobile} {
         padding: ${Size.XS} ${Size.S};
-        margin: ${Size.XS} -${Size.S} 0;
+        margin: ${Size.XS} calc(-1 * ${Size.S}) 0;
         ${props => !props.flying && `
             padding-bottom: ${Size.XXL};
         `}
@@ -45,7 +45,7 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
 
 const StyledDotLink = styled(Link)`
     padding: ${Size.XXS};
-    margin: -${Size.XXS};
+    margin: calc(-1 * ${Size.XXS});
     margin-right: auto;
     border-radius: 50%;
     opacity: 1;

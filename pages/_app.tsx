@@ -1,13 +1,12 @@
-import { css, Global } from '@emotion/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Color, Theme } from '../components/tokens/colors';
 import { siteTitle } from '../data/site';
 import PlausibleProvider from 'next-plausible'
+import '../components/tokens/globals.scss'
 
 function App({ Component, pageProps }: AppProps) {
     return (
-        <Theme>
+        <>
             <Head>
                 <link rel="icon" type="image/png" href="/favicon.png" />
                 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -17,11 +16,10 @@ function App({ Component, pageProps }: AppProps) {
                 <meta property="og:site_name" content={siteTitle} />
                 <meta property="og:type" content="website" />
             </Head>
-            <Global styles={css`body { margin: 0; background: ${Color.Background}; color: ${Color.Text}; }`} />
             <PlausibleProvider domain="invisiblehotels.com" trackOutboundLinks>
                 <Component {...pageProps} />
             </PlausibleProvider>
-        </Theme>
+        </>
     );
 }
 
