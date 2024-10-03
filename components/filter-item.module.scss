@@ -1,0 +1,26 @@
+.filterItem {
+    cursor: pointer;
+
+    &.selected {
+        background: var(--color);
+        border-color: var(--color);
+    }
+
+    &:active {
+        border-color: var(--color);
+
+        &:not(.selected) {
+            color: var(--color);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--color);
+
+            &:not(.selected) {
+                color: var(--color);
+            }
+        }
+    }
+}

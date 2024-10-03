@@ -1,8 +1,9 @@
-import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
-import styled from "@emotion/styled";
+import { CSSProperties, FunctionComponent, MouseEventHandler, ReactNode } from "react";
 import { Tag } from "./tag";
 import { Color } from "./tokens/colors";
 import { getVacationTypeColor } from "../utils";
+import styles from './filter-item.module.scss'
+import clsx from "clsx";
 
 interface FilterProps {
     label?: string;
@@ -11,29 +12,14 @@ interface FilterProps {
     onClick?: MouseEventHandler;
 }
 
-const StyledTag = styled(Tag) <{ selected?: boolean; color?: string; }>`
-    cursor: pointer;
-
-    ${props => props.selected && `
-        background: ${props.color};
-        border-color: ${props.color}; 
-    `}
-
-    :active {
-        border-color: ${props => props.color};
-        color: ${props => props.selected ? undefined : props.color};  
-    }
-
-    @media (hover: hover) {
-        :hover {
-            border-color: ${props => props.color};
-            color: ${props => props.selected ? undefined : props.color};  
-        }
-    }
-`;
-
 export const FilterItem: FunctionComponent<FilterProps> = props => {
     return (
-        <StyledTag {...props} color={getVacationTypeColor(props.label) || Color.Text60} />
+        <Tag
+            className={clsx(styles.filterItem, props.selected && styles.selected)}
+            icon={props.icon}
+            label={props.label}
+            onClick={props.onClick}
+            style={{ '--color': (getVacationTypeColor(props.label) || Color.Text60) } as CSSProperties}
+        />
     )
 }
