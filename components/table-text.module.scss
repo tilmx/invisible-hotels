@@ -1,0 +1,21 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.tableText {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--size-l);
+    border-top: 1px solid var(--color-text20);
+    padding-top: var(--size-xl);
+    margin-top: var(--size-xl);
+
+    @include breakpoint($breakpoint-mobile) {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .content {
+        color: var(--color-text60);
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-s);
+    }
+}

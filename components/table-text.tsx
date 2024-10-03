@@ -1,35 +1,14 @@
-import styled from "@emotion/styled";
 import { FunctionComponent, ReactNode } from "react";
 import { Text } from "./text";
-import { Breakpoint } from "./tokens/breakpoint";
-
-const StyledTable = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	gap: var(--size-l);
-	border-top: 1px solid var(--color-text20);
-	padding-top: var(--size-xl);
-	margin-top: var(--size-xl);
-
-	${Breakpoint.Mobile} {
-		grid-template-columns: 1fr;
-	}
-`;
-
-const StyledContent = styled.div`
-	color: var(--color-text60);
-	display: flex;
-	flex-direction: column;
-	gap: var(--size-s);
-`;
+import styles from './table-text.module.scss';
 
 export const TableText: FunctionComponent<{ children?: ReactNode; title?: string; }> = props => {
 	return (
-		<StyledTable>
+		<div className={styles.tableText}>
 			<Text>{props.title}</Text>
-			<StyledContent>
+			<div className={styles.content}>
 				{props.children}
-			</StyledContent>
-		</StyledTable>
+			</div>
+		</div>
 	)
 }
