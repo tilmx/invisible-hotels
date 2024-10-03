@@ -1,29 +1,10 @@
 import Head from 'next/head'
 import { Header } from '../../components/header';
 import { Text, TextSize } from '../../components/text';
-import styled from '@emotion/styled';
 import { Footer } from '../../components/footer';
 import { siteTitle } from '../../data/site';
 import { Color } from '../../components/tokens/colors';
-
-const StyledWrapper = styled.div`
-    max-width: 800px;
-    margin: 0 auto;
-`;
-
-const StyledIntro = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-m);
-`;
-
-const StyledContent = styled.div`
-    margin-top: var(--size-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-xxs);
-`;
-
+import styles from './sites-notice.module.scss';
 
 export default function SitesNotice() {
     return (
@@ -34,21 +15,21 @@ export default function SitesNotice() {
                 <meta name="theme-color" content={Color.Background} />
             </Head>
             <Header>
-                <StyledWrapper>
-                    <StyledIntro>
+                <div className={styles.sitesNotice}>
+                    <div className={styles.intro}>
                         <Text as="h1" size={TextSize.ExtraLarge} serif>
                             Site’s notice
                         </Text>
-                    </StyledIntro>
-                    <StyledContent>
+                    </div>
+                    <div className={styles.content}>
                         {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS?.split(', ').map((text, i) =>
                             <Text size={TextSize.Large} serif key={i}>{text}</Text>
                         )}
                         <br />
                         <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}</Text>
                         <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_PHONE}</Text>
-                    </StyledContent>
-                </StyledWrapper>
+                    </div>
+                </div>
             </Header>
             <Footer />
         </>

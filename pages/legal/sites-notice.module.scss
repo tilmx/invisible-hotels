@@ -1,0 +1,17 @@
+.sitesNotice {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .intro {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-m);
+    }
+
+    .content {
+        margin-top: var(--size-xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-xxs);
+    }
+}

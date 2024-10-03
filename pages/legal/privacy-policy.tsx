@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import { Text, TextSize } from '../../components/text';
-import styled from '@emotion/styled';
 import { Button } from '../../components/button';
-import { Flex } from '../../components/utils/flex';
 import { Trash2 } from 'lucide-react';
 import { Footer } from '../../components/footer';
 import { siteTitle } from '../../data/site';
@@ -10,12 +8,7 @@ import { Color } from '../../components/tokens/colors';
 import { TableText } from '../../components/table-text';
 import { Menu } from '../../components/menu';
 import { Wrapper } from '../../components/wrapper';
-
-const StyledWrapper = styled.div`
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 var(--size-m);
-`;
+import styles from './privacy-policy.module.scss';
 
 export default function PrivacyPolicy() {
     return (
@@ -28,7 +21,7 @@ export default function PrivacyPolicy() {
             <Wrapper>
                 <Menu />
             </Wrapper>
-            <StyledWrapper>
+            <div className={styles.privacyPolicy}>
                 <Text size={TextSize.ExtraLarge} serif as="h1">
                     Data Protection Declaration
                 </Text>
@@ -165,13 +158,13 @@ export default function PrivacyPolicy() {
 
                 <TableText title='Cookie Opt-out'>
                     <Text>You can clear all cookies and delete your locally stored favorites.</Text>
-                    <Flex>
+                    <div className={styles.clearCookieContainer}>
                         <Button iconLeft={<Trash2 />} onClick={() => {
                             window.localStorage.clear();
                         }}>Clear all cookies</Button>
-                    </Flex>
+                    </div>
                 </TableText>
-            </StyledWrapper>
+            </div>
             <Footer />
         </>
     )
