@@ -3,7 +3,6 @@ import { Text, TextSize } from "./text";
 import styled from "@emotion/styled";
 import { ChevronDown, X } from "lucide-react";
 import { Tag } from "./tag";
-import { Color } from "./tokens/colors";
 import { Breakpoint } from "./tokens/breakpoint";
 import { getCountryFlag } from "../utils";
 
@@ -25,20 +24,20 @@ const StyledSelect = styled(Tag) <{ active?: boolean; color?: string; disabled?:
     `} 
 
     ${props => props.active && `
-        background: ${Color.Text};
-        color: ${Color.Background};
-        border-color: ${Color.Text};
+        background: var(--color-text);
+        color: var(--color-background);
+        border-color: var(--color-text);
     `}
 
     ${props => !props.active && `
         :active {
-            border-color: ${Color.Text60};
-            color: ${Color.Text60};
+            border-color: var(--color-text60);
+            color: var(--color-text60);
         }
         @media (hover: hover) {
             :hover {
-                border-color: ${Color.Text60};
-                color: ${Color.Text60};
+                border-color: var(--color-text60);
+                color: var(--color-text60);
             }
         }
     `};
@@ -74,11 +73,11 @@ const StyledOptionList = styled.div<{ open: boolean; }>`
 
     padding: var(--size-xs);
     margin-top: calc(var(--size-xs) * -1);
-    background: ${Color.Background80};
+    background: var(--color-background80);
     backdrop-filter: blur(var(--size-m));
     border-radius: var(--size-xs);
     gap: var(--size-xxxxs);
-    box-shadow: 0 var(--size-xs) var(--size-l) ${Color.Shadow}, inset 0 0 0 1px ${Color.Text20};
+    box-shadow: 0 var(--size-xs) var(--size-l) var(--color-shadow), inset 0 0 0 1px var(--color-text20);
 
     ${Breakpoint.DesktopSmall} {
         grid-template-columns: repeat(4, 1fr);
@@ -128,22 +127,22 @@ const StyledOption = styled.div<{ selected?: boolean }>`
     align-items: center;
 
     ${props => props.selected && `
-        background: ${Color.Text10};
+        background: var(--color-text10);
     `}
 
     @media (hover: hover) {
         :hover {
-            background: ${Color.Text10};
+            background: var(--color-text10);
         }
     }
 
     :active {
-        background: ${Color.Text20};
+        background: var(--color-text20);
     }
 `;
 
 const StyledCloseIcon = styled(X)`
-    color: ${Color.Text60};
+    color: var(--color-text60);
     margin-left: auto;
 `;
 

@@ -30,12 +30,12 @@ const StyledContainer = styled.div`
 `;
 
 const StyledFilterBar = styled.div`
-    background: ${Color.Background80};
+    background: var(--color-background80);
     backdrop-filter: blur(16px);
     border-radius: var(--size-xl);
     padding: 0 var(--size-m);
     margin: 0 calc(-1 * var(--size-m));
-    box-shadow: 0 var(--size-s) var(--size-xl) ${Color.Shadow}, inset 0 0 0 1px ${Color.Text10};
+    box-shadow: 0 var(--size-s) var(--size-xl) var(--color-shadow), inset 0 0 0 1px var(--color-text10);
     position: relative;
 
     ${Breakpoint.Tablet} {
@@ -99,7 +99,7 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     svg {
         padding: var(--size-xxxxs);
         border-radius: 50%;
-        background: ${Color.Text10};
+        background: var(--color-text10);
         width: 20px;
         height: 20px;
         transition: transform .2s;
@@ -107,7 +107,7 @@ const StyledExpandArea = styled.div<{ filterExpanded: boolean; }>`
     }
 
     :active svg {
-        background: ${Color.Text20};
+        background: var(--color-text20);
     }
 
     ${Breakpoint.Mobile} {

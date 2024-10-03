@@ -29,7 +29,7 @@ interface HotelDetailProps {
 
 const StyledBackground = styled.div<{ color: string; }>`
     background: ${props => props.color};
-    color: ${Color.TextAlways};
+    color: var(--color-text-always);
     padding-bottom: var(--size-xxxl);
 `;
 
@@ -120,8 +120,8 @@ const StyledImage = styled(Image)`
     width: 100%;
     max-width: 720px;
     height: auto;
-    box-shadow: 0 var(--size-m) var(--size-xxxl) ${Color.Shadow};
-    background: ${Color.Text60};
+    box-shadow: 0 var(--size-m) var(--size-xxxl) var(--color-shadow);
+    background: var(--color-text60);
     backdrop-filter: blur(var(--size-xl));
 `;
 
@@ -149,7 +149,7 @@ const StyledNoImagesBannerContainer = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background: ${Color.TextAlways};
+        background: var(--color-text-always);
         border-radius: var(--size-s);
         opacity: .1;
         pointer-events: none;
@@ -224,10 +224,10 @@ const StyledStickyWrapper = styled.div`
 const StyledActionBar = styled.div`
     max-width: 560px;
     margin: 0 auto var(--size-m);
-    background: ${Color.Background80};
+    background: var(--color-background80);
     border-radius: var(--size-xl);
     backdrop-filter: blur(var(--size-xs));
-    box-shadow: 0 var(--size-xxs) var(--size-l) ${Color.Shadow};
+    box-shadow: 0 var(--size-xxs) var(--size-l) var(--color-shadow);
     padding: var(--size-s);
     display: flex;
     flex-wrap: wrap;
@@ -244,16 +244,16 @@ const StyledActionBar = styled.div`
 `;
 
 const StyledFavoriteArea = styled.div<{ active: boolean }>`
-    color: ${Color.Text};
+    color: var(--color-text);
     display: flex;
     padding: var(--size-s) var(--size-m) var(--size-s) var(--size-s);
     gap: var(--size-xxs);
-    box-shadow: inset 0 0 0 2px ${Color.Text};
+    box-shadow: inset 0 0 0 2px var(--color-text);
     border-radius: var(--size-l);
     cursor: pointer;
 
     ${props => props.active && `
-        background: ${Color.Yellow};
+        background: var(--color-yellow);
         box-shadow: none;
 
         svg {
@@ -264,8 +264,8 @@ const StyledFavoriteArea = styled.div<{ active: boolean }>`
     ${props => !props.active && `
         @media (hover: hover) {
             :hover {
-                color: ${Color.Yellow};
-                box-shadow: inset 0 0 0 2px ${Color.Yellow};
+                color: var(--color-yellow);
+                box-shadow: inset 0 0 0 2px var(--color-yellow);
             }
         }
     `}

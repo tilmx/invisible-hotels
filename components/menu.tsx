@@ -5,7 +5,6 @@ import { Link } from "./utils/link";
 import { Text, TextSize } from "./text";
 import { useRouter } from "next/router";
 import { Breakpoint } from "./tokens/breakpoint";
-import { Color } from "./tokens/colors";
 
 const StyledMenuContainer = styled.div`
     padding-top: var(--size-m);
@@ -28,9 +27,9 @@ const StyledMenu = styled(Flex) <{ flying?: boolean; }>`
 
     ${props => props.flying && `
         backdrop-filter: blur(var(--size-xs));
-        background: ${Color.Background80};
+        background: var(--color-background80);
         border-radius: var(--size-xl);
-        box-shadow: 0 0 var(--size-l) ${Color.Shadow};
+        box-shadow: 0 0 var(--size-l) var(--color-shadow);
     `}
 
     ${Breakpoint.Mobile} {
@@ -51,12 +50,12 @@ const StyledDotLink = styled(Link)`
 
     @media (hover: hover) {
         :hover {
-            background: ${Color.Text10};
+            background: var(--color-text10);
         }
     }
 
     :active {
-        background: ${Color.Text20};
+        background: var(--color-text20);
     }
 `;
 
@@ -92,7 +91,7 @@ const StyledLink = styled(Link) <{ active: boolean; }>`
     opacity: .8;
 
     ${props => props.active && `
-        background: ${Color.Text10};
+        background: var(--color-text10);
     `}
 `;
 

@@ -3,7 +3,6 @@ import { FunctionComponent, ReactNode } from "react";
 import { Wrapper } from "./wrapper";
 import { Menu } from "./menu";
 import { Breakpoint } from "./tokens/breakpoint";
-import { Color } from "./tokens/colors";
 
 const StyledHeader = styled.div`
 	position: relative;
@@ -22,7 +21,7 @@ const StyledHeader = styled.div`
 		bottom: 0;
 		width: 100%;
 		height: 50%;
-		background: linear-gradient(transparent, ${Color.Background});
+		background: linear-gradient(transparent, var(--color-background));
 	}
 `;
 

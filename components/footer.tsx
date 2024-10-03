@@ -4,7 +4,6 @@ import { Breakpoint } from './tokens/breakpoint';
 import { Link } from './utils/link';
 import { Text, TextSize } from './text';
 import { Wrapper } from './wrapper';
-import { Color } from './tokens/colors';
 
 const StyledFooter = styled.div<{ reducedPadding?: boolean; }>`
     margin-top: var(--size-l);
@@ -34,7 +33,7 @@ const StyledFooterContent = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     padding-top: var(--size-xl);
-    border-top: 1px solid ${Color.Text20};
+    border-top: 1px solid var(--color-text20);
 
     ${Breakpoint.Mobile} {
         gap: var(--size-s);
@@ -71,7 +70,7 @@ const ProjectTeaser = styled.a`
     align-items: center;
     padding: var(--size-s);
     border-radius: var(--size-s);
-    box-shadow: inset 0 0 0 1px ${Color.Text20};
+    box-shadow: inset 0 0 0 1px var(--color-text20);
     align-self: flex-start;
     color: unset;
     text-decoration: unset;
@@ -83,7 +82,7 @@ const ProjectTeaser = styled.a`
 
     @media (hover: hover) {
         :hover {
-            background: ${Color.Text20};
+            background: var(--color-text20);
         }
     }
 `;

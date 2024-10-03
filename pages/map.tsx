@@ -45,7 +45,7 @@ const StyledHotelCard = styled(HotelCard)`
     width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
-    box-shadow: 0 var(--size-xxs) var(--size-m) ${Color.Shadow};
+    box-shadow: 0 var(--size-xxs) var(--size-m) var(--color-shadow);
 `;
 
 export default function Map() {

@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { ArrowDown } from 'lucide-react';
 import { FunctionComponent, MouseEventHandler, useEffect, useState } from 'react';
-import { Color } from './tokens/colors';
 import { Breakpoint } from './tokens/breakpoint';
 
 const StyledIndicator = styled.div<{ visible: boolean; }>`
@@ -11,13 +10,13 @@ const StyledIndicator = styled.div<{ visible: boolean; }>`
     height: var(--size-xl);
     width: var(--size-xl);
     border-radius: 50%;
-    background: ${Color.Yellow};
+    background: var(--color-yellow);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform .2s, opacity .2s;
     transform: translateX(-50%);
-    box-shadow: 0 0 var(--size-xxl) ${Color.Shadow};
+    box-shadow: 0 0 var(--size-xxl) var(--color-shadow);
     cursor: pointer;
 
     ${Breakpoint.Mobile} {

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { FunctionComponent, ReactNode } from 'react';
-import { Color } from './tokens/colors';
 import { Breakpoint } from './tokens/breakpoint';
 import { Text, TextSize } from './text';
 import { UnstyledLink } from './utils/link';
@@ -19,8 +18,8 @@ const StyledCard = styled.div<{ emptyState: boolean }>`
     display: flex;
     flex-direction: column;
     gap: var(--size-m);
-    box-shadow: inset 0 0 0 2px ${Color.Text10};
-    color: ${Color.Text60};
+    box-shadow: inset 0 0 0 2px var(--color-text10);
+    color: var(--color-text60);
     justify-content: center;
     align-items: center;
 

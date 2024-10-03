@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 import { FunctionComponent, HTMLAttributeAnchorTarget, ReactNode } from 'react';
-import { Color } from '../tokens/colors';
 
 const StyledUnstyledLink = styled(NextLink)`
     color: unset;
@@ -25,13 +24,13 @@ const StyledLink = styled(StyledUnstyledLink)`
 
     @media (hover: hover) {
         :hover {
-            background: ${Color.Text10};
+            background: var(--color-text10);
             opacity: .8;
         }
     }
 
     :active {
-        background: ${Color.Text20};
+        background: var(--color-text20);
         opacity: .8;
     }
 `;

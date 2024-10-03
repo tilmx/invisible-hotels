@@ -20,7 +20,7 @@ type HotelCardProps = {
 };
 
 const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
-    color: ${Color.TextAlways}; 
+    color: var(--color-text-always); 
     text-decoration: none;
     background: ${props => props.color};
     padding: var(--size-xxs);
@@ -35,7 +35,7 @@ const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
     @media (hover: hover) {
         :hover {
             transform: scale(1.03);
-            box-shadow: 0 var(--size-s) var(--size-xxxl) ${Color.Shadow}, 0 var(--size-xxxs) var(--size-s) ${Color.Shadow};
+            box-shadow: 0 var(--size-s) var(--size-xxxl) var(--color-shadow), 0 var(--size-xxxs) var(--size-s) var(--color-shadow);
             [data-stararea] {
                 visibility: visible;
             } 
@@ -51,7 +51,7 @@ const StyledCard = styled(UnstyledLink) <{ color?: string; small?: boolean; }>`
             width: 100%;
             top: 0;
             left: 0;
-            background: ${Color.TextAlways};
+            background: var(--color-text-always);
             opacity: .1;
             pointer-events: none;
             border-radius: var(--size-m);
@@ -122,7 +122,7 @@ const StyledImageContainer = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: ${Color.Shadow};
+    background: var(--color-shadow);
 
     :after {
         content: '';
@@ -132,14 +132,14 @@ const StyledImageContainer = styled.div`
         left: 0;
         width: 100%;
         height: 50%;
-        background: linear-gradient(${Color.TextAlways} 30%, transparent);
+        background: linear-gradient(var(--color-text-always) 30%, transparent);
         opacity: .5;
     }
 `;
 
 const StyledImage = styled(Image)`
     object-fit: cover; 
-    background: ${Color.Text60};
+    background: var(--color-text60);
 `;
 
 const StyledTitle = styled(Text)`
@@ -163,12 +163,12 @@ const StyledStarArea = styled(StarIcon, {
     @media (hover: hover) {
        visibility: ${props => props.starred ? 'visible' : 'hidden'};
        :hover {
-            background: ${Color.Text10};
+            background: var(--color-text10);
             backdrop-filter: blur(var(--size-xxs));
         }
     }
     :active {
-        background: ${Color.Text20};
+        background: var(--color-text20);
         backdrop-filter: blur(var(--size-xxs));
     }
 `;

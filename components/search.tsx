@@ -1,6 +1,5 @@
 import { FunctionComponent, MouseEventHandler, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
-import { Color } from "./tokens/colors";
 import { XIcon } from "lucide-react";
 import { Text, TextSize } from "./text";
 import { Breakpoint } from "./tokens/breakpoint";
@@ -33,12 +32,12 @@ const StyledSearchInput = styled.input`
     }
 
     ::placeholder {
-        color: ${Color.Text20};
+        color: var(--color-text20);
     }
 
     :focus {
-        outline: 2px solid ${Color.Blue};
-        box-shadow: 0 0 0 6px ${Color.Blue}33;
+        outline: 2px solid var(--color-blue);
+        box-shadow: 0 0 0 6px var(--color-blue)33;
     }
 `;
 
@@ -52,7 +51,7 @@ const StyledSearchCloseButton = styled.div`
     padding: 0 var(--size-m);
 
     svg {
-        background: ${Color.Text10};
+        background: var(--color-text10);
         padding: var(--size-xxs);
         border-radius: 50%;
         height: 20px;
@@ -62,7 +61,7 @@ const StyledSearchCloseButton = styled.div`
 
     @media (hover: hover) {
         svg:hover {
-            background: ${Color.Text20};
+            background: var(--color-text20);
         }
     }
 `;
