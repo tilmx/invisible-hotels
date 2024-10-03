@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
-import { FunctionComponent, HTMLAttributeAnchorTarget, ReactNode } from 'react';
+import { CSSProperties, FunctionComponent, HTMLAttributeAnchorTarget, ReactNode } from 'react';
 
 const StyledUnstyledLink = styled(NextLink)`
     color: unset;
     text-decoration: unset;
 `;
 
-export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; description?: string; }> = props => {
+export const UnstyledLink: FunctionComponent<{ href: string; target?: HTMLAttributeAnchorTarget; children?: ReactNode; className?: string; description?: string; style?: CSSProperties }> = props => {
     return (
-        <StyledUnstyledLink aria-label={props.description} href={props.href} target={props.target} className={props.className}>
+        <StyledUnstyledLink aria-label={props.description} href={props.href} target={props.target} className={props.className} style={props.style}>
             {props.children}
         </StyledUnstyledLink>
     );

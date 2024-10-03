@@ -1,0 +1,192 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.card {
+    color: var(--color-text-always);
+    text-decoration: none;
+    background: var(--color);
+    padding: var(--size-xxs);
+    border-radius: var(--size-m);
+
+    &:not(.small) {
+        min-height: 280px;
+
+        @include breakpoint($breakpoint-tablet) {
+            min-height: 400px;
+        }
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-xxxs);
+    transition: transform .2s,
+    box-shadow .2s;
+    transform: translate3d(0, 0, 0);
+
+    @media (hover: hover) {
+        &:hover {
+            transform: scale(1.03);
+            box-shadow: 0 var(--size-s) var(--size-xxxl) var(--color-shadow), 0 var(--size-xxxs) var(--size-s) var(--color-shadow);
+
+            [data-stararea] {
+                visibility: visible !important;
+            }
+        }
+    }
+
+    &:active {
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: var(--color-text-always);
+            opacity: .1;
+            pointer-events: none;
+            border-radius: var(--size-m);
+        }
+    }
+
+    .header {
+        flex: 1;
+        position: relative;
+
+        .content {
+            border-radius: var(--size-s);
+            padding: var(--size-xs) var(--size-s);
+
+            &.image {
+                color: var(--color-background-always)
+            }
+
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: var(--size-xxxs);
+            z-index: 1;
+            position: relative;
+            word-break: break-word;
+
+            @include breakpoint($breakpoint-mobile) {
+                gap: var(--size-xxs);
+            }
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                .starArea {
+                    padding: var(--size-xs);
+                    margin-top: calc(-1 * var(--size-xxs));
+                    margin-right: calc(-1 * var(--size-xs));
+                    border-radius: 50%;
+                    display: block;
+                    flex-shrink: 0;
+
+                    &.starred {
+                        fill: currentColor;
+                    }
+
+                    @media (hover: hover) {
+                        visibility: hidden;
+
+                        &.starred {
+                            visibility: visible;
+                        }
+
+                        &:hover {
+                            background: var(--color-text10);
+                            backdrop-filter: blur(var(--size-xxs));
+                        }
+                    }
+
+                    &:active {
+                        background: var(--color-text20);
+                        backdrop-filter: blur(var(--size-xxs));
+                    }
+                }
+            }
+
+            .distance {
+                padding: var(--size-xxxs) var(--size-xs);
+                margin-top: var(--size-xxs);
+                border-radius: var(--size-xs);
+                backdrop-filter: blur(var(--size-xxs));
+                position: relative;
+                margin-right: auto;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: currentColor;
+                    opacity: .15;
+                    border-radius: var(--size-xs);
+                }
+            }
+        }
+
+        .imageContainer {
+            border-radius: var(--size-s);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--color-shadow);
+
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 50%;
+                background: linear-gradient(var(--color-text-always) 30%, transparent);
+                opacity: .5;
+            }
+
+            .image {
+                object-fit: cover;
+                background: var(--color-text60);
+            }
+        }
+    }
+
+    .details {
+        display: flex;
+        align-items: flex-end;
+        padding: var(--size-xs) var(--size-s);
+        gap: var(--size-xxs);
+
+        &.visited {
+            margin-right: var(--size-xxl);
+
+            @include breakpoint($breakpoint-mobile) {
+                margin-right: calc(var(--size-xxl) + var(--size-xs));
+            }
+        }
+
+        .tagList {
+            display: flex;
+            gap: var(--size-xxs);
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .visitedBadge {
+            position: absolute;
+            right: var(--size-s);
+        }
+    }
+}
