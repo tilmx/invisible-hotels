@@ -1,0 +1,98 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.text {
+    font-family: var(--font-sans);
+    line-height: 1.4;
+    color: var(--color2);
+    margin: 0;
+
+    &.serif {
+        font-family: var(--font-serif);
+    }
+
+    &.center {
+        text-align: center;
+    }
+
+    &.huge {
+
+        line-height: 1;
+        letter-spacing: -.03em;
+        font-size: 40px;
+
+        @include breakpoint($breakpoint-mobile-small) {
+            font-size: 48px;
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 72px;
+        }
+
+        @include breakpoint($breakpoint-tablet) {
+            font-size: 96px;
+        }
+    }
+
+    &.extralarge {
+        line-height: 1.1;
+        letter-spacing: -.02em;
+        font-size: 36px;
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 48px;
+        }
+
+        @include breakpoint($breakpoint-tablet) {
+            font-size: 64px;
+        }
+    }
+
+    &.superlarge {
+        font-size: 32px;
+        line-height: 1;
+        letter-spacing: -.02em;
+
+        @include breakpoint($breakpoint-mobile-small) {
+            font-size: 36px;
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 40px;
+        }
+
+        @include breakpoint($breakpoint-tablet) {
+            font-size: 44px;
+        }
+    }
+
+    &.large {
+        line-height: 1;
+        font-size: 24px;
+
+        &.bold {
+            letter-spacing: -.02em;
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 32px;
+        }
+    }
+
+    &.regular {
+        line-height: 1.2;
+        font-size: 17px;
+
+        @include breakpoint($breakpoint-mobile) {
+            font-size: 20px;
+        }
+    }
+
+    &.small {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    &.bold {
+        font-weight: 600;
+    }
+}

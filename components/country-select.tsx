@@ -1,5 +1,5 @@
 import { FunctionComponent, MouseEventHandler } from "react";
-import { Text, TextSize } from "./text";
+import { Text } from "./text";
 import { ChevronDown, XIcon } from "lucide-react";
 import { Tag } from "./tag";
 import { getCountryFlag } from "../utils";
@@ -52,10 +52,10 @@ export const CountrySelectFlyout: FunctionComponent<CountrySelectFlyoutProps> = 
 const CountrySelectOption: FunctionComponent<{ label: string; selected?: boolean; onClick: MouseEventHandler; }> = props => {
     return (
         <div className={clsx(styles.option, props.selected && styles.selected)} onClick={props.onClick}>
-            <Text size={TextSize.Regular}>
+            <Text size="regular">
                 {getCountryFlag(props.label)}
             </Text>
-            <Text size={TextSize.Regular}>
+            <Text size="regular">
                 {props.label}
             </Text>
             {props.selected &&

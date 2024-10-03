@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react';
-import { Text, TextSize } from './text';
+import { Text } from './text';
 import { Check, HelpCircle, X } from 'lucide-react';
 import styles from './table.module.scss';
 import clsx from 'clsx';
@@ -19,9 +19,9 @@ export const Table: FunctionComponent<TableProps> = props => {
             {props.data.map((row, i) =>
                 <div className={styles.row} key={i}>
                     <div className={styles.rowInner}>
-                        <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
+                        <Text size="superlarge" serif>{row.label}</Text>
                         {typeof row.value === 'string' || typeof row.value === 'number' &&
-                            <Text size={TextSize.Large}>{row.value}</Text>
+                            <Text size="large">{row.value}</Text>
                         }
                         {typeof row.value === 'boolean' &&
                             <div className={clsx(styles.iconWrapper, !row.value && styles.greyedOut)}>

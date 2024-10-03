@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { Button } from "./button";
 import { ShareIcon } from "lucide-react";
 import { siteDescription, siteTitle } from "../data/site";
-import { Text, TextSize } from "./text";
+import { Text } from "./text";
 import { Color } from "./tokens/colors";
 import { AccentStyle, AccentedText } from "./accented-text";
 import { Wrapper } from "./wrapper";
@@ -29,12 +29,12 @@ export const Share: FunctionComponent = () => {
 
     return (
         <Wrapper className={styles.share}>
-            <Text size={TextSize.SuperLarge} center bold>
+            <Text size="superlarge" center bold>
                 <AccentedText color={Color.Text80} accentStyle={AccentStyle.Circled}>
                     {siteTitle}
                 </AccentedText>
             </Text>
-            <Text size={TextSize.Large} serif center color={Color.Text60}>{siteDescription}</Text>
+            <Text size="large" serif center color={Color.Text60}>{siteDescription}</Text>
             {shareAvailable ?
                 <div className={styles.shareContainer}>
                     <Button iconLeft={<ShareIcon />} onClick={() => share()}>Share Website</Button>

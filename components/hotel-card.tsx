@@ -1,5 +1,5 @@
 import { CSSProperties, FunctionComponent, MouseEventHandler } from 'react';
-import { Text, TextSize } from './text';
+import { Text } from './text';
 import { getHotelUrl, getVacationTypeColor, getVacationTypeIcon } from '../utils';
 import { Tag } from './tag';
 import Image from 'next-image-export-optimizer';
@@ -23,7 +23,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
         <UnstyledLink className={clsx(styles.card, props.small && styles.small, props.className)} style={{ '--color': getVacationTypeColor(props.hotel.vacationType) } as CSSProperties} href={getHotelUrl({ id: props.hotel.id, housingType: props.hotel.housingType })}>
             <div className={styles.header}>
                 <div className={clsx(styles.content, typeof props.hotel.image !== 'undefined' && styles.image)}>
-                    <Text className={styles.title} as="h3" size={props.small ? TextSize.Large : TextSize.SuperLarge} bold >
+                    <Text className={styles.title} as="h3" size={props.small ? "large" : "superlarge"} bold >
                         {props.hotel.name}
                         {props.onStarClick &&
                             <StarIcon
@@ -33,7 +33,7 @@ export const HotelCard: FunctionComponent<HotelCardProps> = props => {
                             />
                         }
                     </Text>
-                    <Text size={TextSize.Large} serif>
+                    <Text size="large" serif>
                         {`${props.hotel.city}, ${props.hotel.country}`}
                     </Text>
                     {typeof props.hotel.distance !== 'undefined' &&

@@ -2,7 +2,7 @@ import hotelsPreview from '../data/hotels-preview.json';
 import { FunctionComponent, useEffect } from 'react';
 import { checkIfFavoritesStored, track } from '../utils';
 import { PlaceholderCard } from './placeholder-card';
-import { Text, TextSize } from './text';
+import { Text } from './text';
 import { Wrapper } from './wrapper';
 import { HotelCard } from './hotel-card';
 import { Color } from './tokens/colors';
@@ -45,7 +45,7 @@ export const HotelList: FunctionComponent = () => {
     return (
         <div className={styles.hotelList} id="hotel-list">
             <Wrapper>
-                <Text className={styles.label} size={TextSize.Regular} color={Color.Text60}>{labelText}</Text>
+                <Text className={styles.label} size="regular" color={Color.Text60}>{labelText}</Text>
             </Wrapper>
             <Filter />
             <HotelListWrapper className={styles.hotelListWrapper}>

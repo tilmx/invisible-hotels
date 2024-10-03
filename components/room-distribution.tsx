@@ -1,6 +1,6 @@
 import { CSSProperties, FunctionComponent } from 'react';
 import roomDistribution from '../data/room-distribution.json';
-import { Text, TextSize } from './text';
+import { Text } from './text';
 import { Color } from './tokens/colors';
 import styles from './room-distribution.module.scss'
 import clsx from 'clsx';
@@ -14,17 +14,17 @@ export const RoomDistribution: FunctionComponent<{ rooms?: number }> = props => 
 
     return (
         <div className={styles.container}>
-            <Text size={TextSize.Small}>Compare hotel size</Text>
+            <Text size="small">Compare hotel size</Text>
             <div className={styles.distribution}>
                 {combinedArray.map((item, i) =>
                     <div className={clsx(styles.bar, (Math.min(Math.floor((props.rooms || 0) / 10), 12) === i && styles.highlighted))} style={{ '--height': `${Math.round((item || 0) / maximum * 100)}%` } as CSSProperties} key={i}>
-                        <Text color={Color.Text} size={TextSize.Small}>{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
+                        <Text color={Color.Text} size="small">{item || 'No'} Hotel{(item || 0) > 1 ? 's have' : ' has'} {Math.max(i * 10, 1)} {i !== combinedArray.length - 1 ? 'to ' + (i * 10 + 9) : 'or more'} rooms</Text>
                     </div>
                 )}
             </div>
             <div className={styles.legend}>
-                <Text size={TextSize.Small}>1</Text>
-                <Text size={TextSize.Small}>120+</Text>
+                <Text size="small">1</Text>
+                <Text size="small">120+</Text>
             </div>
         </div>
     )

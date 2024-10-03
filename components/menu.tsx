@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { Link } from "./utils/link";
-import { Text, TextSize } from "./text";
+import { Text } from "./text";
 import { useRouter } from "next/router";
 import styles from './menu.module.scss';
 import clsx from "clsx";
@@ -30,7 +30,7 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
 const MenuItem: FunctionComponent<{ label: string; link: string; }> = props => {
     return (
         <Link className={clsx(styles.menuItem, useRouter().pathname === props.link && styles.active)} href={props.link}>
-            <Text size={TextSize.Regular}>{props.label}</Text>
+            <Text size="regular">{props.label}</Text>
         </Link>
     )
 }

@@ -4,9 +4,24 @@ import { siteTitle } from '../data/site';
 import PlausibleProvider from 'next-plausible'
 import '../components/tokens/globals.scss'
 
+import { DM_Sans, EB_Garamond } from 'next/font/google'
+import clsx from 'clsx';
+
+const FontSerif = EB_Garamond({
+    weight: '400',
+    style: ['normal', 'italic'],
+    subsets: ['latin'],
+    variable: "--font-serif"
+})
+const FontSans = DM_Sans({
+    weight: ['600', '400'],
+    subsets: ['latin'],
+    variable: "--font-sans"
+})
+
 function App({ Component, pageProps }: AppProps) {
     return (
-        <>
+        <div className={clsx(FontSerif.variable, FontSans.variable)}>
             <Head>
                 <link rel="icon" type="image/png" href="/favicon.png" />
                 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -19,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
             <PlausibleProvider domain="invisiblehotels.com" trackOutboundLinks>
                 <Component {...pageProps} />
             </PlausibleProvider>
-        </>
+        </div>
     );
 }
 

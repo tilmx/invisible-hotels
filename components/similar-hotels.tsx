@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { Wrapper } from "./wrapper";
 import { HotelListWrapper } from "./hotel-list-wrapper";
-import { Text, TextSize } from "./text";
+import { Text } from "./text";
 import { HotelCard } from "./hotel-card";
 import { Maximize2Icon } from "lucide-react";
 import { Button } from "./button";
@@ -20,8 +20,8 @@ export const SimilarHotels: FunctionComponent<{ hotels: NearbyHotelPreview[]; ac
     return (
         <div className={styles.similar}>
             <Wrapper className={styles.intro}>
-                <Text size={TextSize.SuperLarge} as="h2" bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
-                <Text color={Color.Text60} size={TextSize.Large} serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
+                <Text size="superlarge" as="h2" bold>You may <AccentedText color={props.accentColor || Color.Text} accentStyle={AccentStyle.Underlined}>also like</AccentedText></Text>
+                <Text color={Color.Text60} size="large" serif>{(props.hotels.length || 'No').toString()} nearby hotel{plural ? 's' : undefined} & apartment{plural ? 's' : undefined}</Text>
             </Wrapper>
             <HotelListWrapper className={styles.list}>
                 {(similarHotelsExpanded ? props.hotels : similarHotelsPreview).map((hotel, i) =>

@@ -1,5 +1,5 @@
 import Image from 'next-image-export-optimizer';
-import { Text, TextSize } from '../text';
+import { Text } from '../text';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { Wrapper } from '../wrapper';
@@ -349,8 +349,8 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     <Menu />
                     <StyledIntro>
                         <StyledIntroTitle>
-                            <Text as="h1" size={TextSize.Huge} bold center>{props.hotel.name}</Text>
-                            <Text size={TextSize.SuperLarge} center serif>{props.hotel.city}, {props.hotel.country}</Text>
+                            <Text as="h1" size="huge" bold center>{props.hotel.name}</Text>
+                            <Text size="superlarge" center serif>{props.hotel.city}, {props.hotel.country}</Text>
                         </StyledIntroTitle>
                         <div className={styles.tags}>
                             <Tag icon={getVacationTypeIcon(props.hotel.vacationType, true)} label={props.hotel.vacationType} />
@@ -384,7 +384,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             />
                         )}
                         {props.hotel.imageCopyright &&
-                            <StyledImageCopyrightText size={TextSize.Small}>
+                            <StyledImageCopyrightText size="small">
                                 © Images: {props.hotel.imageCopyright}
                             </StyledImageCopyrightText>
                         }
@@ -392,7 +392,7 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                     {props.hotel.description &&
                         <StyledDescriptionContainer>
                             <StyledDescriptionLabel as="h3" center>About the {props.hotel.housingType.toLowerCase()}</StyledDescriptionLabel>
-                            <Text serif center size={TextSize.ExtraLarge}>
+                            <Text serif center size="extralarge">
                                 {props.hotel.description}
                             </Text>
                         </StyledDescriptionContainer>

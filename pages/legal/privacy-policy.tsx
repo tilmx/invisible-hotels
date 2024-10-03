@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Text, TextSize } from '../../components/text';
+import { Text } from '../../components/text';
 import { Button } from '../../components/button';
 import { Trash2 } from 'lucide-react';
 import { Footer } from '../../components/footer';
@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
                 <Menu />
             </Wrapper>
             <div className={styles.privacyPolicy}>
-                <Text size={TextSize.ExtraLarge} serif as="h1">
+                <Text size="extralarge" serif as="h1">
                     Data Protection Declaration
                 </Text>
                 <TableText title="General Information">

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Header } from '../../components/header';
-import { Text, TextSize } from '../../components/text';
+import { Text } from '../../components/text';
 import { Footer } from '../../components/footer';
 import { siteTitle } from '../../data/site';
 import { Color } from '../../components/tokens/colors';
@@ -17,17 +17,17 @@ export default function SitesNotice() {
             <Header>
                 <div className={styles.sitesNotice}>
                     <div className={styles.intro}>
-                        <Text as="h1" size={TextSize.ExtraLarge} serif>
+                        <Text as="h1" size="extralarge" serif>
                             Site’s notice
                         </Text>
                     </div>
                     <div className={styles.content}>
                         {process.env.NEXT_PUBLIC_SITESNOTICE_ADDRESS?.split(', ').map((text, i) =>
-                            <Text size={TextSize.Large} serif key={i}>{text}</Text>
+                            <Text size="large" serif key={i}>{text}</Text>
                         )}
                         <br />
-                        <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}</Text>
-                        <Text size={TextSize.Large} serif>{process.env.NEXT_PUBLIC_SITESNOTICE_PHONE}</Text>
+                        <Text size="large" serif>{process.env.NEXT_PUBLIC_SITESNOTICE_EMAIL}</Text>
+                        <Text size="large" serif>{process.env.NEXT_PUBLIC_SITESNOTICE_PHONE}</Text>
                     </div>
                 </div>
             </Header>
