@@ -1,70 +1,8 @@
 import { FunctionComponent, MouseEventHandler, useEffect, useRef } from "react";
-import styled from "@emotion/styled";
 import { XIcon } from "lucide-react";
 import { Text, TextSize } from "./text";
-import { Breakpoint } from "./tokens/breakpoint";
 import debounce from "lodash.debounce";
-
-const StyledSearchInput = styled.input`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: unset;
-    display: block;
-    padding: 0 var(--size-l);
-    box-sizing: border-box;
-    margin: 0;
-    font-family: unset;
-    font-size: unset;
-    color: unset;
-    border-radius: var(--size-xl);
-    outline: none;
-    border: none;
-
-    ${Breakpoint.Tablet} {
-        border-radius: calc(var(--size-m) + var(--size-xxs));
-    }
-
-    ${Breakpoint.Mobile} {
-        border-radius: var(--size-m);
-    }
-
-    ::placeholder {
-        color: var(--color-text20);
-    }
-
-    :focus {
-        outline: 2px solid var(--color-blue);
-        box-shadow: 0 0 0 6px var(--color-blue)33;
-    }
-`;
-
-const StyledSearchCloseButton = styled.div`
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--size-m);
-
-    svg {
-        background: var(--color-text10);
-        padding: var(--size-xxs);
-        border-radius: 50%;
-        height: 20px;
-        width: 20px;
-        cursor: pointer;
-    }
-
-    @media (hover: hover) {
-        svg:hover {
-            background: var(--color-text20);
-        }
-    }
-`;
+import styles from "./search.module.scss";
 
 export const Search: FunctionComponent<{ onChange: (value: string) => void; onCloseClick?: MouseEventHandler; className?: string; }> = props => {
     const search = debounce(query => props.onChange(query), 250);
@@ -76,10 +14,10 @@ export const Search: FunctionComponent<{ onChange: (value: string) => void; onCl
 
     return (
         <Text size={TextSize.Large} className={props.className}>
-            <StyledSearchInput ref={inputRef} placeholder="Search" onChange={e => search(e.target.value)} />
-            <StyledSearchCloseButton onClick={props.onCloseClick}>
+            <input className={styles.input} ref={inputRef} placeholder="Search" onChange={e => search(e.target.value)} />
+            <div className={styles.close} onClick={props.onCloseClick}>
                 <XIcon />
-            </StyledSearchCloseButton>
+            </div>
         </Text>
     )
 }
