@@ -12,7 +12,7 @@
         padding-left: var(--size-xxs);
     }
 
-    &.hasLabel {
+    &:not(.hasLabel) {
         padding-right: var(--size-xxs);
     }
 
@@ -22,7 +22,7 @@
         height: 20px;
     }
 
-    @include breakpoint($breakpoint-tablet-small) {
+    @include breakpoint($breakpoint-mobile) {
         padding: var(--size-xxs) var(--size-s);
         border-width: unset;
         gap: var(--size-xxs);
@@ -32,7 +32,7 @@
             padding-left: var(--size-xs);
         }
 
-        &.hasLabel {
+        &:not(.hasLabel) {
             padding-right: var(--size-xs);
         }
 
