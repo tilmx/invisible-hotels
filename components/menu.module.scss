@@ -1,0 +1,72 @@
+@import '@/components/tokens/breakpoints.scss';
+
+.menu {
+    padding-top: var(--size-xxxxs);
+
+    @include breakpoint($breakpoint-tablet-small) {
+        padding-top: var(--size-m);
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        padding: var(--size-xs) var(--size-s);
+        padding-bottom: var(--size-xxl);
+        margin: var(--size-xs) calc(-1 * var(--size-s)) 0;
+        align-items: center;
+        gap: var(--size-l);
+
+        &:not(.flying) {
+            padding-bottom: var(--size-xxl);
+        }
+
+        &.flying {
+            backdrop-filter: blur(var(--size-xs));
+            background: var(--color-background80);
+            border-radius: var(--size-xl);
+            box-shadow: 0 0 var(--size-l) var(--color-shadow);
+        }
+
+        @include breakpoint($breakpoint-mobile) {
+            padding: var(--size-m);
+            padding-right: var(--size-l);
+            margin: 0 calc(-1 * var(--size-m));
+
+            &:not(.flying) {
+                padding-bottom: var(--size-xxxl);
+            }
+        }
+
+        .dotLink {
+            padding: var(--size-xxs);
+            margin: calc(-1 * var(--size-xxs));
+            margin-right: auto;
+            border-radius: 50%;
+            opacity: 1;
+
+            @media (hover: hover) {
+                &:hover {
+                    background: var(--color-text10);
+                }
+            }
+
+            &:active {
+                background: var(--color-text20);
+            }
+
+            .dot {
+                height: var(--size-l);
+                width: var(--size-l);
+                display: block;
+            }
+        }
+    }
+}
+
+.menuItem {
+    opacity: .8;
+
+    &.active {
+        background: var(--color-text10);
+    }
+}
