@@ -1,8 +1,9 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { checkIfCookiesAllowed, setCookieOptIn } from "../utils";
-import styled from "@emotion/styled";
 import { Button } from "./button";
 import { Box } from "./box";
+import styles from './map.module.scss';
+import clsx from "clsx";
 
 interface MapProps {
     className?: string;
@@ -16,24 +17,6 @@ interface MapProps {
     })[];
     onAnnotationClick?: (id?: string) => void;
 }
-
-const StyledContainer = styled.div`
-    width: 100%;
-    height: 480px;
-`;
-
-const StyledCookieContainer = styled.div`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: var(--size-m);
-    box-sizing: border-box;
-`;
-
-const StyledMapContainer = styled.div`
-    width: 100%;
-    height: 100%;
-`;
 
 let loadingMapPromise: Promise<void> | null = null;
 function loadMap(token: string): Promise<void> {
@@ -126,20 +109,20 @@ export const Map: FunctionComponent<MapProps> = props => {
     }, [map])
 
     return (
-        <StyledContainer className={props.className} >
+        <div className={clsx(styles.map, props.className)}>
             {mapCookiesAllowed === false &&
-                <StyledCookieContainer>
+                <div className={styles.cookieNote}>
                     <Box title='Show Hotel Map' description='We are using Apple Maps for our hotel map. That‘s why we obviously need to send data to Apple and you need to accept a single cookie from Apple, so it works properly.'>
                         <Button onClick={() => {
                             setMapCookiesAllowed(true);
                             setCookieOptIn("map")
                         }}>Accept</Button>
                     </Box>
-                </StyledCookieContainer>
+                </div>
             }
             {mapCookiesAllowed &&
-                <StyledMapContainer id="mapContainer" ref={element} />
+                <div className={styles.mapContent} id="mapContainer" ref={element} />
             }
-        </StyledContainer>
+        </div>
     )
 }
