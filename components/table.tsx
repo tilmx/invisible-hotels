@@ -1,9 +1,9 @@
-import styled from '@emotion/styled'
 import { FunctionComponent, ReactNode } from 'react';
 import { Text, TextSize } from './text';
 import { Check, HelpCircle, X } from 'lucide-react';
-import { Breakpoint } from './tokens/breakpoint';
 import { AlignItems, Flex, JustifyContent } from './utils/flex';
+import styles from './table.module.scss';
+import clsx from 'clsx';
 
 interface TableProps {
     backgroundColor?: string;
@@ -14,97 +14,30 @@ interface TableProps {
     }[]
 }
 
-const StyledContainer = styled.div`
-    max-width: 560px;
-    margin: 0 auto;
-`;
-
-const StyledRow = styled.div`
-    padding: var(--size-l) 0 0;
-    border-bottom: 2px solid transparent;
-    position: relative;
-
-    :after {
-        content: '';
-        display: block;
-        height: 2px;
-        margin-top: var(--size-l);
-        width: 100%;
-        background: currentColor;
-        opacity: .1;
-        border-radius: 1px;
-    }
-
-    ${Breakpoint.Mobile} {
-        padding: var(--size-m) 0;
-    }
-
-    :last-of-type {
-        border: none;
-
-        :after {
-            display: none;
-        }
-    }
-`;
-
-const StyledIconWrapper = styled.div<{ greyedOut?: boolean }>`
-    padding: var(--size-xxs);
-    position: relative;
-
-    :after {
-        content: '';
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: currentColor;
-        border-radius: 50%;
-        ${props => props.greyedOut && 'opacity: .1;'}
-    }
-    
-    svg {
-        position: relative;
-        z-index: 1;
-        display: block;
-        stroke-width: 3;
-        ${props => props.greyedOut && 'opacity: .3;'}
-    }
-
-    ${Breakpoint.Mobile} {
-        svg {
-            height: 20px;
-            width: 20px;
-        }
-    }
-`;
-
 export const Table: FunctionComponent<TableProps> = props => {
     return (
-        <StyledContainer>
+        <div className={styles.table}>
             {props.data.map((row, i) =>
-                <StyledRow key={i}>
+                <div className={styles.row} key={i}>
                     <Flex justifyContent={JustifyContent.SpaceBetween} alignItems={AlignItems.Center}>
                         <Text size={TextSize.SuperLarge} serif>{row.label}</Text>
                         {typeof row.value === 'string' || typeof row.value === 'number' &&
                             <Text size={TextSize.Large}>{row.value}</Text>
                         }
                         {typeof row.value === 'boolean' &&
-                            <StyledIconWrapper greyedOut={!row.value}>
+                            <div className={clsx(styles.iconWrapper, !row.value && styles.greyedOut)}>
                                 {row.value ? <Check color={props.backgroundColor} /> : <X />}
-                            </StyledIconWrapper>
+                            </div>
                         }
                         {typeof row.value === 'undefined' &&
-                            <StyledIconWrapper greyedOut>
+                            <div className={clsx(styles.iconWrapper, styles.greyedOut)}>
                                 <HelpCircle />
-                            </StyledIconWrapper>
+                            </div>
                         }
                     </Flex>
                     {row.content}
-                </StyledRow>
+                </div>
             )}
-        </StyledContainer>
+        </div>
     )
 }
