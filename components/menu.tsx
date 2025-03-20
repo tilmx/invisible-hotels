@@ -20,7 +20,6 @@ export const Menu: FunctionComponent<{ flying?: boolean; className?: string; }> 
                     </svg>
                 </Link>
                 <MenuItem link="/" label="Hotels" />
-                <MenuItem link="/map" label="Map" />
                 <MenuItem link="/about" label="About" />
             </div>
         </div>
