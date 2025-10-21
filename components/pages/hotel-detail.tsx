@@ -14,7 +14,6 @@ import { siteTitle } from '../../data/site';
 import { CSSProperties, FunctionComponent, useEffect } from 'react';
 import { useFavoriteStore } from '../../store/favorites';
 import { Button } from '../button';
-import { Map } from '../map';
 import { RoomDistribution } from '../room-distribution';
 import { SimilarHotels } from '../similar-hotels';
 import { Hotel } from '../../types';
@@ -125,17 +124,6 @@ export const HotelDetailPage: FunctionComponent<HotelDetailProps> = props => {
                             { label: 'Pool', value: props.hotel.amenities?.includes('Pool') || amenitiesFallback },
                             { label: 'Sauna', value: props.hotel.amenities?.includes('Sauna') || amenitiesFallback }
                         ]}
-                    />
-                    <Map
-                        className={styles.map}
-                        center={{ lat: props.hotel.coordinates.lat, long: props.hotel.coordinates.long }}
-                        annotations={[{
-                            id: props.hotel.id,
-                            name: props.hotel.name,
-                            coordinates: { lat: props.hotel.coordinates.lat, long: props.hotel.coordinates.long },
-                            color: getVacationTypeColor(props.hotel.vacationType) || Color.Text,
-                            clusteringIdentifier: ''
-                        }]}
                     />
 
                     <div className={styles.stickyWrapper}>
