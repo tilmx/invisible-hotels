@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "lodash.debounce": "^4",
     "lucide-react": "^0",
-    "next": "14",
+    "next": "16",
     "next-image-export-optimizer": "^1",
     "next-plausible": "^3.12.2",
     "react": "18",
